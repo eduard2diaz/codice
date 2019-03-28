@@ -1,0 +1,59 @@
+<table class="table table-hover m-table m-table--head-separator-brand" id="libro_table">
+    <thead>
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Titulo
+        </th>
+        <th>
+            Fecha
+        </th>
+        <th>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {%set i=1%}
+    {% for libro in libros %}
+        <tr>
+            <td>{{ i }}</td>
+            <td>{{ libro.id.titulo }}</td>
+            <td>{{ libro.id.fechaCaptacion|date('d-m-Y') }}</td>
+            <td>
+                <ul class="m-nav m-nav--inline m--pull-right">
+                    <li class="m-nav__item">
+                        <a class="btn btn-secondary btn-sm" href="{{ path('libro_show', { 'id': libro.id.id }) }}">
+                            <i class="flaticon-eye"></i> Ver</a>
+                    </li>
+                    <li class="m-nav__item">
+                        <a class="btn btn-info btn-sm" href="{{ path('libro_edit', { 'id': libro.id.id }) }}">
+                            <i class="flaticon-edit-1"></i> Editar</a>
+                    </li>
+                    <li class="m-nav__item">
+                        <a class="btn btn-danger btn-sm  eliminar_libro" data-href="{{ path('libro_delete', { 'id': libro.id.id }) }}">
+                            <i class="flaticon-delete-1"></i> Eliminar</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        {%set i=1+i%}
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Titulo
+        </th>
+        <th>
+            Fecha
+        </th>
+        <th>
+        </th>
+    </tr>
+    </tfoot>
+</table>

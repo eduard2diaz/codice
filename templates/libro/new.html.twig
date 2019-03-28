@@ -1,0 +1,11 @@
+{% extends 'layout/userprofile.html.twig' %}
+{% block profile_content %}
+    {{ include('libro/_form.html.twig') }}
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('script/entity/libro.js','siplan') }}"></script>
+    <script>
+        libro.nuevo();
+    </script>
+{% endblock %}

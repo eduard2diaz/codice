@@ -1,0 +1,12 @@
+{% extends 'layout/autenticado.html.twig' %}
+{% block page_title %}Usuario{% endblock page_title %}
+{% block body %}
+    {{ include('autor/_form.html.twig') }}
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('script/entity/autor.js','siplan') }}"></script>
+    <script>
+            autor.nuevo();
+    </script>
+{% endblock %}

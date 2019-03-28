@@ -1,0 +1,221 @@
+<div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    {{ form_title|default('Formulario de registro') }}
+                </h3>
+            </div>
+        </div>
+
+        <div class="m-portlet__head-tools">
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane active show" id="m_user_profile_tab_1">
+            {{ form_start(form,{'attr':{
+                'class':'m-form m-form--fit m-form--label-align-right'
+            }}) }}
+            <div class="m-portlet__body">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="m-card-profile">
+                            <div class="m-card-profile__title m--hide">
+                                Your Profile
+                            </div>
+                            <div class="m-card-profile__pic">
+                                <div class="m-card-profile__pic-wrapper">
+
+                                    {% if autor.rutaFoto!=null %}
+                                        {% set rutaFoto=  asset('archivos/'~autor.rutaFoto) %}
+                                    {% else %}
+                                        {% set rutaFoto= asset('app/media/img/users/user4.jpg','template') %}
+                                    {% endif %}
+
+                                    <img src="{{ rutaFoto }}" alt="No se pudo cargar la imagen" id="foto_perfil"
+                                         data-image="{{ rutaFoto }}" data-toggle="m-tooltip" data-placement="top"
+                                         title="" data-original-title="Cambiar foto de perfil"/>
+
+                                </div>
+                                {{ form_widget(form.file) }}
+                                {{ form_errors(form.file) }}
+                            </div>
+                            <div class="m-card-profile__details">
+                                <a id="reload_picture"
+                                   class="m-card-profile__email m-link text-uppercase text-info m--font-bold m--hidden-desktop"><i
+                                            class="flaticon-refresh"></i>Reiniciar</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-9">
+
+                        <div class="row pull-right m--margin-right-10">
+                            <span class="m-switch m-switch--icon m-switch--success pull-right">
+				                <label>
+					                {{ form_widget(form.activo) }}
+                                    <span>
+                                    </span>
+			                    </label>
+                            </span>
+                        </div>
+
+                        <div class="form-group m-form__group row">
+                            <div class="col-10 ml-auto">
+                                <h4 class="m-form__section">1. Información personal</h4>
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="example-text-input"
+                                   class="col-2 col-form-label">{{ form_label(form.nombre) }}</label>
+                            <div class="col-7">
+                                {{ form_widget(form.nombre) }}
+                                {{ form_errors(form.nombre) }}
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="example-text-input"
+                                   class="col-2 col-form-label">{{ form_label(form.apellidos) }}</label>
+                            <div class="col-7">
+                                {{ form_widget(form.apellidos) }}
+                                {{ form_errors(form.apellidos) }}
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="example-text-input"
+                                   class="col-2 col-form-label">{{ form_label(form.pais) }}</label>
+                            <div class="col-7">
+                                {{ form_widget(form.pais) }}
+                                {{ form_errors(form.pais) }}
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="example-text-input"
+                                   class="col-2 col-form-label">{{ form_label(form.phone) }}</label>
+                            <div class="col-7">
+                                {{ form_widget(form.phone) }}
+                                {{ form_errors(form.phone) }}
+                            </div>
+                        </div>
+
+                        <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+                        <div class="form-group m-form__group row">
+                            <div class="col-10 ml-auto">
+                                <h4 class="m-form__section">2. Información profesional</h4>
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="example-text-input"
+                                   class="col-2 col-form-label">{{ form_label(form.ministerio) }}</label>
+                            <div class="col-7">
+                                {{ form_widget(form.ministerio) }}
+                                {{ form_errors(form.ministerio) }}
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="example-text-input"
+                                   class="col-2 col-form-label">{{ form_label(form.institucion) }}</label>
+                            <div class="col-7">
+                                {{ form_widget(form.institucion) }}
+                                {{ form_errors(form.institucion) }}
+                            </div>
+                        </div>
+                        {% if form.jefe is defined %}
+                            <div class="form-group m-form__group row">
+                                <label for="example-text-input"
+                                       class="col-2 col-form-label">{{ form_label(form.jefe) }}</label>
+                                <div class="col-7">
+                                    {{ form_widget(form.jefe) }}
+                                    {{ form_errors(form.jefe) }}
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="form-group m-form__group row">
+                            <label for="example-text-input"
+                                   class="col-2 col-form-label">{{ form_label(form.area) }}</label>
+                            <div class="col-7">
+                                {{ form_widget(form.area) }}
+                                {{ form_errors(form.area) }}
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="example-text-input"
+                                   class="col-2 col-form-label">{{ form_label(form.gradoCientifico) }}</label>
+                            <div class="col-7">
+                                {{ form_widget(form.gradoCientifico) }}
+                                {{ form_errors(form.gradoCientifico) }}
+                            </div>
+                        </div>
+                        <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+                        <div class="form-group m-form__group row">
+                            <div class="col-10 ml-auto">
+                                <h4 class="m-form__section">3. Credenciales de acceso</h4>
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="example-text-input"
+                                   class="col-2 col-form-label">{{ form_label(form.usuario) }}</label>
+                            <div class="col-7">
+                                {{ form_widget(form.usuario) }}
+                                {{ form_errors(form.usuario) }}
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="example-text-input"
+                                   class="col-2 col-form-label">{{ form_label(form.email) }}</label>
+                            <div class="col-7">
+                                {{ form_widget(form.email) }}
+                                {{ form_errors(form.email) }}
+                            </div>
+                        </div>
+
+
+                        <div class="form-group m-form__group row">
+                            <label for="example-text-input"
+                                   class="col-2 col-form-label">{{ form_label(form.password.first) }}</label>
+                            <div class="col-7">
+                                {{ form_widget(form.password.first) }}
+                                {{ form_errors(form.password.first) }}
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="example-text-input"
+                                   class="col-2 col-form-label">{{ form_label(form.password.second) }}</label>
+                            <div class="col-7">
+                                {{ form_widget(form.password.second) }}
+                                {{ form_errors(form.password.second) }}
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="example-text-input"
+                                   class="col-2 col-form-label">{{ form_label(form.idrol) }}</label>
+                            <div class="col-7">
+                                {{ form_widget(form.idrol) }}
+                                {{ form_errors(form.idrol) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{ form_errors(form) }}
+                {{ form_rest(form) }}
+            </div>
+            <div class="m-portlet__foot m-portlet__foot--fit">
+                <div class="m-form__actions">
+                    <div class="row">
+                        <div class="col-5">
+                        </div>
+                        <div class="col-7">
+                            <button type="submit"
+                                    class="btn btn-primary m-btn m-btn--air m-btn--custom">{{ button_action|default('Guardar') }}</button>&nbsp;&nbsp;
+                            <button type="reset" class="btn btn-metal m-btn m-btn--air m-btn--custom">Cancelar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+

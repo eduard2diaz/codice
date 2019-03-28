@@ -1,0 +1,11 @@
+{% extends 'layout/userprofile.html.twig' %}
+{% block profile_content %}
+    {{ include('monografia/_form.html.twig') }}
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('script/entity/monografia.js','siplan') }}"></script>
+    <script>
+        monografia.nuevo();
+    </script>
+{% endblock %}

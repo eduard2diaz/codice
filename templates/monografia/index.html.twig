@@ -1,0 +1,45 @@
+{% extends 'layout/userprofile.html.twig' %}
+{% block profile_content %}
+    <div class="m-portlet m-portlet--mobile">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <span class="m-portlet__head-icon"><i class="flaticon-list-3"></i></span>
+                    <h3 class="m-portlet__head-text">
+                        Monografías
+                    </h3>
+                </div>
+            </div>
+            <div class="m-portlet__head-tools">
+                <ul class="m-portlet__nav">
+                    <li class="m-portlet__nav-item">
+                        <a data-href="{{ path('monografia_index',{'id':user_id}) }}" class="btn btn-sm m-btn" id="monografia_tablerefrescar">
+                            <span><i class="flaticon-refresh"></i></span> Refrescar
+                        </a>
+                    </li>
+                    <li class="m-portlet__nav-item">
+                        <a href="{{ path('monografia_new',{'id':user_id}) }}" class="btn btn-sm btn-primary m-btn text-uppercase"  data-toggle="m-tooltip" data-placement="top" title="" data-original-title="Registrar una nueva monografia">
+                            <span><i class="flaticon-add"></i></span> Nuevo
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="m-portlet__body">
+            <!--begin: Datatable -->
+            {%include 'monografia/_table.html.twig'%}
+            <!--end: Datatable -->
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('script/entity/monografia.js','siplan') }}"></script>
+    <script>
+        var total ={{monografias |length }}
+            monografia.init();
+    </script>
+{% endblock %}
+

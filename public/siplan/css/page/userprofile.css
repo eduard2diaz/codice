@@ -1,0 +1,31 @@
+div.banner{
+    border-radius: 2px;
+    box-shadow: 2px 2px 2px black;
+}
+div.banner-info{
+    background-image: url('../../img/40482376-0-hack1.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100%;
+}
+div.profile_menu{
+    background-color: slateblue;
+}
+
+div.profile_menu a{
+    color: white;
+    font-weight: normal;
+}
+
+div.profile_menu a:hover{
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+div.profile_menu i{
+    margin-right: 6px;
+}
+
+div.m-subheader{
+    display: none;
+}

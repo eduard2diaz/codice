@@ -1,0 +1,11 @@
+{% extends 'layout/userprofile.html.twig' %}
+{% block profile_content %}
+    {{ include('patente/_form.html.twig',{'button_action':'Actualizar','form_title':'Editar patente'}) }}
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('script/entity/patente.js','siplan') }}"></script>
+    <script>
+        patente.nuevo();
+    </script>
+{% endblock %}

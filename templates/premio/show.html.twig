@@ -1,0 +1,152 @@
+{% extends 'layout/userprofile.html.twig' %}
+
+
+{% block profile_content %}
+    <div class="m-portlet m-portlet--tabs  ">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">
+                        Detalles del premio
+                    </h3>
+                </div>
+            </div>
+            <div class="m-portlet__head-tools">
+                <ul class="m-portlet__nav">
+                    <li class="m-portlet__nav-item m-portlet__nav-item--last">
+                        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push"
+                             m-dropdown-toggle="hover" aria-expanded="true">
+                            <a href="#"
+                               class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
+                                <i class="la la-gear"></i>
+                            </a>
+                            <div class="m-dropdown__wrapper">
+                                <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+                                <div class="m-dropdown__inner">
+                                    <div class="m-dropdown__body">
+                                        <div class="m-dropdown__content">
+                                            <ul class="m-nav">
+                                                <li class="m-nav__section m-nav__section--first">
+                                                    <span class="m-nav__section-text">Acciones rápidas</span>
+                                                </li>
+                                                <li class="m-nav__item">
+                                                    <a href="{{ path('premio_edit',{'id':premio.id.id}) }}" class="m-nav__link">
+                                                        <i class="m-nav__link-icon flaticon-edit-1"></i>
+                                                        <span class="m-nav__link-text">Editar</span>
+                                                    </a>
+                                                </li>
+                                                <li class="m-nav__item">
+                                                    <a href="{{ path('publicacion_descargar',{'id':premio.id.id}) }}" class="m-nav__link">
+                                                        <i class="m-nav__link-icon flaticon-download"></i>
+                                                        <span class="m-nav__link-text">Descargar</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="m_user_profile_tab_1">
+                <div class="m-portlet__body">
+
+                    <div class="m-widget1 m-widget1--paddingless">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="m-widget1__item">
+                                    <div class="">
+                                        <div class="col">
+                                            <h3 class="m-widget1__title">Título</h3>
+                                            <span class="m-widget1__desc">{{ premio.id.titulo }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="m-widget1__item">
+                                    <div class="">
+                                        <div class="col">
+                                            <h3 class="m-widget1__title">Fecha de publicación</h3>
+                                            <span class="m-widget1__desc">{{ premio.id.fechaCaptacion|date('d-m-Y') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="m-widget1__item">
+                                    <div class="">
+                                        <div class="col">
+                                            <h3 class="m-widget1__title">Autor</h3>
+                                            <span class="m-widget1__desc">{{ premio.id.autor }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m--margin-top-20">
+                            <div class="col-md-4">
+                                <div class="m-widget1__item">
+                                    <div class="">
+                                        <div class="col">
+                                            <h3 class="m-widget1__title">Tipo de premio</h3>
+                                            <span class="m-widget1__desc">{{ premio.tipoPremio }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m--margin-top-20">
+                            <div class="col-md-4">
+                                <div class="m-widget1__item">
+                                    <div class="">
+                                        <div class="col">
+                                            <h3 class="m-widget1__title">Palabras claves</h3>
+                                            <span class="m-widget1__desc">{{ premio.id.keywords }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="m-widget1__item">
+                                    <div class="">
+                                        <div class="col">
+                                            <h3 class="m-widget1__title">Estado</h3>
+                                            <span class="m-widget1__desc">{{ premio.id.getEstadoString() }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="m-widget1__item">
+                                    <div class="">
+                                        <div class="col">
+                                            <h3 class="m-widget1__title">Institución que lo concede</h3>
+                                            <span class="m-widget1__desc">{{ premio.institucionConcede }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m--margin-top-20">
+                            <div class="col-md-12">
+                                <div class="m-widget1__item">
+                                    <div class="">
+                                        <div class="col">
+                                            <h3 class="m-widget1__title">Resumen</h3>
+                                            <blockquote>{{ premio.id.resumen }}</blockquote>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

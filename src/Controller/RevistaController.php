@@ -1,0 +1,119 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Revista;
+use App\Form\RevistaType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+/**
+ * @Route("/revista")
+ */
+class RevistaController extends AbstractController
+{
+    /**
+     * @Route("/", name="revista_index", methods={"GET"})
+     */
+    public function index(Request $request): Response
+    {
+        $revistas = $this->getDoctrine()->getRepository(Revista::class)->findAll();
+
+        if ($request->isXmlHttpRequest())
+            return $this->render('revista/_table.html.twig', [
+                'revistas' => $revistas,
+            ]);
+
+        return $this->render('revista/index.html.twig', [
+            'revistas' => $revistas,
+        ]);
+    }
+
+    /**
+     * @Route("/new", name="revista_new", methods={"GET","POST"})
+     */
+    public function new(Request $request): Response
+    {
+        $revista = new Revista();
+        $form = $this->createForm(RevistaType::class, $revista, array('action' => $this->generateUrl('revista_new')));
+        $form->handleRequest($request);
+
+        $em = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted())
+            if ($form->isValid()) {
+                $em->persist($revista);
+                $em->flush();
+                return new JsonResponse(array('mensaje' => 'La revista fue registrada satisfactoriamente',
+                    'nombre' => $revista->getNombre(),
+                    'nivel' => $revista->getNivel(),
+                    'impacto' => $revista->getImpacto(),
+                    'pais' => $revista->getPais()->getNombre(),
+                    'id' => $revista->getId(),
+                ));
+            } else {
+                $page = $this->renderView('revista/_form.html.twig', array(
+                    'form' => $form->createView(),
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
+
+        return $this->render('revista/_new.html.twig', [
+            'revista' => $revista,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="revista_edit", methods={"GET","POST"},options={"expose"=true})
+     */
+    public function edit(Request $request, Revista $revista): Response
+    {
+        $form = $this->createForm(RevistaType::class, $revista, array('action' => $this->generateUrl('revista_edit',array('id' => $revista->getId()))));
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted())
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($revista);
+                $em->flush();
+                return new JsonResponse(array('mensaje' => 'La revista fue actualizada satisfactoriamente',
+                    'nombre' => $revista->getNombre(),
+                    'nivel' => $revista->getNivel(),
+                    'impacto' => $revista->getImpacto(),
+                    'pais' => $revista->getPais()->getNombre(),
+                ));
+            } else {
+                $page = $this->renderView('revista/_form.html.twig', array(
+                    'form' => $form->createView(),
+                    'form_id' => 'revista_edit',
+                    'action' => 'Actualizar',
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true));
+            }
+
+        return $this->render('revista/_new.html.twig', [
+            'revista' => $revista,
+            'title' => 'Editar revista',
+            'action' => 'Actualizar',
+            'form_id' => 'revista_edit',
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/delete", name="revista_delete",options={"expose"=true})
+     */
+    public function delete(Request $request, Revista $revista): Response
+    {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($revista);
+        $em->flush();
+        return new JsonResponse(array('mensaje' => 'La revista fue eliminada satisfactoriamente'));
+    }
+}

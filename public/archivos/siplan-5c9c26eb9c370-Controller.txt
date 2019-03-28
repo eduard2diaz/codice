@@ -1,0 +1,111 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Usuario;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\Security;
+use  Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\Ldap\Ldap;
+
+class DefaultController extends Controller
+{
+
+    /**
+     * @Route("/", name="index", methods="GET|POST")
+     */
+    public function index(Request $request)
+    {
+
+        $authenticationUtils = $this->get('security.authentication_utils');
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('Default\Login.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error,
+        ]);
+    }
+
+    /**
+     * @Route("/logout", name="logout", methods="GET|POST")
+     */
+    public function logout()
+    {
+
+    }
+
+    /**
+     * @Route("/wellcome", name="wellcome", methods="GET|POST")
+     */
+    public function wellcome(Request $request)
+    {
+        return $this->render('Default/dashboard.html.twig');
+    }
+
+    /**
+     * @Route("/notificaciones", name="notificaciones", methods="GET|POST")
+     */
+    public function notificaciones(Request $request)
+    {
+        return $this->render('Default/notificaciones.html.twig');
+    }
+
+    /**
+     * @Route("/autenticacion", name="autenticacion", methods="GET|POST")
+     */
+    public function autenticacion(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $usser = $request->get('_username');
+        $pas = $request->get('_password');
+        $userdb = $em->getRepository('App:Usuario')->findOneByUsername($usser);
+        if (null != $userdb)
+            if ($userdb->getPassword() == $pas || $this->findLdap($usser, $pas)) {
+                $this->get('security.token_storage')->setToken(new UsernamePasswordToken($usser, null, 'main', $userdb->getRoles()));
+                return $this->redirectToRoute('wellcome');
+            }
+
+        return $this->render('Default\Login.html.twig', [
+            'last_username' => $usser,
+            'error' => 'Usuario o contraseña incorrectoss',
+        ]);
+    }
+
+
+    private function findLdap($usser, $pas): bool
+    {
+        $dominio = 'unah.edu.cu';
+        $dn = 'CN=Users,DC=UNAH,DC=EDU,DC=CU';
+        $puertoldap = 389;
+        $ldaprdn = trim($usser) . '@' . $dominio;
+        $ldappass = trim($pas);
+        $ldap = Ldap::create('ext_ldap', [
+            'host' => 'ldap.unah.edu.cu',
+            'port' => $puertoldap,
+            'version' => '3',
+        ]);
+        $ldapconn = ldap_connect($dominio, $puertoldap);
+        ldap_set_option($ldapconn, LDAP_OPT_PROTOCOL_VERSION, 3);
+        ldap_set_option($ldapconn, LDAP_OPT_REFERRALS, 0);
+        $ldapbind = @ldap_bind($ldapconn, $ldaprdn, $ldappass);
+        if (!$ldapbind) {
+            return false;
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $usuariodb = $em->getRepository('App:Usuario')->findOneByUsername($usser);
+        $usuariodb->setPassword($pas);
+        $em->persist($usuariodb);
+        $em->flush();
+
+        return true;
+    }
+}

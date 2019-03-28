@@ -1,0 +1,59 @@
+<table class="table table-hover m-table m-table--head-separator-brand" id="editorial_table">
+    <thead>
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            País
+        </th>
+        <th>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {%set i=1%}
+    {% for editorial in editorials %}
+        <tr>
+            <td>{{ i }}</td>
+            <td>{{ editorial.nombre }}</td>
+            <td>{{ editorial.pais }}</td>
+            <td>
+                <ul class="m-nav m-nav--inline m--pull-right">
+                    <li class="m-nav__item">
+                        <a class="btn btn-secondary btn-sm editorial_show" data-href="{{ path('editorial_show', { 'id': editorial.id }) }}">
+                            <i class="flaticon-eye"></i> Visualizar</a>
+                    </li>
+                    <li class="m-nav__item">
+                        <a class="btn btn-info btn-sm edicion" data-href="{{ path('editorial_edit', { 'id': editorial.id }) }}">
+                            <i class="flaticon-edit-1"></i> Editar</a>
+                    </li>
+                    <li class="m-nav__item">
+                        <a class="btn btn-danger btn-sm  eliminar_editorial" data-href="{{ path('editorial_delete', { 'id': editorial.id }) }}">
+                            <i class="flaticon-delete-1"></i> Eliminar</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        {%set i=1+i%}
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            País
+        </th>
+        <th>
+        </th>
+    </tr>
+    </tfoot>
+</table>

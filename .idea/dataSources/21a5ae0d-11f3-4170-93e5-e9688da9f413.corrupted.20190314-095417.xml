@@ -1,0 +1,2265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="pedro@localhost">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.14">
+    <root id="1">
+      <ServerVersion>11.1</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="ihatuey">
+      <ObjectId>45234</ObjectId>
+      <StateNumber>8271</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="3" parent="1" name="milab">
+      <ObjectId>21981</ObjectId>
+      <StateNumber>2361</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="4" parent="1" name="pedro">
+      <ObjectId>53062</ObjectId>
+      <StateNumber>11483</StateNumber>
+      <Owner>postgres</Owner>
+      <IntrospectionStateNumber>518</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="5" parent="1" name="pedro2">
+      <ObjectId>53273</ObjectId>
+      <StateNumber>11488</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="6" parent="1" name="postgres">
+      <ObjectId>13102</ObjectId>
+      <Comment>default administrative connection database</Comment>
+      <StateNumber>566</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="7" parent="1" name="siplanv4">
+      <ObjectId>52756</ObjectId>
+      <StateNumber>11337</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="8" parent="1" name="sitrans">
+      <ObjectId>48082</ObjectId>
+      <StateNumber>9515</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <role id="9" parent="1" name="pg_execute_server_program">
+      <ObjectId>4571</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="10" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="11" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="12" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="13" parent="1" name="pg_read_server_files">
+      <ObjectId>4569</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="14" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="15" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="16" parent="1" name="pg_write_server_files">
+      <ObjectId>4570</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="17" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <schema id="18" parent="4" name="information_schema">
+      <ObjectId>12807</ObjectId>
+      <StateNumber>365</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="19" parent="4" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+      <Comment>system catalog schema</Comment>
+      <StateNumber>358</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="20" parent="4" name="pg_temp_1">
+      <ObjectId>11804</ObjectId>
+      <StateNumber>120</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="21" parent="4" name="pg_toast">
+      <ObjectId>99</ObjectId>
+      <Comment>reserved schema for TOAST tables</Comment>
+      <StateNumber>1</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="22" parent="4" name="pg_toast_temp_1">
+      <ObjectId>11805</ObjectId>
+      <StateNumber>120</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="23" parent="4" name="public">
+      <ObjectId>2200</ObjectId>
+      <Comment>standard public schema</Comment>
+      <StateNumber>359</StateNumber>
+      <Owner>postgres</Owner>
+      <IntrospectionTimestamp>2019-03-11.22:43:17.777</IntrospectionTimestamp>
+      <IntrospectionStateNumber>11606</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <access-method id="24" parent="4" name="btree">
+      <ObjectId>403</ObjectId>
+      <Comment>b-tree index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.bthandler</Handler>
+      <HandlerId>330</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="25" parent="4" name="hash">
+      <ObjectId>405</ObjectId>
+      <Comment>hash index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.hashhandler</Handler>
+      <HandlerId>331</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="26" parent="4" name="gist">
+      <ObjectId>783</ObjectId>
+      <Comment>GiST index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.gisthandler</Handler>
+      <HandlerId>332</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="27" parent="4" name="gin">
+      <ObjectId>2742</ObjectId>
+      <Comment>GIN index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.ginhandler</Handler>
+      <HandlerId>333</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="28" parent="4" name="spgist">
+      <ObjectId>4000</ObjectId>
+      <Comment>SP-GiST index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.spghandler</Handler>
+      <HandlerId>334</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="29" parent="4" name="brin">
+      <ObjectId>3580</ObjectId>
+      <Comment>block range index (BRIN) access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.brinhandler</Handler>
+      <HandlerId>335</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <extension id="30" parent="4" name="plpgsql">
+      <ObjectId>13088</ObjectId>
+      <Comment>PL/pgSQL procedural language</Comment>
+      <StateNumber>518</StateNumber>
+      <Version>1.0</Version>
+      <SchemaName>pg_catalog</SchemaName>
+      <SchemaId>11</SchemaId>
+    </extension>
+    <sequence id="31" parent="23" name="area_id_seq">
+      <ObjectId>53578</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11567</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="32" parent="23" name="autor_id_seq">
+      <ObjectId>53546</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11551</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="33" parent="23" name="editor_id_seq">
+      <ObjectId>53550</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11553</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="34" parent="23" name="facultad_id_seq">
+      <ObjectId>53558</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11557</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="35" parent="23" name="grado_cientifico_id_seq">
+      <ObjectId>53568</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11562</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="36" parent="23" name="grupo_articulo_id_seq">
+      <ObjectId>53556</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11556</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="37" parent="23" name="institucion_id_seq">
+      <ObjectId>53544</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11550</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="38" parent="23" name="ministerio_id_seq">
+      <ObjectId>53560</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11558</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="39" parent="23" name="organizador_id_seq">
+      <ObjectId>53574</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11565</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="40" parent="23" name="pais_id_seq">
+      <ObjectId>53582</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11569</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="41" parent="23" name="publicacion_id_seq">
+      <ObjectId>53542</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11549</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="42" parent="23" name="publicador_id_seq">
+      <ObjectId>53554</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11555</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="43" parent="23" name="revista_id_seq">
+      <ObjectId>53576</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11566</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="44" parent="23" name="rol_id_seq">
+      <ObjectId>53570</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11563</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="45" parent="23" name="tipo_articulo_id_seq">
+      <ObjectId>53566</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11561</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="46" parent="23" name="tipo_encuentro_id_seq">
+      <ObjectId>53562</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11559</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="47" parent="23" name="tipo_norma_id_seq">
+      <ObjectId>53572</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11564</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="48" parent="23" name="tipo_premio_id_seq">
+      <ObjectId>53564</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11560</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="49" parent="23" name="tipo_software_id_seq">
+      <ObjectId>53552</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11554</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="50" parent="23" name="tipo_tesis_id_seq">
+      <ObjectId>53580</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11568</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="51" parent="23" name="usuario_id_seq">
+      <ObjectId>53548</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11552</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <table id="52" parent="23" name="area">
+      <ObjectId>53519</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11578</StateNumber>
+    </table>
+    <table id="53" parent="23" name="articulo">
+      <ObjectId>53378</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11591</StateNumber>
+    </table>
+    <table id="54" parent="23" name="autor">
+      <ObjectId>53307</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11575</StateNumber>
+    </table>
+    <table id="55" parent="23" name="editor">
+      <ObjectId>53351</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11589</StateNumber>
+    </table>
+    <table id="56" parent="23" name="encuentro">
+      <ObjectId>53472</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11601</StateNumber>
+    </table>
+    <table id="57" parent="23" name="facultad">
+      <ObjectId>53404</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11579</StateNumber>
+    </table>
+    <table id="58" parent="23" name="grado_cientifico">
+      <ObjectId>53454</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11580</StateNumber>
+    </table>
+    <table id="59" parent="23" name="grupo_articulo">
+      <ObjectId>53398</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11600</StateNumber>
+    </table>
+    <table id="60" parent="23" name="institucion">
+      <ObjectId>53299</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11571</StateNumber>
+    </table>
+    <table id="61" parent="23" name="libro">
+      <ObjectId>53363</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11588</StateNumber>
+    </table>
+    <table id="62" parent="23" name="ministerio">
+      <ObjectId>53410</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11577</StateNumber>
+    </table>
+    <table id="63" parent="23" name="monografia">
+      <ObjectId>53508</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11605</StateNumber>
+    </table>
+    <table id="64" parent="23" name="norma">
+      <ObjectId>53344</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11586</StateNumber>
+    </table>
+    <table id="65" parent="23" name="organizador">
+      <ObjectId>53496</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11603</StateNumber>
+    </table>
+    <table id="66" parent="23" name="pais">
+      <ObjectId>53532</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11573</StateNumber>
+    </table>
+    <table id="67" parent="23" name="patente">
+      <ObjectId>53486</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11604</StateNumber>
+    </table>
+    <table id="68" parent="23" name="premio">
+      <ObjectId>53274</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11570</StateNumber>
+    </table>
+    <table id="69" parent="23" name="publicacion">
+      <ObjectId>53281</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11570</StateNumber>
+    </table>
+    <table id="70" parent="23" name="publicacion_autor">
+      <ObjectId>53292</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11574</StateNumber>
+    </table>
+    <table id="71" parent="23" name="publicador">
+      <ObjectId>53392</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11590</StateNumber>
+    </table>
+    <table id="72" parent="23" name="revista">
+      <ObjectId>53502</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11592</StateNumber>
+    </table>
+    <table id="73" parent="23" name="rol">
+      <ObjectId>53460</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11585</StateNumber>
+    </table>
+    <table id="74" parent="23" name="software">
+      <ObjectId>53429</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11595</StateNumber>
+    </table>
+    <table id="75" parent="23" name="tesis">
+      <ObjectId>53440</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11597</StateNumber>
+    </table>
+    <table id="76" parent="23" name="tipo_articulo">
+      <ObjectId>53447</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11593</StateNumber>
+    </table>
+    <table id="77" parent="23" name="tipo_encuentro">
+      <ObjectId>53417</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11602</StateNumber>
+    </table>
+    <table id="78" parent="23" name="tipo_norma">
+      <ObjectId>53466</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11587</StateNumber>
+    </table>
+    <table id="79" parent="23" name="tipo_premio">
+      <ObjectId>53423</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11572</StateNumber>
+    </table>
+    <table id="80" parent="23" name="tipo_software">
+      <ObjectId>53357</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11596</StateNumber>
+    </table>
+    <table id="81" parent="23" name="tipo_tesis">
+      <ObjectId>53526</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11599</StateNumber>
+    </table>
+    <table id="82" parent="23" name="usuario">
+      <ObjectId>53324</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11584</StateNumber>
+    </table>
+    <table id="83" parent="23" name="usuario_rol">
+      <ObjectId>53337</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>11584</StateNumber>
+    </table>
+    <column id="84" parent="52" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11545</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="85" parent="52" name="facultad">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11545</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="86" parent="52" name="nombre">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11545</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="87" parent="52" name="area_pkey">
+      <ObjectId>53523</ObjectId>
+      <StateNumber>11545</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="88" parent="52" name="idx_d7943d68f50454df">
+      <ObjectId>53525</ObjectId>
+      <StateNumber>11546</StateNumber>
+      <ColNames>facultad</ColNames>
+    </index>
+    <key id="89" parent="52" name="area_pkey">
+      <ObjectId>53524</ObjectId>
+      <StateNumber>11545</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>area_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="90" parent="52" name="fk_d7943d68f50454df">
+      <ObjectId>53764</ObjectId>
+      <StateNumber>11606</StateNumber>
+      <ColNames>facultad</ColNames>
+      <RefTableId>53404</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>facultad</RefTableName>
+      <RefKeyName>facultad_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="91" parent="53" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11518</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="92" parent="53" name="revista">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11518</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="93" parent="53" name="tipo_articulo">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11518</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="94" parent="53" name="volumen">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11518</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="95" parent="53" name="paginas">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11518</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="96" parent="53" name="numero">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11518</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="97" parent="53" name="doi">
+      <Position>7</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11518</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="98" parent="53" name="issn">
+      <Position>8</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11518</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="99" parent="53" name="articulo_pkey">
+      <ObjectId>53388</ObjectId>
+      <StateNumber>11518</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="100" parent="53" name="idx_69e94e91a94f1646">
+      <ObjectId>53390</ObjectId>
+      <StateNumber>11519</StateNumber>
+      <ColNames>revista</ColNames>
+    </index>
+    <index id="101" parent="53" name="idx_69e94e91bf2c1458">
+      <ObjectId>53391</ObjectId>
+      <StateNumber>11520</StateNumber>
+      <ColNames>tipo_articulo</ColNames>
+    </index>
+    <key id="102" parent="53" name="articulo_pkey">
+      <ObjectId>53389</ObjectId>
+      <StateNumber>11518</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>articulo_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="103" parent="53" name="fk_69e94e91bf396750">
+      <ObjectId>53689</ObjectId>
+      <StateNumber>11591</StateNumber>
+      <ColNames>id</ColNames>
+      <RefTableId>53281</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>publicacion</RefTableName>
+      <RefKeyName>publicacion_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="104" parent="53" name="fk_69e94e91a94f1646">
+      <ObjectId>53694</ObjectId>
+      <StateNumber>11592</StateNumber>
+      <ColNames>revista</ColNames>
+      <RefTableId>53502</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>revista</RefTableName>
+      <RefKeyName>revista_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="105" parent="53" name="fk_69e94e91bf2c1458">
+      <ObjectId>53699</ObjectId>
+      <StateNumber>11593</StateNumber>
+      <ColNames>tipo_articulo</ColNames>
+      <RefTableId>53447</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tipo_articulo</RefTableName>
+      <RefKeyName>tipo_articulo_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="106" parent="54" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11500</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="107" parent="54" name="area">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11500</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="108" parent="54" name="facultad">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11500</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="109" parent="54" name="grado_cientifico">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11500</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="110" parent="54" name="institucion">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11500</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="111" parent="54" name="ministerio">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11500</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="112" parent="54" name="pais">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11500</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="113" parent="54" name="nombre">
+      <Position>8</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11500</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="114" parent="54" name="externo">
+      <Position>9</Position>
+      <DataType>boolean|0s</DataType>
+      <StateNumber>11500</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="115" parent="54" name="email">
+      <Position>10</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11500</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="116" parent="54" name="phone">
+      <Position>11</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11500</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="117" parent="54" name="autor_pkey">
+      <ObjectId>53316</ObjectId>
+      <StateNumber>11500</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="118" parent="54" name="idx_31075ebad7943d68">
+      <ObjectId>53318</ObjectId>
+      <StateNumber>11501</StateNumber>
+      <ColNames>area</ColNames>
+    </index>
+    <index id="119" parent="54" name="idx_31075ebaf50454df">
+      <ObjectId>53319</ObjectId>
+      <StateNumber>11502</StateNumber>
+      <ColNames>facultad</ColNames>
+    </index>
+    <index id="120" parent="54" name="idx_31075ebaaf54064b">
+      <ObjectId>53320</ObjectId>
+      <StateNumber>11503</StateNumber>
+      <ColNames>grado_cientifico</ColNames>
+    </index>
+    <index id="121" parent="54" name="idx_31075ebaf751f7c3">
+      <ObjectId>53321</ObjectId>
+      <StateNumber>11504</StateNumber>
+      <ColNames>institucion</ColNames>
+    </index>
+    <index id="122" parent="54" name="idx_31075eba5f4745be">
+      <ObjectId>53322</ObjectId>
+      <StateNumber>11505</StateNumber>
+      <ColNames>ministerio</ColNames>
+    </index>
+    <index id="123" parent="54" name="idx_31075eba7e5d2eff">
+      <ObjectId>53323</ObjectId>
+      <StateNumber>11506</StateNumber>
+      <ColNames>pais</ColNames>
+    </index>
+    <key id="124" parent="54" name="autor_pkey">
+      <ObjectId>53317</ObjectId>
+      <StateNumber>11500</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>autor_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="125" parent="54" name="fk_31075ebad7943d68">
+      <ObjectId>53624</ObjectId>
+      <StateNumber>11578</StateNumber>
+      <ColNames>area</ColNames>
+      <RefTableId>53519</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>area</RefTableName>
+      <RefKeyName>area_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="126" parent="54" name="fk_31075ebaf50454df">
+      <ObjectId>53629</ObjectId>
+      <StateNumber>11579</StateNumber>
+      <ColNames>facultad</ColNames>
+      <RefTableId>53404</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>facultad</RefTableName>
+      <RefKeyName>facultad_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="127" parent="54" name="fk_31075ebaaf54064b">
+      <ObjectId>53634</ObjectId>
+      <StateNumber>11580</StateNumber>
+      <ColNames>grado_cientifico</ColNames>
+      <RefTableId>53454</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>grado_cientifico</RefTableName>
+      <RefKeyName>grado_cientifico_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="128" parent="54" name="fk_31075ebaf751f7c3">
+      <ObjectId>53639</ObjectId>
+      <StateNumber>11581</StateNumber>
+      <ColNames>institucion</ColNames>
+      <RefTableId>53299</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>institucion</RefTableName>
+      <RefKeyName>institucion_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="129" parent="54" name="fk_31075eba5f4745be">
+      <ObjectId>53644</ObjectId>
+      <StateNumber>11582</StateNumber>
+      <ColNames>ministerio</ColNames>
+      <RefTableId>53410</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>ministerio</RefTableName>
+      <RefKeyName>ministerio_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="130" parent="54" name="fk_31075eba7e5d2eff">
+      <ObjectId>53649</ObjectId>
+      <StateNumber>11583</StateNumber>
+      <ColNames>pais</ColNames>
+      <RefTableId>53532</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>pais</RefTableName>
+      <RefKeyName>pais_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="131" parent="55" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11513</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="132" parent="55" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11513</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="133" parent="55" name="editor_pkey">
+      <ObjectId>53355</ObjectId>
+      <StateNumber>11513</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="134" parent="55" name="editor_pkey">
+      <ObjectId>53356</ObjectId>
+      <StateNumber>11513</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>editor_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="135" parent="56" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11538</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="136" parent="56" name="tipo_encuentro">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11538</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="137" parent="56" name="organizador">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11538</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="138" parent="56" name="nombre">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11538</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="139" parent="56" name="isbn">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11538</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="140" parent="56" name="ciudad">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11538</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="141" parent="56" name="issn">
+      <Position>7</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11538</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="142" parent="56" name="encuentro_pkey">
+      <ObjectId>53482</ObjectId>
+      <StateNumber>11538</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="143" parent="56" name="idx_cdfa77fa2f94c8b4">
+      <ObjectId>53484</ObjectId>
+      <StateNumber>11539</StateNumber>
+      <ColNames>tipo_encuentro</ColNames>
+    </index>
+    <index id="144" parent="56" name="idx_cdfa77faa96ecf59">
+      <ObjectId>53485</ObjectId>
+      <StateNumber>11540</StateNumber>
+      <ColNames>organizador</ColNames>
+    </index>
+    <key id="145" parent="56" name="encuentro_pkey">
+      <ObjectId>53483</ObjectId>
+      <StateNumber>11538</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>encuentro_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="146" parent="56" name="fk_cdfa77fabf396750">
+      <ObjectId>53739</ObjectId>
+      <StateNumber>11601</StateNumber>
+      <ColNames>id</ColNames>
+      <RefTableId>53281</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>publicacion</RefTableName>
+      <RefKeyName>publicacion_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="147" parent="56" name="fk_cdfa77fa2f94c8b4">
+      <ObjectId>53744</ObjectId>
+      <StateNumber>11602</StateNumber>
+      <ColNames>tipo_encuentro</ColNames>
+      <RefTableId>53417</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tipo_encuentro</RefTableName>
+      <RefKeyName>tipo_encuentro_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="148" parent="56" name="fk_cdfa77faa96ecf59">
+      <ObjectId>53749</ObjectId>
+      <StateNumber>11603</StateNumber>
+      <ColNames>organizador</ColNames>
+      <RefTableId>53496</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>organizador</RefTableName>
+      <RefKeyName>organizador_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="149" parent="57" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11523</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="150" parent="57" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11523</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="151" parent="57" name="facultad_pkey">
+      <ObjectId>53408</ObjectId>
+      <StateNumber>11523</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="152" parent="57" name="facultad_pkey">
+      <ObjectId>53409</ObjectId>
+      <StateNumber>11523</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>facultad_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="153" parent="58" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11535</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="154" parent="58" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11535</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="155" parent="58" name="grado_cientifico_pkey">
+      <ObjectId>53458</ObjectId>
+      <StateNumber>11535</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="156" parent="58" name="grado_cientifico_pkey">
+      <ObjectId>53459</ObjectId>
+      <StateNumber>11535</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>grado_cientifico_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="157" parent="59" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11522</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="158" parent="59" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11522</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="159" parent="59" name="grupo_articulo_pkey">
+      <ObjectId>53402</ObjectId>
+      <StateNumber>11522</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="160" parent="59" name="grupo_articulo_pkey">
+      <ObjectId>53403</ObjectId>
+      <StateNumber>11522</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>grupo_articulo_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="161" parent="60" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11497</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="162" parent="60" name="pais">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11497</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="163" parent="60" name="ministerio">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11497</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="164" parent="60" name="nombre">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11497</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="165" parent="60" name="institucion_pkey">
+      <ObjectId>53303</ObjectId>
+      <StateNumber>11497</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="166" parent="60" name="idx_f751f7c37e5d2eff">
+      <ObjectId>53305</ObjectId>
+      <StateNumber>11498</StateNumber>
+      <ColNames>pais</ColNames>
+    </index>
+    <index id="167" parent="60" name="idx_f751f7c35f4745be">
+      <ObjectId>53306</ObjectId>
+      <StateNumber>11499</StateNumber>
+      <ColNames>ministerio</ColNames>
+    </index>
+    <key id="168" parent="60" name="institucion_pkey">
+      <ObjectId>53304</ObjectId>
+      <StateNumber>11497</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>institucion_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="169" parent="60" name="fk_f751f7c37e5d2eff">
+      <ObjectId>53614</ObjectId>
+      <StateNumber>11576</StateNumber>
+      <ColNames>pais</ColNames>
+      <RefTableId>53532</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>pais</RefTableName>
+      <RefKeyName>pais_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="170" parent="60" name="fk_f751f7c35f4745be">
+      <ObjectId>53619</ObjectId>
+      <StateNumber>11577</StateNumber>
+      <ColNames>ministerio</ColNames>
+      <RefTableId>53410</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>ministerio</RefTableName>
+      <RefKeyName>ministerio_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="171" parent="61" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11515</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="172" parent="61" name="editor">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11515</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="173" parent="61" name="publicador">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11515</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="174" parent="61" name="capitulo_titulo">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11515</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="175" parent="61" name="volumen">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11515</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="176" parent="61" name="numero">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11515</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="177" parent="61" name="serie">
+      <Position>7</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11515</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="178" parent="61" name="paginas">
+      <Position>8</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11515</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="179" parent="61" name="isbn">
+      <Position>9</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11515</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="180" parent="61" name="es_capitulo">
+      <Position>10</Position>
+      <DataType>boolean|0s</DataType>
+      <StateNumber>11515</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <index id="181" parent="61" name="libro_pkey">
+      <ObjectId>53374</ObjectId>
+      <StateNumber>11515</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="182" parent="61" name="idx_5799ad2bccf1f1ba">
+      <ObjectId>53376</ObjectId>
+      <StateNumber>11516</StateNumber>
+      <ColNames>editor</ColNames>
+    </index>
+    <index id="183" parent="61" name="idx_5799ad2b106c2dce">
+      <ObjectId>53377</ObjectId>
+      <StateNumber>11517</StateNumber>
+      <ColNames>publicador</ColNames>
+    </index>
+    <key id="184" parent="61" name="libro_pkey">
+      <ObjectId>53375</ObjectId>
+      <StateNumber>11515</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>libro_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="185" parent="61" name="fk_5799ad2bbf396750">
+      <ObjectId>53674</ObjectId>
+      <StateNumber>11588</StateNumber>
+      <ColNames>id</ColNames>
+      <RefTableId>53281</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>publicacion</RefTableName>
+      <RefKeyName>publicacion_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="186" parent="61" name="fk_5799ad2bccf1f1ba">
+      <ObjectId>53679</ObjectId>
+      <StateNumber>11589</StateNumber>
+      <ColNames>editor</ColNames>
+      <RefTableId>53351</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>editor</RefTableName>
+      <RefKeyName>editor_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="187" parent="61" name="fk_5799ad2b106c2dce">
+      <ObjectId>53684</ObjectId>
+      <StateNumber>11590</StateNumber>
+      <ColNames>publicador</ColNames>
+      <RefTableId>53392</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>publicador</RefTableName>
+      <RefKeyName>publicador_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="188" parent="62" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11524</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="189" parent="62" name="pais">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11524</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="190" parent="62" name="nombre">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11524</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="191" parent="62" name="ministerio_pkey">
+      <ObjectId>53414</ObjectId>
+      <StateNumber>11524</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="192" parent="62" name="idx_5f4745be7e5d2eff">
+      <ObjectId>53416</ObjectId>
+      <StateNumber>11525</StateNumber>
+      <ColNames>pais</ColNames>
+    </index>
+    <key id="193" parent="62" name="ministerio_pkey">
+      <ObjectId>53415</ObjectId>
+      <StateNumber>11524</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>ministerio_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="194" parent="62" name="fk_5f4745be7e5d2eff">
+      <ObjectId>53704</ObjectId>
+      <StateNumber>11594</StateNumber>
+      <ColNames>pais</ColNames>
+      <RefTableId>53532</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>pais</RefTableName>
+      <RefKeyName>pais_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="195" parent="63" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11544</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="196" parent="63" name="isbn">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11544</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="197" parent="63" name="paginas">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11544</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="198" parent="63" name="cenda">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11544</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="199" parent="63" name="number">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11544</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="200" parent="63" name="monografia_pkey">
+      <ObjectId>53517</ObjectId>
+      <StateNumber>11544</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="201" parent="63" name="monografia_pkey">
+      <ObjectId>53518</ObjectId>
+      <StateNumber>11544</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>monografia_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="202" parent="63" name="fk_2b7f0ddfbf396750">
+      <ObjectId>53759</ObjectId>
+      <StateNumber>11605</StateNumber>
+      <ColNames>id</ColNames>
+      <RefTableId>53281</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>publicacion</RefTableName>
+      <RefKeyName>publicacion_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="203" parent="64" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11511</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="204" parent="64" name="tipo_norma">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11511</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="205" parent="64" name="no_registro">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11511</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="206" parent="64" name="paginas">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11511</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="207" parent="64" name="norma_pkey">
+      <ObjectId>53348</ObjectId>
+      <StateNumber>11511</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="208" parent="64" name="idx_3ef6217e384abbb6">
+      <ObjectId>53350</ObjectId>
+      <StateNumber>11512</StateNumber>
+      <ColNames>tipo_norma</ColNames>
+    </index>
+    <key id="209" parent="64" name="norma_pkey">
+      <ObjectId>53349</ObjectId>
+      <StateNumber>11511</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>norma_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="210" parent="64" name="fk_3ef6217ebf396750">
+      <ObjectId>53664</ObjectId>
+      <StateNumber>11586</StateNumber>
+      <ColNames>id</ColNames>
+      <RefTableId>53281</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>publicacion</RefTableName>
+      <RefKeyName>publicacion_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="211" parent="64" name="fk_3ef6217e384abbb6">
+      <ObjectId>53669</ObjectId>
+      <StateNumber>11587</StateNumber>
+      <ColNames>tipo_norma</ColNames>
+      <RefTableId>53466</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tipo_norma</RefTableName>
+      <RefKeyName>tipo_norma_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="212" parent="65" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11542</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="213" parent="65" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11542</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="214" parent="65" name="organizador_pkey">
+      <ObjectId>53500</ObjectId>
+      <StateNumber>11542</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="215" parent="65" name="organizador_pkey">
+      <ObjectId>53501</ObjectId>
+      <StateNumber>11542</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>organizador_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="216" parent="66" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11548</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="217" parent="66" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11548</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="218" parent="66" name="capital">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11548</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="219" parent="66" name="codigo">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11548</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="220" parent="66" name="pais_pkey">
+      <ObjectId>53540</ObjectId>
+      <StateNumber>11548</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="221" parent="66" name="pais_pkey">
+      <ObjectId>53541</ObjectId>
+      <StateNumber>11548</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>pais_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="222" parent="67" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11541</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="223" parent="67" name="number">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11541</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="224" parent="67" name="idioma">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11541</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="225" parent="67" name="patente_pkey">
+      <ObjectId>53494</ObjectId>
+      <StateNumber>11541</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="226" parent="67" name="patente_pkey">
+      <ObjectId>53495</ObjectId>
+      <StateNumber>11541</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>patente_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="227" parent="67" name="fk_86c45d9bbf396750">
+      <ObjectId>53754</ObjectId>
+      <StateNumber>11604</StateNumber>
+      <ColNames>id</ColNames>
+      <RefTableId>53281</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>publicacion</RefTableName>
+      <RefKeyName>publicacion_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="228" parent="68" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11489</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="229" parent="68" name="institucion_concede">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11489</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="230" parent="68" name="tipo_premio">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11489</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="231" parent="68" name="premio_pkey">
+      <ObjectId>53277</ObjectId>
+      <StateNumber>11489</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="232" parent="68" name="idx_1c37eca8bf2a6516">
+      <ObjectId>53279</ObjectId>
+      <StateNumber>11490</StateNumber>
+      <ColNames>institucion_concede</ColNames>
+    </index>
+    <index id="233" parent="68" name="idx_1c37eca8898e1ab0">
+      <ObjectId>53280</ObjectId>
+      <StateNumber>11491</StateNumber>
+      <ColNames>tipo_premio</ColNames>
+    </index>
+    <key id="234" parent="68" name="premio_pkey">
+      <ObjectId>53278</ObjectId>
+      <StateNumber>11489</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>premio_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="235" parent="68" name="fk_1c37eca8bf396750">
+      <ObjectId>53584</ObjectId>
+      <StateNumber>11570</StateNumber>
+      <ColNames>id</ColNames>
+      <RefTableId>53281</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>publicacion</RefTableName>
+      <RefKeyName>publicacion_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="236" parent="68" name="fk_1c37eca8bf2a6516">
+      <ObjectId>53589</ObjectId>
+      <StateNumber>11571</StateNumber>
+      <ColNames>institucion_concede</ColNames>
+      <RefTableId>53299</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>institucion</RefTableName>
+      <RefKeyName>institucion_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="237" parent="68" name="fk_1c37eca8898e1ab0">
+      <ObjectId>53594</ObjectId>
+      <StateNumber>11572</StateNumber>
+      <ColNames>tipo_premio</ColNames>
+      <RefTableId>53423</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tipo_premio</RefTableName>
+      <RefKeyName>tipo_premio_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="238" parent="69" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11492</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="239" parent="69" name="pais">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11492</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="240" parent="69" name="titulo">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11492</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="241" parent="69" name="resumen">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>11492</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="242" parent="69" name="mes">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11492</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="243" parent="69" name="anno">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11492</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="244" parent="69" name="keywords">
+      <Position>7</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11492</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="245" parent="69" name="fecha_captacion">
+      <Position>8</Position>
+      <DataType>date|0s</DataType>
+      <StateNumber>11492</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <index id="246" parent="69" name="publicacion_pkey">
+      <ObjectId>53289</ObjectId>
+      <StateNumber>11492</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="247" parent="69" name="idx_62f2085f7e5d2eff">
+      <ObjectId>53291</ObjectId>
+      <StateNumber>11493</StateNumber>
+      <ColNames>pais</ColNames>
+    </index>
+    <key id="248" parent="69" name="publicacion_pkey">
+      <ObjectId>53290</ObjectId>
+      <StateNumber>11492</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>publicacion_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="249" parent="69" name="fk_62f2085f7e5d2eff">
+      <ObjectId>53599</ObjectId>
+      <StateNumber>11573</StateNumber>
+      <ColNames>pais</ColNames>
+      <RefTableId>53532</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>pais</RefTableName>
+      <RefKeyName>pais_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="250" parent="70" name="idpublicacion">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11494</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="251" parent="70" name="idautor">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11494</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="252" parent="70" name="publicacion_autor_pkey">
+      <ObjectId>53295</ObjectId>
+      <StateNumber>11494</StateNumber>
+      <ColNames>idpublicacion
+idautor</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="253" parent="70" name="idx_11ab82a7a43378f0">
+      <ObjectId>53297</ObjectId>
+      <StateNumber>11495</StateNumber>
+      <ColNames>idpublicacion</ColNames>
+    </index>
+    <index id="254" parent="70" name="idx_11ab82a7e70232a3">
+      <ObjectId>53298</ObjectId>
+      <StateNumber>11496</StateNumber>
+      <ColNames>idautor</ColNames>
+    </index>
+    <key id="255" parent="70" name="publicacion_autor_pkey">
+      <ObjectId>53296</ObjectId>
+      <StateNumber>11494</StateNumber>
+      <ColNames>idpublicacion
+idautor</ColNames>
+      <UnderlyingIndexName>publicacion_autor_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="256" parent="70" name="fk_11ab82a7a43378f0">
+      <ObjectId>53604</ObjectId>
+      <StateNumber>11574</StateNumber>
+      <ColNames>idpublicacion</ColNames>
+      <RefTableId>53281</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>publicacion</RefTableName>
+      <RefKeyName>publicacion_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="257" parent="70" name="fk_11ab82a7e70232a3">
+      <ObjectId>53609</ObjectId>
+      <StateNumber>11575</StateNumber>
+      <ColNames>idautor</ColNames>
+      <RefTableId>53307</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>autor</RefTableName>
+      <RefKeyName>autor_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="258" parent="71" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11521</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="259" parent="71" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11521</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="260" parent="71" name="publicador_pkey">
+      <ObjectId>53396</ObjectId>
+      <StateNumber>11521</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="261" parent="71" name="publicador_pkey">
+      <ObjectId>53397</ObjectId>
+      <StateNumber>11521</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>publicador_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="262" parent="72" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11543</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="263" parent="72" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11543</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="264" parent="72" name="revista_pkey">
+      <ObjectId>53506</ObjectId>
+      <StateNumber>11543</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="265" parent="72" name="revista_pkey">
+      <ObjectId>53507</ObjectId>
+      <StateNumber>11543</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>revista_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="266" parent="73" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11536</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="267" parent="73" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11536</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="268" parent="73" name="rol_pkey">
+      <ObjectId>53464</ObjectId>
+      <StateNumber>11536</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="269" parent="73" name="rol_pkey">
+      <ObjectId>53465</ObjectId>
+      <StateNumber>11536</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>rol_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="270" parent="74" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11528</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="271" parent="74" name="tipo_software">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11528</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="272" parent="74" name="numero">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11528</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="273" parent="74" name="idioma">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11528</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="274" parent="74" name="software_pkey">
+      <ObjectId>53437</ObjectId>
+      <StateNumber>11528</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="275" parent="74" name="idx_77d068cfa1153206">
+      <ObjectId>53439</ObjectId>
+      <StateNumber>11529</StateNumber>
+      <ColNames>tipo_software</ColNames>
+    </index>
+    <key id="276" parent="74" name="software_pkey">
+      <ObjectId>53438</ObjectId>
+      <StateNumber>11528</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>software_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="277" parent="74" name="fk_77d068cfbf396750">
+      <ObjectId>53709</ObjectId>
+      <StateNumber>11595</StateNumber>
+      <ColNames>id</ColNames>
+      <RefTableId>53281</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>publicacion</RefTableName>
+      <RefKeyName>publicacion_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="278" parent="74" name="fk_77d068cfa1153206">
+      <ObjectId>53714</ObjectId>
+      <StateNumber>11596</StateNumber>
+      <ColNames>tipo_software</ColNames>
+      <RefTableId>53357</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tipo_software</RefTableName>
+      <RefKeyName>tipo_software_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="279" parent="75" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11530</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="280" parent="75" name="institucion">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11530</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="281" parent="75" name="tipo_tesis">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11530</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="282" parent="75" name="tesis_pkey">
+      <ObjectId>53443</ObjectId>
+      <StateNumber>11530</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="283" parent="75" name="idx_ed0c9042f751f7c3">
+      <ObjectId>53445</ObjectId>
+      <StateNumber>11531</StateNumber>
+      <ColNames>institucion</ColNames>
+    </index>
+    <index id="284" parent="75" name="idx_ed0c9042ebb00a8a">
+      <ObjectId>53446</ObjectId>
+      <StateNumber>11532</StateNumber>
+      <ColNames>tipo_tesis</ColNames>
+    </index>
+    <key id="285" parent="75" name="tesis_pkey">
+      <ObjectId>53444</ObjectId>
+      <StateNumber>11530</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>tesis_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="286" parent="75" name="fk_ed0c9042bf396750">
+      <ObjectId>53719</ObjectId>
+      <StateNumber>11597</StateNumber>
+      <ColNames>id</ColNames>
+      <RefTableId>53281</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>publicacion</RefTableName>
+      <RefKeyName>publicacion_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="287" parent="75" name="fk_ed0c9042f751f7c3">
+      <ObjectId>53724</ObjectId>
+      <StateNumber>11598</StateNumber>
+      <ColNames>institucion</ColNames>
+      <RefTableId>53299</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>institucion</RefTableName>
+      <RefKeyName>institucion_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="288" parent="75" name="fk_ed0c9042ebb00a8a">
+      <ObjectId>53729</ObjectId>
+      <StateNumber>11599</StateNumber>
+      <ColNames>tipo_tesis</ColNames>
+      <RefTableId>53526</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tipo_tesis</RefTableName>
+      <RefKeyName>tipo_tesis_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="289" parent="76" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11533</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="290" parent="76" name="grupo">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>11533</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="291" parent="76" name="nombre">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11533</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="292" parent="76" name="tipo_articulo_pkey">
+      <ObjectId>53451</ObjectId>
+      <StateNumber>11533</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="293" parent="76" name="idx_bf2c14588c0e9bd3">
+      <ObjectId>53453</ObjectId>
+      <StateNumber>11534</StateNumber>
+      <ColNames>grupo</ColNames>
+    </index>
+    <key id="294" parent="76" name="tipo_articulo_pkey">
+      <ObjectId>53452</ObjectId>
+      <StateNumber>11533</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>tipo_articulo_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="295" parent="76" name="fk_bf2c14588c0e9bd3">
+      <ObjectId>53734</ObjectId>
+      <StateNumber>11600</StateNumber>
+      <ColNames>grupo</ColNames>
+      <RefTableId>53398</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>grupo_articulo</RefTableName>
+      <RefKeyName>grupo_articulo_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="296" parent="77" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11526</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="297" parent="77" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11526</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="298" parent="77" name="tipo_encuentro_pkey">
+      <ObjectId>53421</ObjectId>
+      <StateNumber>11526</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="299" parent="77" name="tipo_encuentro_pkey">
+      <ObjectId>53422</ObjectId>
+      <StateNumber>11526</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>tipo_encuentro_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="300" parent="78" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11537</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="301" parent="78" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11537</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="302" parent="78" name="tipo_norma_pkey">
+      <ObjectId>53470</ObjectId>
+      <StateNumber>11537</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="303" parent="78" name="tipo_norma_pkey">
+      <ObjectId>53471</ObjectId>
+      <StateNumber>11537</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>tipo_norma_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="304" parent="79" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11527</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="305" parent="79" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11527</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="306" parent="79" name="tipo_premio_pkey">
+      <ObjectId>53427</ObjectId>
+      <StateNumber>11527</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="307" parent="79" name="tipo_premio_pkey">
+      <ObjectId>53428</ObjectId>
+      <StateNumber>11527</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>tipo_premio_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="308" parent="80" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11514</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="309" parent="80" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11514</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="310" parent="80" name="tipo_software_pkey">
+      <ObjectId>53361</ObjectId>
+      <StateNumber>11514</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="311" parent="80" name="tipo_software_pkey">
+      <ObjectId>53362</ObjectId>
+      <StateNumber>11514</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>tipo_software_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="312" parent="81" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11547</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="313" parent="81" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11547</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="314" parent="81" name="tipo_tesis_pkey">
+      <ObjectId>53530</ObjectId>
+      <StateNumber>11547</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="315" parent="81" name="tipo_tesis_pkey">
+      <ObjectId>53531</ObjectId>
+      <StateNumber>11547</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>tipo_tesis_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="316" parent="82" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11507</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="317" parent="82" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11507</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="318" parent="82" name="apellidos">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11507</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="319" parent="82" name="usuario">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11507</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="320" parent="82" name="password">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11507</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="321" parent="82" name="activo">
+      <Position>6</Position>
+      <DataType>boolean|0s</DataType>
+      <StateNumber>11507</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="322" parent="82" name="ultimo_login">
+      <Position>7</Position>
+      <DataType>date|0s</DataType>
+      <StateNumber>11507</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="323" parent="82" name="ultimo_logout">
+      <Position>8</Position>
+      <DataType>date|0s</DataType>
+      <StateNumber>11507</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="324" parent="82" name="ip_login">
+      <Position>9</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>11507</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="325" parent="82" name="usuario_pkey">
+      <ObjectId>53335</ObjectId>
+      <StateNumber>11507</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="326" parent="82" name="usuario_pkey">
+      <ObjectId>53336</ObjectId>
+      <StateNumber>11507</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>usuario_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="327" parent="83" name="idusuario">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11508</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="328" parent="83" name="idrol">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>11508</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="329" parent="83" name="usuario_rol_pkey">
+      <ObjectId>53340</ObjectId>
+      <StateNumber>11508</StateNumber>
+      <ColNames>idusuario
+idrol</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="330" parent="83" name="idx_72edd1a4fd61e233">
+      <ObjectId>53342</ObjectId>
+      <StateNumber>11509</StateNumber>
+      <ColNames>idusuario</ColNames>
+    </index>
+    <index id="331" parent="83" name="idx_72edd1a417506450">
+      <ObjectId>53343</ObjectId>
+      <StateNumber>11510</StateNumber>
+      <ColNames>idrol</ColNames>
+    </index>
+    <key id="332" parent="83" name="usuario_rol_pkey">
+      <ObjectId>53341</ObjectId>
+      <StateNumber>11508</StateNumber>
+      <ColNames>idusuario
+idrol</ColNames>
+      <UnderlyingIndexName>usuario_rol_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="333" parent="83" name="fk_72edd1a4fd61e233">
+      <ObjectId>53654</ObjectId>
+      <StateNumber>11584</StateNumber>
+      <ColNames>idusuario</ColNames>
+      <RefTableId>53324</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>usuario</RefTableName>
+      <RefKeyName>usuario_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="334" parent="83" name="fk_72edd1a417506450">
+      <ObjectId>53659</ObjectId>
+      <StateNumber>11585</StateNumber>
+      <ColNames>idrol</ColNames>
+      <RefTableId>53460</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>rol</RefTableName>
+      <RefKeyName>rol_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>

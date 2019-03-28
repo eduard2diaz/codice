@@ -1,0 +1,77 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">
+                Detalles de la editorial
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div>
+            <div class="modal-body" id="modal-body">
+                <div class="m-widget1 m-widget1--paddingless">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="m-widget1__item">
+                                <div class="">
+                                    <div class="col">
+                                        <h3 class="m-widget1__title">Nombre</h3>
+                                        <span class="m-widget1__desc">{{ editorial.nombre }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="m-widget1__item">
+                                <div class="">
+                                    <div class="col">
+                                        <h3 class="m-widget1__title">País</h3>
+                                        <span class="m-widget1__desc">{{ editorial.pais }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="m-widget1__item">
+                                <div class="">
+                                    <div class="col">
+                                        <h3 class="m-widget1__title">Correo electrónico</h3>
+                                        <span class="m-widget1__desc">{{ editorial.correo }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="m-widget1__item">
+                                <div class="">
+                                    <div class="col">
+                                        <h3 class="m-widget1__title">Teléfono</h3>
+                                        <span class="m-widget1__desc">{{ editorial.telefono }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="m-widget1__item">
+                                <div class="">
+                                    <div class="col">
+                                        <h3 class="m-widget1__title">Dirección</h3>
+                                        <address class="m-widget1__desc">
+                                            {{ editorial.direccion }}</address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-sm btn-metal" data-dismiss="modal">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</div>

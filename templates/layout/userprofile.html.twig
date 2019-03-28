@@ -1,0 +1,53 @@
+{% extends 'layout/autenticado.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/page/userprofile.css','siplan') }}"/>
+{% endblock %}
+{% block body %}
+    <div class="m--margin-top-40 banner">
+        <div class="banner-info">
+            <div class="col-md-4">
+                <div class="m-card-profile">
+                    <div class="m-card-profile__title m--hide">
+                        Your Profile
+                    </div>
+                    <div class="m-card-profile__pic">
+                        <div class="m-card-profile__pic-wrapper">
+                            {% if user_foto!=null %}
+                                {% set rutaFoto=  asset('archivos/'~user_foto) %}
+                            {% else %}
+                                {% set rutaFoto= asset('app/media/img/users/user4.jpg','template') %}
+                            {% endif %}
+                            <img src="{{ rutaFoto }}" alt="">
+                        </div>
+                    </div>
+                    <div class="m-card-profile__details">
+                        <span class="m-card-profile__name">{{ user_nombre }}</span>
+                        <a href="" class="m-card-profile__email m-link">{{ user_correo }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="profile_menu">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="{{ path('autor_show',{'id':user_id}) }}"
+                                                class="nav-link m-link"><i class="fa flaticon-profile-1"></i>Perfil</a>
+                </li>
+                {% if is_granted('ROLE_DIRECTIVO') %}
+                    <li class="list-inline-item"><a href="{{ path('autor_index',{'id':user_id}) }}"
+                                                    class="nav-link m-link"><i class="fa flaticon-users"></i>Subordinados</a>
+                    </li>
+                {% endif %}
+                <li class="list-inline-item"><a href="" class="nav-link m-link"><i class="fa flaticon-file-1"></i>Publicaciones</a>
+                </li>
+                <li class="list-inline-item"><a href="" class="nav-link m-link"><i class="fa flaticon-file-1"></i>Publicaciones</a>
+                </li>
+                <li class="list-inline-item"><a href="" class="nav-link m-link"><i class="fa flaticon-file-1"></i>Publicaciones</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% block profile_content %}
+    {% endblock profile_content %}
+
+{% endblock %}

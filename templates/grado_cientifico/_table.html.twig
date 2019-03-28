@@ -1,0 +1,48 @@
+<table class="table table-hover m-table m-table--head-separator-brand" id="grado_cientifico_table">
+    <thead>
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {%set i=1%}
+    {% for grado_cientifico in grado_cientificos %}
+        <tr>
+            <td>{{ i }}</td>
+            <td>{{ grado_cientifico.nombre }}</td>
+            <td>
+                <ul class="m-nav m-nav--inline m--pull-right">
+                    <li class="m-nav__item">
+                        <a class="btn btn-info btn-sm edicion" data-href="{{ path('grado_cientifico_edit', { 'id': grado_cientifico.id }) }}">
+                            <i class="flaticon-edit-1"></i> Editar</a>
+                    </li>
+                    <li class="m-nav__item">
+                        <a class="btn btn-danger btn-sm  eliminar_grado_cientifico" data-href="{{ path('grado_cientifico_delete', { 'id': grado_cientifico.id }) }}">
+                            <i class="flaticon-delete-1"></i> Eliminar</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        {%set i=1+i%}
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+        </th>
+    </tr>
+    </tfoot>
+</table>

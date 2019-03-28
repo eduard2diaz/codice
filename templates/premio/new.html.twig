@@ -1,0 +1,11 @@
+{% extends 'layout/userprofile.html.twig' %}
+{% block profile_content %}
+    {{ include('premio/_form.html.twig') }}
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('script/entity/premio.js','siplan') }}"></script>
+    <script>
+        premio.nuevo();
+    </script>
+{% endblock %}

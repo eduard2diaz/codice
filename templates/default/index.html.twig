@@ -1,0 +1,147 @@
+{% extends 'layout/anonimo.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/page/index.css','siplan') }}"/>
+{% endblock %}
+{% block body %}
+    <div class="row login-form">
+        <div class="col-md-5">
+            {% if error is defined and error is not empty %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                    {{ error.message |trans }}
+                </div>
+
+            {% endif %}
+            <form action="{{ path('check') }}"  method="POST" class="m-form m-form--state">
+                <div class="m-portlet__body">
+                    <div class="m-form__section">
+                        <div class="form-group m-form__group">
+                            <label for="_username">
+                                Usuario o correo electrónico:
+                            </label>
+                            <div class="m-input-icon m-input-icon--left">
+                                <input class="form-control m-input" placeholder="Escriba su usuario" id="_username" name="_username"
+                                       required="required" type="text" value="{{ last_username }}">
+                                <span class="m-input-icon__icon m-input-icon__icon--left">
+													<span><i class="la la-user"></i></span>
+												</span>
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group">
+                            <label for="_password">
+                                Contraseña:
+                            </label>
+                            <div class="m-input-icon m-input-icon--left">
+                                <input class="form-control m-input" placeholder="Escriba su contraseña" id="_password" name="_password"
+                                       required="required" type="password">
+                                <span class="m-input-icon__icon m-input-icon__icon--left">
+													<span><i class="la la-key"></i></span>
+												</span>
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group">
+                            <label class="m-checkbox">
+                                <input type="checkbox" name="remember" value="1"/>Recuérdame<span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-sm btn-success">
+                    Acceder
+                </button>
+                <button type="reset" class="btn btn-sm btn-secondary">
+                    Cancelar
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="content m--margin-top-30">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Todo lo que necesitas para alcanzar el éxito</h1>
+                <p class="m--margin-top-20">
+                    Códice es mucho más que una plataforma de desarrollo en tiempo real del mundo, también es un
+                    robusto ecosistema diseñado para ayudarte a alcanzar el éxito. Únete a nuestra dinámica comunidad de
+                    creadores para tener acceso a todo lo que necesitas para alcanzar tus objetivos.
+                </p>
+            </div>
+        </div>
+
+        <div class="m-portlet">
+            <div class="m-portlet__body  m-portlet__body--no-padding">
+                <div class="row m-row--no-padding m-row--col-separator-xl">
+                    <div class="col-xl-4">
+                        <!--begin:: Widgets/Daily Sales-->
+                        <div class="m-widget14">
+                            <div class="m-widget14__header m--margin-bottom-30">
+                                <h3 class="m-widget14__title">
+                                    Almacenamiento en Códice
+                                </h3>
+                                <span class="m-widget14__desc">
+                                    Publica y descubre nuevos artículos en nuestro sitio
+								</span>
+                            </div>
+                            <p class="description">
+                                Dale un empujón a tu investigación y llega a la línea de meta más rápido con un catálogo
+                                en constante crecimiento de recursos y herramientas gratuitas.
+                            </p>
+                            <a href="" class="m-link m--font-boldest">Conocer más</a>
+                        </div>
+                        <!--end:: Widgets/Daily Sales-->
+                    </div>
+                    <div class="col-xl-4">
+                        <!--begin:: Widgets/Daily Sales-->
+                        <div class="m-widget14">
+                            <div class="m-widget14__header m--margin-bottom-30">
+                                <h3 class="m-widget14__title">
+                                    Hazte conocer
+                                </h3>
+                                <span class="m-widget14__desc">
+                                    Publica tus investigaciones y resultados
+								</span>
+                            </div>
+                            <p class="description">
+                                Mejora tus habilidades como investigador, motiva a que otros sigan tu vida profesional,
+                                puedes publicar desde artículos, tesis , hasta premios, libros y mucho más.
+                            </p>
+                            <a href="" class="m-link m--font-boldest">Conocer más</a>
+                        </div>
+                        <!--end:: Widgets/Daily Sales-->
+                    </div>
+                    <div class="col-xl-4">
+                        <!--begin:: Widgets/Daily Sales-->
+                        <div class="m-widget14">
+                            <div class="m-widget14__header m--margin-bottom-30">
+                                <h3 class="m-widget14__title">
+                                    Documentación
+                                </h3>
+                                <span class="m-widget14__desc">
+                                    Ponte al día
+								</span>
+                            </div>
+                            <p class="description">
+                                Ponte al corriente con las actuales características y flujos de trabajo. Descubre cómo
+                                potenciar tus artículos con nuestra completa y muy bien organizada documentación.
+                            </p>
+                            <a href="" class="m-link m--font-boldest">Conocer más</a>
+                        </div>
+                        <!--end:: Widgets/Daily Sales-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 m--margin-top-30" style="padding: 5%;">
+            <h1>Juntos, fortalecemos la creatividad en tiempo real por todo el mundo</h1>
+            <p class="m--margin-top-20">Únete a nuestro joven equipo y colabora con el desarrollo de la plataforma de investigaciones en tiempo real. No pierdas más tiempo descubre Códice.</p>
+            <a class="btn btn-success btn-sm text-uppercase m-btn active"><i class="flaticon-user"></i> Acceder</a>
+        </div>
+        <div class="col-md-6">
+            <img src="{{ asset('siplan/img/promo1.png') }}" class="promo1"/>
+        </div>
+    </div>
+{% endblock %}

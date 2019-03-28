@@ -1,0 +1,36 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Detalles del mensaje</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        </div>
+        <div>
+            <div class="row margin-top-10">
+                <div class="col-md-3">
+                    <div class="m-card-profile">
+                        <div class="m-card-profile__title m--hide">
+                            Remitente
+                        </div>
+                        <div class="m-card-profile__pic">
+                            <div class="m-card-profile__pic-wrapper">
+                                <img src="{{ asset('app/media/img/users/user4.jpg','template') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="m-card-profile__details">
+                            <span class="m-card-profile__name">{{ mensaje.remitente }}</span>
+                            <small class="text-muted"><i
+                                        class="flaticon-time"></i> {{ mensaje.fecha|date('d-m-Y H:i') }}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <p>{{ mensaje.descripcion }}</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-sm btn-metal" data-dismiss="modal">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</div>
+

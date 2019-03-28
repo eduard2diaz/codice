@@ -1,0 +1,57 @@
+security:
+    encoders:
+        App\Entity\Autor: { algorithm: bcrypt , cost: 13 }
+
+    role_hierarchy:
+        ROLE_ADMIN:  ROLE_DIRECTIVO
+        ROLE_DIRECTIVO:  ROLE_USER
+
+    providers:
+        usuarios:
+            entity: { class: App:Autor}
+
+    firewalls:
+        secured_area:
+            pattern:    ^/*
+            user_checker: App\Security\UserChecker
+            form_login:
+                login_path: index
+                check_path: check
+                default_target_path: index
+                always_use_default_target_path: true
+            logout:
+                path:   logout
+                target: index
+                handlers: [app.logoutlistener]
+            anonymous: ~
+            remember_me:
+                secret:  '%env(APP_SECRET)%'
+                lifetime: 604800 # 1 week in seconds
+                path: index
+
+    access_control:
+        - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/pais, roles: ROLE_ADMIN }
+        #- { path: ^/ministerio/\d+/findbypais, roles: ROLE_ADMIN }
+        #- { path: ^/ministerio, roles: ROLE_ADMIN }
+       # - { path: ^/institucion/\d+/findbyministerio, roles: ROLE_ADMIN }
+        #- { path: ^/institucion, roles: ROLE_ADMIN }
+        - { path: ^/area, roles: ROLE_ADMIN }
+        - { path: ^/grupocientifico, roles: ROLE_ADMIN }
+        - { path: ^/editorial, roles: ROLE_ADMIN }
+        - { path: ^/organizador, roles: ROLE_ADMIN }
+        - { path: ^/clasificaciontipotesis, roles: ROLE_ADMIN }
+        - { path: ^/tipotesis, roles: ROLE_ADMIN }
+        - { path: ^/clasificaciontiposoftware, roles: ROLE_ADMIN }
+        - { path: ^/tiposoftware, roles: ROLE_ADMIN }
+        - { path: ^/tipopremio, roles: ROLE_ADMIN }
+        - { path: ^/tiponorma, roles: ROLE_ADMIN }
+        - { path: ^/tipoencuentro, roles: ROLE_ADMIN }
+        - { path: ^/grupoarticulo, roles: ROLE_ADMIN }
+        - { path: ^/tipoarticulo, roles: ROLE_ADMIN }
+        - { path: ^/autor/\d+/index, roles: [ROLE_DIRECTIVO, ROLE_ADMIN] }
+        - { path: ^/autor/new, roles: [ROLE_DIRECTIVO, ROLE_ADMIN] }
+        - { path: ^/autor/\d+/delete, roles: [ROLE_DIRECTIVO, ROLE_ADMIN] }
+        - { path: ^/autor/\d+/show, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/autor/\d+/edit, roles: IS_AUTHENTICATED_FULLY }
+#        - { path: ^/*, roles: IS_AUTHENTICATED_FULLY }

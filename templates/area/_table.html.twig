@@ -1,0 +1,55 @@
+<table class="table table-hover m-table m-table--head-separator-brand" id="area_table">
+    <thead>
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+           Área Padre
+        </th>
+        <th>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {%set i=1%}
+    {% for area in areas %}
+        <tr>
+            <td>{{ i }}</td>
+            <td>{{ area.nombre }}</td>
+            <td>{{ area.padre }}</td>
+            <td>
+                <ul class="m-nav m-nav--inline m--pull-right">
+                    <li class="m-nav__item">
+                        <a class="btn btn-info btn-sm edicion" data-href="{{ path('area_edit', { 'id': area.id }) }}">
+                            <i class="flaticon-edit-1"></i> Editar</a>
+                    </li>
+                    <li class="m-nav__item">
+                        <a class="btn btn-danger btn-sm  eliminar_area" data-href="{{ path('area_delete', { 'id': area.id }) }}">
+                            <i class="flaticon-delete-1"></i> Eliminar</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        {%set i=1+i%}
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Área Padre
+        </th>
+        <th>
+        </th>
+    </tr>
+    </tfoot>
+</table>
