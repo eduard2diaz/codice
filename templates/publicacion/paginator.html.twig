@@ -1,0 +1,86 @@
+<div class="m_datatable m-datatable m-datatable--default m-datatable--loaded" id="local_data" style="">
+    <div class="m-datatable__pager m-datatable--paging-loaded clearfix">
+        {% if pageCount > 1 %}
+            <ul class="m-datatable__pager-nav">
+
+                {% if previous is defined %}
+                    <li>
+                        <a class="m-datatable__pager-link m-datatable__pager-link-number" rel="prev"
+                           href="{{ path(route, query|merge({(pageParameterName): previous})) }}"><i
+                                    class="la la-angle-left"></i></a>
+                    </li>
+                {% else %}
+                    <li>
+                        <span class="m-datatable__pager-link m-datatable__pager-link-number m-datatable__pager-link--disabled"><i
+                                    class="la la-angle-double-left"></i></span>
+                    </li>
+                {% endif %}
+
+                {% if startPage > 1 %}
+                    <li>
+                        <a class="m-datatable__pager-link m-datatable__pager-link-number"
+                           href="{{ path(route, query|merge({(pageParameterName): 1})) }}">1</a>
+                    </li>
+                    {% if startPage == 3 %}
+                        <li>
+                            <a class="m-datatable__pager-link m-datatable__pager-link-number"
+                               href="{{ path(route, query|merge({(pageParameterName): 2})) }}">2</a>
+                        </li>
+                    {% elseif startPage != 2 %}
+                        <li>
+                            <span class="m-datatable__pager-link m-datatable__pager-link-number m-datatable__pager-link--disabled"><i
+                                        class="la la-ellipsis-h"></i></span>
+                        </li>
+                    {% endif %}
+                {% endif %}
+
+                {% for page in pagesInRange %}
+                    {% if page != current %}
+                        <li>
+                            <a class="m-datatable__pager-link m-datatable__pager-link-number"
+                               href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <span class="m-datatable__pager-link m-datatable__pager-link-number m-datatable__pager-link--active">{{ page }}</span>
+                        </li>
+                    {% endif %}
+
+                {% endfor %}
+
+                {% if pageCount > endPage %}
+                    {% if pageCount > (endPage + 1) %}
+                        {% if pageCount > (endPage + 2) %}
+                            <li>
+                                <span class="m-datatable__pager-link m-datatable__pager-link-number m-datatable__pager-link--disabled">&hellip;</span>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a class="m-datatable__pager-link m-datatable__pager-link-number"
+                                   href="{{ path(route, query|merge({(pageParameterName): (pageCount - 1)})) }}">{{ pageCount -1 }}</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                    <li>
+                        <a class="m-datatable__pager-link m-datatable__pager-link-number"
+                           href="{{ path(route, query|merge({(pageParameterName): pageCount})) }}">{{ pageCount }}</a>
+                    </li>
+                {% endif %}
+
+                {% if next is defined %}
+                    <li>
+                        <a class="m-datatable__pager-link m-datatable__pager-link-number" rel="next"
+                           href="{{ path(route, query|merge({(pageParameterName): next})) }}"><i
+                                    class="la la-angle-right"></i></a>
+                    </li>
+                {% else %}
+                    <li>
+                        <span class="m-datatable__pager-link m-datatable__pager-link-number m-datatable__pager-link--disabled"><i
+                                    class="la la-angle-double-right"></i></span>
+                    </li>
+                {% endif %}
+            </ul>
+        {% endif %}
+
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="count m--margin-bottom-20">
+    <span class="text-muted">Mostrando 10 de {{ pagination.getTotalItemCount }} resultados</span>
+</div>
+<div class="m-widget3">
+    {% for usuario in pagination %}
+        {% if usuario['rutaFoto']!=null %}
+            {% set rutaFoto=  asset('archivos/'~usuario['rutaFoto']) %}
+        {% else %}
+            {% set rutaFoto= asset('app/media/img/users/user4.jpg','template') %}
+        {% endif %}
+
+        <div class="m-widget3__item">
+            <div class="m-widget3__header">
+                <div class="m-widget3__user-img">
+                    <a href="{{ path('autor_show',{'id':usuario['id']}) }}">
+                        <img class="m-widget3__img" src="{{ rutaFoto }}" alt="">
+                    </a>
+                </div>
+                <div class="m-widget3__info">
+														<span class="m-widget3__username">
+															<a href="{{ path('autor_show',{'id':usuario['id']}) }}">{{ usuario['nombre'] }}</a>
+														</span><br>
+                    <span class="m-widget3__time">
+															{{ usuario['institucion']~', '~usuario['pais'] }}
+														</span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+
+{{ knp_pagination_render(pagination, 'publicacion/paginator.html.twig') }}
+

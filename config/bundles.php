@@ -18,4 +18,5 @@ return [
     FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['dev' => true, 'test' => true],
     Knp\Bundle\TimeBundle\KnpTimeBundle::class => ['all' => true],
     Knp\Bundle\SnappyBundle\KnpSnappyBundle::class => ['all' => true],
+    Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
 ];
