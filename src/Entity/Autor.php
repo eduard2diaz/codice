@@ -41,13 +41,6 @@ class Autor implements UserInterface
     /**
      * @var string|null
      *
-     * @ORM\Column(name="apellidos", type="string", nullable=true)
-     */
-    private $apellidos;
-
-    /**
-     * @var string|null
-     *
      * @ORM\Column(name="usuario", type="string", nullable=true)
      */
     private $usuario;
@@ -188,6 +181,16 @@ class Autor implements UserInterface
     private $idmensaje;
 
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Autor", inversedBy="seguidor")
+     */
+    private $seguidores;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Autor", mappedBy="seguidores")
+     */
+    private $seguidor;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -195,6 +198,8 @@ class Autor implements UserInterface
         $this->idrol = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idmensaje = new \Doctrine\Common\Collections\ArrayCollection();
         $this->setActivo(true);
+        $this->seguidores = new ArrayCollection();
+        $this->seguidor = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -210,18 +215,6 @@ class Autor implements UserInterface
     public function setNombre(?string $nombre): self
     {
         $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    public function getApellidos(): ?string
-    {
-        return $this->apellidos;
-    }
-
-    public function setApellidos(?string $apellidos): self
-    {
-        $this->apellidos = $apellidos;
 
         return $this;
     }
@@ -467,6 +460,72 @@ class Autor implements UserInterface
         return $this->file;
     }
 
+    /**
+     * @return Collection|self[]
+     */
+    public function getSeguidores(): Collection
+    {
+        return $this->seguidores;
+    }
+
+    public function addSeguidores(self $seguidore): self
+    {
+        if (!$this->seguidores->contains($seguidore)) {
+            $this->seguidores[] = $seguidore;
+        }
+
+        return $this;
+    }
+
+    public function removeSeguidores(self $seguidore): self
+    {
+        if ($this->seguidores->contains($seguidore)) {
+            $this->seguidores->removeElement($seguidore);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getSeguidor(): Collection
+    {
+        return $this->seguidor;
+    }
+
+    public function addSeguidor(self $seguidor): self
+    {
+        if (!$this->seguidor->contains($seguidor)) {
+            $this->seguidor[] = $seguidor;
+            $seguidor->addSeguidore($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSeguidor(self $seguidor): self
+    {
+        if ($this->seguidor->contains($seguidor)) {
+            $this->seguidor->removeElement($seguidor);
+            $seguidor->removeSeguidore($this);
+        }
+
+        return $this;
+    }
+
+    public function getRutaFoto(): ?string
+    {
+        return $this->rutaFoto;
+    }
+
+    public function setRutaFoto(?string $rutaFoto): self
+    {
+        $this->rutaFoto = $rutaFoto;
+
+        return $this;
+    }
+
     public function Upload($ruta) {
         if (null === $this->file) {
             return;
@@ -549,21 +608,9 @@ class Autor implements UserInterface
     {
     }
 
-    public function getRutaFoto(): ?string
-    {
-        return $this->rutaFoto;
-    }
-
-    public function setRutaFoto(?string $rutaFoto): self
-    {
-        $this->rutaFoto = $rutaFoto;
-
-        return $this;
-    }
-
     public function __toString()
     {
-      return $this->getNombre().' '.$this->getApellidos();
+      return $this->getNombre();
     }
 
     public function cicloInfinito($current, Autor $usuario)
@@ -617,4 +664,6 @@ class Autor implements UserInterface
                     ->addViolation();
         }
     }
+
+
 }

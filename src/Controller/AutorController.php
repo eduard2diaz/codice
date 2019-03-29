@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 /**
  * @Route("/autor")
  */
@@ -19,7 +20,7 @@ class AutorController extends AbstractController
     /**
      * @Route("/{id}/index", name="autor_index", methods={"GET"})
      */
-    public function index(Request $request, Autor $autor,AreaService $areaService): Response
+    public function index(Request $request, Autor $autor, AreaService $areaService): Response
     {
         if ($this->isGranted('ROLE_ADMIN'))
             $autors = $this->getDoctrine()->getManager()->createQuery('SELECT u FROM App:Autor u WHERE u.id!=:id')->setParameter('id', $this->getUser()->getId())->getResult();
@@ -32,10 +33,10 @@ class AutorController extends AbstractController
         return $this->render('autor/index.html.twig', [
             'autors' => $autors,
 
-            'user_id' => $this->getUser()->getId(),
-            'user_foto' => null != $this->getUser()->getRutaFoto() ? $this->getUser()->getRutaFoto() : null,
-            'user_nombre' => $this->getUser()->__toString(),
-            'user_correo' => $this->getUser()->getEmail(),
+            'user_id' => $autor->getId(),
+            'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
+            'user_nombre' => $autor->__toString(),
+            'user_correo' => $autor->getEmail(),
         ]);
     }
 
@@ -55,8 +56,8 @@ class AutorController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($autor);
             $entityManager->flush();
-            $this->addFlash('success','El usuario fue registrado satisfactoriamente');
-            return $this->redirectToRoute('autor_index',['id'=>$this->getUser()->getId()]);
+            $this->addFlash('success', 'El usuario fue registrado satisfactoriamente');
+            return $this->redirectToRoute('autor_index', ['id' => $this->getUser()->getId()]);
         }
 
         return $this->render('autor/new.html.twig', [
@@ -72,7 +73,10 @@ class AutorController extends AbstractController
     {
         return $this->render('autor/show.html.twig', [
             'autor' => $autor,
-
+            'allow_edit'=>($this->isGranted('ROLE_ADMIN') || $autor->getId()==$this->getUser()->getId() ||
+                $autor->esJefe($this->getUser())
+            ),
+            'follow_button' => $autor->getSeguidores()->contains($this->getUser()) == false,
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -83,7 +87,7 @@ class AutorController extends AbstractController
     /**
      * @Route("/{id}/edit", name="autor_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Autor $autor,UserPasswordEncoderInterface $encoder): Response
+    public function edit(Request $request, Autor $autor, UserPasswordEncoderInterface $encoder): Response
     {
 
         $form = $this->createForm(AutorType::class, $autor);
@@ -91,14 +95,14 @@ class AutorController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $ruta=$this->getParameter('storage_directory');
+            $ruta = $this->getParameter('storage_directory');
             if (null == $autor->getPassword())
                 $autor->setPassword($passwordOriginal);
             else
                 $autor->setPassword($encoder->encodePassword($autor, $autor->getPassword()));
 
-            if($autor->getFile()!=null){
-                if($autor->getRutaFoto()!=null)
+            if ($autor->getFile() != null) {
+                if ($autor->getRutaFoto() != null)
                     $autor->actualizarFoto($ruta);
                 else
                     $autor->Upload($ruta);
@@ -106,8 +110,8 @@ class AutorController extends AbstractController
             }
 
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success','El usuario fue actualizado satisfactoriamente');
-            return $this->redirectToRoute('autor_show',['id'=>$autor->getId()]);
+            $this->addFlash('success', 'El usuario fue actualizado satisfactoriamente');
+            return $this->redirectToRoute('autor_show', ['id' => $autor->getId()]);
         }
 
         return $this->render('autor/edit.html.twig', [
@@ -156,5 +160,49 @@ class AutorController extends AbstractController
             return new Response(json_encode($result));
         }
         return new Response(json_encode($result));
+    }
+
+    /**
+     * @Route("/{id}/subscripcion", name="autor_subscripcion", options={"expose"=true})
+     * Esta funcionalidad se utiliza que un usuario se subscriba como seguir de otro
+     */
+    public function subscripcion(Request $request, Autor $autor): Response
+    {
+        if (!$request->isXmlHttpRequest() || $autor->getId() == $this->getUser()->getId())
+            throw $this->createAccessDeniedException();
+
+
+        if (!$autor->getSeguidores()->contains($this->getUser())) {
+            $autor->addSeguidores($this->getUser());
+            $parameters = ['class' => 'flaticon flaticon-close', 'label' => 'Dejar de seguir', 'mensaje' => 'Tu subscripción ha sido registrada'];
+        } else {
+            $parameters['class'] = 'flaticon flaticon-user-add';
+            $parameters['label'] = 'Seguir';
+            $parameters['mensaje'] = 'Tu subscripción fue eliminada';
+            $autor->removeSeguidores($this->getUser());
+        }
+
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($autor);
+        $em->flush();
+        return new JsonResponse($parameters);
+    }
+
+    /**
+     * @Route("/{id}/seguidores", name="autor_seguidores", options={"expose"=true})
+     * Retorna el listado de seguidores de un determinado usuario
+     */
+    public function seguidores(Autor $autor): Response
+    {
+        $seguidores=$autor->getSeguidores()->toArray();
+        return $this->render('autor/seguidores.html.twig', [
+            'autors' => $seguidores,
+
+            'user_id' => $autor->getId(),
+            'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
+            'user_nombre' => $autor->__toString(),
+            'user_correo' => $autor->getEmail(),
+        ]);
     }
 }

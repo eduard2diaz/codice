@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/page/index.css','siplan') }}"/>
 {% endblock %}
 {% block body %}
-    <div class="row login-form">
+    <div class="login-form">
         <div class="col-md-5">
             {% if error is defined and error is not empty %}
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -138,7 +138,6 @@
         <div class="col-md-6 m--margin-top-30" style="padding: 5%;">
             <h1>Juntos, fortalecemos la creatividad en tiempo real por todo el mundo</h1>
             <p class="m--margin-top-20">Únete a nuestro joven equipo y colabora con el desarrollo de la plataforma de investigaciones en tiempo real. No pierdas más tiempo descubre Códice.</p>
-            <a class="btn btn-success btn-sm text-uppercase m-btn active"><i class="flaticon-user"></i> Acceder</a>
         </div>
         <div class="col-md-6">
             <img src="{{ asset('siplan/img/promo1.png') }}" class="promo1"/>

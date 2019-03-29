@@ -24,7 +24,6 @@ class AutorFixtures extends Fixture implements OrderedFixtureInterface
         $autor->setMinisterio($institucion->getMinisterio());
         $autor->setUsuario('administrador');
         $autor->setInstitucion($institucion);
-        $autor->setApellidos('administrador');
         $autor->setNombre('administrador');
         $autor->setArea($area);
         $autor->setPassword('administrador');

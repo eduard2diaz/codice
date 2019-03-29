@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\NotificacionType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +15,7 @@ use App\Entity\Autor;
 /**
  * @Route("/notificacion")
  */
-class NotificacionController extends Controller
+class NotificacionController extends AbstractController
 {
 
     /**

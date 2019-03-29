@@ -64,3 +64,13 @@ services:
         class: App\Services\EmailService
         arguments: ['%env(MAILER_URL)%']
         public: true
+
+    app.notificacioncommand:
+        class: App\Command\NotificacionCommand
+        arguments: ["@doctrine.orm.default_entity_manager"]
+        tags:
+            - { name: console.command }
+
+    app.notificacion_service:
+        class: App\Services\NotificacionService
+        public: true

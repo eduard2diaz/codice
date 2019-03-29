@@ -44,14 +44,13 @@ class AutorType extends AbstractType
 
         $builder
             ->add('nombre',TextType::class,['attr'=>['class'=>'form-control m-input']])
-            ->add('apellidos',TextType::class,['attr'=>['class'=>'form-control m-input']])
             ->add('usuario',TextType::class,['label'=>'Nombre de usuario','attr'=>['class'=>'form-control m-input']])
             ->add('email',EmailType::class,['label'=>'Correo electrónico','attr'=>['class'=>'form-control m-input']])
             ->add('usuario',TextType::class,['attr'=>['class'=>'form-control m-input']])
             ->add('phone',TextType::class,['label'=>'Teléfono','required'=>false,'attr'=>['class'=>'form-control m-input']])
             ->add('gradoCientifico',null,['label'=>'Grado científico','required'=>true,'attr'=>['class'=>'form-control m-input']])
             ->add('area',null,['choices' => $area, 'disabled' => $disabled, 'label'=>'Área','required'=>true,'attr'=>['class'=>'form-control m-input']])
-            ->add('pais',null,['label'=>'País de residencia'])
+            ->add('pais',null,['label'=>'País de residencia',])
             ->add('activo', null, array('disabled' => $disabled, 'required' => false, 'attr' => array('data-on-text' => 'Si', 'data-off-text' => 'No')))
             ->add('file', FileType::class, array('required' => false,
                 'attr' => array('style' => 'display:none',
@@ -90,7 +89,7 @@ class AutorType extends AbstractType
                 $builder->add('jefe', null, array(
                     'disabled' => $disabled,
                     'required' => false,
-                    'class' => Area::class,
+                    'class' => Autor::class,
                     'query_builder' => function (EntityRepository $er) use ($subordinados, $id) {
                         $qb = $er->createQueryBuilder('u')
                             ->join('u.idrol', 'r')

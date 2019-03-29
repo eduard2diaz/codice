@@ -1,0 +1,30 @@
+<div class="m-list-search__results">
+{% if publicaciones is empty and usuarios is empty%}
+    <span class="m-list-search__result-message">No se encontraron resultados</span>
+    {% else %}
+    {% for usuario in usuarios %}
+        {% if usuario['rutaFoto']!=null %}
+            {% set rutaFoto=  asset('archivos/'~usuario['rutaFoto']) %}
+        {% else %}
+            {% set rutaFoto= asset('app/media/img/users/user4.jpg','template') %}
+        {% endif %}
+
+        <a href="{{ path('autor_show',{'id':usuario['id']}) }}" class="m-list-search__result-item">
+		<span class="m-list-search__result-item-pic">
+			<img class="m--img-rounded" src="{{ rutaFoto }}" title="">
+		</span>
+            <span class="m-list-search__result-item-text" style="font-weight: bolder">{{ usuario['nombre'] }}</span>
+        </a>
+    {% endfor %}
+
+    {% for publicacion in publicaciones %}
+
+        <a href="{{ path('publicacion_show',{'id':publicacion['id']}) }}" class="m-list-search__result-item">
+		<span class="m-list-search__result-item-pic">
+			<img class="m--img-rounded" src="{{ asset('siplan/img/x-office-document.png') }}" title="">
+		</span>
+            <span class="m-list-search__result-item-text" style="font-weight: bolder">{{ publicacion['titulo'] }}</span>
+        </a>
+    {% endfor %}
+</div>
+{% endif %}

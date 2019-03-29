@@ -15,27 +15,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class PublicacionController extends AbstractController
 {
     /**
-     * @Route("/", name="publicacion_index", methods={"GET"})
-     */
-    public function index(): Response
-    {
-        $publicacions = $this->getDoctrine()
-            ->getRepository(Publicacion::class)
-            ->findAll();
-
-        return $this->render('publicacion/index.html.twig', [
-            'publicacions' => $publicacions,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/show", name="publicacion_show", methods={"GET"})
      */
     public function show(Publicacion $publicacion): Response
     {
-        return $this->render('publicacion/show.html.twig', [
-            'publicacion' => $publicacion,
-        ]);
+        $entidad=$publicacion->getChildType();
+        $ruta=strtolower(substr($entidad,11));
+        $ruta=$ruta.'_show';
+        return $this->redirectToRoute($ruta,['id'=>$publicacion->getId()]);
     }
 
     /**

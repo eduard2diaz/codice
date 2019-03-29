@@ -17,4 +17,5 @@ return [
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
     FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['dev' => true, 'test' => true],
     Knp\Bundle\TimeBundle\KnpTimeBundle::class => ['all' => true],
+    Knp\Bundle\SnappyBundle\KnpSnappyBundle::class => ['all' => true],
 ];

@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\ControllerTrait;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -28,10 +29,23 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/estatica/{page}", name="estatica")
+     * @Route("/prueba", name="prueba")
      */
-    public function estatica($page)
-    {
-        return $this->render('default/static/'.$page.'.html.twig');
+    public function prueba(Request $request){
+        $query=$request->get('query');
+        $content='';
+        $em=$this->getDoctrine()->getManager();
+        $consulta=$em->createQuery('SELECT u.id, u.nombre,u.rutaFoto FROM App:Autor u WHERE u.nombre like :parametro');
+        $consulta->setParameter('parametro','%'.$query.'%');
+        $consulta->setMaxResults(5);
+        $usuarios=$consulta->getResult();
+
+        $consulta=$em->createQuery('SELECT p.id, p.titulo FROM App:Publicacion p WHERE p.titulo like :parametro');
+        $consulta->setParameter('parametro','%'.$query.'%');
+        $consulta->setMaxResults(5);
+        $publicaciones=$consulta->getResult();
+        $content=$this->renderView('default/searchresult.html.twig',['usuarios'=>$usuarios,'publicaciones'=>$publicaciones]);
+
+        return new Response($content);
     }
 }

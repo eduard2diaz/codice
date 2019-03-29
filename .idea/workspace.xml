@@ -1,8 +1,966 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0af83a06-3947-4dda-85cb-b63f11529650" name="Default" comment="" />
+    <list default="true" id="0af83a06-3947-4dda-85cb-b63f11529650" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" afterPath="$PROJECT_DIR$/.env" />
+      <change beforePath="$PROJECT_DIR$/.env.test" afterPath="$PROJECT_DIR$/.env.test" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190314-095417.reason.txt" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190314-095417.reason.txt" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190314-095417.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190314-095417.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190325-043045.reason.txt" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190325-043045.reason.txt" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190325-043045.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190325-043045.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413/storage_v2/_src_/database/pedro.jLdZBg/schema/public.abK9xQ.meta" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413/storage_v2/_src_/database/pedro.jLdZBg/schema/public.abK9xQ.meta" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/proyecto-en-blanco.iml" afterPath="$PROJECT_DIR$/.idea/proyecto-en-blanco.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/bin/console" afterPath="$PROJECT_DIR$/bin/console" />
+      <change beforePath="$PROJECT_DIR$/bin/phpunit" afterPath="$PROJECT_DIR$/bin/phpunit" />
+      <change beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change beforePath="$PROJECT_DIR$/config/bootstrap.php" afterPath="$PROJECT_DIR$/config/bootstrap.php" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" afterPath="$PROJECT_DIR$/config/bundles.php" />
+      <change beforePath="$PROJECT_DIR$/config/packages/cache.yaml" afterPath="$PROJECT_DIR$/config/packages/cache.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/dev/debug.yaml" afterPath="$PROJECT_DIR$/config/packages/dev/debug.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/dev/easy_log_handler.yaml" afterPath="$PROJECT_DIR$/config/packages/dev/easy_log_handler.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/dev/monolog.yaml" afterPath="$PROJECT_DIR$/config/packages/dev/monolog.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/dev/routing.yaml" afterPath="$PROJECT_DIR$/config/packages/dev/routing.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/dev/swiftmailer.yaml" afterPath="$PROJECT_DIR$/config/packages/dev/swiftmailer.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" afterPath="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/doctrine_migrations.yaml" afterPath="$PROJECT_DIR$/config/packages/doctrine_migrations.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/prod/doctrine.yaml" afterPath="$PROJECT_DIR$/config/packages/prod/doctrine.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/prod/monolog.yaml" afterPath="$PROJECT_DIR$/config/packages/prod/monolog.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/routing.yaml" afterPath="$PROJECT_DIR$/config/packages/routing.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" afterPath="$PROJECT_DIR$/config/packages/security.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/sensio_framework_extra.yaml" afterPath="$PROJECT_DIR$/config/packages/sensio_framework_extra.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/swiftmailer.yaml" afterPath="$PROJECT_DIR$/config/packages/swiftmailer.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/test/framework.yaml" afterPath="$PROJECT_DIR$/config/packages/test/framework.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/test/monolog.yaml" afterPath="$PROJECT_DIR$/config/packages/test/monolog.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/test/routing.yaml" afterPath="$PROJECT_DIR$/config/packages/test/routing.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/test/swiftmailer.yaml" afterPath="$PROJECT_DIR$/config/packages/test/swiftmailer.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/test/web_profiler.yaml" afterPath="$PROJECT_DIR$/config/packages/test/web_profiler.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" afterPath="$PROJECT_DIR$/config/packages/translation.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/packages/validator.yaml" afterPath="$PROJECT_DIR$/config/packages/validator.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" afterPath="$PROJECT_DIR$/config/routes.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/routes/annotations.yaml" afterPath="$PROJECT_DIR$/config/routes/annotations.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/routes/dev/twig.yaml" afterPath="$PROJECT_DIR$/config/routes/dev/twig.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/routes/dev/web_profiler.yaml" afterPath="$PROJECT_DIR$/config/routes/dev/web_profiler.yaml" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" afterPath="$PROJECT_DIR$/config/services.yaml" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml.dist" afterPath="$PROJECT_DIR$/phpunit.xml.dist" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" afterPath="$PROJECT_DIR$/public/index.php" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/css/base/siplan.css" afterPath="$PROJECT_DIR$/public/siplan/css/base/siplan.css" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/css/page/index.css" afterPath="$PROJECT_DIR$/public/siplan/css/page/index.css" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/css/page/userprofile.css" afterPath="$PROJECT_DIR$/public/siplan/css/page/userprofile.css" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/img/40482376-0-hack1.jpg" afterPath="$PROJECT_DIR$/public/siplan/img/40482376-0-hack1.jpg" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/img/favicon.ico" afterPath="$PROJECT_DIR$/public/siplan/img/favicon.ico" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/img/http_error/403.png" afterPath="$PROJECT_DIR$/public/siplan/img/http_error/403.png" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/img/http_error/404.png" afterPath="$PROJECT_DIR$/public/siplan/img/http_error/404.png" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/img/http_error/error-500.png" afterPath="$PROJECT_DIR$/public/siplan/img/http_error/error-500.png" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/img/http_error/error.png" afterPath="$PROJECT_DIR$/public/siplan/img/http_error/error.png" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/img/http_error/mantenimiento.svg" afterPath="$PROJECT_DIR$/public/siplan/img/http_error/mantenimiento.svg" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/img/logo.png" afterPath="$PROJECT_DIR$/public/siplan/img/logo.png" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/img/promo1.png" afterPath="$PROJECT_DIR$/public/siplan/img/promo1.png" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/CHANGELOG.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/charts.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/charts.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/core.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/core.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/deps/canvg.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/deps/canvg.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/deps/pdfmake.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/deps/pdfmake.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/deps/responsivedefaults.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/deps/responsivedefaults.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/deps/xlsx.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/deps/xlsx.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/100%-stacked-column-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/100%-stacked-column-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/100%-stacked-column-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/100%-stacked-column-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/adding-live-data/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/adding-live-data/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/adding-live-data/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/adding-live-data/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/amcharts3/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/amcharts3/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/amcharts3/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/amcharts3/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/amcharts3/v3.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/bubble-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/bubble-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/bubble-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/bubble-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/candlestick-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/candlestick-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/candlestick-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/candlestick-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/changing-series-apppearance/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/changing-series-apppearance/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/changing-series-apppearance/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/changing-series-apppearance/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/changing-tree-map-data/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/changing-tree-map-data/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/changing-tree-map-data/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/changing-tree-map-data/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/chord-diagram-non-ribbon/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/chord-diagram-non-ribbon/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/chord-diagram-non-ribbon/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/chord-diagram-non-ribbon/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/chord-diagram/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/chord-diagram/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/chord-diagram/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/chord-diagram/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/chord-friends-kisses/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/chord-friends-kisses/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/chord-friends-kisses/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/chord-friends-kisses/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/chord-friends-kisses/whokissed.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/clock/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/clock/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/clock/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/clock/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/column-chart-with-axis-break/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/column-chart-with-axis-break/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/column-chart-with-axis-break/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/column-chart-with-axis-break/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/chandler.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/joey.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/monica.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/phoebe.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/rachel.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/ross.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/columns-with-pies-inside/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/columns-with-pies-inside/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/columns-with-pies-inside/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/columns-with-pies-inside/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/countries-morphing-to-pie-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/countries-morphing-to-pie-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/countries-morphing-to-pie-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/countries-morphing-to-pie-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/curved-column-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/curved-column-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/curved-column-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/curved-column-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/cylinder-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/cylinder-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/cylinder-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/cylinder-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/date-based-radar/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/date-based-radar/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/date-based-radar/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/date-based-radar/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/day-night-map/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/day-night-map/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/day-night-map/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/day-night-map/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/day-night-map/santa.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/donut-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/donut-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/donut-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/donut-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drag-and-change-values/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drag-and-change-values/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drag-and-change-values/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drag-and-change-values/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/dragging-pie-slices/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/dragging-pie-slices/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/dragging-pie-slices/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/dragging-pie-slices/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/acura.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/audi.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/bmw.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/buick.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/cadillac.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/chevrolet.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/chrysler.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/dodge.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/ford.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/gmc.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/honda.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/hyundai.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/infiniti.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/jeep.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/kia.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/lexus.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/lincoln.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/mazda.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/mercedes-benz.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/mitsubishi.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/nissan.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/other.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/subaru.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/toyota.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/volkswagen.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/duration-axis/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/duration-axis/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/duration-axis/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/duration-axis/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/error-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/error-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/error-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/error-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/fill-between-lines-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/fill-between-lines-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/fill-between-lines-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/fill-between-lines-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/funnel-chart-horizontal/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/funnel-chart-horizontal/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/funnel-chart-horizontal/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/funnel-chart-horizontal/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/funnel-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/funnel-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/funnel-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/funnel-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/gantt-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/gantt-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/gantt-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/gantt-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/geo-heat-map/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/geo-heat-map/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/geo-heat-map/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/geo-heat-map/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/heat-map-circles/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/heat-map-circles/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/heat-map-circles/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/heat-map-circles/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/heat-map/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/heat-map/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/heat-map/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/heat-map/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/line-different-ups-downs/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/line-different-ups-downs/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/line-different-ups-downs/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/line-different-ups-downs/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/map-line-gauge-mix/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/map-line-gauge-mix/bang.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/map-line-gauge-mix/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/map-line-gauge-mix/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/map-line-gauge-mix/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/map-line-gauge-mix/rocket.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/morphing-countries/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/morphing-countries/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/morphing-countries/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/morphing-countries/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/multiple-axes-date-based-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/multiple-axes-date-based-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/multiple-axes-date-based-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/multiple-axes-date-based-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/non-chart-usage/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/non-chart-usage/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/non-chart-usage/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/non-chart-usage/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/ohlc-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/ohlc-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/ohlc-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/ohlc-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pictorial-bar-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pictorial-bar-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pictorial-bar-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pictorial-bar-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pictorial-stacked-chart-horizontal/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pictorial-stacked-chart-horizontal/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pictorial-stacked-chart-horizontal/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pictorial-stacked-chart-horizontal/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pictorial-stacked-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pictorial-stacked-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pictorial-stacked-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pictorial-stacked-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/polar-area-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/polar-area-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/polar-area-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/polar-area-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pyramid-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pyramid-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pyramid-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/pyramid-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/radar-chart-with-axis-break/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/radar-chart-with-axis-break/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/radar-chart-with-axis-break/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/radar-chart-with-axis-break/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/radar-timeline-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/radar-timeline-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/radar-timeline-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/radar-timeline-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/radial-bar-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/radial-bar-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/radial-bar-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/radial-bar-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/sankey-diagram-with-animated-bullets/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/sankey-diagram-with-animated-bullets/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/sankey-diagram-with-animated-bullets/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/sankey-diagram-with-animated-bullets/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/semi-circle-donut-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/semi-circle-donut-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/semi-circle-donut-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/semi-circle-donut-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-3D-pie-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-3D-pie-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-3D-pie-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-3D-pie-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-bar-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-bar-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-bar-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-bar-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-column-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-column-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-column-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-column-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-gauge/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-gauge/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-gauge/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-gauge/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-line-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-line-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-line-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-line-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-map-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-map-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-map-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-map-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-pie-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-pie-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-pie-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-pie-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-radar-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-radar-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-radar-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-radar-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-sankey-diagram/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-sankey-diagram/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-sankey-diagram/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-sankey-diagram/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-tree-map/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-tree-map/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-tree-map/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/simple-tree-map/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/stacked-3D-column-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/stacked-3D-column-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/stacked-3D-column-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/stacked-3D-column-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/stacked-area-radar-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/stacked-area-radar-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/stacked-area-radar-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/stacked-area-radar-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/stacked-column-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/stacked-column-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/stacked-column-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/stacked-column-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/step-count-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/step-count-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/step-count-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/step-count-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/step-line-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/step-line-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/step-line-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/step-line-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/step-line-no-risers-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/step-line-no-risers-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/step-line-no-risers-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/step-line-no-risers-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/syncing-cursors-and-zoom/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/syncing-cursors-and-zoom/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/syncing-cursors-and-zoom/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/syncing-cursors-and-zoom/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/triangle-column-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/triangle-column-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/triangle-column-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/triangle-column-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/variable-angle-radar-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/variable-angle-radar-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/variable-angle-radar-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/variable-angle-radar-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/variable-height-3D-pie-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/variable-height-3D-pie-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/variable-height-3D-pie-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/variable-height-3D-pie-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/variable-radius-pie-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/variable-radius-pie-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/variable-radius-pie-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/variable-radius-pie-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/vertical-sankey-diagram/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/vertical-sankey-diagram/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/vertical-sankey-diagram/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/vertical-sankey-diagram/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/waterfall-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/waterfall-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/waterfall-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/waterfall-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/xy-error-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/xy-error-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/xy-error-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/javascript/xy-error-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/changing-series-apppearance/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/changing-series-apppearance/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/changing-series-apppearance/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/changing-series-apppearance/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-3D-pie-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-3D-pie-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-3D-pie-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-3D-pie-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-bar-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-bar-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-bar-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-bar-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-column-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-column-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-column-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-column-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-gauge/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-gauge/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-gauge/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-gauge/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-line-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-line-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-line-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-line-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-map-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-map-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-map-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-map-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-pie-chart-rounded-corners/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-pie-chart-rounded-corners/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-pie-chart-rounded-corners/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-pie-chart-rounded-corners/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-pie-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-pie-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-pie-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-pie-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-radar-chart/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-radar-chart/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-radar-chart/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-radar-chart/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-sankey-diagram/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-sankey-diagram/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-sankey-diagram/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-sankey-diagram/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-tree-map/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-tree-map/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-tree-map/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/examples/json/simple-tree-map/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/de_CH.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/de_CH.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/de_DE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/de_DE.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/en.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/en.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/en_CA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/en_CA.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/en_US.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/en_US.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/es_ES.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/es_ES.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/fr_FR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/fr_FR.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/lt_LT.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/lt_LT.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/nl_NL.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/nl_NL.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/pt_BR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/pt_BR.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/pt_PT.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/pt_PT.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/ru_RU.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/ru_RU.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/sv_SV.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/lang/sv_SV.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/maps.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/maps.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/amcharts.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/amcharts.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/amchartsdark.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/amchartsdark.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/animated.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/animated.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/dark.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/dark.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/dataviz.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/dataviz.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/frozen.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/frozen.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/kelly.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/kelly.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/material.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/material.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/moonrisekingdom.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/moonrisekingdom.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/spiritedaway.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/amcharts4/themes/spiritedaway.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/bootbox/LICENSE.md" afterPath="$PROJECT_DIR$/public/siplan/plugins/bootbox/LICENSE.md" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/bootbox/README.md" afterPath="$PROJECT_DIR$/public/siplan/plugins/bootbox/README.md" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/bootbox/bootbox.min.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/bootbox/bootbox.min.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/datatable/es.json" afterPath="$PROJECT_DIR$/public/siplan/plugins/datatable/es.json" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload-master.zip" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload-master.zip" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/.gitignore" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/.jshintrc" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/.jshintrc" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/.npmignore" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/.npmignore" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/CONTRIBUTING.md" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/CONTRIBUTING.md" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/LICENSE.txt" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/LICENSE.txt" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/README.md" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/README.md" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/SECURITY.md" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/SECURITY.md" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/VULNERABILITIES.md" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/VULNERABILITIES.md" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/angularjs.html" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/angularjs.html" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/basic-plus.html" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/basic-plus.html" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/basic.html" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/basic.html" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/bower-version-update.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/bower-version-update.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/bower.json" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/bower.json" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/cors/postmessage.html" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/cors/postmessage.html" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/cors/result.html" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/cors/result.html" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery-ui-demo-ie8.css" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery-ui-demo-ie8.css" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery-ui-demo.css" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery-ui-demo.css" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery.fileupload-noscript.css" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery.fileupload-noscript.css" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery.fileupload-ui-noscript.css" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery.fileupload-ui-noscript.css" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery.fileupload-ui.css" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery.fileupload-ui.css" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery.fileupload.css" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery.fileupload.css" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/style.css" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/style.css" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/img/loading.gif" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/img/loading.gif" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/img/progressbar.gif" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/img/progressbar.gif" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/index.html" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/index.html" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/jquery-ui.html" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/jquery-ui.html" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/app.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/app.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/cors/jquery.postmessage-transport.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/cors/jquery.postmessage-transport.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/cors/jquery.xdr-transport.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/cors/jquery.xdr-transport.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-angular.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-angular.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-audio.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-audio.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-image.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-image.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-jquery-ui.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-jquery-ui.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-process.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-process.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-ui.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-ui.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-validate.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-validate.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-video.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-video.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.iframe-transport.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.iframe-transport.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/main.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/main.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/vendor/jquery.ui.widget.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/vendor/jquery.ui.widget.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/package.json" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/package.json" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-go/app.yaml" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-go/app.yaml" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-go/main.go" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-go/main.go" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-go/static/favicon.ico" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-go/static/favicon.ico" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-go/static/robots.txt" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-go/static/robots.txt" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-python/app.yaml" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-python/app.yaml" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-python/main.py" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-python/main.py" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-python/static/favicon.ico" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-python/static/favicon.ico" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-python/static/robots.txt" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-python/static/robots.txt" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/Dockerfile" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/Dockerfile" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/UploadHandler.php" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/UploadHandler.php" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/docker-compose.yml" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/docker-compose.yml" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/files/.gitignore" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/files/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/files/.htaccess" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/files/.htaccess" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/index.php" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/index.php" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/test/index.html" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/test/index.html" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/test/test.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/test/test.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/ladda/ladda-themeless.min.css" afterPath="$PROJECT_DIR$/public/siplan/plugins/ladda/ladda-themeless.min.css" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/ladda/ladda.min.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/ladda/ladda.min.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/ladda/spin.min.js" afterPath="$PROJECT_DIR$/public/siplan/plugins/ladda/spin.min.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/base/authenticated.js" afterPath="$PROJECT_DIR$/public/siplan/script/base/authenticated.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/base/base.js" afterPath="$PROJECT_DIR$/public/siplan/script/base/base.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/area.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/area.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/articulo.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/articulo.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/autor.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/autor.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/clasificacion_tiposoftware.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/clasificacion_tiposoftware.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/clasificacion_tipotesis.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/clasificacion_tipotesis.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/editorial.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/editorial.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/encuentro.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/encuentro.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/facultad.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/facultad.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/grado_cientifico.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/grado_cientifico.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/grupo_articulo.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/grupo_articulo.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/institucion.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/institucion.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/libro.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/libro.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/mensaje.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/mensaje.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/ministerio.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/ministerio.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/monografia.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/monografia.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/norma.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/norma.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/notificacion.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/notificacion.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/organizador.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/organizador.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/pais.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/pais.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/patente.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/patente.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/premio.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/premio.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/revista.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/revista.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/software.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/software.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/tesis.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/tesis.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/tipo_articulo.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/tipo_articulo.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/tipo_encuentro.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/tipo_encuentro.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/tipo_norma.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/tipo_norma.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/tipo_premio.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/tipo_premio.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/tipo_software.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/tipo_software.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/tipo_tesis.js" afterPath="$PROJECT_DIR$/public/siplan/script/entity/tipo_tesis.js" />
+      <change beforePath="$PROJECT_DIR$/public/siplan/script/page/login.js" afterPath="$PROJECT_DIR$/public/siplan/script/page/login.js" />
+      <change beforePath="$PROJECT_DIR$/public/template/app/js/dashboard.js" afterPath="$PROJECT_DIR$/public/template/app/js/dashboard.js" />
+      <change beforePath="$PROJECT_DIR$/public/template/app/js/layout-builder.js" afterPath="$PROJECT_DIR$/public/template/app/js/layout-builder.js" />
+      <change beforePath="$PROJECT_DIR$/public/template/app/media/img/misc/notification_bg.jpg" afterPath="$PROJECT_DIR$/public/template/app/media/img/misc/notification_bg.jpg" />
+      <change beforePath="$PROJECT_DIR$/public/template/app/media/img/misc/quick_actions_bg.jpg" afterPath="$PROJECT_DIR$/public/template/app/media/img/misc/quick_actions_bg.jpg" />
+      <change beforePath="$PROJECT_DIR$/public/template/app/media/img/misc/user_profile_bg.jpg" afterPath="$PROJECT_DIR$/public/template/app/media/img/misc/user_profile_bg.jpg" />
+      <change beforePath="$PROJECT_DIR$/public/template/app/media/img/users/user4.jpg" afterPath="$PROJECT_DIR$/public/template/app/media/img/users/user4.jpg" />
+      <change beforePath="$PROJECT_DIR$/public/template/demo/demo9/base/scripts.bundle.js" afterPath="$PROJECT_DIR$/public/template/demo/demo9/base/scripts.bundle.js" />
+      <change beforePath="$PROJECT_DIR$/public/template/demo/demo9/base/style.bundle.css" afterPath="$PROJECT_DIR$/public/template/demo/demo9/base/style.bundle.css" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/flaticon/Flaticon.eot" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/flaticon/Flaticon.eot" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/flaticon/Flaticon.svg" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/flaticon/Flaticon.svg" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/flaticon/Flaticon.ttf" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/flaticon/Flaticon.ttf" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/flaticon/Flaticon.woff" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/flaticon/Flaticon.woff" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/FontAwesome.otf" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/FontAwesome.otf" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.eot" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.eot" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.svg" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.ttf" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.ttf" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.woff" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.woff" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.woff2" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.woff2" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.eot" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.eot" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.svg" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.svg" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.ttf" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.ttf" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.woff" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.woff" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.woff2" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.woff2" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.eot" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.eot" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.svg" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.svg" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.ttf" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.ttf" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff2" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff2" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/socicon/socicon.eot" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/socicon/socicon.eot" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/socicon/socicon.svg" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/socicon/socicon.svg" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/socicon/socicon.ttf" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/socicon/socicon.ttf" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/socicon/socicon.woff" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/socicon/socicon.woff" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/summernote/summernote.eot" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/summernote/summernote.eot" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/summernote/summernote.ttf" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/summernote/summernote.ttf" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/summernote/summernote.woff" afterPath="$PROJECT_DIR$/public/template/vendors/base/fonts/summernote/summernote.woff" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/images/ion-rangeslider/sprite-skin-flat.png" afterPath="$PROJECT_DIR$/public/template/vendors/base/images/ion-rangeslider/sprite-skin-flat.png" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/images/jstree/32px.png" afterPath="$PROJECT_DIR$/public/template/vendors/base/images/jstree/32px.png" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/images/jstree/40px.png" afterPath="$PROJECT_DIR$/public/template/vendors/base/images/jstree/40px.png" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/images/jstree/throbber.gif" afterPath="$PROJECT_DIR$/public/template/vendors/base/images/jstree/throbber.gif" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/images/malihu-custom-scrollbar-plugin/mCSB_buttons.png" afterPath="$PROJECT_DIR$/public/template/vendors/base/images/malihu-custom-scrollbar-plugin/mCSB_buttons.png" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/vendors.bundle.css" afterPath="$PROJECT_DIR$/public/template/vendors/base/vendors.bundle.css" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/vendors.bundle.js" afterPath="$PROJECT_DIR$/public/template/vendors/base/vendors.bundle.js" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/datatables/datatables.bundle.css" afterPath="$PROJECT_DIR$/public/template/vendors/custom/datatables/datatables.bundle.css" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/datatables/datatables.bundle.js" afterPath="$PROJECT_DIR$/public/template/vendors/custom/datatables/datatables.bundle.js" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/flot/flot.bundle.js" afterPath="$PROJECT_DIR$/public/template/vendors/custom/flot/flot.bundle.js" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/fullcalendar/fullcalendar.bundle.css" afterPath="$PROJECT_DIR$/public/template/vendors/custom/fullcalendar/fullcalendar.bundle.css" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/fullcalendar/fullcalendar.bundle.js" afterPath="$PROJECT_DIR$/public/template/vendors/custom/fullcalendar/fullcalendar.bundle.js" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/gmaps/gmaps.js" afterPath="$PROJECT_DIR$/public/template/vendors/custom/gmaps/gmaps.js" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_444444_256x240.png" afterPath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_444444_256x240.png" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_555555_256x240.png" afterPath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_555555_256x240.png" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_777620_256x240.png" afterPath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_777620_256x240.png" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_777777_256x240.png" afterPath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_777777_256x240.png" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_cc0000_256x240.png" afterPath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_cc0000_256x240.png" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_ffffff_256x240.png" afterPath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_ffffff_256x240.png" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/jquery-ui.bundle.css" afterPath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/jquery-ui.bundle.css" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/jquery-ui.bundle.js" afterPath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/jquery-ui.bundle.js" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jqvmap/jqvmap.bundle.css" afterPath="$PROJECT_DIR$/public/template/vendors/custom/jqvmap/jqvmap.bundle.css" />
+      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jqvmap/jqvmap.bundle.js" afterPath="$PROJECT_DIR$/public/template/vendors/custom/jqvmap/jqvmap.bundle.js" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/.gitignore" afterPath="$PROJECT_DIR$/src/Controller/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AreaController.php" afterPath="$PROJECT_DIR$/src/Controller/AreaController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ArticuloController.php" afterPath="$PROJECT_DIR$/src/Controller/ArticuloController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AutorController.php" afterPath="$PROJECT_DIR$/src/Controller/AutorController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClasificacionTipoSoftwareController.php" afterPath="$PROJECT_DIR$/src/Controller/ClasificacionTipoSoftwareController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClasificacionTipoTesisController.php" afterPath="$PROJECT_DIR$/src/Controller/ClasificacionTipoTesisController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EditorialController.php" afterPath="$PROJECT_DIR$/src/Controller/EditorialController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EncuentroController.php" afterPath="$PROJECT_DIR$/src/Controller/EncuentroController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GradoCientificoController.php" afterPath="$PROJECT_DIR$/src/Controller/GradoCientificoController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GrupoArticuloController.php" afterPath="$PROJECT_DIR$/src/Controller/GrupoArticuloController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/InstitucionController.php" afterPath="$PROJECT_DIR$/src/Controller/InstitucionController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/LibroController.php" afterPath="$PROJECT_DIR$/src/Controller/LibroController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MensajeController.php" afterPath="$PROJECT_DIR$/src/Controller/MensajeController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MinisterioController.php" afterPath="$PROJECT_DIR$/src/Controller/MinisterioController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MonografiaController.php" afterPath="$PROJECT_DIR$/src/Controller/MonografiaController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/NormaController.php" afterPath="$PROJECT_DIR$/src/Controller/NormaController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/NotificacionController.php" afterPath="$PROJECT_DIR$/src/Controller/NotificacionController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OrganizadorController.php" afterPath="$PROJECT_DIR$/src/Controller/OrganizadorController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PaisController.php" afterPath="$PROJECT_DIR$/src/Controller/PaisController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PatenteController.php" afterPath="$PROJECT_DIR$/src/Controller/PatenteController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PremioController.php" afterPath="$PROJECT_DIR$/src/Controller/PremioController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PublicacionController.php" afterPath="$PROJECT_DIR$/src/Controller/PublicacionController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RevistaController.php" afterPath="$PROJECT_DIR$/src/Controller/RevistaController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SoftwareController.php" afterPath="$PROJECT_DIR$/src/Controller/SoftwareController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TesisController.php" afterPath="$PROJECT_DIR$/src/Controller/TesisController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TipoArticuloController.php" afterPath="$PROJECT_DIR$/src/Controller/TipoArticuloController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TipoEncuentroController.php" afterPath="$PROJECT_DIR$/src/Controller/TipoEncuentroController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TipoNormaController.php" afterPath="$PROJECT_DIR$/src/Controller/TipoNormaController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TipoPremioController.php" afterPath="$PROJECT_DIR$/src/Controller/TipoPremioController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TipoSoftwareController.php" afterPath="$PROJECT_DIR$/src/Controller/TipoSoftwareController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TipoTesisController.php" afterPath="$PROJECT_DIR$/src/Controller/TipoTesisController.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AreaFixtures.php" afterPath="$PROJECT_DIR$/src/DataFixtures/AreaFixtures.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AutorFixtures.php" afterPath="$PROJECT_DIR$/src/DataFixtures/AutorFixtures.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ClasificacionTipoSoftware.php" afterPath="$PROJECT_DIR$/src/DataFixtures/ClasificacionTipoSoftware.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ClasificacionTipoTesis.php" afterPath="$PROJECT_DIR$/src/DataFixtures/ClasificacionTipoTesis.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/EditorialFixtures.php" afterPath="$PROJECT_DIR$/src/DataFixtures/EditorialFixtures.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/GradoCientificoFixtures.php" afterPath="$PROJECT_DIR$/src/DataFixtures/GradoCientificoFixtures.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/InstitucionFixtures.php" afterPath="$PROJECT_DIR$/src/DataFixtures/InstitucionFixtures.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/MinisterioFixtures.php" afterPath="$PROJECT_DIR$/src/DataFixtures/MinisterioFixtures.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/PaisFixtures.php" afterPath="$PROJECT_DIR$/src/DataFixtures/PaisFixtures.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/RevistaFixtures.php" afterPath="$PROJECT_DIR$/src/DataFixtures/RevistaFixtures.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/RolFixtures.php" afterPath="$PROJECT_DIR$/src/DataFixtures/RolFixtures.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/TipoEncuentroFixtures.php" afterPath="$PROJECT_DIR$/src/DataFixtures/TipoEncuentroFixtures.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/TipoPremioFixtures.php" afterPath="$PROJECT_DIR$/src/DataFixtures/TipoPremioFixtures.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/TipoSoftwareFixtures.php" afterPath="$PROJECT_DIR$/src/DataFixtures/TipoSoftwareFixtures.php" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/TipoTesisFixtures.php" afterPath="$PROJECT_DIR$/src/DataFixtures/TipoTesisFixtures.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/.gitignore" afterPath="$PROJECT_DIR$/src/Entity/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Area.php" afterPath="$PROJECT_DIR$/src/Entity/Area.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Articulo.php" afterPath="$PROJECT_DIR$/src/Entity/Articulo.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Autor.php" afterPath="$PROJECT_DIR$/src/Entity/Autor.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/ClasificacionTipoSoftware.php" afterPath="$PROJECT_DIR$/src/Entity/ClasificacionTipoSoftware.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/ClasificacionTipoTesis.php" afterPath="$PROJECT_DIR$/src/Entity/ClasificacionTipoTesis.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Editorial.php" afterPath="$PROJECT_DIR$/src/Entity/Editorial.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Encuentro.php" afterPath="$PROJECT_DIR$/src/Entity/Encuentro.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/GradoCientifico.php" afterPath="$PROJECT_DIR$/src/Entity/GradoCientifico.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/GrupoArticulo.php" afterPath="$PROJECT_DIR$/src/Entity/GrupoArticulo.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Institucion.php" afterPath="$PROJECT_DIR$/src/Entity/Institucion.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Libro.php" afterPath="$PROJECT_DIR$/src/Entity/Libro.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Mensaje.php" afterPath="$PROJECT_DIR$/src/Entity/Mensaje.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Ministerio.php" afterPath="$PROJECT_DIR$/src/Entity/Ministerio.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Monografia.php" afterPath="$PROJECT_DIR$/src/Entity/Monografia.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Norma.php" afterPath="$PROJECT_DIR$/src/Entity/Norma.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Notificacion.php" afterPath="$PROJECT_DIR$/src/Entity/Notificacion.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Organizador.php" afterPath="$PROJECT_DIR$/src/Entity/Organizador.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Pais.php" afterPath="$PROJECT_DIR$/src/Entity/Pais.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Patente.php" afterPath="$PROJECT_DIR$/src/Entity/Patente.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Premio.php" afterPath="$PROJECT_DIR$/src/Entity/Premio.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Publicacion.php" afterPath="$PROJECT_DIR$/src/Entity/Publicacion.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Revista.php" afterPath="$PROJECT_DIR$/src/Entity/Revista.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Rol.php" afterPath="$PROJECT_DIR$/src/Entity/Rol.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Software.php" afterPath="$PROJECT_DIR$/src/Entity/Software.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Tesis.php" afterPath="$PROJECT_DIR$/src/Entity/Tesis.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TipoArticulo.php" afterPath="$PROJECT_DIR$/src/Entity/TipoArticulo.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TipoEncuentro.php" afterPath="$PROJECT_DIR$/src/Entity/TipoEncuentro.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TipoNorma.php" afterPath="$PROJECT_DIR$/src/Entity/TipoNorma.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TipoPremio.php" afterPath="$PROJECT_DIR$/src/Entity/TipoPremio.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TipoSoftware.php" afterPath="$PROJECT_DIR$/src/Entity/TipoSoftware.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TipoTesis.php" afterPath="$PROJECT_DIR$/src/Entity/TipoTesis.php" />
+      <change beforePath="$PROJECT_DIR$/src/EventListener/LoginListener.php" afterPath="$PROJECT_DIR$/src/EventListener/LoginListener.php" />
+      <change beforePath="$PROJECT_DIR$/src/EventListener/LogoutListener.php" afterPath="$PROJECT_DIR$/src/EventListener/LogoutListener.php" />
+      <change beforePath="$PROJECT_DIR$/src/EventSubscriber/AutorSubscriber.php" afterPath="$PROJECT_DIR$/src/EventSubscriber/AutorSubscriber.php" />
+      <change beforePath="$PROJECT_DIR$/src/EventSubscriber/PublicacionHijoSubscriber.php" afterPath="$PROJECT_DIR$/src/EventSubscriber/PublicacionHijoSubscriber.php" />
+      <change beforePath="$PROJECT_DIR$/src/EventSubscriber/PublicacionSubscriber.php" afterPath="$PROJECT_DIR$/src/EventSubscriber/PublicacionSubscriber.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AreaType.php" afterPath="$PROJECT_DIR$/src/Form/AreaType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ArticuloType.php" afterPath="$PROJECT_DIR$/src/Form/ArticuloType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AutorType.php" afterPath="$PROJECT_DIR$/src/Form/AutorType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ClasificacionTipoSoftwareType.php" afterPath="$PROJECT_DIR$/src/Form/ClasificacionTipoSoftwareType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ClasificacionTipoTesisType.php" afterPath="$PROJECT_DIR$/src/Form/ClasificacionTipoTesisType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EditorialType.php" afterPath="$PROJECT_DIR$/src/Form/EditorialType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EncuentroType.php" afterPath="$PROJECT_DIR$/src/Form/EncuentroType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/GradoCientificoType.php" afterPath="$PROJECT_DIR$/src/Form/GradoCientificoType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/GrupoArticuloType.php" afterPath="$PROJECT_DIR$/src/Form/GrupoArticuloType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/InstitucionType.php" afterPath="$PROJECT_DIR$/src/Form/InstitucionType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/LibroType.php" afterPath="$PROJECT_DIR$/src/Form/LibroType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/MensajeType.php" afterPath="$PROJECT_DIR$/src/Form/MensajeType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/MinisterioType.php" afterPath="$PROJECT_DIR$/src/Form/MinisterioType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/MonografiaType.php" afterPath="$PROJECT_DIR$/src/Form/MonografiaType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/NormaType.php" afterPath="$PROJECT_DIR$/src/Form/NormaType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/OrganizadorType.php" afterPath="$PROJECT_DIR$/src/Form/OrganizadorType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PaisType.php" afterPath="$PROJECT_DIR$/src/Form/PaisType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PatenteType.php" afterPath="$PROJECT_DIR$/src/Form/PatenteType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PremioType.php" afterPath="$PROJECT_DIR$/src/Form/PremioType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PublicacionType.php" afterPath="$PROJECT_DIR$/src/Form/PublicacionType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/RevistaType.php" afterPath="$PROJECT_DIR$/src/Form/RevistaType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/SoftwareType.php" afterPath="$PROJECT_DIR$/src/Form/SoftwareType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/Subscriber/AddAutorInstitucionFieldSubscriber.php" afterPath="$PROJECT_DIR$/src/Form/Subscriber/AddAutorInstitucionFieldSubscriber.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/Subscriber/AddDestinatarioFieldSubscriber.php" afterPath="$PROJECT_DIR$/src/Form/Subscriber/AddDestinatarioFieldSubscriber.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/Subscriber/AddInstitucionMinisterioFieldSubscriber.php" afterPath="$PROJECT_DIR$/src/Form/Subscriber/AddInstitucionMinisterioFieldSubscriber.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/TesisType.php" afterPath="$PROJECT_DIR$/src/Form/TesisType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/TipoArticuloType.php" afterPath="$PROJECT_DIR$/src/Form/TipoArticuloType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/TipoEncuentroType.php" afterPath="$PROJECT_DIR$/src/Form/TipoEncuentroType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/TipoNormaType.php" afterPath="$PROJECT_DIR$/src/Form/TipoNormaType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/TipoPremioType.php" afterPath="$PROJECT_DIR$/src/Form/TipoPremioType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/TipoSoftwareType.php" afterPath="$PROJECT_DIR$/src/Form/TipoSoftwareType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/TipoTesisType.php" afterPath="$PROJECT_DIR$/src/Form/TipoTesisType.php" />
+      <change beforePath="$PROJECT_DIR$/src/Form/Transformer/DateTimetoStringTransformer.php" afterPath="$PROJECT_DIR$/src/Form/Transformer/DateTimetoStringTransformer.php" />
+      <change beforePath="$PROJECT_DIR$/src/Kernel.php" afterPath="$PROJECT_DIR$/src/Kernel.php" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/.gitignore" afterPath="$PROJECT_DIR$/src/Migrations/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/.gitignore" afterPath="$PROJECT_DIR$/src/Repository/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/AutorRepository.php" afterPath="$PROJECT_DIR$/src/Repository/AutorRepository.php" />
+      <change beforePath="$PROJECT_DIR$/src/Security/UserChecker.php" afterPath="$PROJECT_DIR$/src/Security/UserChecker.php" />
+      <change beforePath="$PROJECT_DIR$/src/Services/AreaService.php" afterPath="$PROJECT_DIR$/src/Services/AreaService.php" />
+      <change beforePath="$PROJECT_DIR$/src/Services/EmailService.php" afterPath="$PROJECT_DIR$/src/Services/EmailService.php" />
+      <change beforePath="$PROJECT_DIR$/src/Services/NotificacionService.php" afterPath="$PROJECT_DIR$/src/Services/NotificacionService.php" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" afterPath="$PROJECT_DIR$/symfony.lock" />
+      <change beforePath="$PROJECT_DIR$/templates/area/_form.html.twig" afterPath="$PROJECT_DIR$/templates/area/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/area/_new.html.twig" afterPath="$PROJECT_DIR$/templates/area/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/area/_table.html.twig" afterPath="$PROJECT_DIR$/templates/area/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/area/index.html.twig" afterPath="$PROJECT_DIR$/templates/area/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/articulo/_form.html.twig" afterPath="$PROJECT_DIR$/templates/articulo/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/articulo/_table.html.twig" afterPath="$PROJECT_DIR$/templates/articulo/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/articulo/edit.html.twig" afterPath="$PROJECT_DIR$/templates/articulo/edit.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/articulo/index.html.twig" afterPath="$PROJECT_DIR$/templates/articulo/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/articulo/new.html.twig" afterPath="$PROJECT_DIR$/templates/articulo/new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/articulo/show.html.twig" afterPath="$PROJECT_DIR$/templates/articulo/show.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/autor/_form.html.twig" afterPath="$PROJECT_DIR$/templates/autor/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/autor/_table.html.twig" afterPath="$PROJECT_DIR$/templates/autor/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/autor/edit.html.twig" afterPath="$PROJECT_DIR$/templates/autor/edit.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/autor/index.html.twig" afterPath="$PROJECT_DIR$/templates/autor/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/autor/new.html.twig" afterPath="$PROJECT_DIR$/templates/autor/new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/autor/show.html.twig" afterPath="$PROJECT_DIR$/templates/autor/show.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error.html.twig" afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error403.html.twig" afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error403.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error404.html.twig" afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error404.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error500.html.twig" afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error500.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error503.html.twig" afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error503.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/_form.html.twig" afterPath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/_new.html.twig" afterPath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/_table.html.twig" afterPath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/index.html.twig" afterPath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tipotesis/_form.html.twig" afterPath="$PROJECT_DIR$/templates/clasificacion_tipotesis/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tipotesis/_new.html.twig" afterPath="$PROJECT_DIR$/templates/clasificacion_tipotesis/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tipotesis/_table.html.twig" afterPath="$PROJECT_DIR$/templates/clasificacion_tipotesis/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tipotesis/index.html.twig" afterPath="$PROJECT_DIR$/templates/clasificacion_tipotesis/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/default/index.html.twig" afterPath="$PROJECT_DIR$/templates/default/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/default/static/nosotros.html.twig" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/templates/default/static/privacidad.html.twig" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/templates/default/static/servicio.html.twig" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/templates/editorial/_form.html.twig" afterPath="$PROJECT_DIR$/templates/editorial/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/editorial/_new.html.twig" afterPath="$PROJECT_DIR$/templates/editorial/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/editorial/_show.html.twig" afterPath="$PROJECT_DIR$/templates/editorial/_show.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/editorial/_table.html.twig" afterPath="$PROJECT_DIR$/templates/editorial/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/editorial/index.html.twig" afterPath="$PROJECT_DIR$/templates/editorial/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/encuentro/_form.html.twig" afterPath="$PROJECT_DIR$/templates/encuentro/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/encuentro/_table.html.twig" afterPath="$PROJECT_DIR$/templates/encuentro/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/encuentro/edit.html.twig" afterPath="$PROJECT_DIR$/templates/encuentro/edit.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/encuentro/index.html.twig" afterPath="$PROJECT_DIR$/templates/encuentro/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/encuentro/new.html.twig" afterPath="$PROJECT_DIR$/templates/encuentro/new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/encuentro/show.html.twig" afterPath="$PROJECT_DIR$/templates/encuentro/show.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/grado_cientifico/_form.html.twig" afterPath="$PROJECT_DIR$/templates/grado_cientifico/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/grado_cientifico/_new.html.twig" afterPath="$PROJECT_DIR$/templates/grado_cientifico/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/grado_cientifico/_table.html.twig" afterPath="$PROJECT_DIR$/templates/grado_cientifico/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/grado_cientifico/index.html.twig" afterPath="$PROJECT_DIR$/templates/grado_cientifico/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/grupo_articulo/_form.html.twig" afterPath="$PROJECT_DIR$/templates/grupo_articulo/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/grupo_articulo/_new.html.twig" afterPath="$PROJECT_DIR$/templates/grupo_articulo/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/grupo_articulo/_table.html.twig" afterPath="$PROJECT_DIR$/templates/grupo_articulo/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/grupo_articulo/index.html.twig" afterPath="$PROJECT_DIR$/templates/grupo_articulo/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/institucion/_form.html.twig" afterPath="$PROJECT_DIR$/templates/institucion/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/institucion/_new.html.twig" afterPath="$PROJECT_DIR$/templates/institucion/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/institucion/_table.html.twig" afterPath="$PROJECT_DIR$/templates/institucion/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/institucion/index.html.twig" afterPath="$PROJECT_DIR$/templates/institucion/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/anonimo.html.twig" afterPath="$PROJECT_DIR$/templates/layout/anonimo.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/autenticado.html.twig" afterPath="$PROJECT_DIR$/templates/layout/autenticado.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/base.html.twig" afterPath="$PROJECT_DIR$/templates/layout/base.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/flashes/flashes.html.twig" afterPath="$PROJECT_DIR$/templates/layout/flashes/flashes.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/flashes/modal.html.twig" afterPath="$PROJECT_DIR$/templates/layout/flashes/modal.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/form/fields.html.twig" afterPath="$PROJECT_DIR$/templates/layout/form/fields.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/recortes/footer.html.twig" afterPath="$PROJECT_DIR$/templates/layout/recortes/footer.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/recortes/header.html.twig" afterPath="$PROJECT_DIR$/templates/layout/recortes/header.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/recortes/topmenu/admin_topmenu.html.twig" afterPath="$PROJECT_DIR$/templates/layout/recortes/topmenu/admin_topmenu.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/recortes/topmenu/message_topmenu.html.twig" afterPath="$PROJECT_DIR$/templates/layout/recortes/topmenu/message_topmenu.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/recortes/topmenu/notification_topmenu.html.twig" afterPath="$PROJECT_DIR$/templates/layout/recortes/topmenu/notification_topmenu.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/recortes/topmenu/user_topmenu.html.twig" afterPath="$PROJECT_DIR$/templates/layout/recortes/topmenu/user_topmenu.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/userprofile.html.twig" afterPath="$PROJECT_DIR$/templates/layout/userprofile.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/libro/_form.html.twig" afterPath="$PROJECT_DIR$/templates/libro/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/libro/_table.html.twig" afterPath="$PROJECT_DIR$/templates/libro/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/libro/edit.html.twig" afterPath="$PROJECT_DIR$/templates/libro/edit.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/libro/index.html.twig" afterPath="$PROJECT_DIR$/templates/libro/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/libro/new.html.twig" afterPath="$PROJECT_DIR$/templates/libro/new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/libro/show.html.twig" afterPath="$PROJECT_DIR$/templates/libro/show.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/mensaje/_form.html.twig" afterPath="$PROJECT_DIR$/templates/mensaje/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/mensaje/_new.html.twig" afterPath="$PROJECT_DIR$/templates/mensaje/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/mensaje/_notify.html.twig" afterPath="$PROJECT_DIR$/templates/mensaje/_notify.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/mensaje/_show.html.twig" afterPath="$PROJECT_DIR$/templates/mensaje/_show.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/mensaje/_table.html.twig" afterPath="$PROJECT_DIR$/templates/mensaje/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/mensaje/index.html.twig" afterPath="$PROJECT_DIR$/templates/mensaje/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/ministerio/_form.html.twig" afterPath="$PROJECT_DIR$/templates/ministerio/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/ministerio/_new.html.twig" afterPath="$PROJECT_DIR$/templates/ministerio/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/ministerio/_table.html.twig" afterPath="$PROJECT_DIR$/templates/ministerio/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/ministerio/index.html.twig" afterPath="$PROJECT_DIR$/templates/ministerio/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/monografia/_form.html.twig" afterPath="$PROJECT_DIR$/templates/monografia/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/monografia/_table.html.twig" afterPath="$PROJECT_DIR$/templates/monografia/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/monografia/edit.html.twig" afterPath="$PROJECT_DIR$/templates/monografia/edit.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/monografia/index.html.twig" afterPath="$PROJECT_DIR$/templates/monografia/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/monografia/new.html.twig" afterPath="$PROJECT_DIR$/templates/monografia/new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/monografia/show.html.twig" afterPath="$PROJECT_DIR$/templates/monografia/show.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/norma/_form.html.twig" afterPath="$PROJECT_DIR$/templates/norma/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/norma/_table.html.twig" afterPath="$PROJECT_DIR$/templates/norma/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/norma/edit.html.twig" afterPath="$PROJECT_DIR$/templates/norma/edit.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/norma/index.html.twig" afterPath="$PROJECT_DIR$/templates/norma/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/norma/new.html.twig" afterPath="$PROJECT_DIR$/templates/norma/new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/norma/show.html.twig" afterPath="$PROJECT_DIR$/templates/norma/show.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/notificacion/_show.html.twig" afterPath="$PROJECT_DIR$/templates/notificacion/_show.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/notificacion/_table.html.twig" afterPath="$PROJECT_DIR$/templates/notificacion/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/notificacion/ajax/_json.html.twig" afterPath="$PROJECT_DIR$/templates/notificacion/ajax/_json.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/notificacion/index.html.twig" afterPath="$PROJECT_DIR$/templates/notificacion/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/organizador/_form.html.twig" afterPath="$PROJECT_DIR$/templates/organizador/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/organizador/_new.html.twig" afterPath="$PROJECT_DIR$/templates/organizador/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/organizador/_table.html.twig" afterPath="$PROJECT_DIR$/templates/organizador/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/organizador/index.html.twig" afterPath="$PROJECT_DIR$/templates/organizador/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/pais/_form.html.twig" afterPath="$PROJECT_DIR$/templates/pais/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/pais/_new.html.twig" afterPath="$PROJECT_DIR$/templates/pais/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/pais/_table.html.twig" afterPath="$PROJECT_DIR$/templates/pais/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/pais/index.html.twig" afterPath="$PROJECT_DIR$/templates/pais/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/patente/_form.html.twig" afterPath="$PROJECT_DIR$/templates/patente/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/patente/_table.html.twig" afterPath="$PROJECT_DIR$/templates/patente/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/patente/edit.html.twig" afterPath="$PROJECT_DIR$/templates/patente/edit.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/patente/index.html.twig" afterPath="$PROJECT_DIR$/templates/patente/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/patente/new.html.twig" afterPath="$PROJECT_DIR$/templates/patente/new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/patente/show.html.twig" afterPath="$PROJECT_DIR$/templates/patente/show.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/premio/_form.html.twig" afterPath="$PROJECT_DIR$/templates/premio/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/premio/_table.html.twig" afterPath="$PROJECT_DIR$/templates/premio/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/premio/edit.html.twig" afterPath="$PROJECT_DIR$/templates/premio/edit.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/premio/index.html.twig" afterPath="$PROJECT_DIR$/templates/premio/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/premio/new.html.twig" afterPath="$PROJECT_DIR$/templates/premio/new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/premio/show.html.twig" afterPath="$PROJECT_DIR$/templates/premio/show.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/publicacion/_delete_form.html.twig" afterPath="$PROJECT_DIR$/templates/publicacion/_delete_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/publicacion/_form.html.twig" afterPath="$PROJECT_DIR$/templates/publicacion/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/publicacion/edit.html.twig" afterPath="$PROJECT_DIR$/templates/publicacion/edit.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/publicacion/index.html.twig" afterPath="$PROJECT_DIR$/templates/publicacion/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/publicacion/new.html.twig" afterPath="$PROJECT_DIR$/templates/publicacion/new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/publicacion/show.html.twig" afterPath="$PROJECT_DIR$/templates/publicacion/show.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/revista/_form.html.twig" afterPath="$PROJECT_DIR$/templates/revista/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/revista/_new.html.twig" afterPath="$PROJECT_DIR$/templates/revista/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/revista/_table.html.twig" afterPath="$PROJECT_DIR$/templates/revista/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/revista/index.html.twig" afterPath="$PROJECT_DIR$/templates/revista/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/software/_form.html.twig" afterPath="$PROJECT_DIR$/templates/software/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/software/_table.html.twig" afterPath="$PROJECT_DIR$/templates/software/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/software/edit.html.twig" afterPath="$PROJECT_DIR$/templates/software/edit.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/software/index.html.twig" afterPath="$PROJECT_DIR$/templates/software/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/software/new.html.twig" afterPath="$PROJECT_DIR$/templates/software/new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/software/show.html.twig" afterPath="$PROJECT_DIR$/templates/software/show.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tesis/_form.html.twig" afterPath="$PROJECT_DIR$/templates/tesis/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tesis/_table.html.twig" afterPath="$PROJECT_DIR$/templates/tesis/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tesis/edit.html.twig" afterPath="$PROJECT_DIR$/templates/tesis/edit.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tesis/index.html.twig" afterPath="$PROJECT_DIR$/templates/tesis/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tesis/new.html.twig" afterPath="$PROJECT_DIR$/templates/tesis/new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tesis/show.html.twig" afterPath="$PROJECT_DIR$/templates/tesis/show.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_articulo/_form.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_articulo/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_articulo/_new.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_articulo/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_articulo/_table.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_articulo/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_articulo/index.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_articulo/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_encuentro/_form.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_encuentro/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_encuentro/_new.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_encuentro/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_encuentro/_table.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_encuentro/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_encuentro/index.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_encuentro/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_norma/_form.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_norma/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_norma/_new.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_norma/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_norma/_table.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_norma/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_norma/index.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_norma/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_premio/_form.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_premio/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_premio/_new.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_premio/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_premio/_table.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_premio/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_premio/index.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_premio/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_software/_form.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_software/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_software/_new.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_software/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_software/_table.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_software/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_software/index.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_software/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_tesis/_form.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_tesis/_form.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_tesis/_new.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_tesis/_new.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_tesis/_table.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_tesis/_table.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/tipo_tesis/index.html.twig" afterPath="$PROJECT_DIR$/templates/tipo_tesis/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/tests/.gitignore" afterPath="$PROJECT_DIR$/tests/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/translations/.gitignore" afterPath="$PROJECT_DIR$/translations/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/translations/messages.es.xlf" afterPath="$PROJECT_DIR$/translations/messages.es.xlf" />
+      <change beforePath="$PROJECT_DIR$/web/js/fos_js_routes.js" afterPath="$PROJECT_DIR$/web/js/fos_js_routes.js" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,42 +1029,10 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/ArticuloType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="32" column="31" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="31" />
-              <folding>
-                <element signature="e#28#52#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/articulo/show.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="115" column="85" selection-start-line="115" selection-start-column="85" selection-end-line="115" selection-end-column="85" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>editorial</find>
-      <find>ministerio</find>
-      <find>get</find>
-      <find>salt</find>
-      <find>activ</find>
-      <find>emai</find>
-      <find>delete</find>
-      <find>tiem</find>
-      <find>logo</find>
-      <find>Usua</find>
       <find>user</find>
       <find>header</find>
       <find>DIECTIVO</find>
@@ -127,10 +1053,18 @@
       <find>norma</find>
       <find>Encuentro</find>
       <find>encuentro</find>
+      <find>idrol</find>
+      <find>t</find>
+      <find>ult</find>
+      <find>getApe</find>
+      <find>toa</find>
+      <find>flaticon-chat-1</find>
+      <find>la la-file-pdf-o</find>
+      <find>softwa</find>
+      <find>keenthemes.com</find>
+      <find>300</find>
     </findStrings>
     <replaceStrings>
-      <replace>pais</replace>
-      <replace>clasificaciontiposoftware</replace>
       <replace>ClasificacionTipoSoftware</replace>
       <replace>clasificacion_tiposoftware</replace>
       <replace>Tesis</replace>
@@ -159,40 +1093,16 @@
       <replace>encuentro</replace>
       <replace>Articulo</replace>
       <replace>articulo</replace>
+      <replace>la la-file-pdf-o</replace>
+      <replace>flaticon-file</replace>
     </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Form/PremioType.php" />
-        <option value="$PROJECT_DIR$/templates/software/show.html.twig" />
-        <option value="$PROJECT_DIR$/templates/premio/show.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/PatenteController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/TesisController.php" />
-        <option value="$PROJECT_DIR$/templates/patente/_table.html.twig" />
-        <option value="$PROJECT_DIR$/templates/patente/new.html.twig" />
-        <option value="$PROJECT_DIR$/templates/patente/edit.html.twig" />
-        <option value="$PROJECT_DIR$/templates/patente/index.html.twig" />
-        <option value="$PROJECT_DIR$/templates/patente/_form.html.twig" />
-        <option value="$PROJECT_DIR$/public/siplan/script/entity/patente.js" />
-        <option value="$PROJECT_DIR$/src/Form/PatenteType.php" />
-        <option value="$PROJECT_DIR$/templates/patente/show.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/NormaController.php" />
-        <option value="$PROJECT_DIR$/templates/norma/_table.html.twig" />
-        <option value="$PROJECT_DIR$/templates/norma/edit.html.twig" />
-        <option value="$PROJECT_DIR$/templates/norma/index.html.twig" />
-        <option value="$PROJECT_DIR$/templates/norma/new.html.twig" />
-        <option value="$PROJECT_DIR$/src/Form/NormaType.php" />
-        <option value="$PROJECT_DIR$/templates/norma/_form.html.twig" />
-        <option value="$PROJECT_DIR$/public/siplan/script/entity/norma.js" />
-        <option value="$PROJECT_DIR$/src/Entity/TipoNorma.php" />
-        <option value="$PROJECT_DIR$/templates/norma/show.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/MonografiaController.php" />
-        <option value="$PROJECT_DIR$/templates/monografia/_table.html.twig" />
-        <option value="$PROJECT_DIR$/templates/monografia/edit.html.twig" />
-        <option value="$PROJECT_DIR$/templates/monografia/index.html.twig" />
-        <option value="$PROJECT_DIR$/templates/monografia/new.html.twig" />
-        <option value="$PROJECT_DIR$/public/siplan/script/entity/monografia.js" />
         <option value="$PROJECT_DIR$/src/Form/MonografiaType.php" />
         <option value="$PROJECT_DIR$/templates/monografia/_form.html.twig" />
         <option value="$PROJECT_DIR$/templates/monografia/show.html.twig" />
@@ -215,10 +1125,45 @@
         <option value="$PROJECT_DIR$/public/siplan/script/entity/articulo.js" />
         <option value="$PROJECT_DIR$/src/EventSubscriber/PublicacionHijoSubscriber.php" />
         <option value="$PROJECT_DIR$/templates/articulo/show.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/NotificacionController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/MensajeController.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/21a5ae0d-11f3-4170-93e5-e9688da9f413/console.sql" />
+        <option value="$PROJECT_DIR$/src/Command/NotificacionCommand.php" />
+        <option value="$PROJECT_DIR$/src/Form/AutorType.php" />
+        <option value="$PROJECT_DIR$/templates/autor/_form.html.twig" />
+        <option value="$PROJECT_DIR$/src/DataFixtures/AutorFixtures.php" />
+        <option value="$PROJECT_DIR$/templates/autor/_table.html.twig" />
+        <option value="$PROJECT_DIR$/public/siplan/script/entity/autor.js" />
+        <option value="$PROJECT_DIR$/templates/autor/seguidores.html.twig" />
+        <option value="$PROJECT_DIR$/templates/layout/userprofile.html.twig" />
+        <option value="$PROJECT_DIR$/public/siplan/css/page/userprofile.css" />
+        <option value="$PROJECT_DIR$/config/services.yaml" />
+        <option value="$PROJECT_DIR$/src/EventSubscriber/PublicacionSubscriber.php" />
+        <option value="$PROJECT_DIR$/templates/layout/autenticado.html.twig" />
+        <option value="$PROJECT_DIR$/templates/layout/base.html.twig" />
+        <option value="$PROJECT_DIR$/templates/layout/recortes/topmenu/admin_topmenu.html.twig" />
+        <option value="$PROJECT_DIR$/public/template/demo/demo9/base/scripts.bundle.js" />
+        <option value="$PROJECT_DIR$/src/Entity/Autor.php" />
+        <option value="$PROJECT_DIR$/public/siplan/css/base/siplan.css" />
+        <option value="$PROJECT_DIR$/src/Controller/AutorController.php" />
+        <option value="$PROJECT_DIR$/templates/autor/show.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/PublicacionController.php" />
+        <option value="$PROJECT_DIR$/templates/default/searchresult.html.twig" />
+        <option value="$PROJECT_DIR$/templates/layout/recortes/topmenu/search_topmenu.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/templates/layout/recortes/footer.html.twig" />
+        <option value="$PROJECT_DIR$/public/siplan/css/page/index.css" />
+        <option value="$PROJECT_DIR$/templates/default/index.html.twig" />
       </list>
     </option>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
       <path value="$PROJECT_DIR$/vendor/symfony/serializer" />
@@ -333,8 +1278,19 @@
     <option name="width" value="758" />
     <option name="height" value="679" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -348,17 +1304,6 @@
             <path>
               <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
               <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="packages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -373,14 +1318,6 @@
               <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="siplan" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="siplan" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
@@ -395,23 +1332,7 @@
               <item name="pedro" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="siplan" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="siplan" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="siplan" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
@@ -433,31 +1354,33 @@
             <path>
               <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
               <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="EventSubscriber" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Form" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
               <item name="pedro" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="articulo" type="462c0819:PsiDirectoryNode" />
+              <item name="default" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pedro" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pedro" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
+              <item name="recortes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -472,11 +1395,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/siplan/img" />
+      <recent name="$PROJECT_DIR$/templates/default" />
+      <recent name="$PROJECT_DIR$/templates/layout/recortes/topmenu" />
+      <recent name="$PROJECT_DIR$/templates/autor" />
       <recent name="$PROJECT_DIR$/public/siplan/script/entity" />
-      <recent name="$PROJECT_DIR$/templates" />
-      <recent name="$PROJECT_DIR$/src/Controller" />
-      <recent name="$PROJECT_DIR$/public/siplan/css/page" />
-      <recent name="$PROJECT_DIR$/templates/layout" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -490,6 +1413,9 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -515,12 +1441,17 @@
       <workItem from="1553527575937" duration="22442000" />
       <workItem from="1553561542631" duration="10857000" />
       <workItem from="1553610495000" duration="25824000" />
-      <workItem from="1553734209172" duration="9674000" />
+      <workItem from="1553734209172" duration="12551000" />
+      <workItem from="1553781380187" duration="6417000" />
+      <workItem from="1553789386760" duration="8422000" />
+      <workItem from="1553800552386" duration="10347000" />
+      <workItem from="1553820945810" duration="9541000" />
+      <workItem from="1553876455408" duration="44000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159015000" />
+    <option name="totallyTimeSpent" value="196663000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -532,29 +1463,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="725" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30757576" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32711864" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32711864" />
-      <window_info anchor="bottom" id="Database Console" order="7" weight="0.32881355" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.39491525" />
-      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.23560606" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27609682" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32711864" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23560606" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39219016" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767403" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32711864" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,9 +1502,14 @@
           <line>4</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Form/Subscriber/AddDestinatarioFieldSubscriber.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/siplan/script/entity/autor.js</url>
-          <line>48</line>
+          <line>106</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -584,353 +1519,243 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Entity/Patente.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/patente/_form.html.twig">
+    <entry file="das://21a5ae0d-11f3-4170-93e5-e9688da9f413/database/pedro/schema/public/table/notificacion" />
+    <entry file="file://$PROJECT_DIR$/src/Command/NotificacionCommand.php" />
+    <entry file="file://$PROJECT_DIR$/templates/autor/_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="51" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
+        <state relative-caret-position="360">
+          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/siplan/script/entity/patente.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="101" selection-start-line="101" selection-end-line="101" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/patente/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/NormaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="135" column="52" selection-start-line="135" selection-start-column="52" selection-end-line="135" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/norma/_table.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="34" column="123" selection-start-line="34" selection-start-column="123" selection-end-line="34" selection-end-column="123" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/norma/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/norma/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/norma/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Norma.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/norma/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-450">
-          <caret line="51" column="54" selection-start-line="51" selection-start-column="54" selection-end-line="51" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/siplan/script/entity/norma.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="101" column="33" selection-start-line="101" selection-start-column="33" selection-end-line="101" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/TipoNorma.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="52" column="31" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/norma/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="105" column="74" selection-start-line="105" selection-start-column="74" selection-end-line="105" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/MonografiaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="135" column="55" selection-start-line="135" selection-start-column="55" selection-end-line="135" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/monografia/_table.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="34" column="136" selection-start-line="34" selection-start-column="136" selection-end-line="34" selection-end-column="136" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/monografia/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/monografia/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/monografia/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/PatenteType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" selection-start-line="9" selection-end-line="10" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/PremioType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="24" column="134" lean-forward="true" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="134" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Monografia.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-135" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/monografia/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="58" column="51" selection-start-line="58" selection-start-column="51" selection-end-line="58" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/siplan/script/entity/monografia.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="664">
-          <caret line="102" column="27" selection-start-line="102" selection-start-column="27" selection-end-line="102" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/MonografiaType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="28" column="25" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/monografia/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="145" column="75" selection-start-line="145" selection-start-column="75" selection-end-line="145" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuentro/_table.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="34" column="134" selection-start-line="34" selection-start-column="134" selection-end-line="34" selection-end-column="134" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuentro/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuentro/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="217" selection-start-line="20" selection-start-column="217" selection-end-line="20" selection-end-column="217" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Encuentro.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-180" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Software.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/NormaType.php">
+    <entry file="file://$PROJECT_DIR$/src/Form/AutorType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="11" selection-end-column="58" />
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/siplan/script/entity/encuentro.js">
+    <entry file="file://$PROJECT_DIR$/src/DataFixtures/AutorFixtures.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="102" column="39" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="39" />
+        <state relative-caret-position="240">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuentro/new.html.twig">
+    <entry file="das://21a5ae0d-11f3-4170-93e5-e9688da9f413/database/pedro/schema/public/table/autor" />
+    <entry file="file://$PROJECT_DIR$/public/siplan/script/entity/area.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="114" column="42" lean-forward="false" selection-start-line="114" selection-start-column="35" selection-end-line="114" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/autor/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="16" column="73" lean-forward="true" selection-start-line="16" selection-start-column="73" selection-end-line="16" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://21a5ae0d-11f3-4170-93e5-e9688da9f413/database/pedro/schema/public/table/autor_rol" />
+    <entry file="das://21a5ae0d-11f3-4170-93e5-e9688da9f413/database/pedro/schema/public/table/autor_autor" />
+    <entry file="file://$PROJECT_DIR$/templates/autor/_table.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="69" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/autor/seguidores.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="584">
+          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/siplan/script/entity/autor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="265" column="18" lean-forward="false" selection-start-line="265" selection-start-column="8" selection-end-line="265" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PremioController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <caret line="65" column="59" lean-forward="false" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="59" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/EncuentroController.php">
+    <entry file="file://$PROJECT_DIR$/public/siplan/css/page/userprofile.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="154" selection-start-line="154" selection-end-line="154" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuentro/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuentro/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="127" column="74" selection-start-line="127" selection-start-column="74" selection-end-line="127" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/EncuentroType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="29" column="32" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ArticuloController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="69" column="42" selection-start-line="69" selection-start-column="42" selection-end-line="69" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/articulo/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/articulo/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/articulo/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/TipoTesisType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="15" column="124" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="124" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Articulo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/LibroType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="42" column="48" selection-start-line="34" selection-start-column="8" selection-end-line="42" selection-end-column="48" />
-          <folding>
-            <element signature="e#28#49#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/articulo/_table.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="34" column="131" selection-start-line="34" selection-start-column="131" selection-end-line="34" selection-end-column="131" />
+        <state relative-caret-position="479">
+          <caret line="36" column="44" lean-forward="false" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/EventSubscriber/PublicacionHijoSubscriber.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="46" column="40" lean-forward="false" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/services.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="73" column="4" lean-forward="false" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Services/NotificacionService.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-          <folding>
-            <element signature="e#39#63#0#PHP" expanded="true" />
-          </folding>
+          <caret line="33" column="37" lean-forward="false" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/siplan/script/entity/articulo.js">
+    <entry file="file://$PROJECT_DIR$/src/EventSubscriber/PublicacionSubscriber.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="101" column="34" selection-start-line="101" selection-start-column="34" selection-end-line="101" selection-end-column="34" />
+        <state relative-caret-position="299">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/articulo/_form.html.twig">
+    <entry file="file://$PROJECT_DIR$/templates/layout/recortes/topmenu/admin_topmenu.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="75" column="52" selection-start-line="75" selection-start-column="52" selection-end-line="75" selection-end-column="52" />
+        <state relative-caret-position="81">
+          <caret line="168" column="68" lean-forward="false" selection-start-line="168" selection-start-column="68" selection-end-line="168" selection-end-column="68" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/ArticuloType.php">
+    <entry file="file://$PROJECT_DIR$/templates/layout/recortes/header.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="32" column="31" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="31" />
-          <folding>
-            <element signature="e#28#52#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="-135">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/articulo/show.html.twig">
+    <entry file="file://$PROJECT_DIR$/templates/layout/autenticado.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="115" column="85" selection-start-line="115" selection-start-column="85" selection-end-line="115" selection-end-column="85" />
+        <state relative-caret-position="930">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/layout/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="66" column="4" lean-forward="false" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Publicacion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="94" column="13" lean-forward="false" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/template/demo/demo9/base/scripts.bundle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14775">
+          <caret line="0" column="116162" lean-forward="false" selection-start-line="0" selection-start-column="116162" selection-end-line="0" selection-end-column="116162" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/siplan/css/base/siplan.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="19" column="6" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Autor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1411">
+          <caret line="526" column="5" lean-forward="false" selection-start-line="526" selection-start-column="5" selection-end-line="526" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/AutorController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="75" column="23" lean-forward="false" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/autor/show.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="979" column="9" lean-forward="false" selection-start-line="979" selection-start-column="9" selection-end-line="979" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PublicacionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/searchresult.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="36" lean-forward="false" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/layout/userprofile.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" column="32" lean-forward="false" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://21a5ae0d-11f3-4170-93e5-e9688da9f413/database/pedro/schema/public/table/publicacion" />
+    <entry file="file://$PROJECT_DIR$/templates/layout/recortes/topmenu/search_topmenu.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/siplan/css/page/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="59" column="19" lean-forward="false" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/layout/recortes/footer.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="50" lean-forward="false" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
         </state>
       </provider>
     </entry>

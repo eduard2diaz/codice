@@ -27,12 +27,24 @@
                                                 <li class="m-nav__section m-nav__section--first">
                                                     <span class="m-nav__section-text">Acciones rápidas</span>
                                                 </li>
-                                                <li class="m-nav__item">
-                                                    <a href="{{ path('autor_edit',{'id':autor.id}) }}" class="m-nav__link">
-                                                        <i class="m-nav__link-icon flaticon-edit-1"></i>
-                                                        <span class="m-nav__link-text">Editar</span>
-                                                    </a>
-                                                </li>
+                                                {% if allow_edit==true %}
+                                                    <li class="m-nav__item">
+                                                        <a href="{{ path('autor_edit',{'id':autor.id}) }}"
+                                                           class="m-nav__link">
+                                                            <i class="m-nav__link-icon flaticon-edit-1"></i>
+                                                            <span class="m-nav__link-text">Editar</span>
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if user_id!=app.user.id %}
+                                                    <li class="m-nav__item">
+                                                        <a data-href="{{ path('autor_subscripcion',{'id':autor.id}) }}"
+                                                           class="m-nav__link follow-link">
+                                                            <i class="m-nav__link-icon {{ follow_button ? 'flaticon flaticon-user-add' : 'flaticon flaticon-close' }}"></i>
+                                                            <span class="m-nav__link-text">{{ follow_button ? 'Seguir' : 'Dejar de seguir' }}</span>
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
                                             </ul>
                                         </div>
                                     </div>
@@ -63,25 +75,13 @@
                                 <div class="m-widget1__item">
                                     <div class="">
                                         <div class="col">
-                                            <h3 class="m-widget1__title">Apellidos</h3>
-                                            <span class="m-widget1__desc">{{ autor.apellidos }}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="m-widget1__item">
-                                    <div class="">
-                                        <div class="col">
                                             <h3 class="m-widget1__title">País</h3>
                                             <span class="m-widget1__desc">{{ autor.pais }}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row m--margin-top-20">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="m-widget1__item">
                                     <div class="">
                                         <div class="col">
@@ -102,7 +102,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><div class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
                                 <div class="m-widget1__item">
                                     <div class="">
                                         <div class="col">
@@ -123,7 +124,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><div class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
                                 <div class="m-widget1__item">
                                     <div class="">
                                         <div class="col">
@@ -189,4 +191,12 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('script/entity/autor.js','siplan') }}"></script>
+    <script>
+        autor.show();
+    </script>
 {% endblock %}

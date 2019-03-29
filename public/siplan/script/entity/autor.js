@@ -46,6 +46,35 @@ var autor = function () {
         });
     }
 
+    var subscribir = function () {
+        $('a.follow-link').click(function (evento) {
+            evento.preventDefault();
+            var enlace = $(this);
+            var link = $(this).attr('data-href');
+            $.ajax({
+                type: 'get',
+                url: link,
+                beforeSend: function (data) {
+                    mApp.block("body",
+                        {overlayColor: "#000000", type: "loader", state: "success", message: "Cargando..."});
+                },
+                success: function (data) {
+                    if(data['mensaje'])
+                        toastr.success(data['mensaje']);
+                    enlace.children('i').removeClass();
+                    enlace.children('i').addClass('m-nav__link-icon '+data['class']);
+                    enlace.children('span').html(data['label']);
+                },
+                error: function () {
+                    base.Error();
+                },
+                complete: function () {
+                    mApp.unblock("body")
+                }
+            });
+        });
+    }
+
     var eliminar = function () {
         $('table#autor_table').on('click', 'a.eliminar_autor', function (evento) {
             evento.preventDefault();
@@ -225,6 +254,18 @@ var autor = function () {
                     configurarDataTable();
                     refrescar();
                     eliminar();
+                }
+            );
+        },
+        show: function () {
+            $().ready(function () {
+                subscribir();
+                }
+            );
+        },
+        seguidores: function () {
+            $().ready(function () {
+                configurarDataTable();
                 }
             );
         },

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Grupo;
 use App\Entity\Mensaje;
 use App\Form\MensajeType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,7 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 /**
  * @Route("/mensaje")
  */
-class MensajeController extends Controller
+class MensajeController extends AbstractController
 {
     /**
      * @Route("/", name="mensaje_index", methods="GET")
