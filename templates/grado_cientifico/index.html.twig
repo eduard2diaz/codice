@@ -36,7 +36,7 @@
 {% endblock %}
 {% block javascripts %}
     {{parent()}}
-    <script src="{{ asset('script/entity/grado_cientifico.js','siplan') }}"></script>
+    <script src="{{ asset('script/entity/grado_cientifico.js','codice') }}"></script>
     <script>
         var total ={{grado_cientificos |length }}
             grado_cientifico.init();

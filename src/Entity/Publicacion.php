@@ -62,7 +62,7 @@ class Publicacion
      *
      * @ORM\ManyToOne(targetEntity="Pais")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="pais", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="pais", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $pais;
@@ -72,7 +72,7 @@ class Publicacion
      *
      * @ORM\ManyToOne(targetEntity="Autor")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="autor", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="autor", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $autor;
@@ -265,7 +265,7 @@ class Publicacion
         $fs = new Filesystem();
         $camino = $fs->makePathRelative($ruta, __DIR__);
         $directorioDestino = __DIR__ . DIRECTORY_SEPARATOR . $camino;
-        $nombreArchivoFoto = uniqid('siplan-') . '-' . $this->file->getClientOriginalName();
+        $nombreArchivoFoto = uniqid('codice-') . '-' . $this->file->getClientOriginalName();
         $this->file->move($directorioDestino.DIRECTORY_SEPARATOR, $nombreArchivoFoto);
         $this->setRutaArchivo($nombreArchivoFoto);
     }

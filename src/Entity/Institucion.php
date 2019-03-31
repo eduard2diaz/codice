@@ -38,7 +38,7 @@ class Institucion
      *
      * @ORM\ManyToOne(targetEntity="Pais")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="pais", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="pais", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $pais;
@@ -48,7 +48,7 @@ class Institucion
      *
      * @ORM\ManyToOne(targetEntity="Ministerio")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ministerio", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="ministerio", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $ministerio;

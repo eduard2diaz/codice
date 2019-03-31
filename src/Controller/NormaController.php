@@ -31,6 +31,7 @@ class NormaController extends AbstractController
         if ($request->isXmlHttpRequest())
             return $this->render('norma/_table.html.twig', [
                 'normas' => $normas,
+                'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
             ]);
 
         return $this->render('norma/index.html.twig', [
@@ -39,6 +40,7 @@ class NormaController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
         ]);
     }
 
@@ -51,6 +53,7 @@ class NormaController extends AbstractController
         $norma->setId(new Publicacion());
         $norma->getId()->setAutor($autor);
 
+        $this->denyAccessUnlessGranted('NEW',$norma->getId());
         $form = $this->createForm(NormaType::class, $norma);
         $form->handleRequest($request);
 
@@ -103,6 +106,7 @@ class NormaController extends AbstractController
      */
     public function edit(Request $request, Norma $norma, NotificacionService $notificacionService): Response
     {
+        $this->denyAccessUnlessGranted('EDIT',$norma->getId());
         $estado = $norma->getId()->getEstado();
         $form = $this->createForm(NormaType::class, $norma);
         $form->handleRequest($request);
@@ -138,6 +142,7 @@ class NormaController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $this->denyAccessUnlessGranted('DELETE',$norma->getId());
         $entityManager = $this->getDoctrine()->getManager();
 
         if ($this->getUser()->getId() == $norma->getId()->getAutor()->getId()) {

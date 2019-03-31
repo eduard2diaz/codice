@@ -28,8 +28,7 @@ class NotificacionController extends AbstractController
 
                 if (null == $this->getUser()->getUltimologout()) {
                     $notificacions = $this->getDoctrine()->getRepository(Notificacion::class)->findBy(['destinatario' => $this->getUser()->getId()], ['fecha' => 'DESC'], 5);
-                }
-                else {
+                } else {
                     $consulta = $this->getDoctrine()->getManager()->createQuery('SELECT n FROM App:Notificacion n JOIN n.destinatario u WHERE u.id= :usuario AND n.fecha>= :fecha');
                     $consulta->setParameters(['usuario' => $this->getUser()->getId(), 'fecha' => $this->getUser()->getUltimologout()]);
                     $consulta->setMaxResults(5);
@@ -68,6 +67,7 @@ class NotificacionController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $this->denyAccessUnlessGranted('DELETE',$notificacion);
         return $this->render('notificacion/_show.html.twig', [
             'notificacion' => $notificacion,
         ]);
@@ -78,14 +78,16 @@ class NotificacionController extends AbstractController
      */
     public function delete(Request $request, Notificacion $notificacion): Response
     {
-        if ($request->isXmlHttpRequest()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($notificacion);
-            $em->flush();
-            return new JsonResponse(array('mensaje' => 'La notificación fue eliminada satisfactoriamente'));
-        }
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
 
-        throw $this->createAccessDeniedException();
+        $this->denyAccessUnlessGranted('DELETE',$notificacion);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($notificacion);
+        $em->flush();
+        return new JsonResponse(array('mensaje' => 'La notificación fue eliminada satisfactoriamente'));
+
+
     }
 
 }

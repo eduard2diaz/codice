@@ -34,7 +34,12 @@ class TipoTesis
     private $nombre;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\ClasificacionTipoTesis", inversedBy="tipoTeses")
+     * @var \ClasificacionTipoTesis
+     *
+     * @ORM\ManyToOne(targetEntity="ClasificacionTipoTesis", inversedBy="tipoTeses")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="clasificacion", referencedColumnName="id",onDelete="Cascade")
+     * })
      */
     private $clasificacion;
 

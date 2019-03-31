@@ -36,7 +36,7 @@
 {% endblock %}
 {% block javascripts %}
     {{parent()}}
-    <script src="{{ asset('script/entity/institucion.js','siplan') }}"></script>
+    <script src="{{ asset('script/entity/institucion.js','codice') }}"></script>
     <script>
         var total ={{institucions |length }}
             institucion.init();

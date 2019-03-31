@@ -1,0 +1,54 @@
+div#login-form img{
+    width: 20%;
+}
+div#login-form h4{
+    padding-top: 3%;
+}
+
+div.m-wrapper {
+    padding: 0px 0px !important;
+}
+
+div.login-form{
+    box-shadow: 1px 2px 7px  darkslategray;
+    background-image: url('../../img/40482376-0-hack1.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100%;
+    padding: 4% 4%;
+}
+
+img.promo1 {
+    margin: 5%;
+    width: 75% !important;
+    border-radius: 2%;
+}
+
+div.content {
+    padding-left: 4%;
+    padding-right: 10%;
+    text-align: justify;
+}
+.m-widget14__title{
+    color: black;
+}
+p.description{
+    color: black !important;
+    line-height: 1.5rem !important;
+    font-weight: 400 !important;
+    font-family: "Roboto",sans-serif;
+}
+span.m-widget14__desc{
+    font-style: italic;
+}
+h1{
+    display: inline-block;
+    padding: 7px 25px 7px 0;
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 1.55rem;
+    font-weight: 500;
+    vertical-align: middle;
+    margin: 0 15px 0 0;
+    color: #3f4047;
+}

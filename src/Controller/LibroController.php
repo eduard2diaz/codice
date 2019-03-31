@@ -31,6 +31,7 @@ class LibroController extends AbstractController
         if ($request->isXmlHttpRequest())
             return $this->render('libro/_table.html.twig', [
                 'libros' => $libros,
+                'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
             ]);
 
         return $this->render('libro/index.html.twig', [
@@ -39,6 +40,7 @@ class LibroController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
         ]);
     }
 
@@ -51,6 +53,7 @@ class LibroController extends AbstractController
         $libro->setId(new Publicacion());
         $libro->getId()->setAutor($autor);
 
+        $this->denyAccessUnlessGranted('NEW',$libro->getId());
         $form = $this->createForm(LibroType::class, $libro);
         $form->handleRequest($request);
 
@@ -103,6 +106,7 @@ class LibroController extends AbstractController
      */
     public function edit(Request $request, Libro $libro, NotificacionService $notificacionService): Response
     {
+        $this->denyAccessUnlessGranted('NEW',$libro->getId());
         $estado = $libro->getId()->getEstado();
         $form = $this->createForm(LibroType::class, $libro);
         $form->handleRequest($request);
@@ -138,6 +142,7 @@ class LibroController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $this->denyAccessUnlessGranted('NEW',$libro->getId());
         $entityManager = $this->getDoctrine()->getManager();
 
         if ($this->getUser()->getId() == $libro->getId()->getAutor()->getId()) {

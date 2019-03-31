@@ -14,11 +14,11 @@ framework:
     assets:
         packages:
             template:
-                base_path: /template
-            siplan:
-                base_path: /siplan
+                base_path: /assets/template
+            codice:
+                base_path: /assets/codice
             pages:
-                base_path: /siplan/css/page
+                base_path: /assets/codice/css/page
 
     #esi: true
     #fragments: true

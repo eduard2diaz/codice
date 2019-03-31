@@ -34,8 +34,10 @@ class TipoSoftware
     private $nombre;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\ClasificacionTipoSoftware", inversedBy="tipoSoftwares")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="ClasificacionTipoSoftware", inversedBy="tipoSoftwares")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="clasificacion", referencedColumnName="id",onDelete="Cascade")
+     * })
      */
     private $clasificacion;
 

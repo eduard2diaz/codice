@@ -32,10 +32,10 @@ security:
     access_control:
         - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/pais, roles: ROLE_ADMIN }
-        #- { path: ^/ministerio/\d+/findbypais, roles: ROLE_ADMIN }
-        #- { path: ^/ministerio, roles: ROLE_ADMIN }
-       # - { path: ^/institucion/\d+/findbyministerio, roles: ROLE_ADMIN }
-        #- { path: ^/institucion, roles: ROLE_ADMIN }
+        - { path: ^/ministerio/\d+/findbypais, roles: ROLE_ADMIN }
+        - { path: ^/ministerio, roles: ROLE_ADMIN }
+        - { path: ^/institucion/\d+/findbyministerio, roles: ROLE_ADMIN }
+        - { path: ^/institucion, roles: ROLE_ADMIN }
         - { path: ^/area, roles: ROLE_ADMIN }
         - { path: ^/grupocientifico, roles: ROLE_ADMIN }
         - { path: ^/editorial, roles: ROLE_ADMIN }
@@ -52,6 +52,7 @@ security:
         - { path: ^/autor/\d+/index, roles: [ROLE_DIRECTIVO, ROLE_ADMIN] }
         - { path: ^/autor/new, roles: [ROLE_DIRECTIVO, ROLE_ADMIN] }
         - { path: ^/autor/\d+/delete, roles: [ROLE_DIRECTIVO, ROLE_ADMIN] }
-        - { path: ^/autor/\d+/show, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/autor/\d+/edit, roles: IS_AUTHENTICATED_FULLY }
-#        - { path: ^/*, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/autor, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/notificacion, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/mensaje, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/*, roles: IS_AUTHENTICATED_FULLY }

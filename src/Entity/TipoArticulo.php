@@ -38,7 +38,7 @@ class TipoArticulo
      *
      * @ORM\ManyToOne(targetEntity="GrupoArticulo")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="grupo", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="grupo", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $grupo;

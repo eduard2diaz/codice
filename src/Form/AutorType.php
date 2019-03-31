@@ -50,7 +50,7 @@ class AutorType extends AbstractType
             ->add('phone',TextType::class,['label'=>'Teléfono','required'=>false,'attr'=>['class'=>'form-control m-input']])
             ->add('gradoCientifico',null,['label'=>'Grado científico','required'=>true,'attr'=>['class'=>'form-control m-input']])
             ->add('area',null,['choices' => $area, 'disabled' => $disabled, 'label'=>'Área','required'=>true,'attr'=>['class'=>'form-control m-input']])
-            ->add('pais',null,['label'=>'País de residencia',])
+            ->add('pais',null,['label'=>'País de residencia','disabled' => $disabled,])
             ->add('activo', null, array('disabled' => $disabled, 'required' => false, 'attr' => array('data-on-text' => 'Si', 'data-off-text' => 'No')))
             ->add('file', FileType::class, array('required' => false,
                 'attr' => array('style' => 'display:none',

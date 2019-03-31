@@ -21,11 +21,11 @@
 
         <a href="{{ path('publicacion_show',{'id':publicacion['id']}) }}" class="m-list-search__result-item">
 		<span class="m-list-search__result-item-pic">
-			<img class="m--img-rounded" src="{{ asset('siplan/img/x-office-document.png') }}" title="">
+			<img class="m--img-rounded" src="{{ asset('codice/img/x-office-document.png') }}" title="">
 		</span>
             <span class="m-list-search__result-item-text" style="font-weight: bolder">{{ publicacion['titulo'] }}</span>
         </a>
     {% endfor %}
-    <a href=""class="m--margin-top-20 btn btn-primary btn-block"><i class="flaticon-search-magnifier-interface-symbol"></i>Ver más</a>
+    <a href="{{ path('publicacion_search',{'query':query}) }}" class="m--margin-top-20 btn btn-primary btn-block"><i class="flaticon-search-magnifier-interface-symbol"></i>Ver más</a>
 </div>
 {% endif %}

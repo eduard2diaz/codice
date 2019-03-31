@@ -150,6 +150,7 @@ class MensajeController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $this->denyAccessUnlessGranted('VIEW',$mensaje);
         return $this->render('mensaje/_show.html.twig', ['mensaje' => $mensaje]);
     }
 
@@ -162,6 +163,7 @@ class MensajeController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $this->denyAccessUnlessGranted('DELETE',$mensaje);
         $em = $this->getDoctrine()->getManager();
         $em->remove($mensaje);
         $em->flush();

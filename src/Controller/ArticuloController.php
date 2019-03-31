@@ -31,6 +31,7 @@ class ArticuloController extends AbstractController
         if ($request->isXmlHttpRequest())
             return $this->render('articulo/_table.html.twig', [
                 'articulos' => $articulos,
+                'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
             ]);
 
         return $this->render('articulo/index.html.twig', [
@@ -39,6 +40,7 @@ class ArticuloController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
         ]);
     }
 
@@ -51,6 +53,7 @@ class ArticuloController extends AbstractController
         $articulo->setId(new Publicacion());
         $articulo->getId()->setAutor($autor);
 
+        $this->denyAccessUnlessGranted('NEW',$articulo->getId());
         $form = $this->createForm(ArticuloType::class, $articulo);
         $form->handleRequest($request);
 
@@ -103,6 +106,7 @@ class ArticuloController extends AbstractController
      */
     public function edit(Request $request, Articulo $articulo, NotificacionService $notificacionService): Response
     {
+        $this->denyAccessUnlessGranted('EDIT',$articulo->getId());
         $estado = $articulo->getId()->getEstado();
         $form = $this->createForm(ArticuloType::class, $articulo);
         $form->handleRequest($request);
@@ -138,6 +142,7 @@ class ArticuloController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $this->denyAccessUnlessGranted('DELETE',$articulo->getId());
         $entityManager = $this->getDoctrine()->getManager();
 
         if ($this->getUser()->getId() == $articulo->getId()->getAutor()->getId()) {

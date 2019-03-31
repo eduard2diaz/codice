@@ -44,8 +44,12 @@ class Revista
     private $nivel;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Pais", inversedBy="revistas")
-     * @ORM\JoinColumn(nullable=false)
+     * @var \Pais
+     *
+     * @ORM\ManyToOne(targetEntity="Pais")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pais", referencedColumnName="id",onDelete="Cascade")
+     * })
      */
     private $pais;
 

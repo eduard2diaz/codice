@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/autor")
@@ -73,7 +74,7 @@ class AutorController extends AbstractController
     {
         return $this->render('autor/show.html.twig', [
             'autor' => $autor,
-            'allow_edit'=>($this->isGranted('ROLE_ADMIN') || $autor->getId()==$this->getUser()->getId() ||
+            'allow_edit' => ($this->isGranted('ROLE_ADMIN') || $autor->getId() == $this->getUser()->getId() ||
                 $autor->esJefe($this->getUser())
             ),
             'follow_button' => $autor->getSeguidores()->contains($this->getUser()) == false,
@@ -89,7 +90,7 @@ class AutorController extends AbstractController
      */
     public function edit(Request $request, Autor $autor, UserPasswordEncoderInterface $encoder): Response
     {
-
+        $this->denyAccessUnlessGranted('EDIT', $autor);
         $form = $this->createForm(AutorType::class, $autor);
         $passwordOriginal = $form->getData()->getPassword();
         $form->handleRequest($request);
@@ -133,6 +134,7 @@ class AutorController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $this->denyAccessUnlessGranted('DELETE', $autor);
         $em = $this->getDoctrine()->getManager();
         $em->remove($autor);
         $em->flush();
@@ -168,10 +170,10 @@ class AutorController extends AbstractController
      */
     public function subscripcion(Request $request, Autor $autor): Response
     {
-        if (!$request->isXmlHttpRequest() || $autor->getId() == $this->getUser()->getId())
+        if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
-
+        $this->denyAccessUnlessGranted('SEGUIR', $autor);
         if (!$autor->getSeguidores()->contains($this->getUser())) {
             $autor->addSeguidores($this->getUser());
             $parameters = ['class' => 'flaticon flaticon-close', 'label' => 'Dejar de seguir', 'mensaje' => 'Tu subscripción ha sido registrada'];
@@ -195,7 +197,7 @@ class AutorController extends AbstractController
      */
     public function seguidores(Autor $autor): Response
     {
-        $seguidores=$autor->getSeguidores()->toArray();
+        $seguidores = $autor->getSeguidores()->toArray();
         return $this->render('autor/seguidores.html.twig', [
             'autors' => $seguidores,
 
@@ -204,5 +206,33 @@ class AutorController extends AbstractController
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
         ]);
+    }
+
+    /**
+     * @Route("/sugerir", name="autor_sugerir", options={"expose"=true})
+     * Retorna el listado de sugerencias de autores
+     */
+    public function sugerirAutores()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $seguidos = $this->getUser()->getSeguidor()->toArray();
+        $consulta = $em->createQuery('SELECT a.id, a.nombre, a.rutaFoto,i.nombre as institucion FROM App:Autor a join a.institucion i WHERE a.id != :id AND a.id NOT IN (:seguidos) AND a.activo=true');
+        $consulta->setParameters(['id' => $this->getUser()->getId(), 'seguidos' => $seguidos]);
+        $datos = $consulta->getResult();
+
+        $cantidad = count($datos);
+        $grupos = $cantidad > 4 ? 4 : $cantidad;
+        $aux = array();
+        if ($grupos > 1) {
+            $keys = array_rand($datos, $grupos);
+            foreach ($keys as $value) {
+                $aux[] = $datos[$value];
+            }
+        } else
+            if ($grupos == 1) {
+                $aux = $datos;
+            }
+
+        return $this->render('autor/sugerencia.html.twig', ['datos' => $aux]);
     }
 }

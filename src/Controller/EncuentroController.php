@@ -31,6 +31,7 @@ class EncuentroController extends AbstractController
         if ($request->isXmlHttpRequest())
             return $this->render('encuentro/_table.html.twig', [
                 'encuentros' => $encuentros,
+                'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
             ]);
 
         return $this->render('encuentro/index.html.twig', [
@@ -39,6 +40,7 @@ class EncuentroController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
         ]);
     }
 
@@ -51,6 +53,7 @@ class EncuentroController extends AbstractController
         $encuentro->setId(new Publicacion());
         $encuentro->getId()->setAutor($autor);
 
+        $this->denyAccessUnlessGranted('NEW',$encuentro->getId());
         $form = $this->createForm(EncuentroType::class, $encuentro);
         $form->handleRequest($request);
 
@@ -103,6 +106,7 @@ class EncuentroController extends AbstractController
      */
     public function edit(Request $request, Encuentro $encuentro, NotificacionService $notificacionService): Response
     {
+        $this->denyAccessUnlessGranted('EDIT',$encuentro->getId());
         $estado = $encuentro->getId()->getEstado();
         $form = $this->createForm(EncuentroType::class, $encuentro);
         $form->handleRequest($request);
@@ -138,6 +142,7 @@ class EncuentroController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $this->denyAccessUnlessGranted('DELETE',$encuentro->getId());
         $entityManager = $this->getDoctrine()->getManager();
 
         if ($this->getUser()->getId() == $encuentro->getId()->getAutor()->getId()) {

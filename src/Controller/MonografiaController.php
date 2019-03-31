@@ -31,6 +31,7 @@ class MonografiaController extends AbstractController
         if ($request->isXmlHttpRequest())
             return $this->render('monografia/_table.html.twig', [
                 'monografias' => $monografias,
+                'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
             ]);
 
         return $this->render('monografia/index.html.twig', [
@@ -39,6 +40,7 @@ class MonografiaController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
         ]);
     }
 
@@ -51,6 +53,7 @@ class MonografiaController extends AbstractController
         $monografia->setId(new Publicacion());
         $monografia->getId()->setAutor($autor);
 
+        $this->denyAccessUnlessGranted('NEW',$monografia->getId());
         $form = $this->createForm(MonografiaType::class, $monografia);
         $form->handleRequest($request);
 
@@ -103,6 +106,7 @@ class MonografiaController extends AbstractController
      */
     public function edit(Request $request, Monografia $monografia, NotificacionService $notificacionService): Response
     {
+        $this->denyAccessUnlessGranted('EDIT',$monografia->getId());
         $estado = $monografia->getId()->getEstado();
         $form = $this->createForm(MonografiaType::class, $monografia);
         $form->handleRequest($request);
@@ -138,6 +142,7 @@ class MonografiaController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $this->denyAccessUnlessGranted('DELETE',$monografia->getId());
         $entityManager = $this->getDoctrine()->getManager();
 
         if ($this->getUser()->getId() == $monografia->getId()->getAutor()->getId()) {

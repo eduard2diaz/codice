@@ -42,8 +42,8 @@
                             </div>
                             <div class="m-card-profile__details">
                                 <a id="reload_picture"
-                                   class="m-card-profile__email m-link text-uppercase text-info m--font-bold m--hidden-desktop"><i
-                                            class="flaticon-refresh"></i>Reiniciar</a>
+                                   class="btn m-btn btn-sm btn-danger text-uppercase m--font-bold m--hidden-desktop"><i
+                                            class="flaticon-delete-1"></i> Desechar</a>
                             </div>
                         </div>
 
@@ -198,9 +198,8 @@
                         </div>
                         <div class="col-7">
                             <button type="submit"
-                                    class="btn btn-primary m-btn m-btn--air m-btn--custom">{{ button_action|default('Guardar') }}</button>&nbsp;&nbsp;
-                            <button type="reset" class="btn btn-metal m-btn m-btn--air m-btn--custom">Cancelar
-                            </button>
+                                    class="btn btn-primary btn-sm m-btn m-btn--air m-btn--custom"><i class="flaticon-edit"></i> {{ button_action|default('Guardar') }}</button>&nbsp;&nbsp;
+                            <button type="reset" class="btn btn-metal btn-sm m-btn m-btn--air m-btn--custom"><i class="flaticon-cancel"></i> Cancelar</button>
                         </div>
                     </div>
                 </div>

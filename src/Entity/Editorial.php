@@ -38,7 +38,7 @@ class Editorial
      *
      * @ORM\ManyToOne(targetEntity="Pais", inversedBy="editorials")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="pais", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="pais", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $pais;

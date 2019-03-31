@@ -1,0 +1,90 @@
+{% extends 'layout/autenticado.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="m-portlet m-portlet--mobile">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <span class="m-portlet__head-icon"><i class="flaticon-list-1"></i></span>
+                            <h3 class="m-portlet__head-text">
+                                Tabla de datos
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-portlet__body">
+                    <table class="table m-table m-table m-table--head-separator-primary">
+                        <thead>
+                        <tr>
+                            <th>
+                                Tipo de publicación
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                            <th>
+                                Propio
+                            </th>
+                            <th>
+                                Porciento
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for obj in resumen %}
+                            <tr>
+                                <td>{{ obj['entidad'] }}</td>
+                                <td>{{ obj['total'] }}</td>
+                                <td>{{ obj['propio'] }}</td>
+                                <td>{{ obj['total']==0 ? 0 : obj['total']/total*100 }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4">No existen publicaciones en el período</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>
+                                Tipo de publicación
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                            <th>
+                                Propio
+                            </th>
+                            <th>
+                                Porciento
+                            </th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="m-portlet m-portlet--bordered-semi m-portlet--full-height ">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <span class="m-portlet__head-icon"><i class="flaticon-pie-chart"></i></span>
+                            <h3 class="m-portlet__head-text">
+                                Gráfico de datos
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-portlet__body grafico" id="grafico">
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

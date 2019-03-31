@@ -1,7 +1,7 @@
 {% extends 'layout/anonimo.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/page/index.css','siplan') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/page/index.css','codice') }}"/>
 {% endblock %}
 {% block body %}
     <div class="login-form">
@@ -140,7 +140,7 @@
             <p class="m--margin-top-20">Únete a nuestro joven equipo y colabora con el desarrollo de la plataforma de investigaciones en tiempo real. No pierdas más tiempo descubre Códice.</p>
         </div>
         <div class="col-md-6">
-            <img src="{{ asset('siplan/img/promo1.png') }}" class="promo1"/>
+            <img src="{{ asset('img/promo1.png','codice') }}" class="promo1"/>
         </div>
     </div>
 {% endblock %}

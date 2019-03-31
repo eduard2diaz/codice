@@ -31,6 +31,7 @@ class TesisController extends AbstractController
         if ($request->isXmlHttpRequest())
             return $this->render('tesis/_table.html.twig', [
                 'tesiss' => $tesiss,
+                'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
             ]);
 
         return $this->render('tesis/index.html.twig', [
@@ -39,6 +40,7 @@ class TesisController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
         ]);
     }
 
@@ -51,6 +53,7 @@ class TesisController extends AbstractController
         $tesis->setId(new Publicacion());
         $tesis->getId()->setAutor($autor);
 
+        $this->denyAccessUnlessGranted('NEW',$tesis->getId());
         $form = $this->createForm(TesisType::class, $tesis);
         $form->handleRequest($request);
 
@@ -103,6 +106,7 @@ class TesisController extends AbstractController
      */
     public function edit(Request $request, Tesis $tesis, NotificacionService $notificacionService): Response
     {
+        $this->denyAccessUnlessGranted('EDIT',$tesis->getId());
         $estado = $tesis->getId()->getEstado();
         $form = $this->createForm(TesisType::class, $tesis);
         $form->handleRequest($request);
@@ -138,6 +142,7 @@ class TesisController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $this->denyAccessUnlessGranted('DELETE',$tesis->getId());
         $entityManager = $this->getDoctrine()->getManager();
 
         if ($this->getUser()->getId() == $tesis->getId()->getAutor()->getId()) {

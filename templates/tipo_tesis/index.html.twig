@@ -36,7 +36,7 @@
 {% endblock %}
 {% block javascripts %}
     {{parent()}}
-    <script src="{{ asset('script/entity/tipo_tesis.js','siplan') }}"></script>
+    <script src="{{ asset('script/entity/tipo_tesis.js','codice') }}"></script>
     <script>
         var total ={{tipo_tesiss |length }}
             tipo_tesis.init();

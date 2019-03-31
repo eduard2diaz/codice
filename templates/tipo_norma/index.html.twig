@@ -36,7 +36,7 @@
 {% endblock %}
 {% block javascripts %}
     {{parent()}}
-    <script src="{{ asset('script/entity/tipo_norma.js','siplan') }}"></script>
+    <script src="{{ asset('script/entity/tipo_norma.js','codice') }}"></script>
     <script>
         var total ={{tipo_normas |length }}
             tipo_norma.init();

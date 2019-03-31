@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Publicacion;
-use App\Form\PublicacionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,6 +50,9 @@ class PublicacionController extends AbstractController
     public function search(Request $request,PaginatorInterface $paginator)
     {
         $query = $request->get('query');
+        if(!$query || $query=='')
+            throw new \LogicException('Falta el parámetro query');
+
         $em = $this->getDoctrine()->getManager();
         if ($request->isXmlHttpRequest()) {
             $content = '';
@@ -64,16 +66,23 @@ class PublicacionController extends AbstractController
             $consulta->setMaxResults(5);
             //Obtengo el listado de publicaciones
             $publicaciones = $consulta->getResult();
-            $content = $this->renderView('publicacion/search_quickresult.html.twig', ['usuarios' => $usuarios, 'publicaciones' => $publicaciones]);
+            $content = $this->renderView('publicacion/search_quickresult.html.twig', ['query'=>$query,'usuarios' => $usuarios, 'publicaciones' => $publicaciones]);
             return new Response($content);
         }
 
-        $consulta = $em->createQuery('SELECT u.id, u.nombre,u.rutaFoto,u.ultimoLogin, u.ultimoLogout, i.nombre as institucion,p.nombre as pais FROM App:Autor u JOIN u.institucion i join i.pais p WHERE u.nombre like :parametro');
+        $consulta = $em->createQuery('SELECT u.id, u.nombre,u.rutaFoto,u.ultimoLogin, u.ultimoLogout, i.nombre as institucion,p.nombre as pais, 1 as esAutor FROM App:Autor u JOIN u.institucion i join i.pais p WHERE u.nombre like :parametro');
         $consulta->setParameter('parametro', '%' . $query . '%');
+        $usuarios = $consulta->getResult();
+
+        $consulta = $em->createQuery('SELECT p.id, p.titulo, a.nombre as autor, 0 as esAutor FROM App:Publicacion p JOIN p.autor a WHERE p.titulo like :parametro');
+        $consulta->setParameter('parametro', '%' . $query . '%');
+        $publicaciones = $consulta->getResult();
+
         $pagination = $paginator->paginate(
-            $consulta, /* query NOT result */
+            //$consulta,
+            array_merge($usuarios,$publicaciones), /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            1 /*limit per page*/
+            10 /*limit per page*/
         );
         return $this->render('publicacion/search_result.html.twig', array('pagination' => $pagination));
 

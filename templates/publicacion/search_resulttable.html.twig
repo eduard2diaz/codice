@@ -1,34 +1,58 @@
-<div class="count m--margin-bottom-20">
-    <span class="text-muted">Mostrando 10 de {{ pagination.getTotalItemCount }} resultados</span>
-</div>
 <div class="m-widget3">
     {% for usuario in pagination %}
-        {% if usuario['rutaFoto']!=null %}
-            {% set rutaFoto=  asset('archivos/'~usuario['rutaFoto']) %}
-        {% else %}
-            {% set rutaFoto= asset('app/media/img/users/user4.jpg','template') %}
-        {% endif %}
+        {% if usuario['esAutor']==1 %}
+            {% if usuario['rutaFoto']!=null %}
+                {% set rutaFoto=  asset('archivos/'~usuario['rutaFoto']) %}
+            {% else %}
+                {% set rutaFoto= asset('app/media/img/users/user4.jpg','template') %}
+            {% endif %}
 
-        <div class="m-widget3__item">
-            <div class="m-widget3__header">
-                <div class="m-widget3__user-img">
-                    <a href="{{ path('autor_show',{'id':usuario['id']}) }}">
-                        <img class="m-widget3__img" src="{{ rutaFoto }}" alt="">
-                    </a>
-                </div>
-                <div class="m-widget3__info">
+            <div class="m-widget3__item">
+                <div class="m-widget3__header">
+                    <div class="m-widget3__user-img">
+                        <a href="{{ path('autor_show',{'id':usuario['id']}) }}">
+                            <img class="m-widget3__img" src="{{ rutaFoto }}" alt="">
+                        </a>
+                    </div>
+                    <div class="m-widget3__info">
 														<span class="m-widget3__username">
 															<a href="{{ path('autor_show',{'id':usuario['id']}) }}">{{ usuario['nombre'] }}</a>
 														</span><br>
-                    <span class="m-widget3__time">
+                        <span class="m-widget3__time">
 															{{ usuario['institucion']~', '~usuario['pais'] }}
 														</span>
+                    </div>
                 </div>
             </div>
-        </div>
+            {% else %}
+                <div class="m-widget3__item">
+                    <div class="m-widget3__header">
+                        <div class="m-widget3__user-img">
+                            <a href="{{ path('publicacion_show',{'id':usuario['id']}) }}">
+                                <img class="m-widget3__img" src="{{ asset('codice/img/x-office-document.png') }}">
+                            </a>
+                        </div>
+                        <div class="m-widget3__info">
+														<span class="m-widget3__username">
+															<a href="{{ path('autor_show',{'id':usuario['id']}) }}">{{ usuario['titulo'] }}</a>
+														</span><br>
+                            <span class="m-widget3__time">Publicado por: {{  usuario['autor'] }}</span>
+                        </div>
+                    </div>
+                </div>
+
+        {% endif %}
     {% endfor %}
 
 </div>
 
-{{ knp_pagination_render(pagination, 'publicacion/paginator.html.twig') }}
+<div class="row">
+    <div class="col-md-4 m--margin-top-35">
+        <span class="text-muted">Mostrando {{ pagination.items|length }} de {{ pagination.getTotalItemCount }} resultados</span>
+    </div>
+    <div class="col-md-8">
+        {{ knp_pagination_render(pagination, 'publicacion/paginator.html.twig') }}
+    </div>
+</div>
 
+<div class="clearfix"></div>

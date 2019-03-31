@@ -36,7 +36,7 @@
 {% endblock %}
 {% block javascripts %}
     {{parent()}}
-    <script src="{{ asset('script/entity/organizador.js','siplan') }}"></script>
+    <script src="{{ asset('script/entity/organizador.js','codice') }}"></script>
     <script>
         var total ={{organizadors |length }}
             organizador.init();

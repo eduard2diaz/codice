@@ -17,11 +17,13 @@
                             <span><i class="flaticon-refresh"></i></span> Refrescar
                         </a>
                     </li>
+                    {% if esGestor==true %}
                     <li class="m-portlet__nav-item">
                         <a href="{{ path('encuentro_new',{'id':user_id}) }}" class="btn btn-sm btn-primary m-btn text-uppercase"  data-toggle="m-tooltip" data-placement="top" title="" data-original-title="Registrar un nuevo encuentro">
                             <span><i class="flaticon-add"></i></span> Nuevo
                         </a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
 
@@ -36,7 +38,7 @@
 
 {% block javascripts %}
     {{parent()}}
-    <script src="{{ asset('script/entity/encuentro.js','siplan') }}"></script>
+    <script src="{{ asset('script/entity/encuentro.js','codice') }}"></script>
     <script>
         var total ={{encuentros |length }}
             encuentro.init();

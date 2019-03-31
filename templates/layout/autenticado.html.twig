@@ -59,10 +59,10 @@
     </script>
     <script type="text/javascript" src="{{ asset('vendors/custom/datatables/datatables.bundle.js','template') }}"></script>
     <script type="text/javascript" src="{{ asset('vendors/custom/fullcalendar/fullcalendar.bundle.js','template') }}"></script>
-    <script type="text/javascript" src="{{ asset('plugins/bootbox/bootbox.min.js','siplan') }}"></script>
-    <script src="{{ asset('script/base/authenticated.js','siplan') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugins/bootbox/bootbox.min.js','codice') }}"></script>
+    <script src="{{ asset('script/base/authenticated.js','codice') }}"></script>
     <script>
         authenticated.init();
-        var datatable_url = '{{ asset('siplan/plugins/datatable/es.json') }}';
+        var datatable_url = '{{ asset('codice/plugins/datatable/es.json') }}';
     </script>
 {% endblock %}

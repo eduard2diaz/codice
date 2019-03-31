@@ -27,6 +27,7 @@
                         <a class="btn btn-secondary btn-sm" href="{{ path('monografia_show', { 'id': monografia.id.id }) }}">
                             <i class="flaticon-eye"></i> Ver</a>
                     </li>
+                    {% if esGestor==true %}
                     <li class="m-nav__item">
                         <a class="btn btn-info btn-sm" href="{{ path('monografia_edit', { 'id': monografia.id.id }) }}">
                             <i class="flaticon-edit-1"></i> Editar</a>
@@ -35,6 +36,7 @@
                         <a class="btn btn-danger btn-sm  eliminar_monografia" data-href="{{ path('monografia_delete', { 'id': monografia.id.id }) }}">
                             <i class="flaticon-delete-1"></i> Eliminar</a>
                     </li>
+                    {% endif %}
                 </ul>
             </td>
         </tr>

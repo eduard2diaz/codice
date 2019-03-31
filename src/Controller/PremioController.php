@@ -31,6 +31,7 @@ class PremioController extends AbstractController
         if ($request->isXmlHttpRequest())
             return $this->render('premio/_table.html.twig', [
                 'premios' => $premios,
+                'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
             ]);
 
         return $this->render('premio/index.html.twig', [
@@ -39,6 +40,7 @@ class PremioController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
         ]);
     }
 
@@ -51,6 +53,7 @@ class PremioController extends AbstractController
         $premio->setId(new Publicacion());
         $premio->getId()->setAutor($autor);
 
+        $this->denyAccessUnlessGranted('NEW',$premio->getId());
         $form = $this->createForm(PremioType::class, $premio);
         $form->handleRequest($request);
 
@@ -103,6 +106,7 @@ class PremioController extends AbstractController
      */
     public function edit(Request $request, Premio $premio, NotificacionService $notificacionService): Response
     {
+        $this->denyAccessUnlessGranted('EDIT',$premio->getId());
         $estado = $premio->getId()->getEstado();
         $form = $this->createForm(PremioType::class, $premio);
         $form->handleRequest($request);
@@ -138,6 +142,7 @@ class PremioController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $this->denyAccessUnlessGranted('DELETE',$premio->getId());
         $entityManager = $this->getDoctrine()->getManager();
 
         if ($this->getUser()->getId() == $premio->getId()->getAutor()->getId()) {

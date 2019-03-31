@@ -93,7 +93,7 @@ class Autor implements UserInterface
      *
      * @ORM\ManyToOne(targetEntity="Area")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="area", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="area", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $area;
@@ -103,7 +103,7 @@ class Autor implements UserInterface
      *
      * @ORM\ManyToOne(targetEntity="GradoCientifico")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="grado_cientifico", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="grado_cientifico", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $gradoCientifico;
@@ -113,7 +113,7 @@ class Autor implements UserInterface
      *
      * @ORM\ManyToOne(targetEntity="Institucion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="institucion", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="institucion", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $institucion;
@@ -123,7 +123,7 @@ class Autor implements UserInterface
      *
      * @ORM\ManyToOne(targetEntity="Ministerio")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ministerio", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="ministerio", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $ministerio;
@@ -133,7 +133,7 @@ class Autor implements UserInterface
      *
      * @ORM\ManyToOne(targetEntity="Pais")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="pais", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="pais", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $pais;
@@ -144,10 +144,10 @@ class Autor implements UserInterface
      * @ORM\ManyToMany(targetEntity="Rol", inversedBy="idautor")
      * @ORM\JoinTable(name="autor_rol",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="idautor", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="idautor", referencedColumnName="id",onDelete="Cascade")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="idrol", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="idrol", referencedColumnName="id",onDelete="Cascade")
      *   }
      * )
      */
@@ -435,11 +435,10 @@ class Autor implements UserInterface
     /**
      * @param \Autor $jefe
      */
-    public function setJefe(Autor $jefe=null): void
+    public function setJefe(Autor $jefe = null): void
     {
         $this->jefe = $jefe;
     }
-
 
 
     /**
@@ -447,7 +446,8 @@ class Autor implements UserInterface
      *
      * @param UploadedFile $file
      */
-    public function setFile($file) {
+    public function setFile($file)
+    {
         $this->file = $file;
     }
 
@@ -456,7 +456,8 @@ class Autor implements UserInterface
      *
      * @return UploadedFile
      */
-    public function getFile() {
+    public function getFile()
+    {
         return $this->file;
     }
 
@@ -526,19 +527,21 @@ class Autor implements UserInterface
         return $this;
     }
 
-    public function Upload($ruta) {
+    public function Upload($ruta)
+    {
         if (null === $this->file) {
             return;
         }
         $fs = new Filesystem();
         $camino = $fs->makePathRelative($ruta, __DIR__);
         $directorioDestino = __DIR__ . DIRECTORY_SEPARATOR . $camino;
-        $nombreArchivoFoto = uniqid('siplan-') . '-' . $this->file->getClientOriginalName();
-        $this->file->move($directorioDestino.DIRECTORY_SEPARATOR, $nombreArchivoFoto);
+        $nombreArchivoFoto = uniqid('codice-') . '-' . $this->file->getClientOriginalName();
+        $this->file->move($directorioDestino . DIRECTORY_SEPARATOR, $nombreArchivoFoto);
         $this->setRutaFoto($nombreArchivoFoto);
     }
 
-    public function actualizarFoto($directorioDestino) {
+    public function actualizarFoto($directorioDestino)
+    {
 
         if (null !== $this->getFile()) {
             $this->removeUpload($directorioDestino);
@@ -546,10 +549,11 @@ class Autor implements UserInterface
         }
     }
 
-    public function removeUpload($directorioDestino) {
-        $fs=new Filesystem();
-        $rutaPc = $directorioDestino.DIRECTORY_SEPARATOR.$this->getRutaFoto();
-        if (null!=$this->getRutaFoto()  && $fs->exists($rutaPc)) {
+    public function removeUpload($directorioDestino)
+    {
+        $fs = new Filesystem();
+        $rutaPc = $directorioDestino . DIRECTORY_SEPARATOR . $this->getRutaFoto();
+        if (null != $this->getRutaFoto() && $fs->exists($rutaPc)) {
             $fs->remove($rutaPc);
         }
     }
@@ -570,9 +574,9 @@ class Autor implements UserInterface
      */
     public function getRoles()
     {
-        $array=[];
+        $array = [];
         foreach ($this->getIdrol()->toArray() as $value)
-            $array[]=$value->getNombre();
+            $array[] = $value->getNombre();
         return $array;
     }
 
@@ -610,7 +614,7 @@ class Autor implements UserInterface
 
     public function __toString()
     {
-      return $this->getNombre();
+        return $this->getNombre();
     }
 
     public function cicloInfinito($current, Autor $usuario)
@@ -628,10 +632,11 @@ class Autor implements UserInterface
      *Funcionalidad que recibe un usuario como parametro y dice si ese usuario
      * es superior del actual usuario.
      */
-    public function esJefe(Autor $usuario):bool {
-        if($this->getJefe()==$usuario)
+    public function esJefe(Autor $usuario): bool
+    {
+        if ($this->getJefe() == $usuario)
             return true;
-        if(null!=$this->getJefe())
+        if (null != $this->getJefe())
             return $this->getJefe()->esJefe($usuario);
 
         return false;
@@ -642,23 +647,46 @@ class Autor implements UserInterface
      */
     public function validate(ExecutionContextInterface $context)
     {
-        $roles=$this->getRoles();
-        if (null==$this->getArea()) {
+        $roles = $this->getRoles();
+        if (null == $this->getPais()) {
+            $context->setNode($context, 'area', null, 'data.pais');
+            $context->addViolation('Seleccione un país');
+        } elseif (null == $this->getPais()) {
+            $context->setNode($context, 'area', null, 'data.ministerio');
+            $context->addViolation('Seleccione un ministerio');
+        } elseif (null == $this->getInstitucion()) {
+            $context->setNode($context, 'area', null, 'data.institucion');
+            $context->addViolation('Seleccione un centro de trabajo');
+        }
+
+        if (null == $this->getArea()) {
             $context->setNode($context, 'area', null, 'data.area');
             $context->addViolation('Seleccione un área');
         }
-        if(true==$this->cicloInfinito($this->getId(),$this)){
+
+        if (null == $this->getGradoCientifico()) {
+            $context->setNode($context, 'area', null, 'data.gradoCientifico');
+            $context->addViolation('Seleccione un grado científico');
+        }
+
+        if (true == $this->cicloInfinito($this->getId(), $this)) {
             $context->setNode($context, 'nombre', null, 'data.nombre');
             $context->addViolation('Compruebe el jefe seleccionado.');
         }
 
-        if(in_array('ROLE_ADMIN',$roles)) {
+        if ($this->getIdrol()->isEmpty())
+            $context->buildViolation('Seleccione un rol')->atPath('idrol')->addViolation();
+        elseif (in_array('ROLE_ADMIN', $roles)) {
             if ($this->getJefe() != null)
                 $context->buildViolation('Un administrador no puede tener jefe')
                     ->atPath('idrol')
                     ->addViolation();
-        }elseif(in_array('ROLE_USER',$roles)) {
-            if ($this->getJefe() == null)
+        } elseif (in_array('ROLE_USER', $roles)) {
+            if (in_array('ROLE_DIRECTIVO', $roles))
+                $context->buildViolation('Seleccione un usuario Trabajador no puede ser también Directivo')
+                    ->atPath('idrol')
+                    ->addViolation();
+            elseif ($this->getJefe() == null)
                 $context->buildViolation('Seleccione el jefe')
                     ->atPath('idrol')
                     ->addViolation();

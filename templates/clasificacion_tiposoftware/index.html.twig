@@ -36,7 +36,7 @@
 {% endblock %}
 {% block javascripts %}
     {{parent()}}
-    <script src="{{ asset('script/entity/clasificacion_tiposoftware.js','siplan') }}"></script>
+    <script src="{{ asset('script/entity/clasificacion_tiposoftware.js','codice') }}"></script>
     <script>
         var total ={{clasificacion_tiposoftwares |length }}
             clasificacion_tiposoftware.init();

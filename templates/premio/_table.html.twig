@@ -15,7 +15,7 @@
     </tr>
     </thead>
     <tbody>
-    {%set i=1%}
+    {% set i=1 %}
     {% for premio in premios %}
         <tr>
             <td>{{ i }}</td>
@@ -27,18 +27,22 @@
                         <a class="btn btn-secondary btn-sm" href="{{ path('premio_show', { 'id': premio.id.id }) }}">
                             <i class="flaticon-eye"></i> Ver</a>
                     </li>
-                    <li class="m-nav__item">
-                        <a class="btn btn-info btn-sm" href="{{ path('premio_edit', { 'id': premio.id.id }) }}">
-                            <i class="flaticon-edit-1"></i> Editar</a>
-                    </li>
-                    <li class="m-nav__item">
-                        <a class="btn btn-danger btn-sm  eliminar_premio" data-href="{{ path('premio_delete', { 'id': premio.id.id }) }}">
-                            <i class="flaticon-delete-1"></i> Eliminar</a>
-                    </li>
+
+                    {% if esGestor==true %}
+                        <li class="m-nav__item">
+                            <a class="btn btn-info btn-sm" href="{{ path('premio_edit', { 'id': premio.id.id }) }}">
+                                <i class="flaticon-edit-1"></i> Editar</a>
+                        </li>
+                        <li class="m-nav__item">
+                            <a class="btn btn-danger btn-sm  eliminar_premio"
+                               data-href="{{ path('premio_delete', { 'id': premio.id.id }) }}">
+                                <i class="flaticon-delete-1"></i> Eliminar</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </td>
         </tr>
-        {%set i=1+i%}
+        {% set i=1+i %}
     {% endfor %}
     </tbody>
     <tfoot>

@@ -27,6 +27,7 @@
                         <a class="btn btn-secondary btn-sm" href="{{ path('patente_show', { 'id': patente.id.id }) }}">
                             <i class="flaticon-eye"></i> Ver</a>
                     </li>
+                    {% if esGestor==true %}
                     <li class="m-nav__item">
                         <a class="btn btn-info btn-sm" href="{{ path('patente_edit', { 'id': patente.id.id }) }}">
                             <i class="flaticon-edit-1"></i> Editar</a>
@@ -35,6 +36,7 @@
                         <a class="btn btn-danger btn-sm  eliminar_patente" data-href="{{ path('patente_delete', { 'id': patente.id.id }) }}">
                             <i class="flaticon-delete-1"></i> Eliminar</a>
                     </li>
+                    {% endif %}
                 </ul>
             </td>
         </tr>

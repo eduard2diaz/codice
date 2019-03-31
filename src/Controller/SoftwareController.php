@@ -31,6 +31,7 @@ class SoftwareController extends AbstractController
         if ($request->isXmlHttpRequest())
             return $this->render('software/_table.html.twig', [
                 'softwares' => $softwares,
+                'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
             ]);
 
         return $this->render('software/index.html.twig', [
@@ -39,6 +40,7 @@ class SoftwareController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
         ]);
     }
 
@@ -51,6 +53,7 @@ class SoftwareController extends AbstractController
         $software->setId(new Publicacion());
         $software->getId()->setAutor($autor);
 
+        $this->denyAccessUnlessGranted('NEW',$software->getId());
         $form = $this->createForm(SoftwareType::class, $software);
         $form->handleRequest($request);
 
@@ -103,6 +106,7 @@ class SoftwareController extends AbstractController
      */
     public function edit(Request $request, Software $software, NotificacionService $notificacionService): Response
     {
+        $this->denyAccessUnlessGranted('EDIT',$software->getId());
         $estado = $software->getId()->getEstado();
         $form = $this->createForm(SoftwareType::class, $software);
         $form->handleRequest($request);
@@ -138,6 +142,7 @@ class SoftwareController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $this->denyAccessUnlessGranted('DELETE',$software->getId());
         $entityManager = $this->getDoctrine()->getManager();
 
         if ($this->getUser()->getId() == $software->getId()->getAutor()->getId()) {
