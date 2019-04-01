@@ -52,7 +52,7 @@ var monografia = function () {
             var link = $(this).attr('data-href');
             bootbox.confirm({
                 title: 'Eliminar monografia',
-                message: '¿Está seguro que desea eliminar este monografia?',
+                message: '¿Está seguro que desea eliminar esta monografia?',
                 buttons: {
                     confirm: {
                         label: 'Si, estoy seguro',
@@ -101,7 +101,55 @@ var monografia = function () {
         $('select#monografia_id_estado').select2();
         $('select#monografia_tipoNorma').select2();
         $('input#monografia_id_fechaCaptacion').datepicker();
-        $("div#basicmodal form").validate();
+        $("body form[name='monografia']").validate({
+            rules: {
+                'monografia[id][titulo]': {required: true},
+                'monografia[id][pais]': {required: true},
+                'monografia[id][fechaCaptacion]': {required: true},
+                'monografia[id][keywords]': {required: true},
+                'monografia[id][file]': {required: true},
+                'monografia[id][resumen]': {required: true},
+                'monografia[id][estado]': {required: true},
+
+                'monografia[isbn]': {required: true},
+                'monografia[paginas]': {required: true},
+                'monografia[cenda]': {required: true},
+                'monografia[number]': {required: true},
+            }
+        });
+    }
+
+    var newAction = function () {
+        $('body').on('submit', "form[name='monografia']", function (evento) {
+            evento.preventDefault();
+            var padre = $(this).parent();
+            $.ajax({
+                url: $(this).attr("action"),
+                type: "POST",
+                data: new FormData(this), //para enviar el formulario hay que serializarlo
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function () {
+                    mApp.block("body",
+                        {overlayColor: "#000000", type: "loader", state: "success", message: "Guardando..."});
+                },
+                complete: function () {
+                    mApp.unblock("body");
+                },
+                success: function (data) {
+                    if (data['error']) {
+                        padre.html(data['form']);
+                        configurarFormulario();
+                    } else {
+                        window.location.href = data['ruta']
+                    }
+                },
+                error: function () {
+                    base.Error();
+                }
+            });
+        });
     }
 
     return {
@@ -116,6 +164,7 @@ var monografia = function () {
         nuevo: function () {
             $().ready(function () {
                     configurarFormulario();
+                    newAction();
                 }
             );
         },

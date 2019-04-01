@@ -51,8 +51,8 @@ var articulo = function () {
             var obj = $(this);
             var link = $(this).attr('data-href');
             bootbox.confirm({
-                title: 'Eliminar articulo',
-                message: '¿Está seguro que desea eliminar este articulo?',
+                title: 'Eliminar artículo',
+                message: '¿Está seguro que desea eliminar este artículo?',
                 buttons: {
                     confirm: {
                         label: 'Si, estoy seguro',
@@ -102,7 +102,60 @@ var articulo = function () {
         $('select#articulo_revista').select2();
         $('select#articulo_tipoArticulo').select2();
         $('input#articulo_id_fechaCaptacion').datepicker();
-        $("div#basicmodal form").validate();
+        $("body form[name='articulo']").validate({
+            rules: {
+                'articulo[id][titulo]': {required: true},
+                'articulo[id][pais]': {required: true},
+                'articulo[id][fechaCaptacion]': {required: true},
+                'articulo[id][keywords]': {required: true},
+                'articulo[id][file]': {required: true},
+                'articulo[id][resumen]': {required: true},
+                'articulo[id][estado]': {required: true},
+
+                'articulo[volumen]': {required: true},
+                'articulo[paginas]': {required: true},
+                'articulo[numero]': {required: true},
+                'articulo[doi]': {required: true},
+                'articulo[issn]': {required: true},
+                'articulo[tipoArticulo]': {required: true},
+                'articulo[revista]': {required: true},
+            }
+        });
+    }
+
+    var newAction = function () {
+        $('body').on('submit', "form[name='articulo']", function (evento)
+        {
+            evento.preventDefault();
+            var padre = $(this).parent();
+            $.ajax({
+                url: $(this).attr("action"),
+                type: "POST",
+                data: new FormData(this), //para enviar el formulario hay que serializarlo
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend: function () {
+                    mApp.block("body",
+                        {overlayColor:"#000000",type:"loader",state:"success",message:"Guardando..."});
+                },
+                complete: function () {
+                    mApp.unblock("body");
+                },
+                success: function (data) {
+                    if (data['error']) {
+                        padre.html(data['form']);
+                        configurarFormulario();
+                    } else {
+                        window.location.href=data['ruta']
+                    }
+                },
+                error: function ()
+                {
+                    base.Error();
+                }
+            });
+        });
     }
 
     return {
@@ -117,6 +170,7 @@ var articulo = function () {
         nuevo: function () {
             $().ready(function () {
                     configurarFormulario();
+                    newAction();
                 }
             );
         },

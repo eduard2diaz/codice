@@ -50,32 +50,30 @@ class NormaController extends AbstractController
     public function new(Request $request, Autor $autor, NotificacionService $notificacionService): Response
     {
         $norma = new Norma();
-        $norma->setId(new Publicacion());
         $norma->getId()->setAutor($autor);
 
         $this->denyAccessUnlessGranted('NEW',$norma->getId());
-        $form = $this->createForm(NormaType::class, $norma);
+        $form = $this->createForm(NormaType::class, $norma, ['action' => $this->generateUrl('norma_new', ['id' => $autor->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($norma->getId());
+                $entityManager->persist($norma);
+                $entityManager->flush();
+                $this->addFlash('success', 'La norma fue registrada satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('norma_index', ['id' => $autor->getId()])]);
+            } else {
+                $page = $this->renderView('norma/_form.html.twig', array(
+                    'form' => $form->createView(),
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-            $entityManager->persist($norma->getId());
-            $entityManager->persist($norma);
-            $entityManager->flush();
-
-            if ($this->getUser()->getId() == $autor->getId()) {
-                if ($autor->getJefe() != null)
-                    $notificacionService->nuevaNotificacion($autor->getJefe()->getId(), "El usuario " . $this->getUser()->__toString() . " publicó su norma " . $norma->getId()->getTitulo());
-            } else
-                $notificacionService->nuevaNotificacion($autor->getId(), "El usuario " . $this->getUser()->__toString() . " ha publicado tu norma " . $norma->getId()->getTitulo());
-
-            $this->addFlash('success', 'La norma fue registrada satisfactoriamente');
-
-            return $this->redirectToRoute('norma_index', ['id' => $autor->getId()]);
-        }
-
-        return $this->render('norma/new.html.twig', [
+        return $this->render('norma/_new.html.twig', [
             'norma' => $norma,
             'form' => $form->createView(),
 
@@ -108,24 +106,33 @@ class NormaController extends AbstractController
     {
         $this->denyAccessUnlessGranted('EDIT',$norma->getId());
         $estado = $norma->getId()->getEstado();
-        $form = $this->createForm(NormaType::class, $norma);
+        $form = $this->createForm(NormaType::class, $norma, ['action' => $this->generateUrl('norma_edit', ['id' => $norma->getId()->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
 
-            if ($this->getUser()->getId() != $norma->getId()->getAutor()->getId() && $estado != $norma->getId()->getEstado())
-                $notificacionService->nuevaNotificacion($norma->getId()->getAutor()->getId(), 'La usuario ' . $this->getUser()->__toString() . ' modificó a "' . $norma->getId()->getEstadoString() . '" tu norma ' . $norma->getId()->getTitulo());
+                if ($norma->getId()->getAutor()->getJefe() != null && $this->getUser()->getId() != $norma->getId()->getAutor()->getId() && $estado != $norma->getId()->getEstado())
+                    $notificacionService->nuevaNotificacion($norma->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $norma->getId()->getEstadoString() . '" tu norma ' . $norma->getId()->getTitulo());
 
-            $this->addFlash('success', 'La norma fue actualizada satisfactoriamente');
-            return $this->redirectToRoute('norma_index', [
-                'id' => $norma->getId()->getAutor()->getId(),
-            ]);
-        }
+                $this->addFlash('success', 'La norma fue actualizada satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('norma_index', ['id' => $norma->getId()->getAutor()->getId()])]);
+            } else {
+                $page = $this->renderView('norma/_form.html.twig', array(
+                    'form' => $form->createView(),
+                    'button_action' => 'Actualizar',
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-        return $this->render('norma/edit.html.twig', [
+        return $this->render('norma/_new.html.twig', [
             'norma' => $norma,
             'form' => $form->createView(),
+            'button_action' => 'Actualizar',
+            'form_title' => 'Editar norma',
 
             'user_id' => $norma->getId()->getAutor()->getId(),
             'user_foto' => null != $norma->getId()->getAutor()->getRutaFoto() ? $norma->getId()->getAutor()->getRutaFoto() : null,
@@ -144,14 +151,7 @@ class NormaController extends AbstractController
 
         $this->denyAccessUnlessGranted('DELETE',$norma->getId());
         $entityManager = $this->getDoctrine()->getManager();
-
-        if ($this->getUser()->getId() == $norma->getId()->getAutor()->getId()) {
-            if ($norma->getId()->getAutor()->getJefe() != null)
-                $notificacionService->nuevaNotificacion($norma->getId()->getAutor()->getJefe()->getId(), "La usuario " . $this->getUser()->__toString() . " eliminó su norma " . $norma->getId()->getTitulo());
-        } else
-            $notificacionService->nuevaNotificacion($norma->getId()->getAutor()->getId(), "El usuario " . $this->getUser()->__toString() . " ha eliminado tu norma " . $norma->getId()->getTitulo());
-
-        $entityManager->remove($norma);
+        $entityManager->remove($norma->getId());
         $entityManager->flush();
 
         return new JsonResponse(array('mensaje' => 'La norma fue eliminada satisfactoriamente'));

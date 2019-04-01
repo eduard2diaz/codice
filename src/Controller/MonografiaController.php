@@ -50,32 +50,30 @@ class MonografiaController extends AbstractController
     public function new(Request $request, Autor $autor, NotificacionService $notificacionService): Response
     {
         $monografia = new Monografia();
-        $monografia->setId(new Publicacion());
         $monografia->getId()->setAutor($autor);
 
         $this->denyAccessUnlessGranted('NEW',$monografia->getId());
-        $form = $this->createForm(MonografiaType::class, $monografia);
+        $form = $this->createForm(MonografiaType::class, $monografia, ['action' => $this->generateUrl('monografia_new', ['id' => $autor->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($monografia->getId());
+                $entityManager->persist($monografia);
+                $entityManager->flush();
+                $this->addFlash('success', 'La monografía fue registrada satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('monografia_index', ['id' => $autor->getId()])]);
+            } else {
+                $page = $this->renderView('monografia/_form.html.twig', array(
+                    'form' => $form->createView(),
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-            $entityManager->persist($monografia->getId());
-            $entityManager->persist($monografia);
-            $entityManager->flush();
-
-            if ($this->getUser()->getId() == $autor->getId()) {
-                if ($autor->getJefe() != null)
-                    $notificacionService->nuevaNotificacion($autor->getJefe()->getId(), "El usuario " . $this->getUser()->__toString() . " publicó su monografia " . $monografia->getId()->getTitulo());
-            } else
-                $notificacionService->nuevaNotificacion($autor->getId(), "El usuario " . $this->getUser()->__toString() . " ha publicado tu monografia " . $monografia->getId()->getTitulo());
-
-            $this->addFlash('success', 'La monografia fue registrada satisfactoriamente');
-
-            return $this->redirectToRoute('monografia_index', ['id' => $autor->getId()]);
-        }
-
-        return $this->render('monografia/new.html.twig', [
+        return $this->render('monografia/_new.html.twig', [
             'monografia' => $monografia,
             'form' => $form->createView(),
 
@@ -108,24 +106,33 @@ class MonografiaController extends AbstractController
     {
         $this->denyAccessUnlessGranted('EDIT',$monografia->getId());
         $estado = $monografia->getId()->getEstado();
-        $form = $this->createForm(MonografiaType::class, $monografia);
+        $form = $this->createForm(MonografiaType::class, $monografia, ['action' => $this->generateUrl('monografia_edit', ['id' => $monografia->getId()->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
 
-            if ($this->getUser()->getId() != $monografia->getId()->getAutor()->getId() && $estado != $monografia->getId()->getEstado())
-                $notificacionService->nuevaNotificacion($monografia->getId()->getAutor()->getId(), 'La usuario ' . $this->getUser()->__toString() . ' modificó a "' . $monografia->getId()->getEstadoString() . '" tu monografia ' . $monografia->getId()->getTitulo());
+                if ($monografia->getId()->getAutor()->getJefe() != null && $this->getUser()->getId() != $monografia->getId()->getAutor()->getId() && $estado != $monografia->getId()->getEstado())
+                    $notificacionService->nuevaNotificacion($monografia->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $monografia->getId()->getEstadoString() . '" tu monografia ' . $monografia->getId()->getTitulo());
 
-            $this->addFlash('success', 'La monografia fue actualizada satisfactoriamente');
-            return $this->redirectToRoute('monografia_index', [
-                'id' => $monografia->getId()->getAutor()->getId(),
-            ]);
-        }
+                $this->addFlash('success', 'La monografía fue actualizada satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('monografia_index', ['id' => $monografia->getId()->getAutor()->getId()])]);
+            } else {
+                $page = $this->renderView('monografia/_form.html.twig', array(
+                    'form' => $form->createView(),
+                    'button_action' => 'Actualizar',
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-        return $this->render('monografia/edit.html.twig', [
+        return $this->render('monografia/_new.html.twig', [
             'monografia' => $monografia,
             'form' => $form->createView(),
+            'button_action' => 'Actualizar',
+            'form_title' => 'Editar monografia',
 
             'user_id' => $monografia->getId()->getAutor()->getId(),
             'user_foto' => null != $monografia->getId()->getAutor()->getRutaFoto() ? $monografia->getId()->getAutor()->getRutaFoto() : null,
@@ -144,14 +151,7 @@ class MonografiaController extends AbstractController
 
         $this->denyAccessUnlessGranted('DELETE',$monografia->getId());
         $entityManager = $this->getDoctrine()->getManager();
-
-        if ($this->getUser()->getId() == $monografia->getId()->getAutor()->getId()) {
-            if ($monografia->getId()->getAutor()->getJefe() != null)
-                $notificacionService->nuevaNotificacion($monografia->getId()->getAutor()->getJefe()->getId(), "La usuario " . $this->getUser()->__toString() . " eliminó su monografia " . $monografia->getId()->getTitulo());
-        } else
-            $notificacionService->nuevaNotificacion($monografia->getId()->getAutor()->getId(), "El usuario " . $this->getUser()->__toString() . " ha eliminado tu monografia " . $monografia->getId()->getTitulo());
-
-        $entityManager->remove($monografia);
+        $entityManager->remove($monografia->getId());
         $entityManager->flush();
 
         return new JsonResponse(array('mensaje' => 'La monografia fue eliminada satisfactoriamente'));

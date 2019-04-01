@@ -43,13 +43,6 @@ services:
             - { name: doctrine.event_subscriber,  connection: default }
         arguments: ['@service_container']
 
-    publicacionhijo_subscriber:
-        class: App\EventSubscriber\PublicacionHijoSubscriber
-        public: true
-        tags:
-            - { name: doctrine.event_subscriber,  connection: default }
-        arguments: ['@service_container']
-
     app.loginlistener:
         class: App\EventListener\LoginListener
         arguments: ["@doctrine"]

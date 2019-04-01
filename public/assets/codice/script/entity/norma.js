@@ -101,7 +101,56 @@ var norma = function () {
         $('select#norma_id_estado').select2();
         $('select#norma_tipoNorma').select2();
         $('input#norma_id_fechaCaptacion').datepicker();
-        $("div#basicmodal form").validate();
+        $("body form[name='norma']").validate({
+            rules: {
+                'norma[id][titulo]': {required: true},
+                'norma[id][pais]': {required: true},
+                'norma[id][fechaCaptacion]': {required: true},
+                'norma[id][keywords]': {required: true},
+                'norma[id][file]': {required: true},
+                'norma[id][resumen]': {required: true},
+                'norma[id][estado]': {required: true},
+
+                'norma[noRegistro]': {required: true},
+                'norma[paginas]': {required: true},
+                'norma[tipoNorma]': {required: true},
+            }
+        });
+    }
+
+    var newAction = function () {
+        $('body').on('submit', "form[name='norma']", function (evento)
+        {
+            evento.preventDefault();
+            var padre = $(this).parent();
+            $.ajax({
+                url: $(this).attr("action"),
+                type: "POST",
+                data: new FormData(this), //para enviar el formulario hay que serializarlo
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend: function () {
+                    mApp.block("body",
+                        {overlayColor:"#000000",type:"loader",state:"success",message:"Guardando..."});
+                },
+                complete: function () {
+                    mApp.unblock("body");
+                },
+                success: function (data) {
+                    if (data['error']) {
+                        padre.html(data['form']);
+                        configurarFormulario();
+                    } else {
+                        window.location.href=data['ruta']
+                    }
+                },
+                error: function ()
+                {
+                    base.Error();
+                }
+            });
+        });
     }
 
     return {
@@ -116,6 +165,7 @@ var norma = function () {
         nuevo: function () {
             $().ready(function () {
                     configurarFormulario();
+                    newAction();
                 }
             );
         },

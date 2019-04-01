@@ -22,12 +22,12 @@ class SoftwareType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('numero',TextType::class,['required'=>true,'attr'=>['class'=>'form-control']])
+            ->add('numero',TextType::class,['required'=>true,'label'=>'Número','attr'=>['class'=>'form-control']])
             ->add('idioma',ChoiceType::class,['choices'=>[
                 'Español'=>'Español','Inglés'=>'Inglés','Francés'=>'Francés','Italiano'=>'Italiano','Portugués'=>'Portugués'
             ]])
             ->add('id',PublicacionType::class)
-            ->add('tipoSoftware',null,['required'=>true,'attr'=>['class'=>'form-control']])
+            ->add('tipoSoftware',null,['required'=>true,'label'=>'Tipo de software','attr'=>['class'=>'form-control']])
         ;
 
         if($this->token->getToken()->getUser()->getId()!=$options['data']->getId()->getAutor()->getId())

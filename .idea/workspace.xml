@@ -2,552 +2,100 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0af83a06-3947-4dda-85cb-b63f11529650" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/autor/sugerencia.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190314-095417.reason.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190314-095417.reason.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190314-095417.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190314-095417.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190325-043045.reason.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190325-043045.reason.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190325-043045.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190325-043045.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190329-055328.reason.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190329-055328.reason.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190329-055328.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190329-055328.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190329-063343.reason.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190329-063343.reason.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190329-063343.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.corrupted.20190329-063343.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413/storage_v2/_src_/database/pedro.jLdZBg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413/storage_v2/_src_/database/pedro.jLdZBg.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413/storage_v2/_src_/database/pedro.jLdZBg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21a5ae0d-11f3-4170-93e5-e9688da9f413/storage_v2/_src_/database/pedro.jLdZBg/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/proyecto-en-blanco.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/proyecto-en-blanco.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/articulo/_new.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/encuentro/_new.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/norma/_new.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/premio/_new.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/software/_new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/console" beforeDir="false" afterPath="$PROJECT_DIR$/bin/console" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/phpunit" beforeDir="false" afterPath="$PROJECT_DIR$/bin/phpunit" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bootstrap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/cache.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/cache.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/dev/debug.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/dev/debug.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/dev/easy_log_handler.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/dev/easy_log_handler.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/dev/monolog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/dev/monolog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/dev/routing.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/dev/routing.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/dev/swiftmailer.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/dev/swiftmailer.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine_migrations.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine_migrations.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/knp_snappy.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/knp_snappy.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/paginator.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/paginator.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/prod/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/prod/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/prod/monolog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/prod/monolog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/routing.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/routing.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/sensio_framework_extra.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/sensio_framework_extra.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/swiftmailer.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/swiftmailer.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/test/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/test/framework.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/test/monolog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/test/monolog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/test/routing.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/test/routing.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/test/swiftmailer.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/test/swiftmailer.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/test/web_profiler.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/test/web_profiler.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/translation.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/validator.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/validator.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes/annotations.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes/annotations.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes/dev/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes/dev/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes/dev/web_profiler.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes/dev/web_profiler.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml.dist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9a86a5c6cbf-notas del software.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9a888560dda-20190118_094609.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9a9911c40b6-20190118_094741.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9c1f4f8bb1c-48-jdbc.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9c1fc193844-48-jdbc.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9c266ef09fa-Controller.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9c268d3e0aa-Controller.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9c26eb9c370-Controller.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9c29608a890-Controller.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9c2c8f8710d-DeepinScreenshot_20190127192425.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9c305f17972-BASES_Y_CONDICIONES_BECAS_-_HERRAMIENTAS_DIGITALES.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9c334d49672-Codice-1.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9c368c37481-bd-2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9c39cd08ee0-FontAwesome añade el logotipo de Symfony a su colección de iconos.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9c3f7564126-48-jdbc.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9d443a8ec7e-notas del software.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9d6f0d55e7e-17799117_154376035087754_1670734684582411706_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9e660fe4ec3-siplan-5c81e5ad5032f-37487965_418756018628362_7083419197396484096_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/css/base/siplan.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/css/base/codice.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/css/page/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/css/page/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/css/page/userprofile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/css/page/userprofile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/img/40482376-0-hack1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/img/40482376-0-hack1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/img/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/img/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/img/http_error/403.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/img/http_error/403.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/img/http_error/404.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/img/http_error/404.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/img/http_error/error-500.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/img/http_error/error-500.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/img/http_error/error.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/img/http_error/error.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/img/http_error/mantenimiento.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/img/http_error/mantenimiento.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/img/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/img/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/img/promo1.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/img/promo1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/img/x-office-document.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/img/x-office-document.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/bootbox/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/bootbox/LICENSE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/bootbox/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/bootbox/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/bootbox/bootbox.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/bootbox/bootbox.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/datatable/es.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/datatable/es.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload-master.zip" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload-master.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/.jshintrc" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/.jshintrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/.npmignore" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/.npmignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/CONTRIBUTING.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/CONTRIBUTING.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/SECURITY.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/SECURITY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/VULNERABILITIES.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/VULNERABILITIES.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/angularjs.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/angularjs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/basic-plus.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/basic-plus.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/basic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/bower-version-update.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/bower-version-update.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/bower.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/cors/postmessage.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/cors/postmessage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/cors/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/cors/result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery-ui-demo-ie8.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/css/jquery-ui-demo-ie8.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery-ui-demo.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/css/jquery-ui-demo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery.fileupload-noscript.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/css/jquery.fileupload-noscript.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery.fileupload-ui-noscript.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/css/jquery.fileupload-ui-noscript.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery.fileupload-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/css/jquery.fileupload-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/jquery.fileupload.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/css/jquery.fileupload.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/img/loading.gif" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/img/loading.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/img/progressbar.gif" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/img/progressbar.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/jquery-ui.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/jquery-ui.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/cors/jquery.postmessage-transport.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/cors/jquery.postmessage-transport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/cors/jquery.xdr-transport.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/cors/jquery.xdr-transport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-angular.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/jquery.fileupload-angular.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-audio.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/jquery.fileupload-audio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-image.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/jquery.fileupload-image.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-jquery-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/jquery.fileupload-jquery-ui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-process.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/jquery.fileupload-process.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/jquery.fileupload-ui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/jquery.fileupload-validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload-video.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/jquery.fileupload-video.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.fileupload.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/jquery.fileupload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/jquery.iframe-transport.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/jquery.iframe-transport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/js/vendor/jquery.ui.widget.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/js/vendor/jquery.ui.widget.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-go/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/server/gae-go/app.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-go/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/server/gae-go/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-go/static/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/server/gae-go/static/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-go/static/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/server/gae-go/static/robots.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-python/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/server/gae-python/app.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-python/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/server/gae-python/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-python/static/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/server/gae-python/static/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/gae-python/static/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/server/gae-python/static/robots.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/server/php/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/UploadHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/server/php/UploadHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/server/php/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/files/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/server/php/files/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/files/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/server/php/files/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/server/php/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/server/php/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/jQuery-File-Upload/test/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/jQuery-File-Upload/test/test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/ladda/ladda-themeless.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/ladda/ladda-themeless.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/ladda/ladda.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/ladda/ladda.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/plugins/ladda/spin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/plugins/ladda/spin.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/base/authenticated.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/base/authenticated.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/base/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/base/base.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/area.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/area.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/articulo.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/articulo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/autor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/autor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/clasificacion_tiposoftware.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/clasificacion_tiposoftware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/clasificacion_tipotesis.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/clasificacion_tipotesis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/editorial.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/editorial.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/encuentro.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/encuentro.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/facultad.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/facultad.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/grado_cientifico.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/grado_cientifico.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/grupo_articulo.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/grupo_articulo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/institucion.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/institucion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/libro.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/libro.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/mensaje.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/mensaje.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/ministerio.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/ministerio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/monografia.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/monografia.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/norma.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/norma.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/notificacion.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/notificacion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/organizador.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/organizador.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/pais.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/pais.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/patente.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/patente.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/premio.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/premio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/revista.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/revista.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/software.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/software.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/tesis.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/tesis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/tipo_articulo.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/tipo_articulo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/tipo_encuentro.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/tipo_encuentro.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/tipo_norma.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/tipo_norma.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/tipo_premio.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/tipo_premio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/tipo_software.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/tipo_software.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/entity/tipo_tesis.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/tipo_tesis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/siplan/script/page/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/page/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/app/js/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/app/js/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/app/js/layout-builder.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/app/js/layout-builder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/app/media/img/misc/notification_bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/app/media/img/misc/notification_bg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/app/media/img/misc/quick_actions_bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/app/media/img/misc/quick_actions_bg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/app/media/img/misc/user_profile_bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/app/media/img/misc/user_profile_bg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/app/media/img/users/user4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/app/media/img/users/user4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/demo/demo9/base/scripts.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/demo/demo9/base/scripts.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/demo/demo9/base/style.bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/demo/demo9/base/style.bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/flaticon/Flaticon.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/flaticon/Flaticon.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/flaticon/Flaticon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/flaticon/Flaticon.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/flaticon/Flaticon.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/flaticon/Flaticon.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/flaticon/Flaticon.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/flaticon/Flaticon.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/FontAwesome.otf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/font-awesome/FontAwesome.otf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/font-awesome/fontawesome-webfont.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/font-awesome/fontawesome-webfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/font-awesome/fontawesome-webfont.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/font-awesome/fontawesome-webfont.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/font-awesome/fontawesome-webfont.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/font-awesome/fontawesome-webfont.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/line-awesome/line-awesome.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/line-awesome/line-awesome.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/line-awesome/line-awesome.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/line-awesome/line-awesome.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/line-awesome/line-awesome.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/line-awesome/line-awesome.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/socicon/socicon.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/socicon/socicon.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/socicon/socicon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/socicon/socicon.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/socicon/socicon.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/socicon/socicon.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/socicon/socicon.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/socicon/socicon.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/summernote/summernote.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/summernote/summernote.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/summernote/summernote.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/summernote/summernote.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/fonts/summernote/summernote.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/fonts/summernote/summernote.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/images/ion-rangeslider/sprite-skin-flat.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/images/ion-rangeslider/sprite-skin-flat.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/images/jstree/32px.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/images/jstree/32px.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/images/jstree/40px.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/images/jstree/40px.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/images/jstree/throbber.gif" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/images/jstree/throbber.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/images/malihu-custom-scrollbar-plugin/mCSB_buttons.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/images/malihu-custom-scrollbar-plugin/mCSB_buttons.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/vendors.bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/vendors.bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/base/vendors.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/base/vendors.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/datatables/datatables.bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/datatables/datatables.bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/datatables/datatables.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/datatables/datatables.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/flot/flot.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/flot/flot.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/fullcalendar/fullcalendar.bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/fullcalendar/fullcalendar.bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/fullcalendar/fullcalendar.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/fullcalendar/fullcalendar.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/gmaps/gmaps.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/gmaps/gmaps.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_444444_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/jquery-ui/images/ui-icons_444444_256x240.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_555555_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/jquery-ui/images/ui-icons_555555_256x240.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_777620_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/jquery-ui/images/ui-icons_777620_256x240.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_777777_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/jquery-ui/images/ui-icons_777777_256x240.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_cc0000_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/jquery-ui/images/ui-icons_cc0000_256x240.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/images/ui-icons_ffffff_256x240.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/jquery-ui/images/ui-icons_ffffff_256x240.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/jquery-ui.bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/jquery-ui/jquery-ui.bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jquery-ui/jquery-ui.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/jquery-ui/jquery-ui.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jqvmap/jqvmap.bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/jqvmap/jqvmap.bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/vendors/custom/jqvmap/jqvmap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/template/vendors/custom/jqvmap/jqvmap.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/NotificacionCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/NotificacionCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AreaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AreaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5ca04040deac3-17799117_154376035087754_1670734684582411706_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9ee02e14f28-notas del software.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9ff6ca10c64-notas del software.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/siplan-5c9ff711a1cd4-notas del software.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/codice/script/entity/articulo.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/articulo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/codice/script/entity/encuentro.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/encuentro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/codice/script/entity/libro.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/libro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/codice/script/entity/monografia.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/monografia.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/codice/script/entity/norma.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/norma.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/codice/script/entity/patente.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/patente.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/codice/script/entity/premio.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/premio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/codice/script/entity/software.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/software.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/codice/script/entity/tesis.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/tesis.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ArticuloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticuloController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AutorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AutorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClasificacionTipoSoftwareController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClasificacionTipoSoftwareController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClasificacionTipoTesisController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClasificacionTipoTesisController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EditorialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EditorialController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/EncuentroController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EncuentroController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GradoCientificoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GradoCientificoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GrupoArticuloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GrupoArticuloController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/InstitucionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InstitucionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/LibroController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LibroController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MensajeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MensajeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MinisterioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MinisterioController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MonografiaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MonografiaController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/NormaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/NormaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/NotificacionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/NotificacionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/OrganizadorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrganizadorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PaisController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PaisController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PatenteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PatenteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PremioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PremioController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PublicacionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PublicacionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RevistaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RevistaController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SoftwareController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SoftwareController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TesisController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TesisController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TipoArticuloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TipoArticuloController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TipoEncuentroController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TipoEncuentroController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TipoNormaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TipoNormaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TipoPremioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TipoPremioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TipoSoftwareController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TipoSoftwareController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TipoTesisController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TipoTesisController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AreaFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AreaFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AutorFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AutorFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ClasificacionTipoSoftware.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ClasificacionTipoSoftware.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ClasificacionTipoTesis.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ClasificacionTipoTesis.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/EditorialFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/EditorialFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/GradoCientificoFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/GradoCientificoFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/InstitucionFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/InstitucionFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/MinisterioFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/MinisterioFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/PaisFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/PaisFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/RevistaFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/RevistaFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/RolFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/RolFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/TipoEncuentroFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/TipoEncuentroFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/TipoPremioFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/TipoPremioFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/TipoSoftwareFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/TipoSoftwareFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/TipoTesisFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/TipoTesisFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Area.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Area.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Articulo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Articulo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Autor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Autor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/ClasificacionTipoSoftware.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/ClasificacionTipoSoftware.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/ClasificacionTipoTesis.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/ClasificacionTipoTesis.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Editorial.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Editorial.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Encuentro.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Encuentro.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GradoCientifico.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GradoCientifico.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GrupoArticulo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GrupoArticulo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Institucion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Institucion.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Libro.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Libro.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Mensaje.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Mensaje.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Ministerio.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Ministerio.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Monografia.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Monografia.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Norma.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Norma.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Notificacion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Notificacion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Organizador.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Organizador.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Pais.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Pais.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Patente.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Patente.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Premio.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Premio.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Publicacion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Publicacion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Revista.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Revista.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Rol.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Rol.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Software.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Software.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Tesis.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tesis.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TipoArticulo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TipoArticulo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TipoEncuentro.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TipoEncuentro.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TipoNorma.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TipoNorma.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TipoPremio.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TipoPremio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TipoSoftware.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TipoSoftware.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TipoTesis.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TipoTesis.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventListener/LoginListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/LoginListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventListener/LogoutListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/LogoutListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventSubscriber/AutorSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventSubscriber/AutorSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventSubscriber/PublicacionHijoSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventSubscriber/PublicacionHijoSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EventSubscriber/PublicacionHijoSubscriber.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EventSubscriber/PublicacionSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventSubscriber/PublicacionSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/AreaType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AreaType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/ArticuloType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ArticuloType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/AutorType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AutorType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ClasificacionTipoSoftwareType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClasificacionTipoSoftwareType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ClasificacionTipoTesisType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClasificacionTipoTesisType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/EditorialType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EditorialType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/EncuentroType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EncuentroType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/GradoCientificoType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/GradoCientificoType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/GrupoArticuloType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/GrupoArticuloType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/InstitucionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InstitucionType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/LibroType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/LibroType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MensajeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MensajeType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MinisterioType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MinisterioType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/MonografiaType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MonografiaType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/NormaType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/NormaType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/OrganizadorType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/OrganizadorType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/PaisType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PaisType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PatenteType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PatenteType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PremioType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PremioType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/PublicacionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PublicacionType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/RevistaType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RevistaType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/SoftwareType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/SoftwareType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/Subscriber/AddAutorInstitucionFieldSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Subscriber/AddAutorInstitucionFieldSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/Subscriber/AddDestinatarioFieldSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Subscriber/AddDestinatarioFieldSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/Subscriber/AddInstitucionMinisterioFieldSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Subscriber/AddInstitucionMinisterioFieldSubscriber.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/TesisType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TesisType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/TipoArticuloType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TipoArticuloType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/TipoEncuentroType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TipoEncuentroType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/TipoNormaType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TipoNormaType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/TipoPremioType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TipoPremioType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/TipoSoftwareType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TipoSoftwareType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/TipoTesisType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TipoTesisType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/Transformer/DateTimetoStringTransformer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Transformer/DateTimetoStringTransformer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/AutorRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AutorRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/UserChecker.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/UserChecker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/AreaService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/AreaService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/EmailService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/EmailService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/NotificacionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/NotificacionService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/area/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/area/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/area/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/area/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/area/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/area/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/area/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/area/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/articulo/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articulo/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/articulo/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articulo/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/articulo/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articulo/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/articulo/edit.html.twig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/articulo/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articulo/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/articulo/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articulo/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/articulo/new.html.twig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/articulo/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articulo/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/autor/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/autor/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/autor/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/autor/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/autor/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/autor/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/autor/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/autor/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/autor/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/autor/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/autor/seguidores.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/autor/seguidores.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/autor/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/autor/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error403.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error403.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error404.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error404.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error500.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error500.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error503.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error503.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/clasificacion_tiposoftware/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tipotesis/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/clasificacion_tipotesis/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tipotesis/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/clasificacion_tipotesis/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tipotesis/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/clasificacion_tipotesis/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/clasificacion_tipotesis/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/clasificacion_tipotesis/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/editorial/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/editorial/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/editorial/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/editorial/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/editorial/_show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/editorial/_show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/editorial/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/editorial/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/editorial/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/editorial/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/encuentro/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/encuentro/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/encuentro/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/encuentro/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/encuentro/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/encuentro/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/encuentro/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/encuentro/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/encuentro/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/encuentro/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/encuentro/edit.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/encuentro/new.html.twig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/encuentro/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/encuentro/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/grado_cientifico/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/grado_cientifico/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/grado_cientifico/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/grado_cientifico/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/grado_cientifico/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/grado_cientifico/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/grado_cientifico/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/grado_cientifico/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/grupo_articulo/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/grupo_articulo/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/grupo_articulo/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/grupo_articulo/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/grupo_articulo/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/grupo_articulo/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/grupo_articulo/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/grupo_articulo/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/institucion/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/institucion/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/institucion/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/institucion/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/institucion/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/institucion/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/institucion/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/institucion/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/anonimo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/anonimo.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/autenticado.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/autenticado.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/flashes/flashes.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/flashes/flashes.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/flashes/modal.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/flashes/modal.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/form/fields.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/form/fields.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/recortes/footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/recortes/footer.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/recortes/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/recortes/header.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/recortes/topmenu/admin_topmenu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/recortes/topmenu/admin_topmenu.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/recortes/topmenu/message_topmenu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/recortes/topmenu/message_topmenu.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/recortes/topmenu/notification_topmenu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/recortes/topmenu/notification_topmenu.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/recortes/topmenu/search_topmenu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/recortes/topmenu/search_topmenu.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/recortes/topmenu/user_topmenu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/recortes/topmenu/user_topmenu.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/userprofile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/userprofile.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/libro/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/libro/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/libro/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/libro/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/libro/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/libro/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/libro/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/libro/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/libro/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/libro/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/libro/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/libro/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/mensaje/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mensaje/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/mensaje/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mensaje/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/mensaje/_notify.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mensaje/_notify.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/mensaje/_show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mensaje/_show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/mensaje/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mensaje/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/mensaje/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mensaje/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ministerio/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ministerio/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ministerio/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ministerio/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ministerio/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ministerio/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ministerio/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ministerio/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/libro/edit.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/libro/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/libro/_new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/monografia/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monografia/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/monografia/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monografia/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/monografia/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monografia/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/monografia/edit.html.twig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/monografia/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monografia/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/monografia/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monografia/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/monografia/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monografia/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/monografia/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monografia/_new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/norma/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/norma/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/norma/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/norma/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/norma/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/norma/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/norma/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/norma/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/norma/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/norma/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/norma/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/norma/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/notificacion/_show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notificacion/_show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/notificacion/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notificacion/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/notificacion/ajax/_json.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notificacion/ajax/_json.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/notificacion/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notificacion/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/organizador/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/organizador/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/organizador/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/organizador/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/organizador/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/organizador/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/organizador/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/organizador/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pais/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pais/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pais/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pais/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pais/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pais/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pais/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pais/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/norma/edit.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/norma/new.html.twig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/patente/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patente/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/patente/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patente/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patente/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patente/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patente/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patente/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patente/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patente/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patente/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patente/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/patente/edit.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/patente/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patente/_new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/premio/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/premio/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/premio/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/premio/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/premio/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/premio/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/premio/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/premio/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/premio/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/premio/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/premio/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/premio/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publicacion/paginator.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publicacion/paginator.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/premio/edit.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/premio/new.html.twig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/publicacion/search_quickresult.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publicacion/search_quickresult.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publicacion/search_result.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publicacion/search_result.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/publicacion/search_resulttable.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publicacion/search_resulttable.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/revista/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/revista/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/revista/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/revista/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/revista/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/revista/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/revista/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/revista/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/software/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/software/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/software/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/software/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/software/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/software/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/software/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/software/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/software/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/software/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/software/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/software/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/software/edit.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/software/new.html.twig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/tesis/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tesis/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/tesis/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tesis/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tesis/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tesis/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tesis/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tesis/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tesis/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tesis/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tesis/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tesis/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_articulo/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_articulo/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_articulo/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_articulo/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_articulo/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_articulo/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_articulo/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_articulo/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_encuentro/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_encuentro/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_encuentro/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_encuentro/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_encuentro/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_encuentro/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_encuentro/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_encuentro/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_norma/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_norma/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_norma/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_norma/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_norma/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_norma/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_norma/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_norma/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_premio/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_premio/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_premio/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_premio/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_premio/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_premio/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_premio/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_premio/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_software/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_software/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_software/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_software/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_software/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_software/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_software/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_software/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_tesis/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_tesis/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_tesis/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_tesis/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_tesis/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_tesis/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tipo_tesis/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tipo_tesis/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/tests/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/translations/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/messages.es.xlf" beforeDir="false" afterPath="$PROJECT_DIR$/translations/messages.es.xlf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/fos_js_routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/fos_js_routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tesis/edit.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tesis/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tesis/_new.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -604,84 +152,22 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/articulo/_form.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="122" column="127" selection-start-line="122" selection-start-column="98" selection-end-line="122" selection-end-column="127" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/Form/LibroType.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Form/AutorType.php">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/encuentro/_form.html.twig">
+        <entry file="file://$PROJECT_DIR$/src/Form/ArticuloType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="116" column="76" selection-start-line="116" selection-start-column="76" selection-end-line="116" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/libro/_form.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="116" column="76" selection-start-line="116" selection-start-column="76" selection-end-line="116" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/monografia/_form.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="106" column="77" selection-start-line="106" selection-start-column="77" selection-end-line="106" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/norma/_form.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="99" column="77" selection-start-line="99" selection-start-column="77" selection-end-line="99" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/patente/_form.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="94" column="76" selection-start-line="94" selection-start-column="76" selection-end-line="94" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/premio/_form.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="93" column="83" selection-start-line="93" selection-start-column="83" selection-end-line="93" selection-end-column="83" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/software/_form.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="98" column="77" selection-start-line="98" selection-start-column="77" selection-end-line="98" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/tesis/_form.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="89" column="76" selection-start-line="89" selection-start-column="76" selection-end-line="89" selection-end-column="76" />
+            <state relative-caret-position="45">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -690,12 +176,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ult</find>
-      <find>getApe</find>
-      <find>toa</find>
-      <find>flaticon-chat-1</find>
-      <find>la la-file-pdf-o</find>
-      <find>softwa</find>
       <find>keenthemes.com</find>
       <find>local</find>
       <find>Routing</find>
@@ -711,7 +191,6 @@
       <find>assets/sitrans</find>
       <find>rol</find>
       <find>pais</find>
-      <find>este</find>
       <find>grado</find>
       <find>relo</find>
       <find>obtenerUsuariosSubordinados</find>
@@ -720,30 +199,28 @@
       <find>full</find>
       <find>aut</find>
       <find>esJe</find>
+      <find>La</find>
+      <find>nomb</find>
+      <find>este</find>
+      <find>token</find>
+      <find>new.</find>
+      <find>encuentro</find>
+      <find>premio</find>
     </findStrings>
     <replaceStrings>
-      <replace>Facultad</replace>
       <replace>facultad</replace>
       <replace>editorial</replace>
       <replace>autor</replace>
       <replace>area</replace>
       <replace>$ministerio</replace>
       <replace>DIRECTIVO</replace>
-      <replace>libro</replace>
-      <replace>tesis</replace>
       <replace>Software</replace>
-      <replace>software</replace>
       <replace>premio</replace>
       <replace>El usuario</replace>
       <replace>La</replace>
-      <replace>patente</replace>
       <replace>Norma</replace>
-      <replace>norma</replace>
       <replace>Monografia</replace>
-      <replace>monografia</replace>
-      <replace>encuentro</replace>
       <replace>Articulo</replace>
-      <replace>articulo</replace>
       <replace>la la-file-pdf-o</replace>
       <replace>flaticon-file</replace>
       <replace>usuario</replace>
@@ -752,6 +229,15 @@
       <replace>siplan</replace>
       <replace>Autor</replace>
       <replace>areaService</replace>
+      <replace>El</replace>
+      <replace>tesis</replace>
+      <replace>software</replace>
+      <replace>patente</replace>
+      <replace>norma</replace>
+      <replace>monografia</replace>
+      <replace>libro</replace>
+      <replace>articulo</replace>
+      <replace>encuentro</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -760,57 +246,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/editorial/_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/organizador/_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/pais/_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/revista/_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/institucion/_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/area/_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/grado_cientifico/_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/ministerio/_form.html.twig" />
-        <option value="$PROJECT_DIR$/public/assets/codice/css/page/userprofile.css" />
-        <option value="$PROJECT_DIR$/config/packages/framework.yaml" />
-        <option value="$PROJECT_DIR$/templates/layout/base.html.twig" />
-        <option value="$PROJECT_DIR$/templates/default/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/Security/Voter/AutorVoter.php" />
-        <option value="$PROJECT_DIR$/src/Controller/AutorController.php" />
-        <option value="$PROJECT_DIR$/templates/premio/_table.html.twig" />
-        <option value="$PROJECT_DIR$/templates/premio/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/PremioController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/EncuentroController.php" />
+        <option value="$PROJECT_DIR$/templates/encuentro/new.html.twig" />
+        <option value="$PROJECT_DIR$/templates/encuentro/_form.html.twig" />
+        <option value="$PROJECT_DIR$/public/assets/codice/script/entity/encuentro.js" />
         <option value="$PROJECT_DIR$/templates/encuentro/_table.html.twig" />
-        <option value="$PROJECT_DIR$/templates/encuentro/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/TesisController.php" />
-        <option value="$PROJECT_DIR$/templates/tesis/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/EncuentroController.php" />
         <option value="$PROJECT_DIR$/templates/tesis/_table.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/SoftwareController.php" />
-        <option value="$PROJECT_DIR$/templates/software/index.html.twig" />
+        <option value="$PROJECT_DIR$/templates/tesis/_new.html.twig" />
+        <option value="$PROJECT_DIR$/templates/tesis/_form.html.twig" />
+        <option value="$PROJECT_DIR$/public/assets/codice/script/entity/tesis.js" />
+        <option value="$PROJECT_DIR$/src/Form/TesisType.php" />
+        <option value="$PROJECT_DIR$/src/Controller/TesisController.php" />
         <option value="$PROJECT_DIR$/templates/software/_table.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/PatenteController.php" />
+        <option value="$PROJECT_DIR$/src/Form/SoftwareType.php" />
+        <option value="$PROJECT_DIR$/templates/software/new.html.twig" />
+        <option value="$PROJECT_DIR$/templates/software/_form.html.twig" />
+        <option value="$PROJECT_DIR$/public/assets/codice/script/entity/software.js" />
+        <option value="$PROJECT_DIR$/src/Controller/SoftwareController.php" />
         <option value="$PROJECT_DIR$/templates/patente/_table.html.twig" />
-        <option value="$PROJECT_DIR$/templates/patente/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/NormaController.php" />
+        <option value="$PROJECT_DIR$/public/assets/codice/script/entity/patente.js" />
+        <option value="$PROJECT_DIR$/templates/patente/_form.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/PatenteController.php" />
+        <option value="$PROJECT_DIR$/templates/patente/_new.html.twig" />
         <option value="$PROJECT_DIR$/templates/norma/_table.html.twig" />
-        <option value="$PROJECT_DIR$/templates/norma/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/MonografiaController.php" />
+        <option value="$PROJECT_DIR$/templates/norma/new.html.twig" />
+        <option value="$PROJECT_DIR$/templates/norma/_form.html.twig" />
+        <option value="$PROJECT_DIR$/public/assets/codice/script/entity/norma.js" />
+        <option value="$PROJECT_DIR$/src/Controller/NormaController.php" />
+        <option value="$PROJECT_DIR$/templates/monografia/_new.html.twig" />
+        <option value="$PROJECT_DIR$/templates/monografia/_form.html.twig" />
+        <option value="$PROJECT_DIR$/public/assets/codice/script/entity/monografia.js" />
         <option value="$PROJECT_DIR$/templates/monografia/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/monografia/_table.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/LibroController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/MonografiaController.php" />
         <option value="$PROJECT_DIR$/templates/libro/_table.html.twig" />
-        <option value="$PROJECT_DIR$/templates/libro/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/ArticuloController.php" />
         <option value="$PROJECT_DIR$/templates/articulo/_table.html.twig" />
-        <option value="$PROJECT_DIR$/templates/articulo/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/Security/Voter/PublicacionVoter.php" />
-        <option value="$PROJECT_DIR$/templates/articulo/_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/encuentro/_form.html.twig" />
+        <option value="$PROJECT_DIR$/config/packages/security.yaml" />
+        <option value="$PROJECT_DIR$/templates/libro/_new.html.twig" />
         <option value="$PROJECT_DIR$/templates/libro/_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/monografia/_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/norma/_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/patente/_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/premio/_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/software/_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/tesis/_form.html.twig" />
+        <option value="$PROJECT_DIR$/public/assets/codice/script/entity/libro.js" />
+        <option value="$PROJECT_DIR$/src/Controller/LibroController.php" />
+        <option value="$PROJECT_DIR$/public/assets/codice/script/entity/articulo.js" />
+        <option value="$PROJECT_DIR$/templates/articulo/new.html.twig" />
+        <option value="$PROJECT_DIR$/templates/articulo/_form.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/ArticuloController.php" />
+        <option value="$PROJECT_DIR$/src/Form/ArticuloType.php" />
+        <option value="$PROJECT_DIR$/src/Form/PaisType.php" />
+        <option value="$PROJECT_DIR$/src/Form/PublicacionType.php" />
+        <option value="$PROJECT_DIR$/src/Form/EncuentroType.php" />
+        <option value="$PROJECT_DIR$/src/Form/NormaType.php" />
+        <option value="$PROJECT_DIR$/src/Form/MonografiaType.php" />
       </list>
     </option>
   </component>
@@ -939,6 +425,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -981,7 +468,7 @@
               <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="codice" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="script" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
@@ -989,17 +476,8 @@
               <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="codice" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="codice" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="script" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
@@ -1016,37 +494,30 @@
               <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
               <item name="pedro" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Security" type="462c0819:PsiDirectoryNode" />
+              <item name="Entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
               <item name="pedro" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Security" type="462c0819:PsiDirectoryNode" />
-              <item name="Voter" type="462c0819:PsiDirectoryNode" />
+              <item name="EventSubscriber" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pedro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Form" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
               <item name="pedro" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="area" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
               <item name="pedro" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="articulo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="encuentro" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
@@ -1060,41 +531,10 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="monografia" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="norma" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="patente" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="premio" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="publicacion" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="tesis" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1166,12 +606,14 @@
       <workItem from="1553906012733" duration="799000" />
       <workItem from="1553915520836" duration="1909000" />
       <workItem from="1553967594949" duration="10753000" />
-      <workItem from="1553987115898" duration="20795000" />
+      <workItem from="1553987115898" duration="21056000" />
+      <workItem from="1554049078160" duration="7037000" />
+      <workItem from="1554079528186" duration="14275000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="248523000" />
+    <option name="totallyTimeSpent" value="270096000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1184,8 +626,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="725" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25075758" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3219697" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1198,8 +641,8 @@
       <window_info anchor="bottom" id="Database Console" order="7" weight="0.32767403" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.38879457" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.18845502" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.3293718" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.3293718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1241,357 +684,282 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/packages/twig.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/layout/base.html.twig">
+    <entry file="file://$PROJECT_DIR$/public/assets/codice/script/entity/norma.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-630">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/codice/css/page/userprofile.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/framework.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/layout/autenticado.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="69" selection-start-line="60" selection-start-column="65" selection-end-line="60" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="57" column="1" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Publicacion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="210" column="28" selection-start-line="210" selection-start-column="20" selection-end-line="210" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Autor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="634" column="24" selection-start-line="634" selection-start-column="20" selection-end-line="634" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PaisController.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Security/Voter/AutorVoter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="37" column="24" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="24" />
-          <folding>
-            <element signature="e#38#59#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/AutorController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-510">
-          <caret line="175" column="46" selection-start-line="175" selection-start-column="46" selection-end-line="175" selection-end-column="46" />
-          <folding>
-            <element signature="e#34#55#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2130">
-          <caret line="142" column="32" selection-start-line="142" selection-start-column="32" selection-end-line="142" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/premio/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuentro/_table.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuentro/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/EncuentroController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PremioController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="33" column="106" selection-start-line="33" selection-start-column="106" selection-end-line="33" selection-end-column="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tesis/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tesis/_table.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/TesisController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/software/_table.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/software/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/SoftwareController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="42" column="102" lean-forward="true" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/patente/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/patente/_table.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/norma/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/norma/_table.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+        <state relative-caret-position="404">
+          <caret line="167" column="32" selection-start-line="167" selection-start-column="32" selection-end-line="167" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/NormaController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="102" />
+        <state relative-caret-position="266">
+          <caret line="76" column="14" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/MonografiaController.php">
+    <entry file="file://$PROJECT_DIR$/templates/monografia/_form.html.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/codice/script/entity/monografia.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="42" column="102" selection-start-line="42" selection-start-column="102" selection-end-line="42" selection-end-column="102" />
+        <state relative-caret-position="-1">
+          <caret line="121" column="8" selection-start-line="121" selection-start-column="8" selection-end-line="121" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/monografia/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+        <state relative-caret-position="315">
+          <caret line="21" column="235" selection-start-line="21" selection-start-column="234" selection-end-line="21" selection-end-column="235" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/MonografiaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="75" column="45" selection-start-line="75" selection-start-column="45" selection-end-line="75" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/monografia/_table.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/LibroController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="42" column="102" selection-start-line="42" selection-start-column="102" selection-end-line="42" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/libro/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/libro/_table.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PatenteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ArticuloController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="42" column="102" selection-start-line="42" selection-start-column="102" selection-end-line="42" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/premio/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="43" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/premio/_table.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="30" column="43" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/articulo/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+        <state relative-caret-position="315">
+          <caret line="51" column="18" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/articulo/_table.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+        <state relative-caret-position="315">
+          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/area/_form.html.twig">
+    <entry file="file://$PROJECT_DIR$/templates/libro/_table.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="31" column="88" lean-forward="true" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="88" />
+        <state relative-caret-position="540">
+          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Security/Voter/PublicacionVoter.php">
+    <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
-          <folding>
-            <element signature="e#38#65#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="509">
+          <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/articulo/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="122" column="127" selection-start-line="122" selection-start-column="98" selection-end-line="122" selection-end-column="127" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/monografia/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="106" column="77" selection-start-line="106" selection-start-column="77" selection-end-line="106" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/norma/_form.html.twig">
+    <entry file="file://$PROJECT_DIR$/templates/monografia/_new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="99" column="77" selection-start-line="99" selection-start-column="77" selection-end-line="99" selection-end-column="77" />
+          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/patente/_form.html.twig">
+    <entry file="file://$PROJECT_DIR$/templates/libro/_new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="94" column="76" selection-start-line="94" selection-start-column="76" selection-end-line="94" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/premio/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="93" column="83" selection-start-line="93" selection-start-column="83" selection-end-line="93" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/software/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="98" column="77" selection-start-line="98" selection-start-column="77" selection-end-line="98" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tesis/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="89" column="76" selection-start-line="89" selection-start-column="76" selection-end-line="89" selection-end-column="76" />
+        <state relative-caret-position="15">
+          <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/libro/_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="116" column="76" selection-start-line="116" selection-start-column="76" selection-end-line="116" selection-end-column="76" />
+        <state relative-caret-position="434">
+          <caret line="110" column="7" selection-start-line="110" selection-start-column="7" selection-end-line="110" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuentro/_form.html.twig">
+    <entry file="file://$PROJECT_DIR$/public/assets/codice/script/entity/libro.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="116" column="76" selection-start-line="116" selection-start-column="76" selection-end-line="116" selection-end-column="76" />
+        <state relative-caret-position="359">
+          <caret line="170" column="32" selection-start-line="170" selection-start-column="32" selection-end-line="170" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/LibroController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="130" column="40" selection-start-line="130" selection-start-column="40" selection-end-line="130" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/codice/script/entity/premio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="120" column="4" selection-start-line="120" selection-start-column="4" selection-end-line="153" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/codice/script/entity/articulo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="172" column="32" selection-start-line="172" selection-start-column="32" selection-end-line="172" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/articulo/_new.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/articulo/_form.html.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ArticuloController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="74" column="40" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/EncuentroController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="117" column="38" selection-start-line="117" selection-start-column="38" selection-end-line="117" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/TipoSoftwareType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/TipoPremioType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/TipoNormaType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/TipoEncuentroType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/TipoArticuloType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/RevistaType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/TipoTesisType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/TesisType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="25" column="76" selection-start-line="25" selection-start-column="76" selection-end-line="25" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/SoftwareType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="29" column="82" selection-start-line="29" selection-start-column="82" selection-end-line="29" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/PaisType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="17" column="116" selection-start-line="17" selection-start-column="116" selection-end-line="17" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/OrganizadorType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/MinisterioType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/MensajeType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/InstitucionType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/GrupoArticuloType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/GradoCientificoType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/EditorialType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/ClasificacionTipoTesisType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/ClasificacionTipoSoftwareType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/AreaType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="36" column="86" selection-start-line="36" selection-start-column="64" selection-end-line="36" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/PublicacionType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/EncuentroType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="26" column="129" selection-start-line="26" selection-start-column="129" selection-end-line="26" selection-end-column="129" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/PatenteType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-195" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/PremioType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-135" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/AutorType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Norma.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-90" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/NormaType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="26" column="137" selection-start-line="26" selection-start-column="137" selection-end-line="26" selection-end-column="137" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/MonografiaType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="27" column="114" selection-start-line="27" selection-start-column="114" selection-end-line="27" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/LibroType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/ArticuloType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>

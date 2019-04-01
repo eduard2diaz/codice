@@ -103,7 +103,56 @@ var software = function () {
         $('select#software_idioma').select2();
         $('select#software_tipoSoftware').select2();
         $('input#software_id_fechaCaptacion').datepicker();
-        $("div#basicmodal form").validate();
+        $("body form[name='software']").validate({
+            rules: {
+                'software[id][titulo]': {required: true},
+                'software[id][pais]': {required: true},
+                'software[id][fechaCaptacion]': {required: true},
+                'software[id][keywords]': {required: true},
+                'software[id][file]': {required: true},
+                'software[id][resumen]': {required: true},
+                'software[id][estado]': {required: true},
+
+                'software[numero]': {required: true},
+                'software[idioma]': {required: true},
+                'software[tipoSoftware]': {required: true},
+            }
+        });
+    }
+
+    var newAction = function () {
+        $('body').on('submit', "form[name='software']", function (evento)
+        {
+            evento.preventDefault();
+            var padre = $(this).parent();
+            $.ajax({
+                url: $(this).attr("action"),
+                type: "POST",
+                data: new FormData(this), //para enviar el formulario hay que serializarlo
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend: function () {
+                    mApp.block("body",
+                        {overlayColor:"#000000",type:"loader",state:"success",message:"Guardando..."});
+                },
+                complete: function () {
+                    mApp.unblock("body");
+                },
+                success: function (data) {
+                    if (data['error']) {
+                        padre.html(data['form']);
+                        configurarFormulario();
+                    } else {
+                        window.location.href=data['ruta']
+                    }
+                },
+                error: function ()
+                {
+                    base.Error();
+                }
+            });
+        });
     }
 
     return {
@@ -118,6 +167,7 @@ var software = function () {
         nuevo: function () {
             $().ready(function () {
                     configurarFormulario();
+                    newAction();
                 }
             );
         },

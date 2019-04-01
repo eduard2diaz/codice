@@ -50,32 +50,30 @@ class SoftwareController extends AbstractController
     public function new(Request $request, Autor $autor, NotificacionService $notificacionService): Response
     {
         $software = new Software();
-        $software->setId(new Publicacion());
         $software->getId()->setAutor($autor);
 
         $this->denyAccessUnlessGranted('NEW',$software->getId());
-        $form = $this->createForm(SoftwareType::class, $software);
+        $form = $this->createForm(SoftwareType::class, $software, ['action' => $this->generateUrl('software_new', ['id' => $autor->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($software->getId());
+                $entityManager->persist($software);
+                $entityManager->flush();
+                $this->addFlash('success', 'El software fue registrado satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('software_index', ['id' => $autor->getId()])]);
+            } else {
+                $page = $this->renderView('software/_form.html.twig', array(
+                    'form' => $form->createView(),
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-            $entityManager->persist($software->getId());
-            $entityManager->persist($software);
-            $entityManager->flush();
-
-            if ($this->getUser()->getId() == $autor->getId()) {
-                if ($autor->getJefe() != null)
-                    $notificacionService->nuevaNotificacion($autor->getJefe()->getId(), "El usuario " . $this->getUser()->__toString() . " publicó su software " . $software->getId()->getTitulo());
-            } else
-                $notificacionService->nuevaNotificacion($autor->getId(), "El usuario " . $this->getUser()->__toString() . " ha publicado tu software " . $software->getId()->getTitulo());
-
-            $this->addFlash('success', 'El software fue registrado satisfactoriamente');
-
-            return $this->redirectToRoute('software_index', ['id' => $autor->getId()]);
-        }
-
-        return $this->render('software/new.html.twig', [
+        return $this->render('software/_new.html.twig', [
             'software' => $software,
             'form' => $form->createView(),
 
@@ -108,24 +106,33 @@ class SoftwareController extends AbstractController
     {
         $this->denyAccessUnlessGranted('EDIT',$software->getId());
         $estado = $software->getId()->getEstado();
-        $form = $this->createForm(SoftwareType::class, $software);
+        $form = $this->createForm(SoftwareType::class, $software, ['action' => $this->generateUrl('software_edit', ['id' => $software->getId()->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
 
-            if ($this->getUser()->getId() != $software->getId()->getAutor()->getId() && $estado != $software->getId()->getEstado())
-                $notificacionService->nuevaNotificacion($software->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $software->getId()->getEstadoString() . '" tu software ' . $software->getId()->getTitulo());
+                if ($software->getId()->getAutor()->getJefe() != null && $this->getUser()->getId() != $software->getId()->getAutor()->getId() && $estado != $software->getId()->getEstado())
+                    $notificacionService->nuevaNotificacion($software->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $software->getId()->getEstadoString() . '" tu software ' . $software->getId()->getTitulo());
 
-            $this->addFlash('success', 'El software fue actualizado satisfactoriamente');
-            return $this->redirectToRoute('software_index', [
-                'id' => $software->getId()->getAutor()->getId(),
-            ]);
-        }
+                $this->addFlash('success', 'El software fue actualizado satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('software_index', ['id' => $software->getId()->getAutor()->getId()])]);
+            } else {
+                $page = $this->renderView('software/_form.html.twig', array(
+                    'form' => $form->createView(),
+                    'button_action' => 'Actualizar',
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-        return $this->render('software/edit.html.twig', [
+        return $this->render('software/_new.html.twig', [
             'software' => $software,
             'form' => $form->createView(),
+            'button_action' => 'Actualizar',
+            'form_title' => 'Editar software',
 
             'user_id' => $software->getId()->getAutor()->getId(),
             'user_foto' => null != $software->getId()->getAutor()->getRutaFoto() ? $software->getId()->getAutor()->getRutaFoto() : null,
@@ -144,14 +151,7 @@ class SoftwareController extends AbstractController
 
         $this->denyAccessUnlessGranted('DELETE',$software->getId());
         $entityManager = $this->getDoctrine()->getManager();
-
-        if ($this->getUser()->getId() == $software->getId()->getAutor()->getId()) {
-            if ($software->getId()->getAutor()->getJefe() != null)
-                $notificacionService->nuevaNotificacion($software->getId()->getAutor()->getJefe()->getId(), "El usuario " . $this->getUser()->__toString() . " eliminó su software " . $software->getId()->getTitulo());
-        } else
-            $notificacionService->nuevaNotificacion($software->getId()->getAutor()->getId(), "El usuario " . $this->getUser()->__toString() . " ha eliminado tu software " . $software->getId()->getTitulo());
-
-        $entityManager->remove($software);
+        $entityManager->remove($software->getId());
         $entityManager->flush();
 
         return new JsonResponse(array('mensaje' => 'El software fue eliminado satisfactoriamente'));

@@ -102,7 +102,56 @@ var encuentro = function () {
         $('select#encuentro_tipoEncuentro').select2();
         $('select#encuentro_organizador').select2();
         $('input#encuentro_id_fechaCaptacion').datepicker();
-        $("div#basicmodal form").validate();
+        $("body form[name='encuentro']").validate({
+            rules: {
+                'encuentro[id][titulo]': {required: true},
+                'encuentro[id][pais]': {required: true},
+                'encuentro[id][fechaCaptacion]': {required: true},
+                'encuentro[id][keywords]': {required: true},
+                'encuentro[id][file]': {required: true},
+                'encuentro[id][resumen]': {required: true},
+                'encuentro[id][estado]': {required: true},
+
+                'encuentro[isbn]': {required: true},
+                'encuentro[issn]': {required: true},
+                'encuentro[organizador]': {required: true},
+                'encuentro[ciudad]': {required: true},
+                'encuentro[tipoEncuentro]': {required: true},
+            }
+        });
+    }
+
+    var newAction = function () {
+        $('body').on('submit', "form[name='encuentro']", function (evento) {
+            evento.preventDefault();
+            var padre = $(this).parent();
+            $.ajax({
+                url: $(this).attr("action"),
+                type: "POST",
+                data: new FormData(this), //para enviar el formulario hay que serializarlo
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function () {
+                    mApp.block("body",
+                        {overlayColor: "#000000", type: "loader", state: "success", message: "Guardando..."});
+                },
+                complete: function () {
+                    mApp.unblock("body");
+                },
+                success: function (data) {
+                    if (data['error']) {
+                        padre.html(data['form']);
+                        configurarFormulario();
+                    } else {
+                        window.location.href = data['ruta']
+                    }
+                },
+                error: function () {
+                    base.Error();
+                }
+            });
+        });
     }
 
     return {
@@ -117,6 +166,7 @@ var encuentro = function () {
         nuevo: function () {
             $().ready(function () {
                     configurarFormulario();
+                    newAction();
                 }
             );
         },

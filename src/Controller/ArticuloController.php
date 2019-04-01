@@ -50,32 +50,29 @@ class ArticuloController extends AbstractController
     public function new(Request $request, Autor $autor, NotificacionService $notificacionService): Response
     {
         $articulo = new Articulo();
-        $articulo->setId(new Publicacion());
         $articulo->getId()->setAutor($autor);
-
         $this->denyAccessUnlessGranted('NEW',$articulo->getId());
-        $form = $this->createForm(ArticuloType::class, $articulo);
+        $form = $this->createForm(ArticuloType::class, $articulo, ['action' => $this->generateUrl('articulo_new', ['id' => $autor->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($articulo->getId());
+                $entityManager->persist($articulo);
+                $entityManager->flush();
+                $this->addFlash('success', 'El artículo fue registrado satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('articulo_index', ['id' => $autor->getId()])]);
+            } else {
+                $page = $this->renderView('articulo/_form.html.twig', array(
+                    'form' => $form->createView(),
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-            $entityManager->persist($articulo->getId());
-            $entityManager->persist($articulo);
-            $entityManager->flush();
-
-            if ($this->getUser()->getId() == $autor->getId()) {
-                if ($autor->getJefe() != null)
-                    $notificacionService->nuevaNotificacion($autor->getJefe()->getId(), "El usuario " . $this->getUser()->__toString() . " publicó su articulo " . $articulo->getId()->getTitulo());
-            } else
-                $notificacionService->nuevaNotificacion($autor->getId(), "El usuario " . $this->getUser()->__toString() . " ha publicado tu articulo " . $articulo->getId()->getTitulo());
-
-            $this->addFlash('success', 'El artículo fue registrado satisfactoriamente');
-
-            return $this->redirectToRoute('articulo_index', ['id' => $autor->getId()]);
-        }
-
-        return $this->render('articulo/new.html.twig', [
+        return $this->render('articulo/_new.html.twig', [
             'articulo' => $articulo,
             'form' => $form->createView(),
 
@@ -108,24 +105,33 @@ class ArticuloController extends AbstractController
     {
         $this->denyAccessUnlessGranted('EDIT',$articulo->getId());
         $estado = $articulo->getId()->getEstado();
-        $form = $this->createForm(ArticuloType::class, $articulo);
+        $form = $this->createForm(ArticuloType::class, $articulo, ['action' => $this->generateUrl('articulo_edit', ['id' => $articulo->getId()->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
 
-            if ($this->getUser()->getId() != $articulo->getId()->getAutor()->getId() && $estado != $articulo->getId()->getEstado())
-                $notificacionService->nuevaNotificacion($articulo->getId()->getAutor()->getId(), 'La usuario ' . $this->getUser()->__toString() . ' modificó a "' . $articulo->getId()->getEstadoString() . '" tu articulo ' . $articulo->getId()->getTitulo());
+                if ($articulo->getId()->getAutor()->getJefe() != null && $this->getUser()->getId() != $articulo->getId()->getAutor()->getId() && $estado != $articulo->getId()->getEstado())
+                    $notificacionService->nuevaNotificacion($articulo->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $articulo->getId()->getEstadoString() . '" tu articulo ' . $articulo->getId()->getTitulo());
 
-            $this->addFlash('success', 'El artículo fue actualizado satisfactoriamente');
-            return $this->redirectToRoute('articulo_index', [
-                'id' => $articulo->getId()->getAutor()->getId(),
-            ]);
-        }
+                $this->addFlash('success', 'El artículo fue actualizado satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('articulo_index', ['id' => $articulo->getId()->getAutor()->getId()])]);
+            } else {
+                $page = $this->renderView('articulo/_form.html.twig', array(
+                    'form' => $form->createView(),
+                    'button_action' => 'Actualizar',
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-        return $this->render('articulo/edit.html.twig', [
+        return $this->render('articulo/_new.html.twig', [
             'articulo' => $articulo,
             'form' => $form->createView(),
+            'button_action' => 'Actualizar',
+            'form_title' => 'Editar artículo',
 
             'user_id' => $articulo->getId()->getAutor()->getId(),
             'user_foto' => null != $articulo->getId()->getAutor()->getRutaFoto() ? $articulo->getId()->getAutor()->getRutaFoto() : null,
@@ -144,14 +150,7 @@ class ArticuloController extends AbstractController
 
         $this->denyAccessUnlessGranted('DELETE',$articulo->getId());
         $entityManager = $this->getDoctrine()->getManager();
-
-        if ($this->getUser()->getId() == $articulo->getId()->getAutor()->getId()) {
-            if ($articulo->getId()->getAutor()->getJefe() != null)
-                $notificacionService->nuevaNotificacion($articulo->getId()->getAutor()->getJefe()->getId(), "La usuario " . $this->getUser()->__toString() . " eliminó su articulo " . $articulo->getId()->getTitulo());
-        } else
-            $notificacionService->nuevaNotificacion($articulo->getId()->getAutor()->getId(), "El usuario " . $this->getUser()->__toString() . " ha eliminado tu articulo " . $articulo->getId()->getTitulo());
-
-        $entityManager->remove($articulo);
+        $entityManager->remove($articulo->getId());
         $entityManager->flush();
 
         return new JsonResponse(array('mensaje' => 'El artículo fue eliminado satisfactoriamente'));

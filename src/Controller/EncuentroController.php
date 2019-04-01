@@ -50,32 +50,30 @@ class EncuentroController extends AbstractController
     public function new(Request $request, Autor $autor, NotificacionService $notificacionService): Response
     {
         $encuentro = new Encuentro();
-        $encuentro->setId(new Publicacion());
         $encuentro->getId()->setAutor($autor);
 
         $this->denyAccessUnlessGranted('NEW',$encuentro->getId());
-        $form = $this->createForm(EncuentroType::class, $encuentro);
+        $form = $this->createForm(EncuentroType::class, $encuentro, ['action' => $this->generateUrl('encuentro_new', ['id' => $autor->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($encuentro->getId());
+                $entityManager->persist($encuentro);
+                $entityManager->flush();
+                $this->addFlash('success', 'El encuentro fue registrado satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('encuentro_index', ['id' => $autor->getId()])]);
+            } else {
+                $page = $this->renderView('encuentro/_form.html.twig', array(
+                    'form' => $form->createView(),
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-            $entityManager->persist($encuentro->getId());
-            $entityManager->persist($encuentro);
-            $entityManager->flush();
-
-            if ($this->getUser()->getId() == $autor->getId()) {
-                if ($autor->getJefe() != null)
-                    $notificacionService->nuevaNotificacion($autor->getJefe()->getId(), "El usuario " . $this->getUser()->__toString() . " publicó su encuentro " . $encuentro->getId()->getTitulo());
-            } else
-                $notificacionService->nuevaNotificacion($autor->getId(), "El usuario " . $this->getUser()->__toString() . " ha publicado tu encuentro " . $encuentro->getId()->getTitulo());
-
-            $this->addFlash('success', 'La encuentro fue registrada satisfactoriamente');
-
-            return $this->redirectToRoute('encuentro_index', ['id' => $autor->getId()]);
-        }
-
-        return $this->render('encuentro/new.html.twig', [
+        return $this->render('encuentro/_new.html.twig', [
             'encuentro' => $encuentro,
             'form' => $form->createView(),
 
@@ -108,24 +106,33 @@ class EncuentroController extends AbstractController
     {
         $this->denyAccessUnlessGranted('EDIT',$encuentro->getId());
         $estado = $encuentro->getId()->getEstado();
-        $form = $this->createForm(EncuentroType::class, $encuentro);
+        $form = $this->createForm(EncuentroType::class, $encuentro, ['action' => $this->generateUrl('encuentro_edit', ['id' => $encuentro->getId()->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
 
-            if ($this->getUser()->getId() != $encuentro->getId()->getAutor()->getId() && $estado != $encuentro->getId()->getEstado())
-                $notificacionService->nuevaNotificacion($encuentro->getId()->getAutor()->getId(), 'La usuario ' . $this->getUser()->__toString() . ' modificó a "' . $encuentro->getId()->getEstadoString() . '" tu encuentro ' . $encuentro->getId()->getTitulo());
+                if ($encuentro->getId()->getAutor()->getJefe() != null && $this->getUser()->getId() != $encuentro->getId()->getAutor()->getId() && $estado != $encuentro->getId()->getEstado())
+                    $notificacionService->nuevaNotificacion($encuentro->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $encuentro->getId()->getEstadoString() . '" tu encuentro ' . $encuentro->getId()->getTitulo());
 
-            $this->addFlash('success', 'La encuentro fue actualizada satisfactoriamente');
-            return $this->redirectToRoute('encuentro_index', [
-                'id' => $encuentro->getId()->getAutor()->getId(),
-            ]);
-        }
+                $this->addFlash('success', 'El encuentro fue actualizado satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('encuentro_index', ['id' => $encuentro->getId()->getAutor()->getId()])]);
+            } else {
+                $page = $this->renderView('encuentro/_form.html.twig', array(
+                    'form' => $form->createView(),
+                    'button_action' => 'Actualizar',
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-        return $this->render('encuentro/edit.html.twig', [
+        return $this->render('encuentro/_new.html.twig', [
             'encuentro' => $encuentro,
             'form' => $form->createView(),
+            'button_action' => 'Actualizar',
+            'form_title' => 'Editar encuentro',
 
             'user_id' => $encuentro->getId()->getAutor()->getId(),
             'user_foto' => null != $encuentro->getId()->getAutor()->getRutaFoto() ? $encuentro->getId()->getAutor()->getRutaFoto() : null,
@@ -144,16 +151,9 @@ class EncuentroController extends AbstractController
 
         $this->denyAccessUnlessGranted('DELETE',$encuentro->getId());
         $entityManager = $this->getDoctrine()->getManager();
-
-        if ($this->getUser()->getId() == $encuentro->getId()->getAutor()->getId()) {
-            if ($encuentro->getId()->getAutor()->getJefe() != null)
-                $notificacionService->nuevaNotificacion($encuentro->getId()->getAutor()->getJefe()->getId(), "La usuario " . $this->getUser()->__toString() . " eliminó su encuentro " . $encuentro->getId()->getTitulo());
-        } else
-            $notificacionService->nuevaNotificacion($encuentro->getId()->getAutor()->getId(), "El usuario " . $this->getUser()->__toString() . " ha eliminado tu encuentro " . $encuentro->getId()->getTitulo());
-
-        $entityManager->remove($encuentro);
+        $entityManager->remove($encuentro->getId());
         $entityManager->flush();
 
-        return new JsonResponse(array('mensaje' => 'La encuentro fue eliminada satisfactoriamente'));
+        return new JsonResponse(array('mensaje' => 'El encuentro fue eliminado satisfactoriamente'));
     }
 }

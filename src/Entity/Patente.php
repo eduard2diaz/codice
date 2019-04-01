@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Patente
@@ -33,10 +35,17 @@ class Patente
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="Publicacion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id", referencedColumnName="id",onDelete="Cascade")
      * })
+     * @Assert\Valid()
      */
     private $id;
+
+    public function __construct()
+    {
+        $this->setId(new Publicacion());
+        $this->getId()->setChildType(get_class($this));
+    }
 
     public function getNumber(): ?string
     {
@@ -73,6 +82,4 @@ class Patente
 
         return $this;
     }
-
-
 }

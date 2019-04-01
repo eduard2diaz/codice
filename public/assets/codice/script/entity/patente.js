@@ -101,7 +101,55 @@ var patente = function () {
         $('select#patente_id_estado').select2();
         $('select#patente_idioma').select2();
         $('input#patente_id_fechaCaptacion').datepicker();
-        $("div#basicmodal form").validate();
+        $("body form[name='patente']").validate({
+            rules: {
+                'patente[id][titulo]': {required: true},
+                'patente[id][pais]': {required: true},
+                'patente[id][fechaCaptacion]': {required: true},
+                'patente[id][keywords]': {required: true},
+                'patente[id][file]': {required: true},
+                'patente[id][resumen]': {required: true},
+                'patente[id][estado]': {required: true},
+
+                'patente[idioma]': {required: true},
+                'patente[number]': {required: true},
+            }
+        });
+    }
+
+    var newAction = function () {
+        $('body').on('submit', "form[name='patente']", function (evento)
+        {
+            evento.preventDefault();
+            var padre = $(this).parent();
+            $.ajax({
+                url: $(this).attr("action"),
+                type: "POST",
+                data: new FormData(this), //para enviar el formulario hay que serializarlo
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend: function () {
+                    mApp.block("body",
+                        {overlayColor:"#000000",type:"loader",state:"success",message:"Guardando..."});
+                },
+                complete: function () {
+                    mApp.unblock("body");
+                },
+                success: function (data) {
+                    if (data['error']) {
+                        padre.html(data['form']);
+                        configurarFormulario();
+                    } else {
+                        window.location.href=data['ruta']
+                    }
+                },
+                error: function ()
+                {
+                    base.Error();
+                }
+            });
+        });
     }
 
     return {
@@ -116,6 +164,7 @@ var patente = function () {
         nuevo: function () {
             $().ready(function () {
                     configurarFormulario();
+                    newAction();
                 }
             );
         },

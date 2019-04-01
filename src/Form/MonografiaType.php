@@ -23,9 +23,9 @@ class MonografiaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('isbn',TextType::class,['label'=>'ISBN','required'=>true,'attr'=>['class'=>'form-control']])
-            ->add('paginas',NumberType::class,['label'=>'Páginas','required'=>true,'attr'=>['class'=>'form-control']])
-            ->add('cenda',TextType::class,['required'=>true,'attr'=>['class'=>'form-control']])
+            ->add('isbn',TextType::class,['label'=>'ISBN','required'=>true,'attr'=>['class'=>'form-control','autocomplete'=>'off']])
+            ->add('paginas',NumberType::class,['label'=>'Páginas','required'=>true,'attr'=>['class'=>'form-control','autocomplete'=>'off']])
+            ->add('cenda',TextType::class,['required'=>true,'attr'=>['class'=>'form-control','autocomplete'=>'off']])
             ->add('number',TextType::class,['label'=>'Número','required'=>true,'attr'=>['class'=>'form-control']])
             ->add('id',PublicacionType::class)
         ;

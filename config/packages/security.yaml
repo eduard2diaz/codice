@@ -55,4 +55,13 @@ security:
         - { path: ^/autor, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/notificacion, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/mensaje, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/premio, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/encuentro, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/tesis, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/software, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/patente, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/norma, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/monografia, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/libro, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/articulo, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/*, roles: IS_AUTHENTICATED_FULLY }

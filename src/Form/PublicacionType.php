@@ -21,9 +21,9 @@ class PublicacionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titulo', TextType::class, ['label'=>'Título','attr' => ['class' => 'form-control']])
+            ->add('titulo', TextType::class, ['label'=>'Título','attr' => ['class' => 'form-control','autocomplete'=>'off']])
             ->add('resumen', TextareaType::class, ['attr' => ['class' => 'form-control']])
-            ->add('keywords', TextType::class, ['label'=>'Palabras claves','attr' => ['class' => 'form-control']])
+            ->add('keywords', TextType::class, ['label'=>'Palabras claves','attr' => ['class' => 'form-control','autocomplete'=>'off']])
             ->add('fechaCaptacion', TextType::class, array('label'=>'Fecha de publicación','attr' => array(
                 'autocomplete' => 'off',
                 'class' => 'form-control input-small'
@@ -31,9 +31,6 @@ class PublicacionType extends AbstractType
             ->add('file', FileType::class, array('required' => true))
             ->add('pais', null, ['label'=>'País','required' => true, 'attr' => ['class' => 'form-control']])// ->add('idautor')
         ;
-
-
-
         $builder->get('fechaCaptacion')
             ->addModelTransformer(new DateTimetoStringTransformer());
     }

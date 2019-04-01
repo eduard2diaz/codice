@@ -50,32 +50,30 @@ class TesisController extends AbstractController
     public function new(Request $request, Autor $autor, NotificacionService $notificacionService): Response
     {
         $tesis = new Tesis();
-        $tesis->setId(new Publicacion());
         $tesis->getId()->setAutor($autor);
 
         $this->denyAccessUnlessGranted('NEW',$tesis->getId());
-        $form = $this->createForm(TesisType::class, $tesis);
+        $form = $this->createForm(TesisType::class, $tesis, ['action' => $this->generateUrl('tesis_new', ['id' => $autor->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($tesis->getId());
+                $entityManager->persist($tesis);
+                $entityManager->flush();
+                $this->addFlash('success', 'La tesis fue registrada satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('tesis_index', ['id' => $autor->getId()])]);
+            } else {
+                $page = $this->renderView('tesis/_form.html.twig', array(
+                    'form' => $form->createView(),
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-            $entityManager->persist($tesis->getId());
-            $entityManager->persist($tesis);
-            $entityManager->flush();
-
-            if ($this->getUser()->getId() == $autor->getId()) {
-                if ($autor->getJefe() != null)
-                    $notificacionService->nuevaNotificacion($autor->getJefe()->getId(), "El usuario " . $this->getUser()->__toString() . " publicó su tesis " . $tesis->getId()->getTitulo());
-            } else
-                $notificacionService->nuevaNotificacion($autor->getId(), "El usuario " . $this->getUser()->__toString() . " ha publicado tu tesis " . $tesis->getId()->getTitulo());
-
-            $this->addFlash('success', 'La tesis fue registrada satisfactoriamente');
-
-            return $this->redirectToRoute('tesis_index', ['id' => $autor->getId()]);
-        }
-
-        return $this->render('tesis/new.html.twig', [
+        return $this->render('tesis/_new.html.twig', [
             'tesis' => $tesis,
             'form' => $form->createView(),
 
@@ -108,24 +106,33 @@ class TesisController extends AbstractController
     {
         $this->denyAccessUnlessGranted('EDIT',$tesis->getId());
         $estado = $tesis->getId()->getEstado();
-        $form = $this->createForm(TesisType::class, $tesis);
+        $form = $this->createForm(TesisType::class, $tesis, ['action' => $this->generateUrl('tesis_edit', ['id' => $tesis->getId()->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
 
-            if ($this->getUser()->getId() != $tesis->getId()->getAutor()->getId() && $estado != $tesis->getId()->getEstado())
-                $notificacionService->nuevaNotificacion($tesis->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $tesis->getId()->getEstadoString() . '" tu tesis ' . $tesis->getId()->getTitulo());
+                if ($tesis->getId()->getAutor()->getJefe() != null && $this->getUser()->getId() != $tesis->getId()->getAutor()->getId() && $estado != $tesis->getId()->getEstado())
+                    $notificacionService->nuevaNotificacion($tesis->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $tesis->getId()->getEstadoString() . '" tu tesis ' . $tesis->getId()->getTitulo());
 
-            $this->addFlash('success', 'La tesis fue actualizada satisfactoriamente');
-            return $this->redirectToRoute('tesis_index', [
-                'id' => $tesis->getId()->getAutor()->getId(),
-            ]);
-        }
+                $this->addFlash('success', 'La tesis fue actualizado satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('tesis_index', ['id' => $tesis->getId()->getAutor()->getId()])]);
+            } else {
+                $page = $this->renderView('tesis/_form.html.twig', array(
+                    'form' => $form->createView(),
+                    'button_action' => 'Actualizar',
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-        return $this->render('tesis/edit.html.twig', [
+        return $this->render('tesis/_new.html.twig', [
             'tesis' => $tesis,
             'form' => $form->createView(),
+            'button_action' => 'Actualizar',
+            'form_title' => 'Editar tesis',
 
             'user_id' => $tesis->getId()->getAutor()->getId(),
             'user_foto' => null != $tesis->getId()->getAutor()->getRutaFoto() ? $tesis->getId()->getAutor()->getRutaFoto() : null,
@@ -144,14 +151,7 @@ class TesisController extends AbstractController
 
         $this->denyAccessUnlessGranted('DELETE',$tesis->getId());
         $entityManager = $this->getDoctrine()->getManager();
-
-        if ($this->getUser()->getId() == $tesis->getId()->getAutor()->getId()) {
-            if ($tesis->getId()->getAutor()->getJefe() != null)
-                $notificacionService->nuevaNotificacion($tesis->getId()->getAutor()->getJefe()->getId(), "El usuario " . $this->getUser()->__toString() . " eliminó su tesis " . $tesis->getId()->getTitulo());
-        } else
-            $notificacionService->nuevaNotificacion($tesis->getId()->getAutor()->getId(), "El usuario " . $this->getUser()->__toString() . " ha eliminado tu tesis " . $tesis->getId()->getTitulo());
-
-        $entityManager->remove($tesis);
+        $entityManager->remove($tesis->getId());
         $entityManager->flush();
 
         return new JsonResponse(array('mensaje' => 'La tesis fue eliminada satisfactoriamente'));

@@ -50,32 +50,30 @@ class PatenteController extends AbstractController
     public function new(Request $request, Autor $autor, NotificacionService $notificacionService): Response
     {
         $patente = new Patente();
-        $patente->setId(new Publicacion());
         $patente->getId()->setAutor($autor);
 
         $this->denyAccessUnlessGranted('NEW',$patente->getId());
-        $form = $this->createForm(PatenteType::class, $patente);
+        $form = $this->createForm(PatenteType::class, $patente, ['action' => $this->generateUrl('patente_new', ['id' => $autor->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($patente->getId());
+                $entityManager->persist($patente);
+                $entityManager->flush();
+                $this->addFlash('success', 'La patente fue registrada satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('patente_index', ['id' => $autor->getId()])]);
+            } else {
+                $page = $this->renderView('patente/_form.html.twig', array(
+                    'form' => $form->createView(),
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-            $entityManager->persist($patente->getId());
-            $entityManager->persist($patente);
-            $entityManager->flush();
-
-            if ($this->getUser()->getId() == $autor->getId()) {
-                if ($autor->getJefe() != null)
-                    $notificacionService->nuevaNotificacion($autor->getJefe()->getId(), "El usuario " . $this->getUser()->__toString() . " publicó su patente " . $patente->getId()->getTitulo());
-            } else
-                $notificacionService->nuevaNotificacion($autor->getId(), "El usuario " . $this->getUser()->__toString() . " ha publicado tu patente " . $patente->getId()->getTitulo());
-
-            $this->addFlash('success', 'La patente fue registrada satisfactoriamente');
-
-            return $this->redirectToRoute('patente_index', ['id' => $autor->getId()]);
-        }
-
-        return $this->render('patente/new.html.twig', [
+        return $this->render('patente/_new.html.twig', [
             'patente' => $patente,
             'form' => $form->createView(),
 
@@ -108,24 +106,33 @@ class PatenteController extends AbstractController
     {
         $this->denyAccessUnlessGranted('EDIT',$patente->getId());
         $estado = $patente->getId()->getEstado();
-        $form = $this->createForm(PatenteType::class, $patente);
+        $form = $this->createForm(PatenteType::class, $patente, ['action' => $this->generateUrl('patente_edit', ['id' => $patente->getId()->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
 
-            if ($this->getUser()->getId() != $patente->getId()->getAutor()->getId() && $estado != $patente->getId()->getEstado())
-                $notificacionService->nuevaNotificacion($patente->getId()->getAutor()->getId(), 'La usuario ' . $this->getUser()->__toString() . ' modificó a "' . $patente->getId()->getEstadoString() . '" tu patente ' . $patente->getId()->getTitulo());
+                if ($patente->getId()->getAutor()->getJefe() != null && $this->getUser()->getId() != $patente->getId()->getAutor()->getId() && $estado != $patente->getId()->getEstado())
+                    $notificacionService->nuevaNotificacion($patente->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $patente->getId()->getEstadoString() . '" tu patente ' . $patente->getId()->getTitulo());
 
-            $this->addFlash('success', 'La patente fue actualizada satisfactoriamente');
-            return $this->redirectToRoute('patente_index', [
-                'id' => $patente->getId()->getAutor()->getId(),
-            ]);
-        }
+                $this->addFlash('success', 'La patente fue actualizada satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('patente_index', ['id' => $patente->getId()->getAutor()->getId()])]);
+            } else {
+                $page = $this->renderView('patente/_form.html.twig', array(
+                    'form' => $form->createView(),
+                    'button_action' => 'Actualizar',
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-        return $this->render('patente/edit.html.twig', [
+        return $this->render('patente/_new.html.twig', [
             'patente' => $patente,
             'form' => $form->createView(),
+            'button_action' => 'Actualizar',
+            'form_title' => 'Editar patente',
 
             'user_id' => $patente->getId()->getAutor()->getId(),
             'user_foto' => null != $patente->getId()->getAutor()->getRutaFoto() ? $patente->getId()->getAutor()->getRutaFoto() : null,
@@ -144,14 +151,7 @@ class PatenteController extends AbstractController
 
         $this->denyAccessUnlessGranted('DELETE',$patente->getId());
         $entityManager = $this->getDoctrine()->getManager();
-
-        if ($this->getUser()->getId() == $patente->getId()->getAutor()->getId()) {
-            if ($patente->getId()->getAutor()->getJefe() != null)
-                $notificacionService->nuevaNotificacion($patente->getId()->getAutor()->getJefe()->getId(), "La usuario " . $this->getUser()->__toString() . " eliminó su patente " . $patente->getId()->getTitulo());
-        } else
-            $notificacionService->nuevaNotificacion($patente->getId()->getAutor()->getId(), "El usuario " . $this->getUser()->__toString() . " ha eliminado tu patente " . $patente->getId()->getTitulo());
-
-        $entityManager->remove($patente);
+        $entityManager->remove($patente->getId());
         $entityManager->flush();
 
         return new JsonResponse(array('mensaje' => 'La patente fue eliminada satisfactoriamente'));

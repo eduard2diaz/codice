@@ -22,10 +22,9 @@ class EncuentroType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre',TextType::class,['required'=>true,'attr'=>['class'=>'form-control']])
-            ->add('isbn',TextType::class,['label'=>'ISBN','required'=>true,'attr'=>['class'=>'form-control']])
-            ->add('ciudad',TextType::class,['required'=>true,'attr'=>['class'=>'form-control']])
-            ->add('issn',TextType::class,['label'=>'ISSN','required'=>true,'attr'=>['class'=>'form-control']])
+            ->add('isbn',TextType::class,['label'=>'ISBN','required'=>true,'attr'=>['class'=>'form-control','autocomplete'=>'off']])
+            ->add('ciudad',TextType::class,['required'=>true,'attr'=>['class'=>'form-control','autocomplete'=>'off']])
+            ->add('issn',TextType::class,['label'=>'ISSN','required'=>true,'attr'=>['class'=>'form-control','autocomplete'=>'off']])
             ->add('id',PublicacionType::class)
             ->add('tipoEncuentro',null,['label'=>'Tipo de encuentro','required'=>true])
             ->add('organizador',null,['required'=>true])

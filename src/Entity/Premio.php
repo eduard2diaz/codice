@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Premio
@@ -19,8 +21,9 @@ class Premio
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="Publicacion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id", referencedColumnName="id",onDelete="Cascade")
      * })
+     * @Assert\Valid()
      */
     private $id;
 
@@ -29,7 +32,7 @@ class Premio
      *
      * @ORM\ManyToOne(targetEntity="Institucion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="institucion_concede", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="institucion_concede", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $institucionConcede;
@@ -39,10 +42,16 @@ class Premio
      *
      * @ORM\ManyToOne(targetEntity="TipoPremio")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipo_premio", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="tipo_premio", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $tipoPremio;
+
+    public function __construct()
+    {
+        $this->setId(new Publicacion());
+        $this->getId()->setChildType(get_class($this));
+    }
 
     public function getId(): ?Publicacion
     {
@@ -80,5 +89,19 @@ class Premio
         return $this;
     }
 
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        if (null == $this->getInstitucionConcede()) {
+            $context->setNode($context, 'area', null, 'data.institucionConcede');
+            $context->addViolation('Seleccione la institución que lo concede');
+        }
 
+        if (null == $this->getTipoPremio()) {
+            $context->setNode($context, 'area', null, 'data.tipoPremio');
+            $context->addViolation('Seleccione el tipo de premio');
+        }
+    }
 }

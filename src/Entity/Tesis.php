@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Tesis
@@ -19,8 +21,9 @@ class Tesis
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="Publicacion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id", referencedColumnName="id",onDelete="Cascade")
      * })
+     * @Assert\Valid()
      */
     private $id;
 
@@ -29,7 +32,7 @@ class Tesis
      *
      * @ORM\ManyToOne(targetEntity="Institucion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="institucion", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="institucion", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $institucion;
@@ -39,10 +42,16 @@ class Tesis
      *
      * @ORM\ManyToOne(targetEntity="TipoTesis")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipo_tesis", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="tipo_tesis", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $tipoTesis;
+
+    public function __construct()
+    {
+        $this->setId(new Publicacion());
+        $this->getId()->setChildType(get_class($this));
+    }
 
     public function getId(): ?Publicacion
     {
@@ -78,6 +87,22 @@ class Tesis
         $this->tipoTesis = $tipoTesis;
 
         return $this;
+    }
+
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        if (null == $this->getInstitucion()) {
+            $context->setNode($context, 'area', null, 'data.institucion');
+            $context->addViolation('Seleccione la institución');
+        }
+
+        if (null == $this->getTipoTesis()) {
+            $context->setNode($context, 'area', null, 'data.tipoTesis');
+            $context->addViolation('Seleccione el tipo de tesis');
+        }
     }
 
 

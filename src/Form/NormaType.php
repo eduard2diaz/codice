@@ -23,8 +23,8 @@ class NormaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('noRegistro',TextType::class,['label'=>'Número de registro','required'=>true,'attr'=>['class'=>'form-control']])
-            ->add('paginas',NumberType::class,['label'=>'Páginas','required'=>true,'attr'=>['class'=>'form-control']])
+            ->add('noRegistro',TextType::class,['label'=>'Número de registro','required'=>true,'attr'=>['class'=>'form-control','autocomplete'=>'off']])
+            ->add('paginas',NumberType::class,['label'=>'Páginas','required'=>true,'attr'=>['class'=>'form-control','autocomplete'=>'off']])
             ->add('id',PublicacionType::class)
             ->add('tipoNorma',null,['label'=>'Tipo de norma','required'=>true,'attr'=>['class'=>'form-control']])
         ;

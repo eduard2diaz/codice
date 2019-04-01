@@ -22,8 +22,8 @@ class TesisType extends AbstractType
     {
         $builder
             ->add('id',PublicacionType::class)
-            ->add('institucion',null,['required'=>true,'attr'=>['class'=>'form-control']])
-            ->add('tipoTesis',null,['required'=>true,'attr'=>['class'=>'form-control']]);
+            ->add('institucion',null,['label'=>'Institución','required'=>true,'attr'=>['class'=>'form-control']])
+            ->add('tipoTesis',null,['required'=>true,'label'=>'Tipo de tesis','attr'=>['class'=>'form-control']]);
 
         if($this->token->getToken()->getUser()->getId()!=$options['data']->getId()->getAutor()->getId())
             $builder->get('id')->add('estado',ChoiceType::class,['choices'=>[

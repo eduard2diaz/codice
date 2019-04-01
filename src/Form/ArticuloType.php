@@ -24,10 +24,10 @@ class ArticuloType extends AbstractType
     {
         $builder
             ->add('volumen', TextType::class,array('attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
-            ->add('paginas', IntegerType::class,array('attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
-            ->add('numero', TextType::class,array('attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
-            ->add('doi', TextType::class,array('attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
-            ->add('issn', TextType::class,array('attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
+            ->add('paginas', IntegerType::class,array('label'=>'Páginas','attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
+            ->add('numero', TextType::class,array('label'=>'Número','attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
+            ->add('doi', TextType::class,array('label'=>'DOI','attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
+            ->add('issn', TextType::class,array('label'=>'ISSN','attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
             ->add('id',PublicacionType::class)
             ->add('revista',null,['required'=>true])
             ->add('tipoArticulo',null,['required'=>true,'label'=>'Tipo de artículo'])

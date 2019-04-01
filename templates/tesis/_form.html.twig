@@ -1,101 +1,84 @@
-<div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
-    <div class="m-portlet__head">
-        <div class="m-portlet__head-caption">
-            <div class="m-portlet__head-title">
-                <h3 class="m-portlet__head-text">
-                    {{ form_title|default('Nueva tesis') }}
-                </h3>
+{{ form_start(form,{'attr':{
+    'class':'m-form m-form--fit m-form--label-align-right'
+}}) }}
+<div class="m-portlet__body">
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group m-form__group">
+                {{ form_row(form.id.titulo) }}
             </div>
         </div>
-
-        <div class="m-portlet__head-tools">
+        <div class="col-md-4">
+            <div class="form-group m-form__group">
+                {{ form_row(form.id.pais) }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group m-form__group">
+                {{ form_row(form.id.fechaCaptacion) }}
+            </div>
         </div>
     </div>
-    <div class="tab-content">
-        <div class="tab-pane active show" id="m_user_profile_tab_1">
-            {{ form_start(form,{'attr':{
-                'class':'m-form m-form--fit m-form--label-align-right'
-            }}) }}
-            <div class="m-portlet__body">
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group m-form__group">
-                            {{ form_row(form.id.titulo) }}
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group m-form__group">
-                            {{ form_row(form.id.pais) }}
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group m-form__group">
-                            {{ form_row(form.id.fechaCaptacion) }}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row m--margin-top-40">
-                    <div class="col-md-4">
-                        <div class="form-group m-form__group">
-                            {{ form_row(form.institucion) }}
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group m-form__group">
-                            {{ form_row(form.tipoTesis) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row m--margin-top-40">
-                    <div class="col-md-4">
-                        <div class="form-group m-form__group">
-                            {{ form_row(form.id.keywords) }}
-                        </div>
-                    </div>
-                    {% if form.id.estado is defined %}
-                        <div class="col-md-4">
-                            <div class="form-group m-form__group">
-                                {{ form_row(form.id.estado) }}
-                            </div>
-                        </div>
-                    {% endif %}
-                    {% if form.id.file is defined %}
-                        <div class="col-md-4">
-
-                            <div class="form-group m-form__group">
-                                {{ form_widget(form.id.file) }}
-                                {{ form_errors(form.id.file) }}
-                            </div>
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="row m--margin-top-40">
-                    <div class="col-md-12">
-                        <div class="form-group m-form__group">
-                            {{ form_row(form.id.resumen) }}
-                        </div>
-                    </div>
+    <div class="row m--margin-top-40">
+        <div class="col-md-4">
+            <div class="form-group m-form__group">
+                {{ form_row(form.institucion) }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group m-form__group">
+                {{ form_row(form.tipoTesis) }}
+            </div>
+        </div>
+    </div>
+    <div class="row m--margin-top-40">
+        <div class="col-md-4">
+            <div class="form-group m-form__group">
+                {{ form_row(form.id.keywords) }}
+            </div>
+        </div>
+        {% if form.id.estado is defined %}
+            <div class="col-md-4">
+                <div class="form-group m-form__group">
+                    {{ form_row(form.id.estado) }}
                 </div>
             </div>
-            <div class="m-portlet__foot m-portlet__foot--fit">
-                <div class="m-form__actions">
-                    <div class="row">
-                        <div class="col-5">
-                        </div>
-                        <div class="col-7">
-                            <button type="submit"
-                                    class="btn btn-primary m-btn btn-sm m-btn--air m-btn--custom"><i class="flaticon-edit"></i> {{ button_action|default('Guardar') }}</button>&nbsp;&nbsp;
-                            <button type="reset" class="btn btn-metal m-btn btn-sm m-btn--air m-btn--custom"><i class="flaticon-cancel"></i> Cancelar
-                            </button>
-                        </div>
-                    </div>
+        {% endif %}
+        {% if form.id.file is defined %}
+            <div class="col-md-4">
+
+                <div class="form-group m-form__group">
+                    {{ form_widget(form.id.file) }}
+                    {{ form_errors(form.id.file) }}
                 </div>
             </div>
-            {{ form_end(form) }}
+        {% endif %}
+    </div>
+    <div class="row m--margin-top-40">
+        <div class="col-md-12">
+            <div class="form-group m-form__group">
+                {{ form_row(form.id.resumen) }}
+            </div>
         </div>
     </div>
 </div>
-
+<div class="m-portlet__foot m-portlet__foot--fit">
+    <div class="m-form__actions">
+        <div class="row">
+            <div class="col-5">
+            </div>
+            <div class="col-7">
+                <button type="submit"
+                        class="btn btn-primary m-btn btn-sm m-btn--air m-btn--custom"><i
+                            class="flaticon-edit"></i> {{ button_action|default('Guardar') }}</button>&nbsp;&nbsp;
+                <button type="reset" class="btn btn-metal m-btn btn-sm m-btn--air m-btn--custom"><i
+                            class="flaticon-cancel"></i> Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}
 

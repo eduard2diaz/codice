@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Encuentro
@@ -13,11 +15,17 @@ use Doctrine\ORM\Mapping as ORM;
 class Encuentro
 {
     /**
-     * @var string|null
+     * @var \Publicacion
      *
-     * @ORM\Column(name="nombre", type="string", nullable=true)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Publicacion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id", referencedColumnName="id",onDelete="Cascade")
+     * })
+     * @Assert\Valid()
      */
-    private $nombre;
+    private $id;
 
     /**
      * @var string|null
@@ -41,23 +49,11 @@ class Encuentro
     private $issn;
 
     /**
-     * @var \Publicacion
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Publicacion")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
-     * })
-     */
-    private $id;
-
-    /**
      * @var \TipoEncuentro
      *
      * @ORM\ManyToOne(targetEntity="TipoEncuentro")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipo_encuentro", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="tipo_encuentro", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $tipoEncuentro;
@@ -67,21 +63,15 @@ class Encuentro
      *
      * @ORM\ManyToOne(targetEntity="Organizador")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="organizador", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="organizador", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $organizador;
 
-    public function getNombre(): ?string
+    public function __construct()
     {
-        return $this->nombre;
-    }
-
-    public function setNombre(?string $nombre): self
-    {
-        $this->nombre = $nombre;
-
-        return $this;
+        $this->setId(new Publicacion());
+        $this->getId()->setChildType(get_class($this));
     }
 
     public function getIsbn(): ?string
@@ -156,5 +146,19 @@ class Encuentro
         return $this;
     }
 
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        if (null == $this->getOrganizador()) {
+            $context->setNode($context, 'area', null, 'data.organizador');
+            $context->addViolation('Seleccione el organizador');
+        }
 
+        if (null == $this->getTipoEncuentro()) {
+            $context->setNode($context, 'area', null, 'data.tipoEncuentro');
+            $context->addViolation('Seleccione el tipo de encuentro');
+        }
+    }
 }

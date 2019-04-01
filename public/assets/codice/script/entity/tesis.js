@@ -52,7 +52,7 @@ var tesis = function () {
             var link = $(this).attr('data-href');
             bootbox.confirm({
                 title: 'Eliminar tesis',
-                message: '¿Está seguro que desea eliminar este tesis?',
+                message: '¿Está seguro que desea eliminar esta tesis?',
                 buttons: {
                     confirm: {
                         label: 'Si, estoy seguro',
@@ -102,7 +102,54 @@ var tesis = function () {
         $('select#tesis_id_idautor').select2();
         $('select#tesis_id_estado').select2();
         $('input#tesis_id_fechaCaptacion').datepicker();
-        $("div#basicmodal form").validate();
+        $("body form[name='tesis']").validate({
+            rules: {
+                'tesis[id][titulo]': {required: true},
+                'tesis[id][pais]': {required: true},
+                'tesis[id][fechaCaptacion]': {required: true},
+
+                'tesis[id][keywords]': {required: true},
+                'tesis[id][file]': {required: true},
+                'tesis[id][resumen]': {required: true},
+                'tesis[id][estado]': {required: true},
+
+                'tesis[institucion]': {required: true},
+                'tesis[tipoTesis]': {required: true},
+            }
+        });
+    }
+
+    var newAction = function () {
+        $('body').on('submit', "form[name='tesis']", function (evento) {
+            evento.preventDefault();
+            var padre = $(this).parent();
+            $.ajax({
+                url: $(this).attr("action"),
+                type: "POST",
+                data: new FormData(this), //para enviar el formulario hay que serializarlo
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function () {
+                    mApp.block("body",
+                        {overlayColor: "#000000", type: "loader", state: "success", message: "Guardando..."});
+                },
+                complete: function () {
+                    mApp.unblock("body");
+                },
+                success: function (data) {
+                    if (data['error']) {
+                        padre.html(data['form']);
+                        configurarFormulario();
+                    } else {
+                        window.location.href = data['ruta']
+                    }
+                },
+                error: function () {
+                    base.Error();
+                }
+            });
+        });
     }
 
     return {
@@ -117,6 +164,7 @@ var tesis = function () {
         nuevo: function () {
             $().ready(function () {
                     configurarFormulario();
+                    newAction();
                 }
             );
         },

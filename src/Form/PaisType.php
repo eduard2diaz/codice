@@ -13,9 +13,9 @@ class PaisType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre',TextType::class,['attr'=>['class'=>'form-control']])
-            ->add('capital',TextType::class,['attr'=>['class'=>'form-control']])
-            ->add('codigo',TextType::class,['label'=>'Código','attr'=>['class'=>'form-control']])
+            ->add('nombre',TextType::class,['attr'=>['class'=>'form-control','autocomplete'=>'off']])
+            ->add('capital',TextType::class,['attr'=>['class'=>'form-control','autocomplete'=>'off']])
+            ->add('codigo',TextType::class,['label'=>'Código','attr'=>['class'=>'form-control','autocomplete'=>'off']])
         ;
     }
 

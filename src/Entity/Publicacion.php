@@ -7,15 +7,16 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Filesystem\Filesystem;
 use App\Entity\Autor;
-
 
 /**
  * Publicacion
  *
  * @ORM\Table(name="publicacion", indexes={@ORM\Index(name="IDX_62F2085F7E5D2EFF", columns={"pais"})})
  * @ORM\Entity
+ * @UniqueEntity(fields={"titulo","autor","childType"},message="Ya tiene una publicación con ese nombre")
  */
 class Publicacion
 {
@@ -106,7 +107,6 @@ class Publicacion
     {
         $this->estado=0;
     }
-
 
     public function getId(): ?int
     {

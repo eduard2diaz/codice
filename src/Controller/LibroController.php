@@ -50,32 +50,30 @@ class LibroController extends AbstractController
     public function new(Request $request, Autor $autor, NotificacionService $notificacionService): Response
     {
         $libro = new Libro();
-        $libro->setId(new Publicacion());
         $libro->getId()->setAutor($autor);
 
         $this->denyAccessUnlessGranted('NEW',$libro->getId());
-        $form = $this->createForm(LibroType::class, $libro);
+        $form = $this->createForm(LibroType::class, $libro, ['action' => $this->generateUrl('libro_new', ['id' => $autor->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($libro->getId());
+                $entityManager->persist($libro);
+                $entityManager->flush();
+                $this->addFlash('success', 'El libro fue registrado satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('libro_index', ['id' => $autor->getId()])]);
+            } else {
+                $page = $this->renderView('libro/_form.html.twig', array(
+                    'form' => $form->createView(),
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-            $entityManager->persist($libro->getId());
-            $entityManager->persist($libro);
-            $entityManager->flush();
-
-            if ($this->getUser()->getId() == $autor->getId()) {
-                if ($autor->getJefe() != null)
-                    $notificacionService->nuevaNotificacion($autor->getJefe()->getId(), "El usuario " . $this->getUser()->__toString() . " publicó su libro " . $libro->getId()->getTitulo());
-            } else
-                $notificacionService->nuevaNotificacion($autor->getId(), "El usuario " . $this->getUser()->__toString() . " ha publicado tu libro " . $libro->getId()->getTitulo());
-
-            $this->addFlash('success', 'El libro fue registrado satisfactoriamente');
-
-            return $this->redirectToRoute('libro_index', ['id' => $autor->getId()]);
-        }
-
-        return $this->render('libro/new.html.twig', [
+        return $this->render('libro/_new.html.twig', [
             'libro' => $libro,
             'form' => $form->createView(),
 
@@ -108,24 +106,33 @@ class LibroController extends AbstractController
     {
         $this->denyAccessUnlessGranted('NEW',$libro->getId());
         $estado = $libro->getId()->getEstado();
-        $form = $this->createForm(LibroType::class, $libro);
+        $form = $this->createForm(LibroType::class, $libro, ['action' => $this->generateUrl('libro_edit', ['id' => $libro->getId()->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
 
-            if ($this->getUser()->getId() != $libro->getId()->getAutor()->getId() && $estado != $libro->getId()->getEstado())
-                $notificacionService->nuevaNotificacion($libro->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $libro->getId()->getEstadoString() . '" tu libro ' . $libro->getId()->getTitulo());
+                if ($libro->getId()->getAutor()->getJefe() != null && $this->getUser()->getId() != $libro->getId()->getAutor()->getId() && $estado != $libro->getId()->getEstado())
+                    $notificacionService->nuevaNotificacion($libro->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $libro->getId()->getEstadoString() . '" tu libro ' . $libro->getId()->getTitulo());
 
-            $this->addFlash('success', 'El libro fue actualizado satisfactoriamente');
-            return $this->redirectToRoute('libro_index', [
-                'id' => $libro->getId()->getAutor()->getId(),
-            ]);
-        }
+                $this->addFlash('success', 'El libro fue actualizado satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('libro_index', ['id' => $libro->getId()->getAutor()->getId()])]);
+            } else {
+                $page = $this->renderView('libro/_form.html.twig', array(
+                    'form' => $form->createView(),
+                    'button_action' => 'Actualizar',
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-        return $this->render('libro/edit.html.twig', [
+        return $this->render('libro/_new.html.twig', [
             'libro' => $libro,
             'form' => $form->createView(),
+            'button_action' => 'Actualizar',
+            'form_title' => 'Editar libro',
 
             'user_id' => $libro->getId()->getAutor()->getId(),
             'user_foto' => null != $libro->getId()->getAutor()->getRutaFoto() ? $libro->getId()->getAutor()->getRutaFoto() : null,
@@ -144,14 +151,7 @@ class LibroController extends AbstractController
 
         $this->denyAccessUnlessGranted('NEW',$libro->getId());
         $entityManager = $this->getDoctrine()->getManager();
-
-        if ($this->getUser()->getId() == $libro->getId()->getAutor()->getId()) {
-            if ($libro->getId()->getAutor()->getJefe() != null)
-                $notificacionService->nuevaNotificacion($libro->getId()->getAutor()->getJefe()->getId(), "El usuario " . $this->getUser()->__toString() . " eliminó su libro " . $libro->getId()->getTitulo());
-        } else
-            $notificacionService->nuevaNotificacion($libro->getId()->getAutor()->getId(), "El usuario " . $this->getUser()->__toString() . " ha eliminado tu libro " . $libro->getId()->getTitulo());
-
-        $entityManager->remove($libro);
+        $entityManager->remove($libro->getId());
         $entityManager->flush();
 
         return new JsonResponse(array('mensaje' => 'El libro fue eliminado satisfactoriamente'));

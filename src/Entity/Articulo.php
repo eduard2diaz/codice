@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Articulo
@@ -54,8 +56,9 @@ class Articulo
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="Publicacion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id", referencedColumnName="id",onDelete="Cascade")
      * })
+     * @Assert\Valid()
      */
     private $id;
 
@@ -64,7 +67,7 @@ class Articulo
      *
      * @ORM\ManyToOne(targetEntity="Revista")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="revista", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="revista", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $revista;
@@ -74,10 +77,18 @@ class Articulo
      *
      * @ORM\ManyToOne(targetEntity="TipoArticulo")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipo_articulo", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="tipo_articulo", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $tipoArticulo;
+
+
+    public function __construct()
+    {
+        $this->setId(new Publicacion());
+        $this->getId()->setChildType(get_class($this));
+    }
+
 
     public function getVolumen(): ?string
     {
@@ -175,5 +186,20 @@ class Articulo
         return $this;
     }
 
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        if (null == $this->getRevista()) {
+            $context->setNode($context, 'area', null, 'data.revista');
+            $context->addViolation('Seleccione la revista');
+        }
+
+        if (null == $this->getTipoArticulo()) {
+            $context->setNode($context, 'area', null, 'data.tipoArticulo');
+            $context->addViolation('Seleccione el tipo de artículo');
+        }
+    }
 
 }

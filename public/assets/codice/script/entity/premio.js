@@ -102,7 +102,55 @@ var premio = function () {
         $('select#premio_institucionConcede').select2();
         $('select#premio_tipoPremio').select2();
         $('input#premio_id_fechaCaptacion').datepicker();
-        $("div#basicmodal form").validate();
+        $("body form[name='premio']").validate({
+            rules: {
+                'premio[id][titulo]': {required: true},
+                'premio[id][pais]': {required: true},
+                'premio[id][fechaCaptacion]': {required: true},
+                'premio[id][keywords]': {required: true},
+                'premio[id][file]': {required: true},
+                'premio[id][resumen]': {required: true},
+                'premio[id][estado]': {required: true},
+
+                'premio[tipoPremio]': {required: true},
+                'premio[institucionConcede]': {required: true},
+            }
+        });
+    }
+
+    var newAction = function () {
+        $('body').on('submit', "form[name='premio']", function (evento)
+        {
+            evento.preventDefault();
+            var padre = $(this).parent();
+            $.ajax({
+                url: $(this).attr("action"),
+                type: "POST",
+                data: new FormData(this), //para enviar el formulario hay que serializarlo
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend: function () {
+                    mApp.block("body",
+                        {overlayColor:"#000000",type:"loader",state:"success",message:"Guardando..."});
+                },
+                complete: function () {
+                    mApp.unblock("body");
+                },
+                success: function (data) {
+                    if (data['error']) {
+                        padre.html(data['form']);
+                        configurarFormulario();
+                    } else {
+                        window.location.href=data['ruta']
+                    }
+                },
+                error: function ()
+                {
+                    base.Error();
+                }
+            });
+        });
     }
 
     return {
@@ -116,7 +164,8 @@ var premio = function () {
         },
         nuevo: function () {
             $().ready(function () {
-                    configurarFormulario();
+                configurarFormulario();
+                newAction();
                 }
             );
         },

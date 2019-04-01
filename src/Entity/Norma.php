@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Norma
@@ -33,8 +35,9 @@ class Norma
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="Publicacion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id", referencedColumnName="id",onDelete="Cascade")
      * })
+     * @Assert\Valid()
      */
     private $id;
 
@@ -43,10 +46,16 @@ class Norma
      *
      * @ORM\ManyToOne(targetEntity="TipoNorma")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipo_norma", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="tipo_norma", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $tipoNorma;
+
+    public function __construct()
+    {
+        $this->setId(new Publicacion());
+        $this->getId()->setChildType(get_class($this));
+    }
 
     public function getNoRegistro(): ?string
     {
@@ -94,6 +103,17 @@ class Norma
         $this->tipoNorma = $tipoNorma;
 
         return $this;
+    }
+
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        if (null == $this->getTipoNorma()) {
+            $context->setNode($context, 'tipoNorma', null, 'data.tipoNorma');
+            $context->addViolation('Seleccione el tipo de norma');
+        }
     }
 
 

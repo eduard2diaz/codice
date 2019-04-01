@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Software
@@ -33,8 +35,9 @@ class Software
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="Publicacion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id", referencedColumnName="id",onDelete="Cascade")
      * })
+     * @Assert\Valid()
      */
     private $id;
 
@@ -43,10 +46,16 @@ class Software
      *
      * @ORM\ManyToOne(targetEntity="TipoSoftware")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipo_software", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="tipo_software", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $tipoSoftware;
+
+    public function __construct()
+    {
+        $this->setId(new Publicacion());
+        $this->getId()->setChildType(get_class($this));
+    }
 
     public function getNumero(): ?string
     {
@@ -96,5 +105,14 @@ class Software
         return $this;
     }
 
-
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        if (null == $this->getTipoSoftware()) {
+            $context->setNode($context, 'area', null, 'data.tipoSoftware');
+            $context->addViolation('Seleccione el tipo de software');
+        }
+    }
 }

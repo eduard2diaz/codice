@@ -56,8 +56,9 @@ class Libro
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="Publicacion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id", referencedColumnName="id",onDelete="Cascade")
      * })
+     * @Assert\Valid()
      */
     private $id;
 
@@ -66,10 +67,16 @@ class Libro
      *
      * @ORM\ManyToOne(targetEntity="Editorial")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="editorial", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="editorial", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $editorial;
+
+    public function __construct()
+    {
+        $this->setId(new Publicacion());
+        $this->getId()->setChildType(get_class($this));
+    }
 
     public function getVolumen(): ?string
     {
@@ -158,10 +165,10 @@ class Libro
     /**
      * @Assert\Callback
      */
-    public function comprobarCargo(ExecutionContextInterface $context)
+    public function validate(ExecutionContextInterface $context)
     {
         if (null==$this->getEditorial()) {
-            $context->setNode($context, 'area', null, 'data.editorial');
+            $context->setNode($context, 'editorial', null, 'data.editorial');
             $context->addViolation('Seleccione una editorial');
         }
     }

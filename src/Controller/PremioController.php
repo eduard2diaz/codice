@@ -31,7 +31,7 @@ class PremioController extends AbstractController
         if ($request->isXmlHttpRequest())
             return $this->render('premio/_table.html.twig', [
                 'premios' => $premios,
-                'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
+                'esGestor' => $this->getUser()->getId() == $autor->getId() || $autor->esJefe($this->getUser())
             ]);
 
         return $this->render('premio/index.html.twig', [
@@ -40,7 +40,7 @@ class PremioController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
-            'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
+            'esGestor' => $this->getUser()->getId() == $autor->getId() || $autor->esJefe($this->getUser())
         ]);
     }
 
@@ -50,32 +50,30 @@ class PremioController extends AbstractController
     public function new(Request $request, Autor $autor, NotificacionService $notificacionService): Response
     {
         $premio = new Premio();
-        $premio->setId(new Publicacion());
         $premio->getId()->setAutor($autor);
-
-        $this->denyAccessUnlessGranted('NEW',$premio->getId());
-        $form = $this->createForm(PremioType::class, $premio);
+        $this->denyAccessUnlessGranted('NEW', $premio->getId());
+        $form = $this->createForm(PremioType::class, $premio, ['action' => $this->generateUrl('premio_new', ['id' => $autor->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($premio->getId());
+                $entityManager->persist($premio);
+                $entityManager->flush();
+                $this->addFlash('success', 'El premio fue registrado satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('premio_index', ['id' => $autor->getId()])]);
+            } else {
+                $page = $this->renderView('premio/_form.html.twig', array(
+                    'form' => $form->createView(),
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-            $entityManager->persist($premio->getId());
-            $entityManager->persist($premio);
-            $entityManager->flush();
 
-            if ($this->getUser()->getId() == $autor->getId()) {
-                if ($autor->getJefe() != null)
-                    $notificacionService->nuevaNotificacion($autor->getJefe()->getId(), "El usuario " . $this->getUser()->__toString() . " publicó su premio " . $premio->getId()->getTitulo());
-            } else
-                $notificacionService->nuevaNotificacion($autor->getId(), "El usuario " . $this->getUser()->__toString() . " ha publicado tu premio " . $premio->getId()->getTitulo());
-
-            $this->addFlash('success', 'El premio fue registrado satisfactoriamente');
-
-            return $this->redirectToRoute('premio_index', ['id' => $autor->getId()]);
-        }
-
-        return $this->render('premio/new.html.twig', [
+        return $this->render('premio/_new.html.twig', [
             'premio' => $premio,
             'form' => $form->createView(),
 
@@ -106,26 +104,35 @@ class PremioController extends AbstractController
      */
     public function edit(Request $request, Premio $premio, NotificacionService $notificacionService): Response
     {
-        $this->denyAccessUnlessGranted('EDIT',$premio->getId());
+        $this->denyAccessUnlessGranted('EDIT', $premio->getId());
         $estado = $premio->getId()->getEstado();
-        $form = $this->createForm(PremioType::class, $premio);
+        $form = $this->createForm(PremioType::class, $premio, ['action' => $this->generateUrl('premio_edit', ['id' => $premio->getId()->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
 
-            if ($this->getUser()->getId() != $premio->getId()->getAutor()->getId() && $estado != $premio->getId()->getEstado())
-                $notificacionService->nuevaNotificacion($premio->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $premio->getId()->getEstadoString() . '" tu premio ' . $premio->getId()->getTitulo());
+                if ($premio->getId()->getAutor()->getJefe() != null && $this->getUser()->getId() != $premio->getId()->getAutor()->getId() && $estado != $premio->getId()->getEstado())
+                    $notificacionService->nuevaNotificacion($premio->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $premio->getId()->getEstadoString() . '" tu premio ' . $premio->getId()->getTitulo());
 
-            $this->addFlash('success', 'El premio fue actualizado satisfactoriamente');
-            return $this->redirectToRoute('premio_index', [
-                'id' => $premio->getId()->getAutor()->getId(),
-            ]);
-        }
+                $this->addFlash('success', 'El premio fue actualizado satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('premio_index', ['id' => $premio->getId()->getAutor()->getId()])]);
+            } else {
+                $page = $this->renderView('premio/_form.html.twig', array(
+                    'form' => $form->createView(),
+                    'button_action' => 'Actualizar',
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
-        return $this->render('premio/edit.html.twig', [
+        return $this->render('premio/_new.html.twig', [
             'premio' => $premio,
             'form' => $form->createView(),
+            'button_action' => 'Actualizar',
+            'form_title' => 'Editar premio',
 
             'user_id' => $premio->getId()->getAutor()->getId(),
             'user_foto' => null != $premio->getId()->getAutor()->getRutaFoto() ? $premio->getId()->getAutor()->getRutaFoto() : null,
@@ -142,16 +149,9 @@ class PremioController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
-        $this->denyAccessUnlessGranted('DELETE',$premio->getId());
+        $this->denyAccessUnlessGranted('DELETE', $premio->getId());
         $entityManager = $this->getDoctrine()->getManager();
-
-        if ($this->getUser()->getId() == $premio->getId()->getAutor()->getId()) {
-            if ($premio->getId()->getAutor()->getJefe() != null)
-                $notificacionService->nuevaNotificacion($premio->getId()->getAutor()->getJefe()->getId(), "El usuario " . $this->getUser()->__toString() . " eliminó su premio " . $premio->getId()->getTitulo());
-        } else
-            $notificacionService->nuevaNotificacion($premio->getId()->getAutor()->getId(), "El usuario " . $this->getUser()->__toString() . " ha eliminado tu premio " . $premio->getId()->getTitulo());
-
-        $entityManager->remove($premio);
+        $entityManager->remove($premio->getId());
         $entityManager->flush();
 
         return new JsonResponse(array('mensaje' => 'El premio fue eliminado satisfactoriamente'));

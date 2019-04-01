@@ -101,7 +101,59 @@ var libro = function () {
         $('select#libro_id_idautor').select2();
         $('select#libro_id_estado').select2();
         $('input#libro_id_fechaCaptacion').datepicker();
-        $("div#basicmodal form").validate();
+        $("body form[name='libro']").validate({
+            rules: {
+                'libro[id][titulo]': {required: true},
+                'libro[id][pais]': {required: true},
+                'libro[id][fechaCaptacion]': {required: true},
+                'libro[id][keywords]': {required: true},
+                'libro[id][file]': {required: true},
+                'libro[id][resumen]': {required: true},
+                'libro[id][estado]': {required: true},
+
+                'libro[editorial]': {required: true},
+                'libro[volumen]': {required: true},
+                'libro[numero]': {required: true},
+                'libro[serie]': {required: true},
+                'libro[paginas]': {required: true},
+                'libro[isbn]': {required: true},
+            }
+        });
+    }
+
+    var newAction = function () {
+        $('body').on('submit', "form[name='libro']", function (evento)
+        {
+            evento.preventDefault();
+            var padre = $(this).parent();
+            $.ajax({
+                url: $(this).attr("action"),
+                type: "POST",
+                data: new FormData(this), //para enviar el formulario hay que serializarlo
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend: function () {
+                    mApp.block("body",
+                        {overlayColor:"#000000",type:"loader",state:"success",message:"Guardando..."});
+                },
+                complete: function () {
+                    mApp.unblock("body");
+                },
+                success: function (data) {
+                    if (data['error']) {
+                        padre.html(data['form']);
+                        configurarFormulario();
+                    } else {
+                        window.location.href=data['ruta']
+                    }
+                },
+                error: function ()
+                {
+                    base.Error();
+                }
+            });
+        });
     }
 
     return {
@@ -116,6 +168,7 @@ var libro = function () {
         nuevo: function () {
             $().ready(function () {
                     configurarFormulario();
+                    newAction();
                 }
             );
         },
