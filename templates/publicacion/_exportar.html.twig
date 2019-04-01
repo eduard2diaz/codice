@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <style>
+        div.title {
+            margin: 6% 40%;
+            text-align: center;
+        }
+        th {
+            font-weight: bold !important;
+            width: 300px !important;
+            text-align: left;
+        }
+
+        thead tr {
+            background-color: rebeccapurple !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="title">
+    <h1>{{ entidad.id.titulo }}</h1>
+    <span>por {{ entidad.id.autor }}</span>
+</div>
+
+<table>
+    <tr>
+        <th>País</th>
+        <td>{{ entidad.id.pais }}</td>
+    </tr>
+    <tr>
+        <th>Fecha de publicación</th>
+        <td>{{ entidad.id.fechaCaptacion|date('d-m-Y') }}</td>
+    </tr>
+    <tr>
+        <th>Palabras claves</th>
+        <td>{{ entidad.id.keywords }}</td>
+    </tr>
+    {% block table_information %}
+    {% endblock table_information %}
+</table>
+<h3>Resumen</h3>
+<p>{{ entidad.id.resumen }}</p>
+</body>
+</html>

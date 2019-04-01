@@ -216,12 +216,18 @@ class AutorController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $seguidos = $this->getUser()->getSeguidor()->toArray();
+        if(count($seguidos)>0){
         $consulta = $em->createQuery('SELECT a.id, a.nombre, a.rutaFoto,i.nombre as institucion FROM App:Autor a join a.institucion i WHERE a.id != :id AND a.id NOT IN (:seguidos) AND a.activo=true');
         $consulta->setParameters(['id' => $this->getUser()->getId(), 'seguidos' => $seguidos]);
+        }else{
+            $consulta = $em->createQuery('SELECT a.id, a.nombre, a.rutaFoto,i.nombre as institucion FROM App:Autor a join a.institucion i WHERE a.id != :id AND a.activo=true');
+            $consulta->setParameters(['id' => $this->getUser()->getId()]);
+        }
+        //$consulta->setMaxResults(4);
         $datos = $consulta->getResult();
 
         $cantidad = count($datos);
-        $grupos = $cantidad > 4 ? 4 : $cantidad;
+        $grupos = $cantidad >= 4 ? 4 : $cantidad;
         $aux = array();
         if ($grupos > 1) {
             $keys = array_rand($datos, $grupos);

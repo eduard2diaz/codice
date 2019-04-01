@@ -1,6 +1,4 @@
 {% extends 'layout/userprofile.html.twig' %}
-
-
 {% block profile_content %}
     <div class="m-portlet m-portlet--tabs  ">
         <div class="m-portlet__head">
@@ -17,8 +15,8 @@
                         <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push"
                              m-dropdown-toggle="hover" aria-expanded="true">
                             <a href="#"
-                               class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
-                                <i class="la la-gear"></i>
+                               class="m-portlet__nav-link m-dropdown__toggle">
+                                <i class="la la-ellipsis-h"></i>
                             </a>
                             <div class="m-dropdown__wrapper">
                                 <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
@@ -39,6 +37,12 @@
                                                     <a href="{{ path('publicacion_descargar',{'id':encuentro.id.id}) }}" class="m-nav__link">
                                                         <i class="m-nav__link-icon flaticon-download"></i>
                                                         <span class="m-nav__link-text">Descargar</span>
+                                                    </a>
+                                                </li>
+                                                <li class="m-nav__item">
+                                                    <a href="{{ path('publicacion_exportar',{'id':encuentro.id.id}) }}" class="m-nav__link">
+                                                        <i class="m-nav__link-icon flaticon-file-1"></i>
+                                                        <span class="m-nav__link-text">Exportar</span>
                                                     </a>
                                                 </li>
                                             </ul>

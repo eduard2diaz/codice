@@ -15,8 +15,8 @@
                         <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push"
                              m-dropdown-toggle="hover" aria-expanded="true">
                             <a href="#"
-                               class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
-                                <i class="la la-gear"></i>
+                               class="m-portlet__nav-link  m-dropdown__toggle">
+                                <i class="la la-ellipsis-h"></i>
                             </a>
                             <div class="m-dropdown__wrapper">
                                 <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
@@ -37,6 +37,12 @@
                                                     <a href="{{ path('publicacion_descargar',{'id':tesis.id.id}) }}" class="m-nav__link">
                                                         <i class="m-nav__link-icon flaticon-download"></i>
                                                         <span class="m-nav__link-text">Descargar</span>
+                                                    </a>
+                                                </li>
+                                                <li class="m-nav__item">
+                                                    <a href="{{ path('publicacion_exportar',{'id':tesis.id.id}) }}" class="m-nav__link">
+                                                        <i class="m-nav__link-icon flaticon-file-1"></i>
+                                                        <span class="m-nav__link-text">Exportar</span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -94,6 +100,16 @@
                                         <div class="col">
                                             <h3 class="m-widget1__title">Institución</h3>
                                             <span class="m-widget1__desc">{{ tesis.institucion }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="m-widget1__item">
+                                    <div class="">
+                                        <div class="col">
+                                            <h3 class="m-widget1__title">Estado</h3>
+                                            <span class="m-widget1__desc">{{ tesis.id.getEstadoString() }}</span>
                                         </div>
                                     </div>
                                 </div>

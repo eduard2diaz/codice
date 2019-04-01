@@ -19,7 +19,7 @@ class EmailService
      * EmailService constructor.
      * @param $mailer_url
      */
-    public function __construct($mailer_url)
+    public function __construct($mailer_url=null)
     {
         $this->host='correo.ica.edu.cu';
         $this->port=25;

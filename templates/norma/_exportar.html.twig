@@ -1,0 +1,15 @@
+{% extends 'publicacion/_exportar.html.twig' %}
+{% block table_information %}
+    <tr>
+        <th>Páginas</th>
+        <td>{{ entidad.paginas }}</td>
+    </tr>
+    <tr>
+        <th>Tipo de norma</th>
+        <td>{{ entidad.tipoNorma }}</td>
+    </tr>
+    <tr>
+        <th>Número de registro</th>
+        <td>{{ entidad.noRegistro }}</td>
+    </tr>
+{% endblock table_information %}

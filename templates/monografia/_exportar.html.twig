@@ -1,0 +1,19 @@
+{% extends 'publicacion/_exportar.html.twig' %}
+{% block table_information %}
+    <tr>
+        <th>Páginas</th>
+        <td>{{ entidad.paginas }}</td>
+    </tr>
+    <tr>
+        <th>ISBN</th>
+        <td>{{ entidad.isbn }}</td>
+    </tr>
+    <tr>
+        <th>Número</th>
+        <td>{{ entidad.number }}</td>
+    </tr>
+    <tr>
+        <th>Cenda</th>
+        <td>{{ entidad.cenda }}</td>
+    </tr>
+{% endblock table_information %}

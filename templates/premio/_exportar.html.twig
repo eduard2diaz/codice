@@ -1,0 +1,10 @@
+{% extends 'publicacion/_exportar.html.twig' %}
+{% block table_information %}
+    <tr>
+        <th>Tipo de premio</th>
+        <td>{{ entidad.tipoPremio }}</td>
+    </tr><tr>
+        <th>Institución que lo concede</th>
+        <td>{{ entidad.institucionConcede }}</td>
+    </tr>
+{% endblock table_information %}

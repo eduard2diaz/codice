@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Publicacion;
+use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 
 /**
  * @Route("/publicacion")
@@ -23,6 +25,21 @@ class PublicacionController extends AbstractController
         $ruta = strtolower(substr($entidad, 11));
         $ruta = $ruta . '_show';
         return $this->redirectToRoute($ruta, ['id' => $publicacion->getId()]);
+    }
+
+    /**
+     * @Route("/{id}/exportar", name="publicacion_exportar", methods={"GET"})
+     */
+    public function exportar(Publicacion $publicacion,Pdf $pdf): Response
+    {
+        $entidad_name = $publicacion->getChildType();
+        $ruta = strtolower(substr($entidad_name, 11));
+        $entidad=$this->getDoctrine()->getManager()->getRepository($entidad_name)->find($publicacion);
+        $html=$this->renderView($ruta.'/_exportar.html.twig',['entidad'=>$entidad]);
+        return new PdfResponse(
+            $pdf->getOutputFromHtml($html),
+            $publicacion->getTitulo().'.pdf'
+        );
     }
 
     /**

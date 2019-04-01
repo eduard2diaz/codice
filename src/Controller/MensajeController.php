@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Grupo;
 use App\Entity\Mensaje;
 use App\Form\MensajeType;
+use App\Services\EmailService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -101,7 +102,7 @@ class MensajeController extends AbstractController
     /**
      * @Route("/new", name="mensaje_new", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, EmailService $email): Response
     {
           if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
@@ -121,7 +122,7 @@ class MensajeController extends AbstractController
                     $clone->setPropietario($value);
                     $clone->setBandeja(0);
                     $em->persist($clone);
-                    $this->get('app.email_service')->sendEmail($this->getUser()->getEmail(), $value->getEmail(), $clone->getAsunto(), $clone->getDescripcion());
+                    $email->sendEmail($this->getUser()->getEmail(), $value->getEmail(), $clone->getAsunto(), $clone->getDescripcion());
                 }
                 $em->flush();
                 return new JsonResponse(['mensaje' => 'El mensaje fue registrado satisfactoriamente',

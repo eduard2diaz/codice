@@ -1,0 +1,23 @@
+{% extends 'publicacion/_exportar.html.twig' %}
+{% block table_information %}
+    <tr>
+        <th>ISBN</th>
+        <td>{{ entidad.isbn }}</td>
+    </tr>
+    <tr>
+        <th>ISSN</th>
+        <td>{{ entidad.issn }}</td>
+    </tr>
+    <tr>
+        <th>Tipo de encuentro</th>
+        <td>{{ entidad.tipoEncuentro }}</td>
+    </tr>
+    <tr>
+        <th>Organizador</th>
+        <td>{{ entidad.organizador }}</td>
+    </tr>
+    <tr>
+        <th>Ciudad</th>
+        <td>{{ entidad.ciudad }}</td>
+    </tr>
+{% endblock table_information %}

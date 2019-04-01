@@ -1,0 +1,15 @@
+{% extends 'publicacion/_exportar.html.twig' %}
+{% block table_information %}
+    <tr>
+        <th>Tipo de software</th>
+        <td>{{ entidad.tipoSoftware }}</td>
+    </tr>
+    <tr>
+        <th>Número</th>
+        <td>{{ entidad.numero }}</td>
+    </tr>
+    <tr>
+        <th>Idioma</th>
+        <td>{{ entidad.idioma }}</td>
+    </tr>
+{% endblock table_information %}

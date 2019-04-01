@@ -18,7 +18,7 @@ class AutorVoter extends Voter
 
     protected function supports($attribute, $subject)
     {
-        return in_array($attribute, ['EDIT', 'DELETE'])  && $subject instanceof Autor;
+        return in_array($attribute, ['SEGUIR','EDIT', 'DELETE'])  && $subject instanceof Autor;
     }
 
     protected function voteOnAttribute($attribute, $subject, TokenInterface $token)

@@ -1,0 +1,27 @@
+{% extends 'publicacion/_exportar.html.twig' %}
+{% block table_information %}
+    <tr>
+        <th>Páginas</th>
+        <td>{{ entidad.paginas }}</td>
+    </tr>
+    <tr>
+        <th>Volumen</th>
+        <td>{{ entidad.volumen }}</td>
+    </tr>
+    <tr>
+        <th>ISSN</th>
+        <td>{{ entidad.issn }}</td>
+    </tr>
+    <tr>
+        <th>DOI</th>
+        <td>{{ entidad.doi }}</td>
+    </tr>
+    <tr>
+        <th>Número</th>
+        <td>{{ entidad.numero }}</td>
+    </tr>
+    <tr>
+        <th>Revista</th>
+        <td>{{ entidad.revista }}</td>
+    </tr>
+{% endblock table_information %}
