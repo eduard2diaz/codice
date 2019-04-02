@@ -14,7 +14,7 @@ use App\Entity\Autor;
 /**
  * Publicacion
  *
- * @ORM\Table(name="publicacion", indexes={@ORM\Index(name="IDX_62F2085F7E5D2EFF", columns={"pais"})})
+ * @ORM\Table(name="publicacion")
  * @ORM\Entity
  * @UniqueEntity(fields={"titulo","autor","childType"},message="Ya tiene una publicación con ese nombre")
  */
@@ -57,16 +57,6 @@ class Publicacion
      * @ORM\Column(name="fecha_captacion", type="date", nullable=false)
      */
     private $fechaCaptacion;
-
-    /**
-     * @var \Pais
-     *
-     * @ORM\ManyToOne(targetEntity="Pais")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="pais", referencedColumnName="id",onDelete="Cascade")
-     * })
-     */
-    private $pais;
 
     /**
      * @var \Autor
@@ -157,18 +147,6 @@ class Publicacion
     public function setFechaCaptacion(?\DateTimeInterface $fechaCaptacion): self
     {
         $this->fechaCaptacion = $fechaCaptacion;
-
-        return $this;
-    }
-
-    public function getPais(): ?Pais
-    {
-        return $this->pais;
-    }
-
-    public function setPais(?Pais $pais): self
-    {
-        $this->pais = $pais;
 
         return $this;
     }
@@ -291,11 +269,8 @@ class Publicacion
      */
     public function comprobarCargo(ExecutionContextInterface $context)
     {
-        if (null==$this->getPais()) {
-            $context->setNode($context, 'area', null, 'data.pais');
-            $context->addViolation('Seleccione un país');
-        }elseif (null==$this->getAutor()) {
-            $context->setNode($context, 'area', null, 'data.autor');
+        if (null==$this->getAutor()) {
+            $context->setNode($context, 'autor', null, 'data.autor');
             $context->addViolation('Seleccione un autor');
         }
     }

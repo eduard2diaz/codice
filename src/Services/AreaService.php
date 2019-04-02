@@ -34,18 +34,18 @@ class AreaService
 
     /*
      * FUNCION QUE LLAMA A UNA FUNCION RECURSIVA PARA OBTENER LAS AREAS HIJAS DE UNA DETERMINADA AREA
-     */
+
     public function areasHijas(Area $area,$esAdmin=false){
         if(!$esAdmin){
             $array=[$area];
             return $this->areasHijasAux($area,$array);
         }else
             return $this->getEm()->getRepository('App:Area')->findAll();
-    }
+    }*/
 
     /*
      * FUNCION RECURSIVA QUE DEVUELVE LAS AREAS HIJAS DE UNA AREA
-     */
+
     private function areasHijasAux(Area $area,&$areas){
 
         $em=$this->getEm();
@@ -55,7 +55,7 @@ class AreaService
             $this->areasHijasAux($hijo,$areas);
         }
         return $areas;
-    }
+    } */
 
     /*
      * FUNCION QUE A PARTIR DE LOS DATOS OBTENIDOS DE LA FUNCION ANTERIOR, DEVUELVE LAS AREAS NO HIJAS DE
@@ -65,11 +65,11 @@ class AreaService
         $hijas=$this->areasHijas($area);
         $em=$this->getEm();
         if(empty($hijas)) {
-            $consulta = $em->createQuery('SELECT a FROM App:Area a WHERE a.id!= :id ');
-            $consulta->setParameter('id' , $area->getId());
+            $consulta = $em->createQuery('SELECT a FROM App:Area a JOIN a.institucion i WHERE a.id!= :id AND i.id= :institucion');
+            $consulta->setParameters(['id'=> $area->getId(),'institucion'=>$area->getInstitucion()->getId()]);
         }else{
-            $consulta=$em->createQuery('SELECT a FROM App:Area a WHERE a.id!= :id AND NOT a  IN (:hijas)');
-            $consulta->setParameters(array('hijas'=>$hijas,'id'=>$area->getId()));
+            $consulta=$em->createQuery('SELECT a FROM App:Area a JOIN a.institucion i WHERE a.id!= :id AND i.id= :institucion AND NOT a  IN (:hijas)');
+            $consulta->setParameters(array('hijas'=>$hijas,'institucion'=>$area->getInstitucion()->getId(),'id'=>$area->getId()));
         }
         return $consulta->getResult();
     }
@@ -113,11 +113,11 @@ class AreaService
     /*
      * OBTIENE EL LISTADO DE DIRECTIVOS DE LA INSTITUCION
      */
-    public function obtenerDirectivos($id=null){
-        if(!$id)
-            $consulta=$this->getEm()->createQuery("SELECT u FROM App:Autor u join u.idrol r WHERE r.nombre= :nombre")->setParameters(array('nombre'=>'ROLE_DIRECTIVO'));
+    public function obtenerDirectivos($institucion,$ignoreId=null){
+        if(!$ignoreId)
+            $consulta=$this->getEm()->createQuery("SELECT u FROM App:Autor u join u.institucion i join u.idrol r WHERE i.id= :institucion AND r.nombre= :nombre")->setParameters(array('nombre'=>'ROLE_DIRECTIVO'));
         else
-            $consulta=$this->getEm()->createQuery("SELECT u FROM App:Autor u join u.idrol r WHERE u.id!= :id AND r.nombre= :nombre")->setParameters(array('id'=>$id,'nombre'=>'ROLE_DIRECTIVO'));
+            $consulta=$this->getEm()->createQuery("SELECT u FROM App:Autor u join u.institucion i join u.idrol r WHERE u.id!= :id AND i.id= :institucion AND r.nombre= :nombre")->setParameters(array('id'=>$ignoreId,'nombre'=>'ROLE_DIRECTIVO'));
         return  $consulta->getResult();
     }
 

@@ -29,7 +29,6 @@ class PublicacionType extends AbstractType
                 'class' => 'form-control input-small'
             )))
             ->add('file', FileType::class, array('required' => true))
-            ->add('pais', null, ['label'=>'País','required' => true, 'attr' => ['class' => 'form-control']])// ->add('idautor')
         ;
         $builder->get('fechaCaptacion')
             ->addModelTransformer(new DateTimetoStringTransformer());

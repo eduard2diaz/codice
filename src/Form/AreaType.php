@@ -3,22 +3,27 @@
 namespace App\Form;
 
 use App\Entity\Area;
+use App\Form\Subscriber\AddAreaAreaPadreFieldSubscriber;
+use App\Form\Subscriber\AddAreaInstitucionFieldSubscriber;
+use App\Form\Subscriber\AddInstitucionMinisterioFieldSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Services\AreaService;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class AreaType extends AbstractType
 {
+    private $token;
+    private $authorizationChecker;
     private $area_service;
 
-    /**
-     * AreaType constructor.
-     * @param $area_service
-     */
-    public function __construct(AreaService $area_service)
+    public function __construct(TokenStorageInterface $token, AuthorizationCheckerInterface $authorizationChecker, AreaService $area_service)
     {
+        $this->token = $token;
+        $this->authorizationChecker = $authorizationChecker;
         $this->area_service = $area_service;
     }
 
@@ -36,11 +41,29 @@ class AreaType extends AbstractType
         $builder
             ->add('nombre', TextType::class,array('attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')));
 
-        if(null==$area->getId())
-            $builder->add('padre',null,array('label'=>'Área padre','attr'=>array('class'=>'form-control input-medium')));
-        else
-            $builder->add('padre',null,array('label'=>'Área padre','choices'=>$this->getAreaService()->areasNoHijas($area),
-                'attr'=>array('class'=>'form-control input-medium')));
+        if($this->authorizationChecker->isGranted('ROLE_SUPERADMIN')){
+            $builder->add('pais',null,['label'=>'País'])
+                    ->add('ministerio')
+                    ->add('institucion',null,['label'=>'Institución']);
+
+            $factory = $builder->getFormFactory();
+            $builder->addEventSubscriber(new AddInstitucionMinisterioFieldSubscriber($factory));
+            $builder->addEventSubscriber(new AddAreaInstitucionFieldSubscriber($factory));
+            $builder->addEventSubscriber(new AddAreaAreaPadreFieldSubscriber($factory,$this->areaService));
+        }else{
+            if(null==$area->getId())
+                $builder->add('padre',null,array('label'=>'Área padre','attr'=>array('class'=>'form-control input-medium')));
+            else
+                $builder->add('padre',null,array('label'=>'Área padre','choices'=>$this->getAreaService()->areasNoHijas($area),
+                    'attr'=>array('class'=>'form-control input-medium')));
+        }
+
+
+
+
+
+
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

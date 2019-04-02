@@ -18,7 +18,7 @@ class AutorVoter extends Voter
 
     protected function supports($attribute, $subject)
     {
-        return in_array($attribute, ['SEGUIR','EDIT', 'DELETE'])  && $subject instanceof Autor;
+        return in_array($attribute, ['VIEWSTATICS','SEGUIR','EDIT', 'DELETE'])  && $subject instanceof Autor;
     }
 
     protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
@@ -29,14 +29,16 @@ class AutorVoter extends Voter
         }
 
         switch ($attribute) {
+            case 'VIEWSTATICS':
+                return $subject->getId()==$token->getUser()->getId() || $this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esJefe($token->getUser());
             case 'EDIT':
-                return $subject->getId()==$token->getUser()->getId() || $this->decisionManager->decide($token, array('ROLE_ADMIN'));
+                return $subject->getId()==$token->getUser()->getId() || $this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esJefe($token->getUser());
             break;
             case 'DELETE':
-                return $subject->getId()!=$token->getUser()->getId() || $this->decisionManager->decide($token, array('ROLE_ADMIN'));
+                return $subject->getId()!=$token->getUser()->getId() && ($this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esJefe($token->getUser()));
             break;
             case 'SEGUIR':
-                return $subject->getId()!=$token->getUser()->getId();
+                return $subject->getId()!=$token->getUser()->getId() && false==in_array('ROLE_SUPERADMIN',$subject->getRoles());
             break;
         }
 

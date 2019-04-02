@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Autor;
+use App\Entity\Institucion;
 use App\Form\AutorType;
 use App\Services\AreaService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -53,13 +54,22 @@ class AutorController extends AbstractController
         $form = $this->createForm(AutorType::class, $autor);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($autor);
-            $entityManager->flush();
-            $this->addFlash('success', 'El usuario fue registrado satisfactoriamente');
-            return $this->redirectToRoute('autor_index', ['id' => $this->getUser()->getId()]);
-        }
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($autor);
+                $entityManager->flush();
+                $this->addFlash('success', 'El usuario fue registrado satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('autor_index', ['id' => $this->getUser()->getId()])]);
+            } else {
+                $page = $this->renderView('autor/_form.html.twig', array(
+                    'form' => $form->createView(),
+                    'autor' => $autor,
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
         return $this->render('autor/new.html.twig', [
             'autor' => $autor,
@@ -95,25 +105,34 @@ class AutorController extends AbstractController
         $passwordOriginal = $form->getData()->getPassword();
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $ruta = $this->getParameter('storage_directory');
-            if (null == $autor->getPassword())
-                $autor->setPassword($passwordOriginal);
-            else
-                $autor->setPassword($encoder->encodePassword($autor, $autor->getPassword()));
-
-            if ($autor->getFile() != null) {
-                if ($autor->getRutaFoto() != null)
-                    $autor->actualizarFoto($ruta);
+        if ($form->isSubmitted())
+            if (!$request->isXmlHttpRequest())
+                throw $this->createAccessDeniedException();
+            elseif ($form->isValid()) {
+                $ruta = $this->getParameter('storage_directory');
+                if (null == $autor->getPassword())
+                    $autor->setPassword($passwordOriginal);
                 else
-                    $autor->Upload($ruta);
-                $autor->setFile(null);
-            }
+                    $autor->setPassword($encoder->encodePassword($autor, $autor->getPassword()));
 
-            $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'El usuario fue actualizado satisfactoriamente');
-            return $this->redirectToRoute('autor_show', ['id' => $autor->getId()]);
-        }
+                if ($autor->getFile() != null) {
+                    if ($autor->getRutaFoto() != null)
+                        $autor->actualizarFoto($ruta);
+                    else
+                        $autor->Upload($ruta);
+                    $autor->setFile(null);
+                }
+
+                $this->getDoctrine()->getManager()->flush();
+                $this->addFlash('success', 'El usuario fue actualizado satisfactoriamente');
+                return new JsonResponse(['ruta' => $this->generateUrl('autor_show', ['id' => $autor->getId()])]);
+            } else {
+                $page = $this->renderView('autor/_form.html.twig', array(
+                    'form' => $form->createView(),
+                    'autor' => $autor,
+                ));
+                return new JsonResponse(array('form' => $page, 'error' => true,));
+            }
 
         return $this->render('autor/edit.html.twig', [
             'autor' => $autor,
@@ -184,7 +203,6 @@ class AutorController extends AbstractController
             $autor->removeSeguidores($this->getUser());
         }
 
-
         $em = $this->getDoctrine()->getManager();
         $em->persist($autor);
         $em->flush();
@@ -240,5 +258,18 @@ class AutorController extends AbstractController
             }
 
         return $this->render('autor/sugerencia.html.twig', ['datos' => $aux]);
+    }
+
+    /**
+     * @Route("/{id}/finddirectivosbyinstitucion", name="finddirectivosbyinstitucion", options={"expose"=true})
+     * Retorna el listado de directivos que posee una determinada institucion
+     */
+    public function findDirectivosByInstitucion(Request $request,AreaService $areaService, Institucion $institucion)
+    {
+        if(!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        $directivos=$areaService->obtenerDirectivos($institucion->getId());
+
     }
 }

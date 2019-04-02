@@ -96,7 +96,6 @@ var tesis = function () {
     }
 
     var configurarFormulario = function () {
-        $('select#tesis_id_pais').select2();
         $('select#tesis_institucion').select2();
         $('select#tesis_tipoTesis').select2();
         $('select#tesis_id_idautor').select2();
@@ -105,7 +104,6 @@ var tesis = function () {
         $("body form[name='tesis']").validate({
             rules: {
                 'tesis[id][titulo]': {required: true},
-                'tesis[id][pais]': {required: true},
                 'tesis[id][fechaCaptacion]': {required: true},
 
                 'tesis[id][keywords]': {required: true},

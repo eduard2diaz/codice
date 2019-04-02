@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Area;
+use App\Entity\Autor;
+use App\Entity\Institucion;
 use App\Form\AreaType;
+use App\Services\AreaService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,16 +19,26 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class AreaController extends AbstractController
 {
     /**
-     * @Route("/", name="area_index", methods={"GET"})
+     * @Route("/", name="area_index", methods={"GET"},options={"expose"=true})
      */
     public function index(Request $request): Response
     {
-        $areas = $this->getDoctrine()->getRepository(Area::class)->findAll();
+        if($this->isGranted('ROLE_SUPERADMIN'))
+            $areas = $this->getDoctrine()->getRepository(Area::class)->findAll();
+        else
+            $areas = $this->getDoctrine()->getRepository(Area::class)->findByInstitucion($this->getUser()->getInstitucion());
 
         if ($request->isXmlHttpRequest())
-            return $this->render('area/_table.html.twig', [
-                'areas' => $areas,
-            ]);
+            if($request->get('_format')=='xml') {
+                $cadena = "";
+                foreach ($areas as $value)
+                    $cadena .= "<option value={$value->getId()}>{$value->getNombre()}</option>";
+                return new Response($cadena);
+            }
+            else
+                return $this->render('area/_table.html.twig', [
+                    'areas' => $areas,
+                ]);
 
         return $this->render('area/index.html.twig', [
             'areas' => $areas,
@@ -38,6 +51,12 @@ class AreaController extends AbstractController
     public function new(Request $request): Response
     {
         $area = new Area();
+        if($this->isGranted('ROLE_ADMIN')){
+            $area->setInstitucion($this->getUser()->getInstitucion());
+            $area->setMinisterio($this->getUser()->getMinisterio());
+            $area->setPais($this->getUser()->getPais());
+        }
+
         $form = $this->createForm(AreaType::class, $area, array('action' => $this->generateUrl('area_new')));
         $form->handleRequest($request);
 
@@ -100,6 +119,19 @@ class AreaController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/show", name="area_show",options={"expose"=true})
+     */
+    public function show(Request $request, Area $area): Response
+    {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        return $this->render('area/_show.html.twig', [
+            'area' => $area,
+        ]);
+    }
+
+    /**
      * @Route("/{id}/delete", name="area_delete",options={"expose"=true})
      */
     public function delete(Request $request, Area $area): Response
@@ -111,5 +143,45 @@ class AreaController extends AbstractController
         $em->remove($area);
         $em->flush();
         return new JsonResponse(array('mensaje' => 'El área fue eliminada satisfactoriamente'));
+    }
+
+    //Funcionalidades ajax
+
+    /*
+     * @Route("/{id}/findByAutor", name="area_findbyautor", methods="GET",options={"expose"=true})
+     * Se utiliza en el gestionar de autor
+     */
+    public function findByAutor(Request $request,AreaService $areaService, Autor $autor): Response
+    {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        $area=$autor->getArea();
+        $areas=$areaService->areasHijas($area);
+
+        $cadena="";
+        foreach ($areas as $area)
+            $cadena.="<option value={$area->getId()}>{$area->getNombre()}</option>";
+
+        return new Response($cadena);
+    }
+
+    /**
+     * @Route("/{id}/findbyinstitucion", name="area_findbyinstitucion",options={"expose"=true})
+     * Funcioanalidad que retorna el listado de areas de una determinada institucion(Se usa en el gestionar de areas)
+     */
+    public function findbyInstitucion(Request $request, Institucion $institucion): Response
+    {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        $em = $this->getDoctrine()->getManager();
+        $areas=$em->getRepository(Area::class)->findByInstitucion($institucion);
+
+        $areas_array=[];
+        foreach ($areas as $area)
+            $areas_array[]=['id'=>$area->getId(),'nombre'=>$area->getNombre()];
+
+        return new JsonResponse($areas_array);
     }
 }

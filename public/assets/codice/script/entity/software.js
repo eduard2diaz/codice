@@ -96,7 +96,6 @@ var software = function () {
     }
 
     var configurarFormulario = function () {
-        $('select#software_id_pais').select2();
         $('select#software_editorial').select2();
         $('select#software_id_idautor').select2();
         $('select#software_id_estado').select2();
@@ -106,7 +105,6 @@ var software = function () {
         $("body form[name='software']").validate({
             rules: {
                 'software[id][titulo]': {required: true},
-                'software[id][pais]': {required: true},
                 'software[id][fechaCaptacion]': {required: true},
                 'software[id][keywords]': {required: true},
                 'software[id][file]': {required: true},

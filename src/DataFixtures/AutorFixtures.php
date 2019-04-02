@@ -16,18 +16,19 @@ class AutorFixtures extends Fixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         $autor=new Autor();
-        $rol=$manager->getRepository(Rol::class)->findOneByNombre('ROLE_ADMIN');
-        $area=$manager->getRepository(Area::class)->findOneByNombre('Decanato');
+        $rol=$manager->getRepository(Rol::class)->findOneByNombre('ROLE_SUPERADMIN');
+        /*$area=$manager->getRepository(Area::class)->findOneByNombre('Decanato');
         $grado=$manager->getRepository(GradoCientifico::class)->findOneByNombre('Doctor en Ciencias');
         $institucion=$manager->getRepository(Institucion::class)->findOneByNombre('Universidad Agraria de La Habana');
         $autor->setPais($institucion->getMinisterio()->getPais());
         $autor->setMinisterio($institucion->getMinisterio());
-        $autor->setUsuario('administrador');
         $autor->setInstitucion($institucion);
-        $autor->setNombre('administrador');
         $autor->setArea($area);
-        $autor->setPassword('administrador');
         $autor->setGradoCientifico($grado);
+        */
+        $autor->setUsuario('administrador');
+        $autor->setNombre('administrador');
+        $autor->setPassword('administrador');
         $autor->setEmail('administrador@unah.edu.cu');
         $autor->addIdrol($rol);
         $manager->persist($autor);

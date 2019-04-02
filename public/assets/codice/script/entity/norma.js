@@ -96,7 +96,6 @@ var norma = function () {
     }
 
     var configurarFormulario = function () {
-        $('select#norma_id_pais').select2();
         $('select#norma_id_idautor').select2();
         $('select#norma_id_estado').select2();
         $('select#norma_tipoNorma').select2();
@@ -104,7 +103,6 @@ var norma = function () {
         $("body form[name='norma']").validate({
             rules: {
                 'norma[id][titulo]': {required: true},
-                'norma[id][pais]': {required: true},
                 'norma[id][fechaCaptacion]': {required: true},
                 'norma[id][keywords]': {required: true},
                 'norma[id][file]': {required: true},

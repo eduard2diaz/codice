@@ -68,6 +68,16 @@ class Encuentro
      */
     private $organizador;
 
+    /**
+     * @var \Pais
+     *
+     * @ORM\ManyToOne(targetEntity="Pais")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pais", referencedColumnName="id",onDelete="Cascade")
+     * })
+     */
+    private $pais;
+
     public function __construct()
     {
         $this->setId(new Publicacion());
@@ -146,11 +156,28 @@ class Encuentro
         return $this;
     }
 
+    public function getPais(): ?Pais
+    {
+        return $this->pais;
+    }
+
+    public function setPais(?Pais $pais): self
+    {
+        $this->pais = $pais;
+
+        return $this;
+    }
+
     /**
      * @Assert\Callback
      */
     public function validate(ExecutionContextInterface $context)
     {
+        if (null==$this->getPais()) {
+            $context->setNode($context, 'pais', null, 'data.pais');
+            $context->addViolation('Seleccione un país');
+        }
+
         if (null == $this->getOrganizador()) {
             $context->setNode($context, 'area', null, 'data.organizador');
             $context->addViolation('Seleccione el organizador');

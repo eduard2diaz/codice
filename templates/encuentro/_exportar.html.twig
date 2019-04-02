@@ -1,6 +1,10 @@
 {% extends 'publicacion/_exportar.html.twig' %}
 {% block table_information %}
     <tr>
+        <th>País</th>
+        <td>{{ entidad.pais }}</td>
+    </tr>
+    <tr>
         <th>ISBN</th>
         <td>{{ entidad.isbn }}</td>
     </tr>

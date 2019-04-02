@@ -28,6 +28,7 @@ class EncuentroType extends AbstractType
             ->add('id',PublicacionType::class)
             ->add('tipoEncuentro',null,['label'=>'Tipo de encuentro','required'=>true])
             ->add('organizador',null,['required'=>true])
+            ->add('pais', null, ['label'=>'País','required' => true, 'attr' => ['class' => 'form-control']])// ->add('idautor')
         ;
 
         if($this->token->getToken()->getUser()->getId()!=$options['data']->getId()->getAutor()->getId())

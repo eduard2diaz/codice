@@ -155,10 +155,10 @@ var editorial = function () {
                             "pais": data['pais'],
                             "acciones": "<ul class='m-nav m-nav--inline m--pull-right'>" +
                                 "<li class='m-nav__item'>" +
-                                "<a class='btn btn-sm btn-info edicion' data-href=" + Routing.generate('editorial_edit',{id:data['id']}) + "><i class='flaticon-edit-1'></i>Editar</a></li>" +
+                                "<a class='btn btn-sm btn-info editorial_show' data-href=" + Routing.generate('editorial_show',{id:data['id']}) + "><i class='flaticon-eye'></i>Visualizar</a></li>" +
                                 "<li class='m-nav__item'>" +
-                                "<a class='btn btn-danger btn-sm  eliminar_editorial' data-href=" + Routing.generate('editorial_delete',{id:data['id']}) + ">" +
-                                "<i class='flaticon-delete-1'></i>Eliminar</a></li></ul>",
+                                "<a class='btn btn-sm btn-info edicion' data-href=" + Routing.generate('editorial_edit',{id:data['id']}) + "><i class='flaticon-edit-1'></i>Editar</a></li>" +
+                                "</ul>",
                         });
                         objeto.draw();
                         table.page(pagina).draw('page');
@@ -215,12 +215,11 @@ var editorial = function () {
     }
 
     var eliminar = function () {
-        $('table#editorial_table').on('click', 'a.eliminar_editorial', function (evento)
+        $('div#basicmodal').on('click', 'a.eliminar_editorial', function (evento)
         {
             evento.preventDefault();
-            var obj = $(this);
             var link = $(this).attr('data-href');
-            var token = $(this).attr('data-csrf');
+            $('div#basicmodal').modal('hide');
             bootbox.confirm({
                 title: 'Eliminar editorial',
                 message: '¿Está seguro que desea eliminar esta editorial?',

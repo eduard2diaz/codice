@@ -18,7 +18,7 @@ class RevistaType extends AbstractType
             ->add('nombre', TextType::class,array('attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
             ->add('impacto',NumberType::class,array('attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
             ->add('nivel',ChoiceType::class,array('choices'=>['1er Nivel'=>1,'2do Nivel'=>2,'3er Nivel'=>3,'4to Nivel'=>4]))
-            ->add('pais',null, array('label'=>'País','attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
+            ->add('pais',null, array('required'=>true,'label'=>'País','attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
         ;
     }
 

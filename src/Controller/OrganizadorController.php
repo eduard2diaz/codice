@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Encuentro;
 use App\Entity\Organizador;
 use App\Form\OrganizadorType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -84,6 +85,7 @@ class OrganizadorController extends AbstractController
                     'form' => $form->createView(),
                     'form_id' => 'organizador_edit',
                     'action' => 'Actualizar',
+                    'eliminable'=>$this->esEliminable($organizador)
                 ));
                 return new JsonResponse(array('form' => $page, 'error' => true));
             }
@@ -94,6 +96,7 @@ class OrganizadorController extends AbstractController
             'action' => 'Actualizar',
             'form_id' => 'organizador_edit',
             'form' => $form->createView(),
+            'eliminable'=>$this->esEliminable($organizador)
         ]);
     }
 
@@ -102,12 +105,18 @@ class OrganizadorController extends AbstractController
      */
     public function delete(Request $request, Organizador $organizador): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || false==$this->esEliminable($organizador))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($organizador);
         $em->flush();
         return new JsonResponse(array('mensaje' => 'El organizador fue eliminado satisfactoriamente'));
+    }
+
+    private function esEliminable(Organizador $organizador){
+        return $this->getDoctrine()->getManager()
+             ->getRepository(Encuentro::class)
+             ->findOneByOrganizador($organizador)==null;
     }
 }

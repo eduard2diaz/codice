@@ -96,7 +96,6 @@ var articulo = function () {
     }
 
     var configurarFormulario = function () {
-        $('select#articulo_id_pais').select2();
         $('select#articulo_id_idautor').select2();
         $('select#articulo_id_estado').select2();
         $('select#articulo_revista').select2();
@@ -105,7 +104,6 @@ var articulo = function () {
         $("body form[name='articulo']").validate({
             rules: {
                 'articulo[id][titulo]': {required: true},
-                'articulo[id][pais]': {required: true},
                 'articulo[id][fechaCaptacion]': {required: true},
                 'articulo[id][keywords]': {required: true},
                 'articulo[id][file]': {required: true},

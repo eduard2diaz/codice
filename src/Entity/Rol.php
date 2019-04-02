@@ -95,14 +95,20 @@ class Rol extends Role
     public function __toString()
     {
         switch($this->getNombre()){
+            case 'ROLE_SUPERADMIN':
+                return 'Super-Administrador';
+                break;
             case 'ROLE_ADMIN':
-                return 'Administrador';
+                return 'Administrador institucional';
                 break;
             case 'ROLE_DIRECTIVO':
                 return 'Directivo';
                 break;
             case 'ROLE_USER':
                 return 'Trabajador';
+                break;
+            case 'ROLE_VISOR':
+                return 'Visor Estadístico';
                 break;
         }
         return $this->getNombre();

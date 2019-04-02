@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Editorial;
+use App\Entity\Libro;
 use App\Form\EditorialType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -99,6 +100,7 @@ class EditorialController extends AbstractController
                     'form' => $form->createView(),
                     'form_id' => 'editorial_edit',
                     'action' => 'Actualizar',
+                    'eliminable'=>$this->esEliminable($editorial)
                 ));
                 return new JsonResponse(array('form' => $page, 'error' => true));
             }
@@ -109,6 +111,7 @@ class EditorialController extends AbstractController
             'action' => 'Actualizar',
             'form_id' => 'editorial_edit',
             'form' => $form->createView(),
+            'eliminable'=>$this->esEliminable($editorial)
         ]);
     }
 
@@ -117,12 +120,18 @@ class EditorialController extends AbstractController
      */
     public function delete(Request $request, Editorial $editorial): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || false==$this->esEliminable($editorial))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($editorial);
         $em->flush();
         return new JsonResponse(array('mensaje' => 'La editorial fue eliminada satisfactoriamente'));
+    }
+
+    private function esEliminable(Editorial $editorial){
+        return $this->getDoctrine()->getManager()
+                ->getRepository(Libro::class)
+                ->findOneByEditorial($editorial)==null;
     }
 }

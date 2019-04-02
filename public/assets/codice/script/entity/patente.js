@@ -96,7 +96,6 @@ var patente = function () {
     }
 
     var configurarFormulario = function () {
-        $('select#patente_id_pais').select2();
         $('select#patente_id_idautor').select2();
         $('select#patente_id_estado').select2();
         $('select#patente_idioma').select2();
@@ -104,7 +103,6 @@ var patente = function () {
         $("body form[name='patente']").validate({
             rules: {
                 'patente[id][titulo]': {required: true},
-                'patente[id][pais]': {required: true},
                 'patente[id][fechaCaptacion]': {required: true},
                 'patente[id][keywords]': {required: true},
                 'patente[id][file]': {required: true},

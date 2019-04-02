@@ -31,29 +31,47 @@ security:
 
     access_control:
         - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/pais, roles: ROLE_ADMIN }
-        - { path: ^/ministerio/\d+/findbypais, roles: ROLE_ADMIN }
-        - { path: ^/ministerio, roles: ROLE_ADMIN }
-        - { path: ^/institucion/\d+/findbyministerio, roles: ROLE_ADMIN }
-        - { path: ^/institucion, roles: ROLE_ADMIN }
-        - { path: ^/area, roles: ROLE_ADMIN }
-        - { path: ^/grupocientifico, roles: ROLE_ADMIN }
-        - { path: ^/editorial, roles: ROLE_ADMIN }
+        - { path: ^/pais, roles: ROLE_SUPERADMIN }
+        - { path: ^/ministerio/\d+/findbypais, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }
+        - { path: ^/ministerio, roles: ROLE_SUPERADMIN }
+        - { path: ^/institucion/\d+/findbyministerio, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }
+        #permisos del superadmin
+        - { path: ^/institucion, roles: ROLE_SUPERADMIN }
+        - { path: ^/area/\d+/findbyautor, roles: [ROLE_SUPERADMIN, ROLE_ADMIN, ROLE_DIRECTIVO] }
+        - { path: ^/area, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }
+        - { path: ^/grupocientifico, roles: ROLE_SUPERADMIN }
+        - { path: ^/clasificaciontipotesis, roles: ROLE_SUPERADMIN }
+        - { path: ^/tipotesis, roles: ROLE_SUPERADMIN }
+        - { path: ^/clasificaciontiposoftware, roles: ROLE_SUPERADMIN }
+        - { path: ^/tiposoftware, roles: ROLE_SUPERADMIN }
+        - { path: ^/grupoarticulo, roles: ROLE_SUPERADMIN }
+        - { path: ^/tipoarticulo, roles: ROLE_SUPERADMIN }
+        - { path: ^/tiponorma, roles: ROLE_SUPERADMIN }
+        - { path: ^/tipopremio, roles: ROLE_SUPERADMIN }
+        - { path: ^/tipoencuentro, roles: ROLE_SUPERADMIN }
+        #permisos del administrador institucional
         - { path: ^/organizador, roles: ROLE_ADMIN }
-        - { path: ^/clasificaciontipotesis, roles: ROLE_ADMIN }
-        - { path: ^/tipotesis, roles: ROLE_ADMIN }
-        - { path: ^/clasificaciontiposoftware, roles: ROLE_ADMIN }
-        - { path: ^/tiposoftware, roles: ROLE_ADMIN }
-        - { path: ^/tipopremio, roles: ROLE_ADMIN }
-        - { path: ^/tiponorma, roles: ROLE_ADMIN }
-        - { path: ^/tipoencuentro, roles: ROLE_ADMIN }
-        - { path: ^/grupoarticulo, roles: ROLE_ADMIN }
-        - { path: ^/tipoarticulo, roles: ROLE_ADMIN }
-        - { path: ^/autor/\d+/index, roles: [ROLE_DIRECTIVO, ROLE_ADMIN] }
-        - { path: ^/autor/new, roles: [ROLE_DIRECTIVO, ROLE_ADMIN] }
-        - { path: ^/autor/\d+/delete, roles: [ROLE_DIRECTIVO, ROLE_ADMIN] }
+        - { path: ^/editorial, roles: ROLE_ADMIN }
+        - { path: ^/revista, roles: ROLE_ADMIN }
+        #permisos de directivos
+
+
+
+
+
+
+
+
+        - { path: ^/autor/\d+/index, roles: [ROLE_SUPERADMIN, ROLE_DIRECTIVO, ROLE_ADMIN] }
+        - { path: ^/autor/\d+/finddirectivosbyinstitucion, roles: [ROLE_SUPERADMIN] }
+        - { path: ^/autor/new, roles: [ROLE_SUPERADMIN, ROLE_DIRECTIVO, ROLE_ADMIN] }
+        - { path: ^/autor/\d+/delete, roles: [ROLE_SUPERADMIN, ROLE_DIRECTIVO, ROLE_ADMIN] }
         - { path: ^/autor, roles: IS_AUTHENTICATED_FULLY }
+
+
+        #permisos de usuarios y directivos
         - { path: ^/notificacion, roles: IS_AUTHENTICATED_FULLY }
+
         - { path: ^/mensaje, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/premio, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/encuentro, roles: IS_AUTHENTICATED_FULLY }
@@ -64,4 +82,5 @@ security:
         - { path: ^/monografia, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/libro, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/articulo, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/reporte, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/*, roles: IS_AUTHENTICATED_FULLY }

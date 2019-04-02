@@ -15,8 +15,8 @@
                         <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push"
                              m-dropdown-toggle="hover" aria-expanded="true">
                             <a href="#"
-                               class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
-                                <i class="la la-gear"></i>
+                               class="m-portlet__nav-link m-dropdown__toggle">
+                                <i class="la la-ellipsis-h"></i>
                             </a>
                             <div class="m-dropdown__wrapper">
                                 <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
@@ -33,6 +33,13 @@
                                                            class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-edit-1"></i>
                                                             <span class="m-nav__link-text">Editar</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="m-nav__item">
+                                                        <a data-href="{{ path('reporte_autorresumenperiodo',{'id':autor.id}) }}"
+                                                           class="m-nav__link" id="resumenperiodo_link">
+                                                            <i class="m-nav__link-icon flaticon-pie-chart"></i>
+                                                            <span class="m-nav__link-text">Resumen publicaciones</span>
                                                         </a>
                                                     </li>
                                                 {% endif %}
@@ -86,7 +93,7 @@
                                     <div class="">
                                         <div class="col">
                                             <h3 class="m-widget1__title">Teléfono</h3>
-                                            <span class="m-widget1__desc">{{ autor.phone }}</span>
+                                            <span class="m-widget1__desc">{{ autor.phone ? autor.phone : 'Sin captar'}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -195,6 +202,11 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <!--IMPORTANDO LAS LIBRERIAS DE AMCHART-->
+    <script src="{{ asset('plugins/amcharts4/core.js','codice') }}"></script>
+    <script src="{{ asset('plugins/amcharts4/charts.js','codice') }}"></script>
+    <script src="{{ asset('plugins/amcharts4/themes/animated.js','codice') }}"></script>
+    <!--FIN DE IMPORTANDO LAS LIBRERIAS DE AMCHART-->
     <script src="{{ asset('script/entity/autor.js','codice') }}"></script>
     <script>
         autor.show();

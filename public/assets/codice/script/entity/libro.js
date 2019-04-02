@@ -96,7 +96,6 @@ var libro = function () {
     }
 
     var configurarFormulario = function () {
-        $('select#libro_id_pais').select2();
         $('select#libro_editorial').select2();
         $('select#libro_id_idautor').select2();
         $('select#libro_id_estado').select2();
@@ -104,7 +103,6 @@ var libro = function () {
         $("body form[name='libro']").validate({
             rules: {
                 'libro[id][titulo]': {required: true},
-                'libro[id][pais]': {required: true},
                 'libro[id][fechaCaptacion]': {required: true},
                 'libro[id][keywords]': {required: true},
                 'libro[id][file]': {required: true},

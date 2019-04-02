@@ -96,7 +96,7 @@ var encuentro = function () {
     }
 
     var configurarFormulario = function () {
-        $('select#encuentro_id_pais').select2();
+        $('select#encuentro_pais').select2();
         $('select#encuentro_id_idautor').select2();
         $('select#encuentro_id_estado').select2();
         $('select#encuentro_tipoEncuentro').select2();
@@ -105,7 +105,7 @@ var encuentro = function () {
         $("body form[name='encuentro']").validate({
             rules: {
                 'encuentro[id][titulo]': {required: true},
-                'encuentro[id][pais]': {required: true},
+                'encuentro[pais]': {required: true},
                 'encuentro[id][fechaCaptacion]': {required: true},
                 'encuentro[id][keywords]': {required: true},
                 'encuentro[id][file]': {required: true},

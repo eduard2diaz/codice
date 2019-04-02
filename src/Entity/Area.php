@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  *
  * @ORM\Table(name="area")
  * @ORM\Entity
- * @UniqueEntity(fields={"nombre","padre"},ignoreNull=false)
+ * @UniqueEntity(fields={"nombre","padre","institucion","ministerio","pais"},ignoreNull=false)
  */
 class Area
 {
@@ -42,6 +42,36 @@ class Area
      * })
      */
     private $padre;
+
+    /**
+     * @var \Pais
+     *
+     * @ORM\ManyToOne(targetEntity="Pais")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pais", referencedColumnName="id",onDelete="Cascade")
+     * })
+     */
+    private $pais;
+
+    /**
+     * @var \Ministerio
+     *
+     * @ORM\ManyToOne(targetEntity="Ministerio")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ministerio", referencedColumnName="id",onDelete="Cascade")
+     * })
+     */
+    private $ministerio;
+
+    /**
+     * @var \Institucion
+     *
+     * @ORM\ManyToOne(targetEntity="Institucion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="institucion", referencedColumnName="id",onDelete="Cascade")
+     * })
+     */
+    private $institucion;
 
     public function getId(): ?int
     {
@@ -76,6 +106,54 @@ class Area
         $this->padre = $padre;
     }
 
+    /**
+     * @return \Pais
+     */
+    public function getPais(): ?Pais
+    {
+        return $this->pais;
+    }
+
+    /**
+     * @param \Pais $pais
+     */
+    public function setPais(Pais $pais): void
+    {
+        $this->pais = $pais;
+    }
+
+    /**
+     * @return \Ministerio
+     */
+    public function getMinisterio(): ?Ministerio
+    {
+        return $this->ministerio;
+    }
+
+    /**
+     * @param \Ministerio $ministerio
+     */
+    public function setMinisterio(Ministerio $ministerio): void
+    {
+        $this->ministerio = $ministerio;
+    }
+
+    /**
+     * @return \Institucion
+     */
+    public function getInstitucion(): ?Institucion
+    {
+        return $this->institucion;
+    }
+
+    /**
+     * @param \Institucion $institucion
+     */
+    public function setInstitucion(Institucion $institucion): void
+    {
+        $this->institucion = $institucion;
+    }
+
     public function __toString()
     {
         return $this->getNombre();
@@ -86,6 +164,14 @@ class Area
      */
     public function validate(ExecutionContextInterface $context, $payload)
     {
+
+        if($this->getPais()==null)
+            $context->buildViolation('Seleccione un país')->atPath('pais')->addViolation();
+        if($this->getMinisterio()==null)
+            $context->buildViolation('Seleccione un ministerio')->atPath('ministerio')->addViolation();
+        if($this->getInstitucion()==null)
+            $context->buildViolation('Seleccione una institución')->atPath('institucion')->addViolation();
+
 
         if (null != $this->getPadre())
             if ($this->getPadre()->getId() == $this->getId())

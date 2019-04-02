@@ -10,7 +10,9 @@ class TipoEncuentroFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $tipoencuentros=['Superación y formación','Debate'];
+        $tipoencuentros=['Charla','Disertación','Curso','Cursillo','Taller','Seminario',
+'Coloquio','Mesa redonda','Panel','Foro','Simposio','Ciclo','Jornada','Exposición','Feria',
+'Convención','Asamblea general','Comité','Comisión','Sesión de trabajo','Visita guiada'];
         foreach ($tipoencuentros as $value){
             $tipoencuentro=new TipoEncuentro();
             $tipoencuentro->setNombre($value);

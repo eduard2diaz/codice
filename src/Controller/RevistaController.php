@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Articulo;
 use App\Entity\Revista;
 use App\Form\RevistaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -90,6 +91,7 @@ class RevistaController extends AbstractController
                     'form' => $form->createView(),
                     'form_id' => 'revista_edit',
                     'action' => 'Actualizar',
+                    'eliminable'=>$this->esEliminable($revista)
                 ));
                 return new JsonResponse(array('form' => $page, 'error' => true));
             }
@@ -100,6 +102,7 @@ class RevistaController extends AbstractController
             'action' => 'Actualizar',
             'form_id' => 'revista_edit',
             'form' => $form->createView(),
+            'eliminable'=>$this->esEliminable($revista)
         ]);
     }
 
@@ -108,12 +111,18 @@ class RevistaController extends AbstractController
      */
     public function delete(Request $request, Revista $revista): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || false==$this->esEliminable($revista))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($revista);
         $em->flush();
         return new JsonResponse(array('mensaje' => 'La revista fue eliminada satisfactoriamente'));
+    }
+
+    private function esEliminable(Revista $revista){
+        return $this->getDoctrine()->getManager()
+                ->getRepository(Articulo::class)
+                ->findOneByRevista($revista)==null;
     }
 }

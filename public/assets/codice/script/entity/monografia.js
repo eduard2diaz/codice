@@ -96,7 +96,6 @@ var monografia = function () {
     }
 
     var configurarFormulario = function () {
-        $('select#monografia_id_pais').select2();
         $('select#monografia_id_idautor').select2();
         $('select#monografia_id_estado').select2();
         $('select#monografia_tipoNorma').select2();
@@ -104,7 +103,6 @@ var monografia = function () {
         $("body form[name='monografia']").validate({
             rules: {
                 'monografia[id][titulo]': {required: true},
-                'monografia[id][pais]': {required: true},
                 'monografia[id][fechaCaptacion]': {required: true},
                 'monografia[id][keywords]': {required: true},
                 'monografia[id][file]': {required: true},

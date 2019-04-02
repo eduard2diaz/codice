@@ -3,7 +3,46 @@
     'class': 'm-form m-form--state'
 }})}}
 <div class="modal-body" id="modal-body">
+    {% if is_granted('ROLE_SUPERADMIN') %}
     <div class="row">
+        <div class="col-md-6">
+            <div class="form-group m-form__group">
+                <label>
+                    {{ form_label(form.pais) }}
+                </label>
+                <div>
+                    {{ form_widget(form.pais) }}
+                    {{ form_errors(form.pais) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group m-form__group">
+                <label>
+                    {{ form_label(form.ministerio) }}
+                </label>
+                <div>
+                    {{ form_widget(form.ministerio) }}
+                    {{ form_errors(form.ministerio) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m--margin-top-20">
+        <div class="col-md-6">
+            <div class="form-group m-form__group">
+                <label>
+                    {{ form_label(form.institucion) }}
+                </label>
+                <div>
+                    {{ form_widget(form.institucion) }}
+                    {{ form_errors(form.institucion) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row m--margin-top-20">
         <div class="col-md-6">
             <div class="form-group m-form__group">
                 <label>

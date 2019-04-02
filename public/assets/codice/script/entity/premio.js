@@ -96,7 +96,6 @@ var premio = function () {
     }
 
     var configurarFormulario = function () {
-        $('select#premio_id_pais').select2();
         $('select#premio_id_idautor').select2();
         $('select#premio_id_estado').select2();
         $('select#premio_institucionConcede').select2();
@@ -105,7 +104,6 @@ var premio = function () {
         $("body form[name='premio']").validate({
             rules: {
                 'premio[id][titulo]': {required: true},
-                'premio[id][pais]': {required: true},
                 'premio[id][fechaCaptacion]': {required: true},
                 'premio[id][keywords]': {required: true},
                 'premio[id][file]': {required: true},

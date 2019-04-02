@@ -649,13 +649,13 @@ class Autor implements UserInterface
     {
         $roles = $this->getRoles();
         if (null == $this->getPais()) {
-            $context->setNode($context, 'area', null, 'data.pais');
+            $context->setNode($context, 'pais', null, 'data.pais');
             $context->addViolation('Seleccione un país');
         } elseif (null == $this->getPais()) {
-            $context->setNode($context, 'area', null, 'data.ministerio');
+            $context->setNode($context, 'ministerio', null, 'data.ministerio');
             $context->addViolation('Seleccione un ministerio');
         } elseif (null == $this->getInstitucion()) {
-            $context->setNode($context, 'area', null, 'data.institucion');
+            $context->setNode($context, 'institucion', null, 'data.institucion');
             $context->addViolation('Seleccione un centro de trabajo');
         }
 
@@ -665,7 +665,7 @@ class Autor implements UserInterface
         }
 
         if (null == $this->getGradoCientifico()) {
-            $context->setNode($context, 'area', null, 'data.gradoCientifico');
+            $context->setNode($context, 'gradoCientifico', null, 'data.gradoCientifico');
             $context->addViolation('Seleccione un grado científico');
         }
 
