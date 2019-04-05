@@ -31,6 +31,13 @@ services:
     # please note that last definitions always *replace* previous ones
 
     #DEFINIENDO MIS PROPIOS SERVICIOS
+    usuario_subscriber:
+        class: App\EventSubscriber\UsuarioSubscriber
+        public: true
+        tags:
+            - { name: doctrine.event_subscriber,  connection: default }
+        arguments: ['@service_container']
+
     autor_subscriber:
         class: App\EventSubscriber\AutorSubscriber
         public: true
@@ -40,6 +47,13 @@ services:
 
     publicacion_subscriber:
         class: App\EventSubscriber\PublicacionSubscriber
+        public: true
+        tags:
+            - { name: doctrine.event_subscriber,  connection: default }
+        arguments: ['@service_container']
+
+    balanceanual_subscriber:
+        class: App\EventSubscriber\BalanceAnualSubscriber
         public: true
         tags:
             - { name: doctrine.event_subscriber,  connection: default }

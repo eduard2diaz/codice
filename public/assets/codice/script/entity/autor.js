@@ -220,11 +220,12 @@ var autor = function () {
 
     var institucionListener = function () {
         $('body').on('change', 'select#autor_institucion', function (evento) {
-            if ($(this).val() > 0)
+            institucionId=$(this).val();
+            if (institucionId > 0){
                 $.ajax({
                     type: 'get', //Se uso get pues segun los desarrolladores de yahoo es una mejoria en el rendimineto de las peticiones ajax
                     dataType: 'html',
-                    url: Routing.generate('area_findbyinstitucion', {'id': $(this).val()}),
+                    url: Routing.generate('area_findbyinstitucion', {'id': institucionId}),
                     beforeSend: function (data) {
                         mApp.block("body",
                             {
@@ -239,14 +240,88 @@ var autor = function () {
                         var array = JSON.parse(data);
                         for (var i = 0; i < array.length; i++)
                             cadena += "<option value=" + array[i]['id'] + ">" + array[i]['nombre'] + "</option>";
-                        $('select#autor_institucion').html(cadena);
-                        $('select#autor_institucion').change();
+                        $('select#autor_area').html(cadena);
+                        $('select#autor_area').change();
                     },
                     error: function () {
                         base.Error();
                     },
                     complete: function () {
                         mApp.unblock("body")
+                    }
+                });
+            $.ajax({
+                    type: 'get', //Se uso get pues segun los desarrolladores de yahoo es una mejoria en el rendimineto de las peticiones ajax
+                    dataType: 'html',
+                    url: Routing.generate('autor_finddirectivosbyinstitucion', {'id': 1}),
+                    beforeSend: function (data) {
+                        mApp.block("body",
+                            {
+                                overlayColor: "#000000",
+                                type: "loader",
+                                state: "success",
+                                message: "Cargando directivos..."
+                            });
+                    },
+                    success: function (data) {
+                        var cadena = "";
+                        var array = JSON.parse(data);
+                        for (var i = 0; i < array.length; i++)
+                            cadena += "<option value=" + array[i]['id'] + ">" + array[i]['nombre'] + "</option>";
+                        $('select#autor_area').html(cadena);
+                        $('select#autor_area').change();
+                    },
+                    error: function () {
+                        base.Error();
+                    },
+                    complete: function () {
+                        mApp.unblock("body")
+                    }
+                });}
+        });
+    }
+
+    var areaListener = function () {
+        $('body').on('change', 'select#autor_jefe', function (evento) {
+            if ($(this).val() > 0)
+                $.ajax({
+                    type: 'get', //Se uso get pues segun los desarrolladores de yahoo es una mejoria en el rendimineto de las peticiones ajax
+                    dataType: 'html',
+                    url: Routing.generate('area_findbyautor', {'id': $(this).val()}),
+                    beforeSend: function (data) {
+                        mApp.block("body",
+                            {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando datos..."});
+                    },
+                    success: function (data) {
+                        $('select#autor_area').html(data);
+                        //LANZANDO YO MIMSO EL EVENTO
+                        $('select#autor_area').change();
+                    },
+                    error: function () {
+                        base.Error();
+                    },
+                    complete: function () {
+                        mApp.unblock("body");
+                    }
+                });
+            else
+                $.ajax({
+                    type: 'get', //Se uso get pues segun los desarrolladores de yahoo es una mejoria en el rendimineto de las peticiones ajax
+                    dataType: 'html',
+                    url: Routing.generate('area_index',{'_format':'xml'}),
+                    beforeSend: function (data) {
+                        mApp.block("body",
+                            {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando datos..."});
+                    },
+                    success: function (data) {
+                        $('select#autor_area').html(data);
+                        $('select#autor_area').change();
+                    },
+                    error: function () {
+                        base.Error();
+                    },
+                    complete: function () {
+                        mApp.unblock("body");
                     }
                 });
         });
@@ -392,51 +467,7 @@ var autor = function () {
         });
     }
 
-    var areaListener = function () {
-        $('body').on('change', 'select#autor_jefe', function (evento) {
-            if ($(this).val() > 0)
-                $.ajax({
-                    type: 'get', //Se uso get pues segun los desarrolladores de yahoo es una mejoria en el rendimineto de las peticiones ajax
-                    dataType: 'html',
-                    url: Routing.generate('area_findbyautor', {'id': $(this).val()}),
-                    beforeSend: function (data) {
-                        mApp.block("body",
-                            {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando datos..."});
-                    },
-                    success: function (data) {
-                        $('select#autor_area').html(data);
-                        //LANZANDO YO MIMSO EL EVENTO
-                        $('select#autor_area').change();
-                    },
-                    error: function () {
-                        base.Error();
-                    },
-                    complete: function () {
-                        mApp.unblock("body");
-                    }
-                });
-            else
-                $.ajax({
-                    type: 'get', //Se uso get pues segun los desarrolladores de yahoo es una mejoria en el rendimineto de las peticiones ajax
-                    dataType: 'html',
-                    url: Routing.generate('area_index',{'_format':'xml'}),
-                    beforeSend: function (data) {
-                        mApp.block("body",
-                            {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando datos..."});
-                    },
-                    success: function (data) {
-                        $('select#autor_area').html(data);
-                        $('select#autor_area').change();
-                    },
-                    error: function () {
-                        base.Error();
-                    },
-                    complete: function () {
-                        mApp.unblock("body");
-                    }
-                });
-        });
-    }
+
 
     var newAction = function () {
         $('body').on('submit', "form[name='autor']", function (evento) {
@@ -499,7 +530,8 @@ var autor = function () {
                     configurarFormulario();
                     paisListener();
                     ministerioListener();
-                    areaListener();
+                    institucionListener()
+                  //  areaListener();
                     newAction();
 
                     $('#foto_perfil').click(function () {

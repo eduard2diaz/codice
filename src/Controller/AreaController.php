@@ -150,7 +150,7 @@ class AreaController extends AbstractController
     /*
      * @Route("/{id}/findByAutor", name="area_findbyautor", methods="GET",options={"expose"=true})
      * Se utiliza en el gestionar de autor
-     */
+
     public function findByAutor(Request $request,AreaService $areaService, Autor $autor): Response
     {
         if (!$request->isXmlHttpRequest())
@@ -165,6 +165,7 @@ class AreaController extends AbstractController
 
         return new Response($cadena);
     }
+     */
 
     /**
      * @Route("/{id}/findbyinstitucion", name="area_findbyinstitucion",options={"expose"=true})

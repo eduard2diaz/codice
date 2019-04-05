@@ -4,7 +4,7 @@ namespace App\Form\Transformer;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 
-class DateTimetoStringTransformer implements DataTransformerInterface
+class DatetoStringTransformer implements DataTransformerInterface
 {
     public function transform($datetime)
     {
@@ -13,7 +13,7 @@ class DateTimetoStringTransformer implements DataTransformerInterface
             return;
         }
 
-        return $datetime->format('Y-m-d H:i');
+        return $datetime->format('Y-m-d');
     }
 
     public function reverseTransform($issueNumber)

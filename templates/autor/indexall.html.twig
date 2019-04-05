@@ -1,5 +1,5 @@
 {% extends 'layout/autenticado.html.twig' %}
-{% block page_title %}Área{% endblock page_title %}
+{% block page_title %}Usuarios{% endblock page_title %}
 {% block body %}
     <div class="m-portlet m-portlet--mobile">
         <div class="m-portlet__head">
@@ -14,12 +14,12 @@
             <div class="m-portlet__head-tools">
                 <ul class="m-portlet__nav">
                     <li class="m-portlet__nav-item">
-                        <a data-href="{{ path('area_index') }}" class="btn btn-sm m-btn" id="area_tablerefrescar">
+                        <a data-href="{{ path('autor_indexall') }}" class="btn btn-sm m-btn" id="autor_tablerefrescar">
                             <span><i class="flaticon-refresh"></i></span> Refrescar
                         </a>
                     </li>
                     <li class="m-portlet__nav-item">
-                        <a data-href="{{ path('area_new') }}" class="btn btn-sm btn-primary m-btn edicion text-uppercase"  data-toggle="m-tooltip" data-placement="top" title="" data-original-title="Registrar una nueva área">
+                        <a href="{{ path('autor_new') }}" class="btn btn-sm btn-primary m-btn edicion text-uppercase"  data-toggle="m-tooltip" data-placement="top" title="" data-original-title="Registrar un nuevo usuario">
                             <span><i class="flaticon-add"></i></span> Nuevo
                         </a>
                     </li>
@@ -29,16 +29,16 @@
         </div>
         <div class="m-portlet__body">
             <!--begin: Datatable -->
-            {%include 'area/_table.html.twig'%}
+            {%include 'autor/_table.html.twig'%}
             <!--end: Datatable -->
         </div>
     </div>
 {% endblock %}
 {% block javascripts %}
     {{parent()}}
-    <script src="{{ asset('script/entity/area.js','codice') }}"></script>
+    <script src="{{ asset('script/entity/autor.js','codice') }}"></script>
     <script>
-        var total ={{areas |length }}
-            area.init();
+        var total ={{autors |length }}
+            autor.init();
     </script>
 {% endblock %}

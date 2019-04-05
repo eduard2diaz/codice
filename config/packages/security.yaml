@@ -1,18 +1,27 @@
 security:
     encoders:
         App\Entity\Autor: { algorithm: bcrypt , cost: 13 }
+        App\Entity\Usuario: { algorithm: bcrypt , cost: 13 }
 
     role_hierarchy:
-        ROLE_ADMIN:  ROLE_DIRECTIVO
+        ROLE_ADMIN:  ROLE_USER
+        ROLE_VISOR:  ROLE_USER
         ROLE_DIRECTIVO:  ROLE_USER
 
     providers:
-        usuarios:
+        chain_provider:
+            chain:
+                providers: [autores, usuarios]
+        autores:
             entity: { class: App:Autor}
+        usuarios:
+            entity: { class: App:Usuario, property: usuario}
+
 
     firewalls:
         secured_area:
             pattern:    ^/*
+            provider: chain_provider
             user_checker: App\Security\UserChecker
             form_login:
                 login_path: index
@@ -36,6 +45,7 @@ security:
         - { path: ^/ministerio, roles: ROLE_SUPERADMIN }
         - { path: ^/institucion/\d+/findbyministerio, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }
         #permisos del superadmin
+        - { path: ^/usuario, roles: ROLE_SUPERADMIN }
         - { path: ^/institucion, roles: ROLE_SUPERADMIN }
         - { path: ^/area/\d+/findbyautor, roles: [ROLE_SUPERADMIN, ROLE_ADMIN, ROLE_DIRECTIVO] }
         - { path: ^/area, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }
@@ -49,29 +59,21 @@ security:
         - { path: ^/tiponorma, roles: ROLE_SUPERADMIN }
         - { path: ^/tipopremio, roles: ROLE_SUPERADMIN }
         - { path: ^/tipoencuentro, roles: ROLE_SUPERADMIN }
+        - { path: ^/autor/index, roles: ROLE_SUPERADMIN }
         #permisos del administrador institucional
         - { path: ^/organizador, roles: ROLE_ADMIN }
         - { path: ^/editorial, roles: ROLE_ADMIN }
         - { path: ^/revista, roles: ROLE_ADMIN }
         #permisos de directivos
-
-
-
-
-
-
-
-
-        - { path: ^/autor/\d+/index, roles: [ROLE_SUPERADMIN, ROLE_DIRECTIVO, ROLE_ADMIN] }
+        - { path: ^/autor/\d+/index, roles: [ROLE_DIRECTIVO, ROLE_ADMIN] }
         - { path: ^/autor/\d+/finddirectivosbyinstitucion, roles: [ROLE_SUPERADMIN] }
         - { path: ^/autor/new, roles: [ROLE_SUPERADMIN, ROLE_DIRECTIVO, ROLE_ADMIN] }
         - { path: ^/autor/\d+/delete, roles: [ROLE_SUPERADMIN, ROLE_DIRECTIVO, ROLE_ADMIN] }
         - { path: ^/autor, roles: IS_AUTHENTICATED_FULLY }
-
-
+        #permisos de usuarios y directivos
+        - { path: ^/balanceanual, roles: ROLE_VISOR }
         #permisos de usuarios y directivos
         - { path: ^/notificacion, roles: IS_AUTHENTICATED_FULLY }
-
         - { path: ^/mensaje, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/premio, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/encuentro, roles: IS_AUTHENTICATED_FULLY }

@@ -38,28 +38,23 @@ class AutorType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-      //  $esAdmin = $this->authorizationChecker->isGranted('ROLE_ADMIN');
-      //  $area = $this->areaService->areasHijas($this->token->getToken()->getUser()->getArea(), $esAdmin);
-      //  false = $options['data']->getId() == $this->token->getToken()->getUser()->getId();
+        $esAdmin = $this->authorizationChecker->isGranted('ROLE_ADMIN');
+        $esSuperAdmin = $this->authorizationChecker->isGranted('ROLE_SUPERADMIN');
+        //  $area = $this->areaService->areasHijas($this->token->getToken()->getUser()->getArea(), $esAdmin);
+        //  false = $options['data']->getId() == $this->token->getToken()->getUser()->getId();
 
-        $disabled=false;
+        $disabled = false;
         $builder
-            ->add('nombre',TextType::class,['attr'=>['class'=>'form-control m-input','autocomplete'=>'off']])
-            ->add('usuario',TextType::class,['label'=>'Nombre de usuario','attr'=>['class'=>'form-control m-input','autocomplete'=>'off']])
-            ->add('email',EmailType::class,['label'=>'Correo electrónico','attr'=>['class'=>'form-control m-input','autocomplete'=>'off']])
-            ->add('phone',TextType::class,['label'=>'Teléfono','required'=>false,'attr'=>['class'=>'form-control m-input','autocomplete'=>'off']])
-            ->add('gradoCientifico',null,['label'=>'Grado científico','required'=>true,'attr'=>['class'=>'form-control m-input']])
+            ->add('nombre', TextType::class, ['attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
+            ->add('usuario', TextType::class, ['label' => 'Nombre de usuario', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
+            ->add('email', EmailType::class, ['label' => 'Correo electrónico', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
+            ->add('phone', TextType::class, ['label' => 'Teléfono', 'required' => false, 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
+            ->add('gradoCientifico', null, ['label' => 'Grado científico', 'required' => true, 'attr' => ['class' => 'form-control m-input']])
             ->add('activo', null, array('disabled' => $disabled, 'required' => false, 'attr' => array('data-on-text' => 'Si', 'data-off-text' => 'No')))
-
-            ->add('area',null,[/*'choices' => $area, 'disabled' => false,*/ 'label'=>'Área','required'=>true,'attr'=>['class'=>'form-control m-input']])
-            ->add('pais',null,['label'=>'País de residencia',/*'disabled' => false,*/])
-
             ->add('file', FileType::class, array('required' => false,
                 'attr' => array('style' => 'display:none',
-                    'accept' => 'image/*','accept' => '.jpg,.jpeg,.png,.gif,.bmp,.tiff')
-            ))
-
-        ;
+                    'accept' => 'image/*', 'accept' => '.jpg,.jpeg,.png,.gif,.bmp,.tiff')
+            ));
 
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $obj) {
             $form = $obj->getForm();
@@ -81,8 +76,36 @@ class AutorType extends AbstractType
             ));
         });
 
-        if (true == true) {
-            $builder->add('idrol', null, array(/*'disabled' => false,*/ 'label' => 'Rol', 'required' => true, 'attr' => array('class' => 'form-control input-medium')));
+
+        $builder
+        ->add('area',null,['choices' => [], 'disabled' => false, 'label'=>'Área','required'=>true,'attr'=>['class'=>'form-control m-input']]);
+
+
+        if($esSuperAdmin || $esAdmin){
+            $builder->add('idrol', null, array('disabled' => false,
+                'label' => 'Rol', 'required' => true, 'attr' => array('class' => 'form-control input-medium')));
+
+            if($esSuperAdmin) {
+                $builder->add('pais', null, ['label' => 'País de residencia', 'disabled' => false,]);
+                $factory = $builder->getFormFactory();
+                $builder->addEventSubscriber(new AddInstitucionMinisterioFieldSubscriber($factory));
+                $builder->addEventSubscriber(new AddAutorInstitucionFieldSubscriber($factory));
+            }
+
+        }else{
+            $builder->add('idrol', null, array(
+                'disabled' => false,
+                'class' => Rol::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->where('u.nombre IN (:roles)')
+                        ->setParameter('roles', ['ROLE_DIRECTIVO', 'ROLE_USER']);
+                },
+                'label' => 'Permisos', 'disabled' => false, 'required' => true, 'attr' => array('class' => 'form-control input-medium')
+            ));
+        }
+
+      /*  if (true == false) {
             if (null == $options['data']->getId())
                 $builder->add('jefe', null, array('choices' => $this->areaService->obtenerDirectivos(), 'label' => 'Jefe', 'placeholder' => 'Seleccione un directivo', 'required' => false, 'attr' => array('class' => 'form-control input-medium')));
             else {
@@ -106,21 +129,8 @@ class AutorType extends AbstractType
                 ));
             }
 
-        } else
-            $builder->add('idrol', null, array(
-                'disabled' => false,
-                'class' => Rol::class,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->where('u.nombre IN (:roles)')
-                        ->setParameter('roles', ['ROLE_DIRECTIVO', 'ROLE_USER']);
-                },
-                'label' => 'Permisos', 'disabled' => false, 'required' => true, 'attr' => array('class' => 'form-control input-medium')
-            ));
-
-        $factory = $builder->getFormFactory();
-        $builder->addEventSubscriber(new AddInstitucionMinisterioFieldSubscriber($factory));
-        $builder->addEventSubscriber(new AddAutorInstitucionFieldSubscriber($factory));
+        }
+        */
 
     }
 

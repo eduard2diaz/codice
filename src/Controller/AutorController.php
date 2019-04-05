@@ -20,17 +20,32 @@ use Knp\Component\Pager\PaginatorInterface;
 class AutorController extends AbstractController
 {
     /**
+     * @Route("/index", name="autor_indexall", methods={"GET"})
+     */
+    public function indexAll(Request $request): Response
+    {
+        $autors = $this->getDoctrine()->getManager()->createQuery('SELECT u FROM App:Autor u')->getResult();
+
+        if ($request->isXmlHttpRequest())
+            return $this->render('autor/_table.html.twig', ['autors' => $autors]);
+
+        return $this->render('autor/indexall.html.twig', [
+            'autors' => $autors,
+        ]);
+    }
+
+    /**
      * @Route("/{id}/index", name="autor_index", methods={"GET"})
      */
     public function index(Request $request, Autor $autor, AreaService $areaService): Response
     {
         if ($this->isGranted('ROLE_ADMIN'))
-            $autors = $this->getDoctrine()->getManager()->createQuery('SELECT u FROM App:Autor u WHERE u.id!=:id')->setParameter('id', $this->getUser()->getId())->getResult();
+            $autors = $this->getDoctrine()->getManager()->createQuery('SELECT u FROM App:Autor u WHERE u.id!=:id JOIN u.institucion i WHERE i.id= :institucion')->setParameters(['id'=> $this->getUser()->getId(),'institucion'=>$this->getUser()->getInstitucion()->getId()])->getResult();
         else
             $autors = $areaService->subordinados($autor);
 
         if ($request->isXmlHttpRequest())
-            return $this->render('autor/_table.html.twig', ['autors' => $autor]);
+            return $this->render('autor/_table.html.twig', ['autors' => $autors]);
 
         return $this->render('autor/index.html.twig', [
             'autors' => $autors,
@@ -75,6 +90,7 @@ class AutorController extends AbstractController
             'autor' => $autor,
             'form' => $form->createView(),
         ]);
+
     }
 
     /**
@@ -261,8 +277,8 @@ class AutorController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/finddirectivosbyinstitucion", name="finddirectivosbyinstitucion", options={"expose"=true})
-     * Retorna el listado de directivos que posee una determinada institucion
+     * @Route("/{id}/finddirectivosbyinstitucion", name="autor_finddirectivosbyinstitucion", options={"expose"=true})
+     * Retorna el listado de directivos que posee una determinada institucion se  usan en el gestionar de autores
      */
     public function findDirectivosByInstitucion(Request $request,AreaService $areaService, Institucion $institucion)
     {
@@ -270,6 +286,10 @@ class AutorController extends AbstractController
             throw $this->createAccessDeniedException();
 
         $directivos=$areaService->obtenerDirectivos($institucion->getId());
+        $directivos_array=[];
+        foreach ($directivos as $obj)
+            $directivos_array[]=['id'=>$obj->getId(),'nombre'=>$obj->getNombre()];
 
+        return new JsonResponse($directivos_array);
     }
 }

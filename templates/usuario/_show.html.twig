@@ -1,0 +1,59 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">
+                Detalles del administrador
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div>
+            <div class="modal-body" id="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="m-card-profile">
+                            <div class="m-card-profile__title m--hide">
+                                Your Profile
+                            </div>
+                            <div class="m-card-profile__pic">
+                                <div class="m-card-profile__pic-wrapper">
+                                    {% if usuario.rutaFoto!=null %}
+                                        {% set rutaFoto=  asset('archivos/'~usuario.rutaFoto) %}
+                                    {% else %}
+                                        {% set rutaFoto= asset('app/media/img/users/user4.jpg','template') %}
+                                    {% endif %}
+                                    <img src="{{ rutaFoto }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th>Nombre</th>
+                                <td>{{ usuario.nombre }}</td>
+                            </tr>
+                            <tr>
+                                <th>Correo</th>
+                                <td>{{ usuario.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Activo</th>
+                                <td><span class="m-badge m-badge--{{ usuario.activo ? 'success' : 'danger'}} m-badge--wide">{{ usuario.activo ? 'SI' : 'NO'}}</span></td>
+                            </tr>
+                            <tr>
+                                <th>Último acceso</th>
+                                <td>{{ usuario.ultimoLogin| date('d-m-Y H:i') }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-sm btn-metal" data-dismiss="modal"><i class="flaticon-cancel"></i> Cancelar</a>
+
+            </div>
+        </div>
+    </div>
+</div>
