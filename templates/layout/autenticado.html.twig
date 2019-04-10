@@ -28,11 +28,16 @@
             {% elseif is_granted('ROLE_ADMIN') %}
                 {{ include('layout/recortes/topmenu/admin_topmenu.html.twig') }}
             {% endif %}
+            {% if is_granted('ROLE_VISOR') %}
+                {{ include('layout/recortes/topmenu/visor_topmenu.html.twig') }}
+            {% endif %}
         {% endblock top_menu %}
         {% block user_shortcut_menu %}
-            {{ include('layout/recortes/topmenu/search_topmenu.html.twig') }}
-            {{ include('layout/recortes/topmenu/notification_topmenu.html.twig') }}
-            {{ include('layout/recortes/topmenu/message_topmenu.html.twig') }}
+            {% if not is_granted('ROLE_SUPERADMIN') %}
+                {{ include('layout/recortes/topmenu/search_topmenu.html.twig') }}
+                {{ include('layout/recortes/topmenu/notification_topmenu.html.twig') }}
+                {{ include('layout/recortes/topmenu/message_topmenu.html.twig') }}
+            {% endif %}
             {{ include('layout/recortes/topmenu/user_topmenu.html.twig') }}
         {% endblock %}
     {% endembed %}
@@ -67,7 +72,9 @@
     <script type="text/javascript" src="{{ asset('plugins/bootbox/bootbox.min.js','codice') }}"></script>
     <script src="{{ asset('script/base/authenticated.js','codice') }}"></script>
     <script>
+        {% if not is_granted('ROLE_SUPERADMIN') %}
         authenticated.init();
+        {% endif %}
         var datatable_url = '{{ asset('plugins/datatable/es.json','codice') }}';
     </script>
 {% endblock %}

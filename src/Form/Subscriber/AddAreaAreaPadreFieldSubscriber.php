@@ -88,7 +88,6 @@ class AddAreaAreaPadreFieldSubscriber  implements EventSubscriberInterface{
        {
            $institucion= is_array($data) ? $data['institucion'] : $data->getInstitucion();
            $areasHijas=$this->areaService->areasNoHijas($data);
-           dump($areasHijas);
            $this->addElements($event->getForm(), $institucion,$areasHijas);
        }
 

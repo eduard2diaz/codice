@@ -166,27 +166,6 @@ var authenticated = function () {
         });
     }
 
-    var sugerirAutores = function () {
-        $.ajax({
-            type: "GET",
-            dataType: 'html',
-            url: Routing.generate('autor_sugerir'),
-            beforeSend: function (data) {
-                mApp.block("div#sugerencia_table",
-                    {overlayColor: "#000000", type: "loader", state: "success", message: "Cargando..."});
-            },
-            success: function (data) {
-                $('div#sugerencia_table').html(data);
-            },
-            error: function () {
-                base.Error();
-            },
-            complete: function () {
-                mApp.unblock("div#sugerencia_table")
-            }
-        });
-    }
-
     return {
         init: function () {
             $().ready(function(){
@@ -195,11 +174,6 @@ var authenticated = function () {
                 enviarMensaje();
                 enviarMensajeAction();
                 mensajeShow();
-            });
-        },
-        sugerirAutores: function () {
-            $().ready(function(){
-                sugerirAutores();
             });
         },
     };

@@ -1,6 +1,22 @@
 {% extends 'layout/userprofile.html.twig' %}
 {% block profile_content %}
-    {{ include('autor/_form.html.twig',{'form_title':'Actualice su perfil','button_action':'Actualizar'}) }}
+    <div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">
+                        Actualice su perfil
+                    </h3>
+                </div>
+            </div>
+
+            <div class="m-portlet__head-tools">
+            </div>
+        </div>
+        <div class="tab-content">
+            {{ include('autor/_form.html.twig',{'button_action':'Actualizar'}) }}
+        </div>
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{parent()}}

@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
@@ -20,7 +21,7 @@ use Knp\Component\Pager\PaginatorInterface;
 class AutorController extends AbstractController
 {
     /**
-     * @Route("/index", name="autor_indexall", methods={"GET"})
+     * @Route("/indexall", name="autor_indexall", methods={"GET"})
      */
     public function indexAll(Request $request): Response
     {
@@ -40,7 +41,7 @@ class AutorController extends AbstractController
     public function index(Request $request, Autor $autor, AreaService $areaService): Response
     {
         if ($this->isGranted('ROLE_ADMIN'))
-            $autors = $this->getDoctrine()->getManager()->createQuery('SELECT u FROM App:Autor u WHERE u.id!=:id JOIN u.institucion i WHERE i.id= :institucion')->setParameters(['id'=> $this->getUser()->getId(),'institucion'=>$this->getUser()->getInstitucion()->getId()])->getResult();
+            $autors = $this->getDoctrine()->getManager()->createQuery('SELECT u FROM App:Autor u JOIN u.institucion i WHERE u.id!=:id AND i.id= :institucion')->setParameters(['id' => $this->getUser()->getId(), 'institucion' => $this->getUser()->getInstitucion()->getId()])->getResult();
         else
             $autors = $areaService->subordinados($autor);
 
@@ -63,10 +64,16 @@ class AutorController extends AbstractController
     public function new(Request $request): Response
     {
         $autor = new Autor();
-        if (in_array('ROLE_DIRECTIVO', $this->getUser()->getRoles()))
+        if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_DIRECTIVO')) {
+            $autor->setInstitucion($this->getUser()->getInstitucion());
+            $autor->setMinisterio($this->getUser()->getMinisterio());
+            $autor->setPais($this->getUser()->getPais());
+        }
+
+        if ($this->isGranted('ROLE_DIRECTIVO'))
             $autor->setJefe($this->getUser());
 
-        $form = $this->createForm(AutorType::class, $autor);
+        $form = $this->createForm(AutorType::class, $autor, ['action' => $this->generateUrl('autor_new')]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -77,7 +84,11 @@ class AutorController extends AbstractController
                 $entityManager->persist($autor);
                 $entityManager->flush();
                 $this->addFlash('success', 'El usuario fue registrado satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('autor_index', ['id' => $this->getUser()->getId()])]);
+                if ($this->isGranted('ROLE_SUPERADMIN'))
+                    $route = $this->generateUrl('autor_indexall');
+                else
+                    $route = $this->generateUrl('autor_index', ['id' => $this->getUser()->getId()]);
+                return new JsonResponse(['ruta' => $route]);
             } else {
                 $page = $this->renderView('autor/_form.html.twig', array(
                     'form' => $form->createView(),
@@ -100,9 +111,9 @@ class AutorController extends AbstractController
     {
         return $this->render('autor/show.html.twig', [
             'autor' => $autor,
-            'allow_edit' => ($this->isGranted('ROLE_ADMIN') || $autor->getId() == $this->getUser()->getId() ||
-                $autor->esJefe($this->getUser())
-            ),
+            'allow_edit' => $this->isGranted('ROLE_SUPERADMIN') || $this->isGranted('ROLE_ADMIN') || $autor->getId() == $this->getUser()->getId() ||
+                $autor->esSubordinado($this->getUser())
+            ,
             'follow_button' => $autor->getSeguidores()->contains($this->getUser()) == false,
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
@@ -117,7 +128,16 @@ class AutorController extends AbstractController
     public function edit(Request $request, Autor $autor, UserPasswordEncoderInterface $encoder): Response
     {
         $this->denyAccessUnlessGranted('EDIT', $autor);
-        $form = $this->createForm(AutorType::class, $autor);
+
+        /*
+         *Sucedia que cunado modificaba las credenciales(usuario,correo) del autor actualmente autenticado, si
+         * ocurria un error de validacion con las mismas, el autor quedaba deslogueado, pues Sf no podia refrecar
+         * el token de autenticacion, por eso guardo un clon del usuario actual
+         */
+        if ($this->getUser()->getId() == $autor->getId())
+            $clon = clone $autor;
+
+        $form = $this->createForm(AutorType::class, $autor, ['action' => $this->generateUrl('autor_edit', ['id' => $autor->getId()])]);
         $passwordOriginal = $form->getData()->getPassword();
         $form->handleRequest($request);
 
@@ -126,6 +146,7 @@ class AutorController extends AbstractController
                 throw $this->createAccessDeniedException();
             elseif ($form->isValid()) {
                 $ruta = $this->getParameter('storage_directory');
+
                 if (null == $autor->getPassword())
                     $autor->setPassword($passwordOriginal);
                 else
@@ -143,9 +164,20 @@ class AutorController extends AbstractController
                 $this->addFlash('success', 'El usuario fue actualizado satisfactoriamente');
                 return new JsonResponse(['ruta' => $this->generateUrl('autor_show', ['id' => $autor->getId()])]);
             } else {
+
+                /*
+                 * Y si ocurre un error simplemente refresco el token de autenticacion usando las credenciales antiguas
+                 */
+                if ($this->getUser()->getId() == $autor->getId()) {
+                    $autor = $clon;
+                    $this->container->get('security.token_storage')->setToken(new UsernamePasswordToken($autor, $autor->getPassword(), 'chain_provider', $autor->getRoles()));
+                }
+
                 $page = $this->renderView('autor/_form.html.twig', array(
                     'form' => $form->createView(),
                     'autor' => $autor,
+                    'form_title'=>'Actualizar perfil',
+                    'button_action'=>'Actualizar',
                 ));
                 return new JsonResponse(array('form' => $page, 'error' => true,));
             }
@@ -169,7 +201,8 @@ class AutorController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
-        $this->denyAccessUnlessGranted('DELETE', $autor);
+        if (!$this->isGranted('ROLE_SUPERADMIN'))
+            $this->denyAccessUnlessGranted('DELETE', $autor);
         $em = $this->getDoctrine()->getManager();
         $em->remove($autor);
         $em->flush();
@@ -243,6 +276,23 @@ class AutorController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/seguidos", name="autor_seguidos", options={"expose"=true})
+     * Retorna el listado de seguidores de un determinado usuario
+     */
+    public function seguidos(Autor $autor): Response
+    {
+        $seguidos = $autor->getSeguidor()->toArray();
+        return $this->render('autor/seguidos.html.twig', [
+            'autors' => $seguidos,
+
+            'user_id' => $autor->getId(),
+            'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
+            'user_nombre' => $autor->__toString(),
+            'user_correo' => $autor->getEmail(),
+        ]);
+    }
+
+    /**
      * @Route("/sugerir", name="autor_sugerir", options={"expose"=true})
      * Retorna el listado de sugerencias de autores
      */
@@ -250,14 +300,14 @@ class AutorController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $seguidos = $this->getUser()->getSeguidor()->toArray();
-        if(count($seguidos)>0){
-        $consulta = $em->createQuery('SELECT a.id, a.nombre, a.rutaFoto,i.nombre as institucion FROM App:Autor a join a.institucion i WHERE a.id != :id AND a.id NOT IN (:seguidos) AND a.activo=true');
-        $consulta->setParameters(['id' => $this->getUser()->getId(), 'seguidos' => $seguidos]);
-        }else{
+        if (count($seguidos) > 0) {
+            $consulta = $em->createQuery('SELECT a.id, a.nombre, a.rutaFoto,i.nombre as institucion FROM App:Autor a join a.institucion i WHERE a.id != :id AND a.id NOT IN (:seguidos) AND a.activo=true');
+            $consulta->setParameters(['id' => $this->getUser()->getId(), 'seguidos' => $seguidos]);
+        } else {
             $consulta = $em->createQuery('SELECT a.id, a.nombre, a.rutaFoto,i.nombre as institucion FROM App:Autor a join a.institucion i WHERE a.id != :id AND a.activo=true');
             $consulta->setParameters(['id' => $this->getUser()->getId()]);
         }
-        //$consulta->setMaxResults(4);
+        $consulta->setMaxResults(4);
         $datos = $consulta->getResult();
 
         $cantidad = count($datos);
@@ -280,15 +330,15 @@ class AutorController extends AbstractController
      * @Route("/{id}/finddirectivosbyinstitucion", name="autor_finddirectivosbyinstitucion", options={"expose"=true})
      * Retorna el listado de directivos que posee una determinada institucion se  usan en el gestionar de autores
      */
-    public function findDirectivosByInstitucion(Request $request,AreaService $areaService, Institucion $institucion)
+    public function findDirectivosByInstitucion(Request $request, AreaService $areaService, Institucion $institucion)
     {
-        if(!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
-        $directivos=$areaService->obtenerDirectivos($institucion->getId());
-        $directivos_array=[];
+        $directivos = $areaService->obtenerDirectivos($institucion->getId());
+        $directivos_array = [];
         foreach ($directivos as $obj)
-            $directivos_array[]=['id'=>$obj->getId(),'nombre'=>$obj->getNombre()];
+            $directivos_array[] = ['id' => $obj->getId(), 'nombre' => $obj->getNombre()];
 
         return new JsonResponse($directivos_array);
     }

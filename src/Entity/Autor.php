@@ -8,16 +8,15 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Filesystem\Filesystem;
-
+use App\Validator\UniqueMultipleEntity as UniqueMultipleEntityConstraint;
 /**
  * Autor
  *
  * @ORM\Table(name="autor", indexes={@ORM\Index(name="IDX_31075EBAD7943D68", columns={"area"}), @ORM\Index(name="IDX_31075EBAAF54064B", columns={"grado_cientifico"}), @ORM\Index(name="IDX_31075EBAF751F7C3", columns={"institucion"}), @ORM\Index(name="IDX_31075EBA5F4745BE", columns={"ministerio"}), @ORM\Index(name="IDX_31075EBA7E5D2EFF", columns={"pais"})})
  * @ORM\Entity(repositoryClass="App\Repository\AutorRepository")
- * @UniqueEntity("usuario")
- * @UniqueEntity("email")
+ * @UniqueMultipleEntityConstraint(field="usuario",entities={"Autor","Usuario"})
+ * @UniqueMultipleEntityConstraint(field="email",entities={"Autor","Usuario"})
  */
 class Autor implements UserInterface
 {
@@ -610,6 +609,7 @@ class Autor implements UserInterface
      */
     public function eraseCredentials()
     {
+        dump('aaaaa');
     }
 
     public function __toString()
@@ -629,15 +629,16 @@ class Autor implements UserInterface
     }
 
     /*
-     *Funcionalidad que recibe un usuario como parametro y dice si ese usuario
-     * es superior del actual usuario.
+     *Funcionalidad que indica si un usuario es subordinado de un susuario pasado por parametro
      */
-    public function esJefe(Autor $usuario): bool
+    public function esSubordinado(Autor $usuario): bool
     {
-        if ($this->getJefe() == $usuario)
+        if($this->getId()==$usuario->getId())
+            return false;
+        elseif ($this->getJefe() == $usuario)
             return true;
-        if (null != $this->getJefe())
-            return $this->getJefe()->esJefe($usuario);
+        elseif (null != $this->getJefe())
+            return $this->getJefe()->esSubordinado($usuario);
 
         return false;
     }
@@ -657,9 +658,7 @@ class Autor implements UserInterface
         } elseif (null == $this->getInstitucion()) {
             $context->setNode($context, 'institucion', null, 'data.institucion');
             $context->addViolation('Seleccione un centro de trabajo');
-        }
-
-        if (null == $this->getArea()) {
+        }elseif (null == $this->getArea()) {
             $context->setNode($context, 'area', null, 'data.area');
             $context->addViolation('Seleccione un área');
         }
@@ -683,7 +682,7 @@ class Autor implements UserInterface
                     ->addViolation();
         } elseif (in_array('ROLE_USER', $roles)) {
             if (in_array('ROLE_DIRECTIVO', $roles))
-                $context->buildViolation('Seleccione un usuario Trabajador no puede ser también Directivo')
+                $context->buildViolation('Un usuario "Trabajador" no puede ser también "Directivo"')
                     ->atPath('idrol')
                     ->addViolation();
             elseif ($this->getJefe() == null)

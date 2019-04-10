@@ -5,7 +5,6 @@ security:
 
     role_hierarchy:
         ROLE_ADMIN:  ROLE_USER
-        ROLE_VISOR:  ROLE_USER
         ROLE_DIRECTIVO:  ROLE_USER
 
     providers:
@@ -15,7 +14,7 @@ security:
         autores:
             entity: { class: App:Autor}
         usuarios:
-            entity: { class: App:Usuario, property: usuario}
+            entity: { class: App:Usuario}
 
 
     firewalls:
@@ -59,7 +58,7 @@ security:
         - { path: ^/tiponorma, roles: ROLE_SUPERADMIN }
         - { path: ^/tipopremio, roles: ROLE_SUPERADMIN }
         - { path: ^/tipoencuentro, roles: ROLE_SUPERADMIN }
-        - { path: ^/autor/index, roles: ROLE_SUPERADMIN }
+        - { path: ^/autor/indexall, roles: ROLE_SUPERADMIN }
         #permisos del administrador institucional
         - { path: ^/organizador, roles: ROLE_ADMIN }
         - { path: ^/editorial, roles: ROLE_ADMIN }
@@ -73,16 +72,16 @@ security:
         #permisos de usuarios y directivos
         - { path: ^/balanceanual, roles: ROLE_VISOR }
         #permisos de usuarios y directivos
-        - { path: ^/notificacion, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/mensaje, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/premio, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/encuentro, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/tesis, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/software, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/patente, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/norma, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/monografia, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/libro, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/articulo, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/reporte, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/notificacion, roles: [ROLE_DIRECTIVO, ROLE_ADMIN, ROLE_VISOR, ROLE_USER] }
+        - { path: ^/mensaje, roles: [ROLE_DIRECTIVO, ROLE_ADMIN, ROLE_VISOR, ROLE_USER] }
+        - { path: ^/premio, roles: ROLE_USER }
+        - { path: ^/encuentro, roles: ROLE_USER }
+        - { path: ^/tesis, roles: ROLE_USER }
+        - { path: ^/software, roles: ROLE_USER }
+        - { path: ^/patente, roles: ROLE_USER }
+        - { path: ^/norma, roles: ROLE_USER }
+        - { path: ^/monografia, roles: ROLE_USER }
+        - { path: ^/libro, roles: ROLE_USER }
+        - { path: ^/articulo, roles: ROLE_USER }
+        - { path: ^/reporte, roles: ROLE_USER }
         - { path: ^/*, roles: IS_AUTHENTICATED_FULLY }

@@ -1,4 +1,4 @@
-<div class="modal-dialog modal-lg">
+<div class="modal-dialog modal-full">
     <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title">Detalles del mensaje</h4>
@@ -23,8 +23,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9">
-                    <p>{{ mensaje.descripcion }}</p>
+                <div class="col-md-8 m--margin-right-5">
+                    <span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" data-select2-id="27" style="width: auto;">
+                        <span class="selection">
+                            <span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1">
+                                <ul class="select2-selection__rendered">
+                                    {% for destinatario in mensaje.iddestinatario %}
+                                    <li class="select2-selection__choice" title="{{ destinatario.nombre }}" data-select2-id="{{ destinatario.id }}"><span class="select2-selection__choice__remove" role="presentation">×</span>{{ destinatario.nombre }}</li>
+                                    {% endfor%}
+                                </ul>
+                            </span>
+                        </span>
+                    </span>
+
+                    <p class="m--margin-top-20">{{ mensaje.descripcion }}</p>
                 </div>
             </div>
             <div class="modal-footer">

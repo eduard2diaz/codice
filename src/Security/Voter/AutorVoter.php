@@ -3,6 +3,7 @@
 namespace App\Security\Voter;
 
 use App\Entity\Autor;
+use App\Entity\Usuario;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -30,15 +31,15 @@ class AutorVoter extends Voter
 
         switch ($attribute) {
             case 'VIEWSTATICS':
-                return $subject->getId()==$token->getUser()->getId() || $this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esJefe($token->getUser());
+                return $user instanceof Autor && ($subject->getId()==$token->getUser()->getId() || $this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esSubordinado($token->getUser()));
             case 'EDIT':
-                return $subject->getId()==$token->getUser()->getId() || $this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esJefe($token->getUser());
+                return $user instanceof Usuario || $subject->getId()==$token->getUser()->getId() || $this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esSubordinado($token->getUser());
             break;
             case 'DELETE':
-                return $subject->getId()!=$token->getUser()->getId() && ($this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esJefe($token->getUser()));
+                return $user instanceof Usuario || $subject->getId()!=$token->getUser()->getId() && ($this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esSubordinado($token->getUser()));
             break;
             case 'SEGUIR':
-                return $subject->getId()!=$token->getUser()->getId() && false==in_array('ROLE_SUPERADMIN',$subject->getRoles());
+                return $user instanceof Autor && $subject->getId()!=$token->getUser()->getId();
             break;
         }
 

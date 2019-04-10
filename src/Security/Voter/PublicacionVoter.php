@@ -11,8 +11,6 @@ class PublicacionVoter extends Voter
 {
     protected function supports($attribute, $subject)
     {
-        // replace with your own logic
-        // https://symfony.com/doc/current/security/voters.html
         return in_array($attribute, ['NEW','EDIT', 'DELETE'])  && $subject instanceof Publicacion;
     }
 
@@ -29,7 +27,7 @@ class PublicacionVoter extends Voter
             case 'NEW':
             case 'EDIT':
             case 'DELETE':
-                    return $subject->getAutor()->getId()==$token->getUser()->getId() || $subject->getAutor()->esJefe($token->getUser())==true;
+                    return $subject->getAutor()->getId()==$token->getUser()->getId() || $subject->getAutor()->esSubordinado($token->getUser())==true;
                 break;
         }
 

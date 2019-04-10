@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Autor;
+use App\Form\Subscriber\AddAutorAreaFieldSubscriber;
+use App\Form\Subscriber\AddAutorJefeFieldSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,7 +21,6 @@ use App\Form\Subscriber\AddAutorInstitucionFieldSubscriber;
 use App\Services\AreaService;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
-use App\Entity\Area;
 use App\Entity\Rol;
 use Doctrine\ORM\EntityRepository;
 
@@ -40,9 +41,7 @@ class AutorType extends AbstractType
     {
         $esAdmin = $this->authorizationChecker->isGranted('ROLE_ADMIN');
         $esSuperAdmin = $this->authorizationChecker->isGranted('ROLE_SUPERADMIN');
-        //  $area = $this->areaService->areasHijas($this->token->getToken()->getUser()->getArea(), $esAdmin);
-        //  false = $options['data']->getId() == $this->token->getToken()->getUser()->getId();
-
+        $esDirectivo = $this->authorizationChecker->isGranted('ROLE_DIRECTIVO');
         $disabled = false;
         $builder
             ->add('nombre', TextType::class, ['attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
@@ -50,11 +49,13 @@ class AutorType extends AbstractType
             ->add('email', EmailType::class, ['label' => 'Correo electrónico', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
             ->add('phone', TextType::class, ['label' => 'Teléfono', 'required' => false, 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
             ->add('gradoCientifico', null, ['label' => 'Grado científico', 'required' => true, 'attr' => ['class' => 'form-control m-input']])
-            ->add('activo', null, array('disabled' => $disabled, 'required' => false, 'attr' => array('data-on-text' => 'Si', 'data-off-text' => 'No')))
             ->add('file', FileType::class, array('required' => false,
                 'attr' => array('style' => 'display:none',
                     'accept' => 'image/*', 'accept' => '.jpg,.jpeg,.png,.gif,.bmp,.tiff')
             ));
+
+        if($this->token->getToken()->getUser()!=$options['data'])
+            $builder->add('activo', null, array('disabled' => $disabled, 'required' => false, 'attr' => array('data-on-text' => 'Si', 'data-off-text' => 'No')));
 
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $obj) {
             $form = $obj->getForm();
@@ -76,23 +77,21 @@ class AutorType extends AbstractType
             ));
         });
 
-
-        $builder
-        ->add('area',null,['choices' => [], 'disabled' => false, 'label'=>'Área','required'=>true,'attr'=>['class'=>'form-control m-input']]);
-
-
-        if($esSuperAdmin || $esAdmin){
+        $factory = $builder->getFormFactory();
+        if(($esSuperAdmin || $esAdmin) && $this->token->getToken()->getUser()!=$options['data']){
             $builder->add('idrol', null, array('disabled' => false,
                 'label' => 'Rol', 'required' => true, 'attr' => array('class' => 'form-control input-medium')));
 
             if($esSuperAdmin) {
                 $builder->add('pais', null, ['label' => 'País de residencia', 'disabled' => false,]);
-                $factory = $builder->getFormFactory();
                 $builder->addEventSubscriber(new AddInstitucionMinisterioFieldSubscriber($factory));
                 $builder->addEventSubscriber(new AddAutorInstitucionFieldSubscriber($factory));
             }
 
-        }else{
+            $builder->addEventSubscriber(new AddAutorJefeFieldSubscriber($factory,$this->token,$this->authorizationChecker,$this->areaService));
+        }
+        elseif(($esDirectivo) && $this->token->getToken()->getUser()!=$options['data'])
+            {
             $builder->add('idrol', null, array(
                 'disabled' => false,
                 'class' => Rol::class,
@@ -105,33 +104,8 @@ class AutorType extends AbstractType
             ));
         }
 
-      /*  if (true == false) {
-            if (null == $options['data']->getId())
-                $builder->add('jefe', null, array('choices' => $this->areaService->obtenerDirectivos(), 'label' => 'Jefe', 'placeholder' => 'Seleccione un directivo', 'required' => false, 'attr' => array('class' => 'form-control input-medium')));
-            else {
-                $subordinados = $this->areaService->subordinadosKey($options['data']);
-                $id = $options['data']->getId();
-                $builder->add('jefe', null, array(
-                    'disabled' => false,
-                    'required' => false,
-                    'class' => Autor::class,
-                    'query_builder' => function (EntityRepository $er) use ($subordinados, $id) {
-                        $qb = $er->createQueryBuilder('u')
-                            ->join('u.idrol', 'r')
-                            ->where('r.nombre= :role AND u.id!= :id')
-                            ->setParameters(['role' => 'ROLE_DIRECTIVO', 'id' => $id]);
-                        if (!empty($subordinados)) {
-                            $qb->andWhere('u.id NOT IN (:subordinados)')->setParameter('subordinados', $subordinados);
-                        }
-                        return $qb;
-                    },
-                    'placeholder' => 'Seleccione un directivo', 'attr' => array('class' => 'form-control input-medium')
-                ));
-            }
-
-        }
-        */
-
+        if(($esSuperAdmin || $esAdmin || $esDirectivo) && $this->token->getToken()->getUser()!=$options['data'])
+            $builder->addEventSubscriber(new AddAutorAreaFieldSubscriber($factory,$this->token,$this->authorizationChecker,$this->areaService));
     }
 
     public function configureOptions(OptionsResolver $resolver)

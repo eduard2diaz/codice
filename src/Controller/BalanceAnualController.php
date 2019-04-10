@@ -26,7 +26,7 @@ class BalanceAnualController extends AbstractController
             ->findByInstitucion($this->getUser()->getInstitucion());
 
         if ($request->isXmlHttpRequest())
-            return $this->render('balance/_table.html.twig', [
+            return $this->render('balance_anual/_table.html.twig', [
                 'balances' => $balances,
             ]);
 

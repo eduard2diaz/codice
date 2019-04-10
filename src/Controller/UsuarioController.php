@@ -10,7 +10,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 /**
  * @Route("/usuario")
@@ -87,9 +89,18 @@ class UsuarioController extends AbstractController
     public function edit(Request $request, Usuario $usuario, UserPasswordEncoderInterface $encoder): Response
     {
         if (!$request->isXmlHttpRequest())
-          throw $this->createAccessDeniedException();
+            throw $this->createAccessDeniedException();
 
         $passwordOriginal = $usuario->getPassword();
+
+        /*
+         *Sucedia que cunado modificaba las credenciales(usuario,correo) del usuario actualmente autenticado, si
+         * ocurria un error de validacion con las mismas, el usuario quedaba deslogueado, pues Sf no podia refrecar
+         * el token de autenticacion, por eso guardo un clon del usuario actual
+         */
+        if ($this->getUser()->getId() == $usuario->getId())
+            $clon = clone $usuario;
+
         $form = $this->createForm(UsuarioType::class, $usuario, ['action' => $this->generateUrl('usuario_edit', ['id' => $usuario->getId()])]);
         $form->handleRequest($request);
         if ($form->isSubmitted())
@@ -108,19 +119,32 @@ class UsuarioController extends AbstractController
                     $usuario->setFile(null);
                 }
 
-                $this->getDoctrine()->getManager()->flush();
 
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($usuario);
+                $em->flush();
                 return new JsonResponse(['mensaje' => 'El administrador fue actualizado satisfactoriamente',
                     'nombre' => $usuario->getNombre(), 'correo' => $usuario->getEmail(), 'activo' => $usuario->getActivo()
                 ]);
+
             } else {
+
+                /*
+                 * Y si ocurre un error simplemente refresco el token de autenticacion usando las credenciales antiguas
+                 */
+                if ($this->getUser()->getId() == $usuario->getId()) {
+                    $usuario = $clon;
+                    $this->container->get('security.token_storage')->setToken(new UsernamePasswordToken($usuario, $usuario->getPassword(), 'chain_provider', ['ROLE_SUPERADMIN']));
+                }
+
                 $page = $this->renderView('usuario/_form.html.twig', array(
                     'form' => $form->createView(),
                     'usuario' => $usuario,
                     'form_id' => 'usuario_edit',
-                    'button_action'=>'Actualizar',
-                    'title'=>'Editar usuario'
+                    'button_action' => 'Actualizar',
+                    'title' => 'Editar usuario'
                 ));
+
                 return new JsonResponse(array('form' => $page, 'error' => true,));
             }
 
@@ -128,8 +152,8 @@ class UsuarioController extends AbstractController
             'usuario' => $usuario,
             'form' => $form->createView(),
             'form_id' => 'usuario_edit',
-            'button_action'=>'Actualizar',
-            'title'=>'Editar usuario'
+            'button_action' => 'Actualizar',
+            'title' => 'Editar usuario'
         ]);
     }
 
@@ -138,7 +162,7 @@ class UsuarioController extends AbstractController
      */
     public function delete(Request $request, Usuario $usuario): Response
     {
-        if (!$request->isXmlHttpRequest() || $usuario->getId()==$this->getUser()->getId())
+        if (!$request->isXmlHttpRequest() || $usuario->getId() == $this->getUser()->getId())
             throw $this->createAccessDeniedException();
 
         $entityManager = $this->getDoctrine()->getManager();

@@ -23,6 +23,14 @@ class AreaFixtures extends Fixture implements OrderedFixtureInterface
             ['padre' => 'Decanato', 'nombre' => 'Facultad de Cultural Física', 'pais' => 'Cuba', 'ministerio' => 'Ministerio de Educación Superior', 'institucion' => 'Universidad Agraria de La Habana'],
             ['padre' => 'Decanato', 'nombre' => 'Facultad Pedagógica', 'pais' => 'Cuba', 'ministerio' => 'Ministerio de Educación Superior', 'institucion' => 'Universidad Agraria de La Habana'],
             ['padre' => 'Decanato', 'nombre' => 'Facultad de Ciencias Económias y Empresariales', 'pais' => 'Cuba', 'ministerio' => 'Ministerio de Educación Superior', 'institucion' => 'Universidad Agraria de La Habana'],
+            ['padre' => null, 'nombre' => 'Dirección', 'pais' => 'Cuba', 'ministerio' => 'Ministerio de Educación Superior', 'institucion' => 'Instituto de Ciencia Animal'],
+            ['padre' => 'Dirección', 'nombre' => 'Dirección de Economía', 'pais' => 'Cuba', 'ministerio' => 'Ministerio de Educación Superior', 'institucion' => 'Instituto de Ciencia Animal'],
+            ['padre' => 'Dirección', 'nombre' => 'Dirección de Recursos Humanos', 'pais' => 'Cuba', 'ministerio' => 'Ministerio de Educación Superior', 'institucion' => 'Instituto de Ciencia Animal'],
+            ['padre' => 'Dirección de Economía', 'nombre' => 'Departamento de Contabilidad', 'pais' => 'Cuba', 'ministerio' => 'Ministerio de Educación Superior', 'institucion' => 'Instituto de Ciencia Animal'],
+            ['padre' => 'Dirección de Economía', 'nombre' => 'Departamento de Finanzas', 'pais' => 'Cuba', 'ministerio' => 'Ministerio de Educación Superior', 'institucion' => 'Instituto de Ciencia Animal'],
+            ['padre' => 'Dirección de Economía', 'nombre' => 'Departamento de Inventario', 'pais' => 'Cuba', 'ministerio' => 'Ministerio de Educación Superior', 'institucion' => 'Instituto de Ciencia Animal'],
+            ['padre' => 'Dirección de Economía', 'nombre' => 'Departamento de Estadísticas', 'pais' => 'Cuba', 'ministerio' => 'Ministerio de Educación Superior', 'institucion' => 'Instituto de Ciencia Animal'],
+            ['padre' => 'Departamento de Finanzas', 'nombre' => 'Caja', 'pais' => 'Cuba', 'ministerio' => 'Ministerio de Educación Superior', 'institucion' => 'Instituto de Ciencia Animal'],
         ];
         foreach ($areas as $value) {
             $area = new Area();

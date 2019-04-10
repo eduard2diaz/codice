@@ -253,7 +253,7 @@ var autor = function () {
             $.ajax({
                     type: 'get', //Se uso get pues segun los desarrolladores de yahoo es una mejoria en el rendimineto de las peticiones ajax
                     dataType: 'html',
-                    url: Routing.generate('autor_finddirectivosbyinstitucion', {'id': 1}),
+                    url: Routing.generate('autor_finddirectivosbyinstitucion', {'id': institucionId}),
                     beforeSend: function (data) {
                         mApp.block("body",
                             {
@@ -264,12 +264,12 @@ var autor = function () {
                             });
                     },
                     success: function (data) {
-                        var cadena = "";
+                        var cadena = "<option></option>";
                         var array = JSON.parse(data);
                         for (var i = 0; i < array.length; i++)
                             cadena += "<option value=" + array[i]['id'] + ">" + array[i]['nombre'] + "</option>";
-                        $('select#autor_area').html(cadena);
-                        $('select#autor_area').change();
+                        $('select#autor_jefe').html(cadena);
+                        $('select#autor_jefe').change();
                     },
                     error: function () {
                         base.Error();
@@ -281,7 +281,7 @@ var autor = function () {
         });
     }
 
-    var areaListener = function () {
+    var jefeListener = function () {
         $('body').on('change', 'select#autor_jefe', function (evento) {
             if ($(this).val() > 0)
                 $.ajax({
@@ -290,7 +290,7 @@ var autor = function () {
                     url: Routing.generate('area_findbyautor', {'id': $(this).val()}),
                     beforeSend: function (data) {
                         mApp.block("body",
-                            {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando datos..."});
+                            {overlayColor:"#000000",type:"loader",state:"success",message:"Cargando area..."});
                     },
                     success: function (data) {
                         $('select#autor_area').html(data);
@@ -304,29 +304,8 @@ var autor = function () {
                         mApp.unblock("body");
                     }
                 });
-            else
-                $.ajax({
-                    type: 'get', //Se uso get pues segun los desarrolladores de yahoo es una mejoria en el rendimineto de las peticiones ajax
-                    dataType: 'html',
-                    url: Routing.generate('area_index',{'_format':'xml'}),
-                    beforeSend: function (data) {
-                        mApp.block("body",
-                            {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando datos..."});
-                    },
-                    success: function (data) {
-                        $('select#autor_area').html(data);
-                        $('select#autor_area').change();
-                    },
-                    error: function () {
-                        base.Error();
-                    },
-                    complete: function () {
-                        mApp.unblock("body");
-                    }
-                });
         });
     }
-
 
     var reiniciarFoto = function () {
         $('body').on('click', 'a#reload_picture', function () {
@@ -467,8 +446,6 @@ var autor = function () {
         });
     }
 
-
-
     var newAction = function () {
         $('body').on('submit', "form[name='autor']", function (evento) {
             evento.preventDefault();
@@ -531,7 +508,7 @@ var autor = function () {
                     paisListener();
                     ministerioListener();
                     institucionListener()
-                  //  areaListener();
+                    jefeListener();
                     newAction();
 
                     $('#foto_perfil').click(function () {
@@ -542,6 +519,5 @@ var autor = function () {
                 }
             );
         },
-
     }
 }();

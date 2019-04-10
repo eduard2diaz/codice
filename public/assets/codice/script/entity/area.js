@@ -11,7 +11,7 @@ var area = function () {
             columns: [
                 {data: 'numero'},
                 {data: 'nombre'},
-                {data: 'padre'},
+                {data: 'institucion'},
                 {data: 'acciones'}
             ]
         });
@@ -151,7 +151,7 @@ var area = function () {
                         objeto = table.row.add({
                             "numero": total,
                             "nombre": data['nombre'],
-                            "padre": data['padre'],
+                            "institucion": data['institucion'],
                             "acciones": "<ul class='m-nav m-nav--inline m--pull-right'>" +
                                 "<li class='m-nav__item'>" +
                                 "<a class='btn btn-sm btn-secondary area_show' data-href=" + Routing.generate('area_show', {id: data['id']}) + "><i class='flaticon-eye'></i>Visualizar</a></li>"
@@ -198,7 +198,7 @@ var area = function () {
                         $('div#basicmodal').modal('hide');
                         var pagina = table.page();
                         obj.parents('tr').children('td:nth-child(2)').html(data['nombre']);
-                        obj.parents('tr').children('td:nth-child(3)').html(data['padre']);
+                        obj.parents('tr').children('td:nth-child(3)').html(data['institucion']);
                     }
                 },
                 error: function () {

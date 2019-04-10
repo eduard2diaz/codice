@@ -31,7 +31,7 @@ class MonografiaController extends AbstractController
         if ($request->isXmlHttpRequest())
             return $this->render('monografia/_table.html.twig', [
                 'monografias' => $monografias,
-                'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
+                'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esSubordinado($this->getUser())
             ]);
 
         return $this->render('monografia/index.html.twig', [
@@ -40,7 +40,7 @@ class MonografiaController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
-            'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esJefe($this->getUser())
+            'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esSubordinado($this->getUser())
         ]);
     }
 

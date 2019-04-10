@@ -104,12 +104,20 @@ header {
     background-color: #4385f5 !important;
 }
 
-a.header span,
-span.m-topbar__username,
-i.flaticon-share,
-i.flaticon-search-1 {
-    color: white !important;
+/*Inicio de personalizacion de los iconos del top menus*/
+div#m_header_menu  ul.m-menu__nav > li.m-menu__item > a > span.m-menu__link-text{
+    color: white;
+    font-weight: 400;
+    font-size: 1.07rem;
+    text-transform: initial;
 }
+div#m_header_menu  ul.m-menu__nav > li.m-menu__item > a > i{
+    color: white;
+}
+div#m_header_topbar  ul.m-topbar__nav li.m-nav__item a.m-nav__link span.m-nav__link-icon i{
+    color: white;
+}
+/*Fin de personalizacion de los iconos del top menus*/
 
 div.form-control-feedback:not(:empty):before {
     content: 'Error';

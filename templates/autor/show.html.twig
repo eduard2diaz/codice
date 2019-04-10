@@ -35,15 +35,17 @@
                                                             <span class="m-nav__link-text">Editar</span>
                                                         </a>
                                                     </li>
-                                                    <li class="m-nav__item">
-                                                        <a data-href="{{ path('reporte_autorresumenperiodo',{'id':autor.id}) }}"
-                                                           class="m-nav__link" id="resumenperiodo_link">
-                                                            <i class="m-nav__link-icon flaticon-pie-chart"></i>
-                                                            <span class="m-nav__link-text">Resumen publicaciones</span>
-                                                        </a>
-                                                    </li>
+                                                    {% if not is_granted('ROLE_SUPERADMIN') %}
+                                                        <li class="m-nav__item">
+                                                            <a data-href="{{ path('reporte_autorresumenperiodo',{'id':autor.id}) }}"
+                                                               class="m-nav__link" id="resumenperiodo_link">
+                                                                <i class="m-nav__link-icon flaticon-pie-chart"></i>
+                                                                <span class="m-nav__link-text">Resumen publicaciones</span>
+                                                            </a>
+                                                        </li>
+                                                    {% endif %}
                                                 {% endif %}
-                                                {% if user_id!=app.user.id %}
+                                                {% if user_id!=app.user.id and not is_granted('ROLE_SUPERADMIN')%}
                                                     <li class="m-nav__item">
                                                         <a data-href="{{ path('autor_subscripcion',{'id':autor.id}) }}"
                                                            class="m-nav__link follow-link">
@@ -93,7 +95,7 @@
                                     <div class="">
                                         <div class="col">
                                             <h3 class="m-widget1__title">Teléfono</h3>
-                                            <span class="m-widget1__desc">{{ autor.phone ? autor.phone : 'Sin captar'}}</span>
+                                            <span class="m-widget1__desc">{{ autor.phone ? autor.phone : 'Sin captar' }}</span>
                                         </div>
                                     </div>
                                 </div>

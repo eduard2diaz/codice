@@ -119,8 +119,8 @@ var usuario = function () {
             var obj = $(this);
             var link = $(this).attr('data-href');
             bootbox.confirm({
-                title: 'Eliminar usuario',
-                message: '¿Está seguro que desea eliminar este usuario?',
+                title: 'Eliminar administrador',
+                message: '¿Está seguro que desea eliminar este administrador?',
                 buttons: {
                     confirm: {
                         label: 'Si, estoy seguro',
@@ -200,7 +200,7 @@ var usuario = function () {
     }
 
     var newAction = function () {
-        $('body').on('submit', "form#usuario_new", function (evento) {
+        $('div#basicmodal').on('submit', "form#usuario_new", function (evento) {
             evento.preventDefault();
             var padre = $(this).parent();
             var l = Ladda.create(document.querySelector('.ladda-button'));

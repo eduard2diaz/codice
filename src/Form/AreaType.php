@@ -3,9 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Area;
+use App\Entity\Institucion;
 use App\Form\Subscriber\AddAreaAreaPadreFieldSubscriber;
 use App\Form\Subscriber\AddAreaInstitucionFieldSubscriber;
 use App\Form\Subscriber\AddInstitucionMinisterioFieldSubscriber;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Services\AreaService;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Doctrine\ORM\EntityRepository;
 
 class AreaType extends AbstractType
 {
@@ -37,31 +40,45 @@ class AreaType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $area=$options['data'];
+        $area = $options['data'];
         $builder
-            ->add('nombre', TextType::class,array('attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')));
+            ->add('nombre', TextType::class, array('attr' => array('autocomplete' => 'off', 'class' => 'form-control input-xlarge')));
 
-        if($this->authorizationChecker->isGranted('ROLE_SUPERADMIN')){
-            $builder->add('pais',null,['label'=>'País'])
-                    ->add('ministerio')
-                    ->add('institucion',null,['label'=>'Institución']);
+        if ($this->authorizationChecker->isGranted('ROLE_SUPERADMIN')) {
+            $builder->add('pais', null, ['label' => 'País'])
+                ->add('ministerio')
+                ->add('institucion', null, ['label' => 'Institución']);
 
             $factory = $builder->getFormFactory();
             $builder->addEventSubscriber(new AddInstitucionMinisterioFieldSubscriber($factory));
             $builder->addEventSubscriber(new AddAreaInstitucionFieldSubscriber($factory));
-            $builder->addEventSubscriber(new AddAreaAreaPadreFieldSubscriber($factory,$this->areaService));
-        }else{
-            if(null==$area->getId())
-                $builder->add('padre',null,array('label'=>'Área padre','attr'=>array('class'=>'form-control input-medium')));
-            else
-                $builder->add('padre',null,array('label'=>'Área padre','choices'=>$this->getAreaService()->areasNoHijas($area),
-                    'attr'=>array('class'=>'form-control input-medium')));
+            $builder->addEventSubscriber(new AddAreaAreaPadreFieldSubscriber($factory, $this->area_service));
+        } else {
+            if (null == $area->getId()) {
+                $institucion=$this->token->getToken()->getUser()->getInstitucion()->getId();
+                $builder->add('padre', EntityType::class, array('label' => 'Área padre',
+                    'class' => 'App:Area',
+                    'query_builder' => function (EntityRepository $repository) use ($institucion) {
+                        $qb = $repository->createQueryBuilder('padre')
+                            ->innerJoin('padre.institucion', 'p');
+                        if ($institucion instanceof Institucion) {
+                            $qb->where('p.id = :id')
+                                ->setParameter('id', $institucion);
+                        } elseif (is_numeric($institucion)) {
+                            $qb->where('p.id = :id')
+                                ->setParameter('id', $institucion);
+                        } else {
+                            $qb->where('p.id = :id')
+                                ->setParameter('id', null);
+                        }
+                        return $qb;
+                    }
+
+                , 'attr' => array('class' => 'form-control input-medium')));
+            } else
+                $builder->add('padre', null, array('label' => 'Área padre', 'choices' => $this->getAreaService()->areasNoHijas($area),
+                    'attr' => array('class' => 'form-control input-medium')));
         }
-
-
-
-
-
 
 
     }

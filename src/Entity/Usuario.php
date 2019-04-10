@@ -6,9 +6,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Repository\UsuarioRepository;
+use App\Validator\UniqueMultipleEntity as UniqueMultipleEntityConstraint;
+
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\UsuarioRepository")
+ * @UniqueMultipleEntityConstraint(field="usuario",entities={"Autor","Usuario"})
+ * @UniqueMultipleEntityConstraint(field="email",entities={"Autor","Usuario"})
  */
 class Usuario implements UserInterface
 {
@@ -278,6 +283,5 @@ class Usuario implements UserInterface
      */
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
     }
 }

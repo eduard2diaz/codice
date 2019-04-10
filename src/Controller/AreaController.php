@@ -67,7 +67,7 @@ class AreaController extends AbstractController
                 $em->flush();
                 return new JsonResponse(array('mensaje' => 'El área fue registrada satisfactoriamente',
                     'nombre' => $area->getNombre(),
-                    'padre' => $area->getPadre()!=null ? $area->getPadre()->getNombre() : '',
+                    'institucion' => $area->getInstitucion()->getNombre(),
                     'id' => $area->getId(),
                 ));
             } else {
@@ -98,7 +98,7 @@ class AreaController extends AbstractController
                 $em->flush();
                 return new JsonResponse(array('mensaje' => 'El área fue actualizada satisfactoriamente',
                     'nombre' => $area->getNombre(),
-                    'padre' => $area->getPadre()!=null ? $area->getPadre()->getNombre() : ''
+                    'institucion' => $area->getInstitucion()->getNombre(),
                 ));
             } else {
                 $page = $this->renderView('area/_form.html.twig', array(
@@ -147,10 +147,10 @@ class AreaController extends AbstractController
 
     //Funcionalidades ajax
 
-    /*
+    /**
      * @Route("/{id}/findByAutor", name="area_findbyautor", methods="GET",options={"expose"=true})
      * Se utiliza en el gestionar de autor
-
+     */
     public function findByAutor(Request $request,AreaService $areaService, Autor $autor): Response
     {
         if (!$request->isXmlHttpRequest())
@@ -165,11 +165,11 @@ class AreaController extends AbstractController
 
         return new Response($cadena);
     }
-     */
+
 
     /**
      * @Route("/{id}/findbyinstitucion", name="area_findbyinstitucion",options={"expose"=true})
-     * Funcioanalidad que retorna el listado de areas de una determinada institucion(Se usa en el gestionar de areas)
+     * Funcionalidad que retorna el listado de areas de una determinada institucion(Se usa en el gestionar de areas)
      */
     public function findbyInstitucion(Request $request, Institucion $institucion): Response
     {

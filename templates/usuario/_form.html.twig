@@ -35,7 +35,8 @@
 
         </div>
         <div class="col-lg-9">
-            <div class="row pull-right m--margin-right-10">
+            {% if form.activo is defined %}
+                <div class="row pull-right m--margin-right-10">
                             <span class="m-switch m-switch--icon m-switch--success pull-right">
 				                <label>
 					                {{ form_widget(form.activo) }}
@@ -43,7 +44,8 @@
                                     </span>
 			                    </label>
                             </span>
-            </div>
+                </div>
+            {% endif %}
             <div class="clearfix"></div>
             <div class="form-group m-form__group row">
                 <label for="example-text-input"
@@ -96,7 +98,7 @@
 <div class="modal-footer">
     <button class="btn btn-sm btn-primary mt-ladda-btn ladda-button" data-style="expand-right" type="submit">
         <i class="flaticon-edit"></i>
-        <span class="ladda-label">{{ button_action |default('Guardar')}}</span>
+        <span class="ladda-label">{{ button_action |default('Guardar') }}</span>
         <span class="ladda-spinner"></span>
     </button>
     <button type="reset" class="btn btn-metal btn-sm" data-dismiss="modal"><i

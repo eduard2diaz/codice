@@ -83,3 +83,12 @@ services:
     app.notificacion_service:
         class: App\Services\NotificacionService
         public: true
+
+    uniquemultipleentity.validator:
+        class: App\Validator\UniqueMultipleEntityValidator
+        public: true
+        autowire: true
+        autoconfigure: true
+        tags:
+            - { name: validator.constraint_validator, alias: uniquemultipleentity.validator }
+        arguments: ['@doctrine']

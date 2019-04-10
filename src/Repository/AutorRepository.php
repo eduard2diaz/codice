@@ -10,10 +10,10 @@ use Doctrine\ORM\NoResultException;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 
 class AutorRepository extends EntityRepository implements UserLoaderInterface {
+
     /*
      * Funcionalidad que permite autenticar un usuario a partir del username o por el correo
      */
-
     public function loadUserByUsername($username) {
         $q = $this->createQueryBuilder('u')
                 ->where('u.usuario = :username OR u.email = :correo')
@@ -29,7 +29,8 @@ class AutorRepository extends EntityRepository implements UserLoaderInterface {
         return $user;
     }
 
-    public function refreshUser(UserInterface $user) {//Dependencia de la funcionalidad anterior
+    public function refreshUser(UserInterface $user) {
+        //Dependencia de la funcionalidad anterior
         $class = get_class($user);
         if (!$this->supportsClass($class)) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', $class));
@@ -37,11 +38,9 @@ class AutorRepository extends EntityRepository implements UserLoaderInterface {
         return $this->find($user->getId());
     }
 
-    public function supportsClass($class) {//Dependencia de la funcionalidad anterior
+    public function supportsClass($class) {
+        //Dependencia de la funcionalidad anterior
         return $this->getEntityName() === $class || is_subclass_of($class, $this->getEntityName());
     }
-    
-   
-
 }
 ?>

@@ -1,7 +1,22 @@
 {% extends 'layout/autenticado.html.twig' %}
-{% block page_title %}Usuario{% endblock page_title %}
 {% block body %}
-    {{ include('autor/_form.html.twig') }}
+    <div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">
+                        Registro de usuario
+                    </h3>
+                </div>
+            </div>
+
+            <div class="m-portlet__head-tools">
+            </div>
+        </div>
+        <div class="tab-content">
+            {{ include('autor/_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{parent()}}
