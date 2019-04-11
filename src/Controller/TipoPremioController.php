@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/tipopremio")
@@ -38,7 +37,7 @@ class TipoPremioController extends AbstractController
     public function new(Request $request): Response
     {
         $tipo_premio = new TipoPremio();
-        $form = $this->createForm(TipoPremioType::class, $tipo_premio, array('action' => $this->generateUrl('tipo_premio_new')));
+        $form = $this->createForm(TipoPremioType::class, $tipo_premio, ['action' => $this->generateUrl('tipo_premio_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -46,15 +45,15 @@ class TipoPremioController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($tipo_premio);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El tipo de premio fue registrado satisfactoriamente',
+                return $this->json(['mensaje' => 'El tipo de premio fue registrado satisfactoriamente',
                     'nombre' => $tipo_premio->getNombre(),
                     'id' => $tipo_premio->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('tipo_premio/_form.html.twig', array(
+                $page = $this->renderView('tipo_premio/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('tipo_premio/_new.html.twig', [
@@ -68,7 +67,7 @@ class TipoPremioController extends AbstractController
      */
     public function edit(Request $request, TipoPremio $tipo_premio): Response
     {
-        $form = $this->createForm(TipoPremioType::class, $tipo_premio, array('action' => $this->generateUrl('tipo_premio_edit',array('id' => $tipo_premio->getId()))));
+        $form = $this->createForm(TipoPremioType::class, $tipo_premio, ['action' => $this->generateUrl('tipo_premio_edit',['id' => $tipo_premio->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -76,16 +75,16 @@ class TipoPremioController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($tipo_premio);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El tipo de premio fue actualizado satisfactoriamente',
+                return $this->json(['mensaje' => 'El tipo de premio fue actualizado satisfactoriamente',
                     'nombre' => $tipo_premio->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('tipo_premio/_form.html.twig', array(
+                $page = $this->renderView('tipo_premio/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'tipo_premio_edit',
                     'action' => 'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('tipo_premio/_new.html.twig', [
@@ -108,6 +107,6 @@ class TipoPremioController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($tipo_premio);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'El tipo de premio fue eliminado satisfactoriamente'));
+        return $this->json(['mensaje' => 'El tipo de premio fue eliminado satisfactoriamente']);
     }
 }

@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/tipoarticulo")
@@ -38,7 +37,7 @@ class TipoArticuloController extends AbstractController
     public function new(Request $request): Response
     {
         $tipo_articulo = new TipoArticulo();
-        $form = $this->createForm(TipoArticuloType::class, $tipo_articulo, array('action' => $this->generateUrl('tipo_articulo_new')));
+        $form = $this->createForm(TipoArticuloType::class, $tipo_articulo, ['action' => $this->generateUrl('tipo_articulo_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -46,16 +45,16 @@ class TipoArticuloController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($tipo_articulo);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El tipo de artículo fue registrado satisfactoriamente',
+                return $this->json(['mensaje' => 'El tipo de artículo fue registrado satisfactoriamente',
                     'nombre' => $tipo_articulo->getNombre(),
                     'grupo' => $tipo_articulo->getGrupo()->getNombre(),
                     'id' => $tipo_articulo->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('tipo_articulo/_form.html.twig', array(
+                $page = $this->renderView('tipo_articulo/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('tipo_articulo/_new.html.twig', [
@@ -69,7 +68,7 @@ class TipoArticuloController extends AbstractController
      */
     public function edit(Request $request, TipoArticulo $tipo_articulo): Response
     {
-        $form = $this->createForm(TipoArticuloType::class, $tipo_articulo, array('action' => $this->generateUrl('tipo_articulo_edit',array('id' => $tipo_articulo->getId()))));
+        $form = $this->createForm(TipoArticuloType::class, $tipo_articulo, ['action' => $this->generateUrl('tipo_articulo_edit',['id' => $tipo_articulo->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -77,17 +76,17 @@ class TipoArticuloController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($tipo_articulo);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El tipo de artículo fue actualizado satisfactoriamente',
+                return $this->json(['mensaje' => 'El tipo de artículo fue actualizado satisfactoriamente',
                     'nombre' => $tipo_articulo->getNombre(),
                     'grupo' => $tipo_articulo->getGrupo()->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('tipo_articulo/_form.html.twig', array(
+                $page = $this->renderView('tipo_articulo/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'tipo_articulo_edit',
                     'action' => 'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('tipo_articulo/_new.html.twig', [
@@ -110,6 +109,6 @@ class TipoArticuloController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($tipo_articulo);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'El tipo de artículo fue eliminado satisfactoriamente'));
+        return $this->json(['mensaje' => 'El tipo de artículo fue eliminado satisfactoriamente']);
     }
 }

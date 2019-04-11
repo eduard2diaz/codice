@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Pais;
 
 /**
@@ -39,7 +38,7 @@ class MinisterioController extends AbstractController
     public function new(Request $request): Response
     {
         $ministerio = new Ministerio();
-        $form = $this->createForm(MinisterioType::class, $ministerio, array('action' => $this->generateUrl('ministerio_new')));
+        $form = $this->createForm(MinisterioType::class, $ministerio, ['action' => $this->generateUrl('ministerio_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -47,16 +46,16 @@ class MinisterioController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($ministerio);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El ministerio fue registrado satisfactoriamente',
+                return $this->json(['mensaje' => 'El ministerio fue registrado satisfactoriamente',
                     'nombre' => $ministerio->getNombre(),
                     'pais' => $ministerio->getPais()->getNombre(),
                     'id' => $ministerio->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('ministerio/_form.html.twig', array(
+                $page = $this->renderView('ministerio/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('ministerio/_new.html.twig', [
@@ -70,7 +69,7 @@ class MinisterioController extends AbstractController
      */
     public function edit(Request $request, Ministerio $ministerio): Response
     {
-        $form = $this->createForm(MinisterioType::class, $ministerio, array('action' => $this->generateUrl('ministerio_edit',array('id' => $ministerio->getId()))));
+        $form = $this->createForm(MinisterioType::class, $ministerio, ['action' => $this->generateUrl('ministerio_edit',['id' => $ministerio->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -78,17 +77,17 @@ class MinisterioController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($ministerio);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El ministerio fue actualizado satisfactoriamente',
+                return $this->json(['mensaje' => 'El ministerio fue actualizado satisfactoriamente',
                     'nombre' => $ministerio->getNombre(),
                     'pais' => $ministerio->getPais()->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('ministerio/_form.html.twig', array(
+                $page = $this->renderView('ministerio/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'ministerio_edit',
                     'action' => 'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('ministerio/_new.html.twig', [
@@ -111,14 +110,14 @@ class MinisterioController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($ministerio);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'El ministerio fue eliminado satisfactoriamente'));
+        return $this->json(['mensaje' => 'El ministerio fue eliminado satisfactoriamente']);
     }
 
     //Funcionalidades ajax
 
     /**
      * @Route("/{id}/findbypais", name="ministerio_findbypais",options={"expose"=true})
-     * Funcioanalidad que retorna el listado de ministerios que pertenecen a un determinado pais(
+     * Funcionalidad que retorna el listado de ministerios que pertenecen a un determinado pais(
      * SE UTILIZA EN EL GESTIONAR INSTITUCION)
      */
     public function findbypais(Request $request, Pais $pais): Response
@@ -133,6 +132,6 @@ class MinisterioController extends AbstractController
         foreach ($ministerios as $ministerio)
             $ministerios_array[]=['id'=>$ministerio->getId(),'nombre'=>$ministerio->getNombre()];
 
-        return new JsonResponse($ministerios_array);
+        return $this->json($ministerios_array);
     }
 }

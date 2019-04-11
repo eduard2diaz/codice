@@ -188,8 +188,8 @@ var ministerio = function () {
             var link = $(this).attr('data-href');
             var token = $(this).attr('data-csrf');
             bootbox.confirm({
-                title: 'Eliminar miniterio',
-                message: '¿Está seguro que desea eliminar esta miniterio?',
+                title: 'Eliminar ministerio',
+                message: '¿Está seguro que desea eliminar este ministerio?',
                 buttons: {
                     confirm: {
                         label: 'Si, estoy seguro',

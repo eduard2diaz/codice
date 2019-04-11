@@ -38,7 +38,7 @@ class TipoTesisController extends AbstractController
     public function new(Request $request): Response
     {
         $tipo_tesis = new TipoTesis();
-        $form = $this->createForm(TipoTesisType::class, $tipo_tesis, array('action' => $this->generateUrl('tipo_tesis_new')));
+        $form = $this->createForm(TipoTesisType::class, $tipo_tesis, ['action' => $this->generateUrl('tipo_tesis_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -46,16 +46,16 @@ class TipoTesisController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($tipo_tesis);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El tipo de tesis fue registrado satisfactoriamente',
+                return $this->json(['mensaje' => 'El tipo de tesis fue registrado satisfactoriamente',
                     'nombre' => $tipo_tesis->getNombre(),
                     'clasificacion' => $tipo_tesis->getClasificacion()->getNombre(),
                     'id' => $tipo_tesis->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('tipo_tesis/_form.html.twig', array(
+                $page = $this->renderView('tipo_tesis/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('tipo_tesis/_new.html.twig', [
@@ -69,7 +69,7 @@ class TipoTesisController extends AbstractController
      */
     public function edit(Request $request, TipoTesis $tipo_tesis): Response
     {
-        $form = $this->createForm(TipoTesisType::class, $tipo_tesis, array('action' => $this->generateUrl('tipo_tesis_edit',array('id' => $tipo_tesis->getId()))));
+        $form = $this->createForm(TipoTesisType::class, $tipo_tesis, ['action' => $this->generateUrl('tipo_tesis_edit',['id' => $tipo_tesis->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -77,17 +77,17 @@ class TipoTesisController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($tipo_tesis);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El tipo de tesis fue actualizado satisfactoriamente',
+                return $this->json(['mensaje' => 'El tipo de tesis fue actualizado satisfactoriamente',
                     'nombre' => $tipo_tesis->getNombre(),
                     'clasificacion' => $tipo_tesis->getClasificacion()->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('tipo_tesis/_form.html.twig', array(
+                $page = $this->renderView('tipo_tesis/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'tipo_tesis_edit',
                     'action' => 'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('tipo_tesis/_new.html.twig', [
@@ -110,6 +110,6 @@ class TipoTesisController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($tipo_tesis);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'El tipo de tesis fue eliminado satisfactoriamente'));
+        return $this->json(['mensaje' => 'El tipo de tesis fue eliminado satisfactoriamente']);
     }
 }

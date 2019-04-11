@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/clasificaciontiposoftware")
@@ -38,7 +37,7 @@ class ClasificacionTipoSoftwareController extends AbstractController
     public function new(Request $request): Response
     {
         $clasificacion_tiposoftware = new ClasificacionTipoSoftware();
-        $form = $this->createForm(ClasificacionTipoSoftwareType::class, $clasificacion_tiposoftware, array('action' => $this->generateUrl('clasificacion_tiposoftware_new')));
+        $form = $this->createForm(ClasificacionTipoSoftwareType::class, $clasificacion_tiposoftware, ['action' => $this->generateUrl('clasificacion_tiposoftware_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -46,15 +45,15 @@ class ClasificacionTipoSoftwareController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($clasificacion_tiposoftware);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'La clasificación fue registrada satisfactoriamente',
+                return $this->json(['mensaje' => 'La clasificación fue registrada satisfactoriamente',
                     'nombre' => $clasificacion_tiposoftware->getNombre(),
                     'id' => $clasificacion_tiposoftware->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('clasificacion_tiposoftware/_form.html.twig', array(
+                $page = $this->renderView('clasificacion_tiposoftware/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('clasificacion_tiposoftware/_new.html.twig', [
@@ -68,7 +67,7 @@ class ClasificacionTipoSoftwareController extends AbstractController
      */
     public function edit(Request $request, ClasificacionTipoSoftware $clasificacion_tiposoftware): Response
     {
-        $form = $this->createForm(ClasificacionTipoSoftwareType::class, $clasificacion_tiposoftware, array('action' => $this->generateUrl('clasificacion_tiposoftware_edit',array('id' => $clasificacion_tiposoftware->getId()))));
+        $form = $this->createForm(ClasificacionTipoSoftwareType::class, $clasificacion_tiposoftware, ['action' => $this->generateUrl('clasificacion_tiposoftware_edit',['id' => $clasificacion_tiposoftware->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -76,16 +75,16 @@ class ClasificacionTipoSoftwareController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($clasificacion_tiposoftware);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'La clasificación fue actualizada satisfactoriamente',
+                return $this->json(['mensaje' => 'La clasificación fue actualizada satisfactoriamente',
                     'nombre' => $clasificacion_tiposoftware->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('clasificacion_tiposoftware/_form.html.twig', array(
+                $page = $this->renderView('clasificacion_tiposoftware/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'clasificacion_tiposoftware_edit',
                     'action' => 'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('clasificacion_tiposoftware/_new.html.twig', [
@@ -108,6 +107,6 @@ class ClasificacionTipoSoftwareController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($clasificacion_tiposoftware);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'La clasificación fue eliminada satisfactoriamente'));
+        return $this->json(['mensaje' => 'La clasificación fue eliminada satisfactoriamente']);
     }
 }

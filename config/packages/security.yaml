@@ -40,7 +40,8 @@ security:
     access_control:
         - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/pais, roles: ROLE_SUPERADMIN }
-        - { path: ^/ministerio/\d+/findbypais, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }
+        - { path: ^/gradocientifico, roles: ROLE_SUPERADMIN }
+        - { path: ^/ministerio/\d+/findbypais, roles: [ROLE_SUPERADMIN] }
         - { path: ^/ministerio, roles: ROLE_SUPERADMIN }
         - { path: ^/institucion/\d+/findbyministerio, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }
         #permisos del superadmin

@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/grupoarticulo")
@@ -38,7 +37,7 @@ class GrupoArticuloController extends AbstractController
     public function new(Request $request): Response
     {
         $grupo_articulo = new GrupoArticulo();
-        $form = $this->createForm(GrupoArticuloType::class, $grupo_articulo, array('action' => $this->generateUrl('grupo_articulo_new')));
+        $form = $this->createForm(GrupoArticuloType::class, $grupo_articulo, ['action' => $this->generateUrl('grupo_articulo_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -46,15 +45,15 @@ class GrupoArticuloController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($grupo_articulo);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El grupo del artículo fue registrado satisfactoriamente',
+                return $this->json(['mensaje' => 'El grupo del artículo fue registrado satisfactoriamente',
                     'nombre' => $grupo_articulo->getNombre(),
                     'id' => $grupo_articulo->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('grupo_articulo/_form.html.twig', array(
+                $page = $this->renderView('grupo_articulo/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('grupo_articulo/_new.html.twig', [
@@ -68,7 +67,7 @@ class GrupoArticuloController extends AbstractController
      */
     public function edit(Request $request, GrupoArticulo $grupo_articulo): Response
     {
-        $form = $this->createForm(GrupoArticuloType::class, $grupo_articulo, array('action' => $this->generateUrl('grupo_articulo_edit',array('id' => $grupo_articulo->getId()))));
+        $form = $this->createForm(GrupoArticuloType::class, $grupo_articulo, ['action' => $this->generateUrl('grupo_articulo_edit',['id' => $grupo_articulo->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -76,16 +75,16 @@ class GrupoArticuloController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($grupo_articulo);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El grupo del artículo fue actualizado satisfactoriamente',
+                return $this->json(['mensaje' => 'El grupo del artículo fue actualizado satisfactoriamente',
                     'nombre' => $grupo_articulo->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('grupo_articulo/_form.html.twig', array(
+                $page = $this->renderView('grupo_articulo/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'grupo_articulo_edit',
                     'action' => 'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('grupo_articulo/_new.html.twig', [
@@ -108,6 +107,6 @@ class GrupoArticuloController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($grupo_articulo);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'El grupo del artículo fue eliminado satisfactoriamente'));
+        return $this->json(['mensaje' => 'El grupo del artículo fue eliminado satisfactoriamente']);
     }
 }

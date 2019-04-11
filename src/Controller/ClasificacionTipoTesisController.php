@@ -38,7 +38,7 @@ class ClasificacionTipoTesisController extends AbstractController
     public function new(Request $request): Response
     {
         $clasificacion_tipotesis = new ClasificacionTipoTesis();
-        $form = $this->createForm(ClasificacionTipoTesisType::class, $clasificacion_tipotesis, array('action' => $this->generateUrl('clasificacion_tipotesis_new')));
+        $form = $this->createForm(ClasificacionTipoTesisType::class, $clasificacion_tipotesis, ['action' => $this->generateUrl('clasificacion_tipotesis_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -46,15 +46,15 @@ class ClasificacionTipoTesisController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($clasificacion_tipotesis);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'La clasificación fue registrada satisfactoriamente',
+                return $this->json(['mensaje' => 'La clasificación fue registrada satisfactoriamente',
                     'nombre' => $clasificacion_tipotesis->getNombre(),
                     'id' => $clasificacion_tipotesis->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('clasificacion_tipotesis/_form.html.twig', array(
+                $page = $this->renderView('clasificacion_tipotesis/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('clasificacion_tipotesis/_new.html.twig', [
@@ -68,7 +68,7 @@ class ClasificacionTipoTesisController extends AbstractController
      */
     public function edit(Request $request, ClasificacionTipoTesis $clasificacion_tipotesis): Response
     {
-        $form = $this->createForm(ClasificacionTipoTesisType::class, $clasificacion_tipotesis, array('action' => $this->generateUrl('clasificacion_tipotesis_edit',array('id' => $clasificacion_tipotesis->getId()))));
+        $form = $this->createForm(ClasificacionTipoTesisType::class, $clasificacion_tipotesis, ['action' => $this->generateUrl('clasificacion_tipotesis_edit',['id' => $clasificacion_tipotesis->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -76,16 +76,16 @@ class ClasificacionTipoTesisController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($clasificacion_tipotesis);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'La clasificación fue actualizada satisfactoriamente',
+                return $this->json(['mensaje' => 'La clasificación fue actualizada satisfactoriamente',
                     'nombre' => $clasificacion_tipotesis->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('clasificacion_tipotesis/_form.html.twig', array(
+                $page = $this->renderView('clasificacion_tipotesis/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'clasificacion_tipotesis_edit',
                     'action' => 'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('clasificacion_tipotesis/_new.html.twig', [
@@ -108,6 +108,6 @@ class ClasificacionTipoTesisController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($clasificacion_tipotesis);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'La clasificación fue eliminada satisfactoriamente'));
+        return $this->json(['mensaje' => 'La clasificación fue eliminada satisfactoriamente']);
     }
 }

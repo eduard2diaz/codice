@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/pais")
@@ -38,7 +37,7 @@ class PaisController extends AbstractController
     public function new(Request $request): Response
     {
         $pais = new Pais();
-        $form = $this->createForm(PaisType::class, $pais, array('action' => $this->generateUrl('pais_new')));
+        $form = $this->createForm(PaisType::class, $pais, ['action' => $this->generateUrl('pais_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -46,17 +45,17 @@ class PaisController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($pais);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El país fue registrado satisfactoriamente',
+                return $this->json(['mensaje' => 'El país fue registrado satisfactoriamente',
                     'nombre' => $pais->getNombre(),
                     'capital' => $pais->getCapital(),
                     'codigo' => $pais->getCodigo(),
                     'id' => $pais->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('pais/_form.html.twig', array(
+                $page = $this->renderView('pais/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('pais/_new.html.twig', [
@@ -70,7 +69,7 @@ class PaisController extends AbstractController
      */
     public function edit(Request $request, Pais $pais): Response
     {
-        $form = $this->createForm(PaisType::class, $pais, array('action' => $this->generateUrl('pais_edit',array('id' => $pais->getId()))));
+        $form = $this->createForm(PaisType::class, $pais, ['action' => $this->generateUrl('pais_edit',['id' => $pais->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -78,18 +77,18 @@ class PaisController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($pais);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El país fue actualizado satisfactoriamente',
+                return $this->json(['mensaje' => 'El país fue actualizado satisfactoriamente',
                     'nombre' => $pais->getNombre(),
                     'capital' => $pais->getCapital(),
                     'codigo' => $pais->getCodigo(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('pais/_form.html.twig', array(
+                $page = $this->renderView('pais/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'pais_edit',
                     'action' => 'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('pais/_new.html.twig', [
@@ -112,6 +111,6 @@ class PaisController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($pais);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'El país fue eliminado satisfactoriamente'));
+        return $this->json(['mensaje' => 'El país fue eliminado satisfactoriamente']);
     }
 }

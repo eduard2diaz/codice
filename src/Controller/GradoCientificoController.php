@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/gradocientifico")
@@ -38,7 +37,7 @@ class GradoCientificoController extends AbstractController
     public function new(Request $request): Response
     {
         $grado_cientifico = new GradoCientifico();
-        $form = $this->createForm(GradoCientificoType::class, $grado_cientifico, array('action' => $this->generateUrl('grado_cientifico_new')));
+        $form = $this->createForm(GradoCientificoType::class, $grado_cientifico, ['action' => $this->generateUrl('grado_cientifico_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -46,15 +45,15 @@ class GradoCientificoController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($grado_cientifico);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El grado científico fue registrado satisfactoriamente',
+                return $this->json(['mensaje' => 'El grado científico fue registrado satisfactoriamente',
                     'nombre' => $grado_cientifico->getNombre(),
                     'id' => $grado_cientifico->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('grado_cientifico/_form.html.twig', array(
+                $page = $this->renderView('grado_cientifico/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('grado_cientifico/_new.html.twig', [
@@ -68,7 +67,7 @@ class GradoCientificoController extends AbstractController
      */
     public function edit(Request $request, GradoCientifico $grado_cientifico): Response
     {
-        $form = $this->createForm(GradoCientificoType::class, $grado_cientifico, array('action' => $this->generateUrl('grado_cientifico_edit',array('id' => $grado_cientifico->getId()))));
+        $form = $this->createForm(GradoCientificoType::class, $grado_cientifico, ['action' => $this->generateUrl('grado_cientifico_edit',['id' => $grado_cientifico->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -76,16 +75,16 @@ class GradoCientificoController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($grado_cientifico);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El grado científico fue actualizado satisfactoriamente',
+                return $this->json(['mensaje' => 'El grado científico fue actualizado satisfactoriamente',
                     'nombre' => $grado_cientifico->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('grado_cientifico/_form.html.twig', array(
+                $page = $this->renderView('grado_cientifico/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'grado_cientifico_edit',
                     'action' => 'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('grado_cientifico/_new.html.twig', [
@@ -108,6 +107,6 @@ class GradoCientificoController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($grado_cientifico);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'El grado científico fue eliminado satisfactoriamente'));
+        return $this->json(['mensaje' => 'El grado científico fue eliminado satisfactoriamente']);
     }
 }

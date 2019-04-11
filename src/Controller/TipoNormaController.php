@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/tiponorma")
@@ -38,7 +37,7 @@ class TipoNormaController extends AbstractController
     public function new(Request $request): Response
     {
         $tipo_norma = new TipoNorma();
-        $form = $this->createForm(TipoNormaType::class, $tipo_norma, array('action' => $this->generateUrl('tipo_norma_new')));
+        $form = $this->createForm(TipoNormaType::class, $tipo_norma, ['action' => $this->generateUrl('tipo_norma_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -46,15 +45,15 @@ class TipoNormaController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($tipo_norma);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El tipo de norma fue registrado satisfactoriamente',
+                return $this->json(['mensaje' => 'El tipo de norma fue registrado satisfactoriamente',
                     'nombre' => $tipo_norma->getNombre(),
                     'id' => $tipo_norma->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('tipo_norma/_form.html.twig', array(
+                $page = $this->renderView('tipo_norma/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('tipo_norma/_new.html.twig', [
@@ -68,7 +67,7 @@ class TipoNormaController extends AbstractController
      */
     public function edit(Request $request, TipoNorma $tipo_norma): Response
     {
-        $form = $this->createForm(TipoNormaType::class, $tipo_norma, array('action' => $this->generateUrl('tipo_norma_edit',array('id' => $tipo_norma->getId()))));
+        $form = $this->createForm(TipoNormaType::class, $tipo_norma, ['action' => $this->generateUrl('tipo_norma_edit',['id' => $tipo_norma->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -76,16 +75,16 @@ class TipoNormaController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($tipo_norma);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El tipo de norma fue actualizado satisfactoriamente',
+                return $this->json(['mensaje' => 'El tipo de norma fue actualizado satisfactoriamente',
                     'nombre' => $tipo_norma->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('tipo_norma/_form.html.twig', array(
+                $page = $this->renderView('tipo_norma/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'tipo_norma_edit',
                     'action' => 'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('tipo_norma/_new.html.twig', [
@@ -108,6 +107,6 @@ class TipoNormaController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($tipo_norma);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'El tipo de norma fue eliminado satisfactoriamente'));
+        return $this->json(['mensaje' => 'El tipo de norma fue eliminado satisfactoriamente']);
     }
 }

@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/tipoencuentro")
@@ -38,7 +37,7 @@ class TipoEncuentroController extends AbstractController
     public function new(Request $request): Response
     {
         $tipo_encuentro = new TipoEncuentro();
-        $form = $this->createForm(TipoEncuentroType::class, $tipo_encuentro, array('action' => $this->generateUrl('tipo_encuentro_new')));
+        $form = $this->createForm(TipoEncuentroType::class, $tipo_encuentro, ['action' => $this->generateUrl('tipo_encuentro_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -46,15 +45,15 @@ class TipoEncuentroController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($tipo_encuentro);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El tipo de encuentro fue registrado satisfactoriamente',
+                return $this->json(['mensaje' => 'El tipo de encuentro fue registrado satisfactoriamente',
                     'nombre' => $tipo_encuentro->getNombre(),
                     'id' => $tipo_encuentro->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('tipo_encuentro/_form.html.twig', array(
+                $page = $this->renderView('tipo_encuentro/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('tipo_encuentro/_new.html.twig', [
@@ -68,7 +67,7 @@ class TipoEncuentroController extends AbstractController
      */
     public function edit(Request $request, TipoEncuentro $tipo_encuentro): Response
     {
-        $form = $this->createForm(TipoEncuentroType::class, $tipo_encuentro, array('action' => $this->generateUrl('tipo_encuentro_edit',array('id' => $tipo_encuentro->getId()))));
+        $form = $this->createForm(TipoEncuentroType::class, $tipo_encuentro, ['action' => $this->generateUrl('tipo_encuentro_edit',['id' => $tipo_encuentro->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -76,16 +75,16 @@ class TipoEncuentroController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($tipo_encuentro);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El tipo de encuentro fue actualizado satisfactoriamente',
+                return $this->json(['mensaje' => 'El tipo de encuentro fue actualizado satisfactoriamente',
                     'nombre' => $tipo_encuentro->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('tipo_encuentro/_form.html.twig', array(
+                $page = $this->renderView('tipo_encuentro/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'tipo_encuentro_edit',
                     'action' => 'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('tipo_encuentro/_new.html.twig', [
@@ -108,6 +107,6 @@ class TipoEncuentroController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($tipo_encuentro);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'El tipo de encuentro fue eliminado satisfactoriamente'));
+        return $this->json(['mensaje' => 'El tipo de encuentro fue eliminado satisfactoriamente']);
     }
 }

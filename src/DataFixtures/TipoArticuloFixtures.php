@@ -17,7 +17,7 @@ class TipoArticuloFixtures extends Fixture implements OrderedFixtureInterface
                 'grupo' => 'Científico',
                 'tipo' => [
                     'Revisión sistemática', 'Estudios clínicos randomizados', 'Estudio de cohortes', 'Estudios de incidencia',
-                    'Estudio caso control', 'Estudio de serie de pacientes', 'Estudio de serie de pacientes',
+                    'Estudio caso control', 'Estudio de serie de pacientes',
                     'Revisión narrativa']
             ]
 

@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/tiposoftware")
@@ -38,7 +37,7 @@ class TipoSoftwareController extends AbstractController
     public function new(Request $request): Response
     {
         $tipo_software = new TipoSoftware();
-        $form = $this->createForm(TipoSoftwareType::class, $tipo_software, array('action' => $this->generateUrl('tipo_software_new')));
+        $form = $this->createForm(TipoSoftwareType::class, $tipo_software, ['action' => $this->generateUrl('tipo_software_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -46,16 +45,16 @@ class TipoSoftwareController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($tipo_software);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El tipo de software fue registrado satisfactoriamente',
+                return $this->json(['mensaje' => 'El tipo de software fue registrado satisfactoriamente',
                     'nombre' => $tipo_software->getNombre(),
                     'clasificacion' => $tipo_software->getClasificacion()->getNombre(),
                     'id' => $tipo_software->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('tipo_software/_form.html.twig', array(
+                $page = $this->renderView('tipo_software/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('tipo_software/_new.html.twig', [
@@ -69,7 +68,7 @@ class TipoSoftwareController extends AbstractController
      */
     public function edit(Request $request, TipoSoftware $tipo_software): Response
     {
-        $form = $this->createForm(TipoSoftwareType::class, $tipo_software, array('action' => $this->generateUrl('tipo_software_edit',array('id' => $tipo_software->getId()))));
+        $form = $this->createForm(TipoSoftwareType::class, $tipo_software, ['action' => $this->generateUrl('tipo_software_edit',['id' => $tipo_software->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -77,17 +76,17 @@ class TipoSoftwareController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($tipo_software);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El tipo de software fue actualizado satisfactoriamente',
+                return $this->json(['mensaje' => 'El tipo de software fue actualizado satisfactoriamente',
                     'nombre' => $tipo_software->getNombre(),
                     'clasificacion' => $tipo_software->getClasificacion()->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('tipo_software/_form.html.twig', array(
+                $page = $this->renderView('tipo_software/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'tipo_software_edit',
                     'action' => 'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('tipo_software/_new.html.twig', [
@@ -110,6 +109,6 @@ class TipoSoftwareController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($tipo_software);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'El tipo de software fue eliminado satisfactoriamente'));
+        return $this->json(['mensaje' => 'El tipo de software fue eliminado satisfactoriamente']);
     }
 }
