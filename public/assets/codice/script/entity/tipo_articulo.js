@@ -17,7 +17,6 @@ var tipo_articulo = function () {
     }
 
     var configurarFormulario = function () {
-        Ladda.bind( '.mt-ladda-btn' );
         $('select#tipo_articulo_grupo').select2({
             dropdownParent: $("#basicmodal"),
         });

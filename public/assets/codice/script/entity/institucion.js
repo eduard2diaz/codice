@@ -24,7 +24,6 @@ var institucion = function () {
         $('select#institucion_ministerio').select2({
             dropdownParent: $("#basicmodal"),
         });
-        Ladda.bind( '.mt-ladda-btn' );
         $("div#basicmodal form").validate({
             rules:{
                 'institucion[nombre]': {required:true},

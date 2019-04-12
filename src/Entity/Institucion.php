@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  *
  * @ORM\Table(name="institucion", indexes={@ORM\Index(name="IDX_F751F7C37E5D2EFF", columns={"pais"}), @ORM\Index(name="IDX_F751F7C35F4745BE", columns={"ministerio"})})
  * @ORM\Entity
- * @UniqueEntity(fields={"nombre","pais","ministerio"})
+ * @UniqueEntity(fields={"nombre","pais"})
  */
 class Institucion
 {

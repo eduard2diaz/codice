@@ -17,7 +17,6 @@ var tipo_tesis = function () {
     }
 
     var configurarFormulario = function () {
-        Ladda.bind( '.mt-ladda-btn' );
         $('select#tipo_tesis_clasificacion').select2({
             dropdownParent: $("#basicmodal"),
         });

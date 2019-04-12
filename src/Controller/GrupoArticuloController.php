@@ -36,6 +36,9 @@ class GrupoArticuloController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $grupo_articulo = new GrupoArticulo();
         $form = $this->createForm(GrupoArticuloType::class, $grupo_articulo, ['action' => $this->generateUrl('grupo_articulo_new')]);
         $form->handleRequest($request);
@@ -67,6 +70,9 @@ class GrupoArticuloController extends AbstractController
      */
     public function edit(Request $request, GrupoArticulo $grupo_articulo): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $form = $this->createForm(GrupoArticuloType::class, $grupo_articulo, ['action' => $this->generateUrl('grupo_articulo_edit',['id' => $grupo_articulo->getId()])]);
         $form->handleRequest($request);
 

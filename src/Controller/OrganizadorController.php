@@ -9,7 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/organizador")
@@ -38,8 +37,11 @@ class OrganizadorController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $organizador = new Organizador();
-        $form = $this->createForm(OrganizadorType::class, $organizador, array('action' => $this->generateUrl('organizador_new')));
+        $form = $this->createForm(OrganizadorType::class, $organizador, ['action' => $this->generateUrl('organizador_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -47,15 +49,16 @@ class OrganizadorController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($organizador);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El organizador fue registrado satisfactoriamente',
+                return $this->json(['mensaje' => 'El organizador fue registrado satisfactoriamente',
                     'nombre' => $organizador->getNombre(),
                     'id' => $organizador->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('organizador/_form.html.twig', array(
+                $page = $this->renderView('organizador/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                    'organizador' => $organizador,
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('organizador/_new.html.twig', [
@@ -69,7 +72,10 @@ class OrganizadorController extends AbstractController
      */
     public function edit(Request $request, Organizador $organizador): Response
     {
-        $form = $this->createForm(OrganizadorType::class, $organizador, array('action' => $this->generateUrl('organizador_edit',array('id' => $organizador->getId()))));
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        $form = $this->createForm(OrganizadorType::class, $organizador, ['action' => $this->generateUrl('organizador_edit',['id' => $organizador->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -77,17 +83,18 @@ class OrganizadorController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($organizador);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El organizador fue actualizado satisfactoriamente',
+                return $this->json(['mensaje' => 'El organizador fue actualizado satisfactoriamente',
                     'nombre' => $organizador->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('organizador/_form.html.twig', array(
+                $page = $this->renderView('organizador/_form.html.twig', [
                     'form' => $form->createView(),
+                    'organizador' => $organizador,
                     'form_id' => 'organizador_edit',
                     'action' => 'Actualizar',
                     'eliminable'=>$this->esEliminable($organizador)
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('organizador/_new.html.twig', [
@@ -111,9 +118,12 @@ class OrganizadorController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($organizador);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'El organizador fue eliminado satisfactoriamente'));
+        return $this->json(['mensaje' => 'El organizador fue eliminado satisfactoriamente']);
     }
 
+    /*
+     * Funcion que devuelve un booleano indicando si un organizador es eliminable
+     */
     private function esEliminable(Organizador $organizador){
         return $this->getDoctrine()->getManager()
              ->getRepository(Encuentro::class)

@@ -16,7 +16,6 @@ var tipo_norma = function () {
     }
 
     var configurarFormulario = function () {
-        Ladda.bind( '.mt-ladda-btn' );
         $("div#basicmodal form").validate({
             rules:{
                 'tipo_norma[nombre]': {required:true}

@@ -13,6 +13,8 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  * @ORM\Table(name="editorial")
  * @ORM\Entity
  * @UniqueEntity(fields={"nombre","pais"})
+ * @UniqueEntity("correo")
+ * @UniqueEntity("direccion")
  */
 class Editorial
 {

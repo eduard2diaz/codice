@@ -92,3 +92,12 @@ services:
         tags:
             - { name: validator.constraint_validator, alias: uniquemultipleentity.validator }
         arguments: ['@doctrine']
+
+    autor.validator:
+        class: App\Validator\AutorValidator
+        public: true
+        autowire: true
+        autoconfigure: true
+        tags:
+            - { name: validator.constraint_validator, alias: autor.validator }
+        arguments: ['@doctrine']

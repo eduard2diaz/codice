@@ -13,8 +13,8 @@ class TipoArticuloType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre', TextType::class,array('attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
-            ->add('grupo',null,array('required'=>true,'attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
+            ->add('nombre', TextType::class,['attr'=>['autocomplete'=>'off','class'=>'form-control input-xlarge']])
+            ->add('grupo',null,['required'=>true,'attr'=>['autocomplete'=>'off','class'=>'form-control input-xlarge']])
         ;
     }
 

@@ -16,7 +16,6 @@ var grupo_articulo = function () {
     }
 
     var configurarFormulario = function () {
-       // Ladda.bind( '.mt-ladda-btn' );
         $("div#basicmodal form").validate({
             rules:{
                 'grupo_articulo[nombre]': {required:true}

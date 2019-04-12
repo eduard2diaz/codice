@@ -16,7 +16,6 @@ var tipo_premio = function () {
     }
 
     var configurarFormulario = function () {
-        Ladda.bind( '.mt-ladda-btn' );
         $("div#basicmodal form").validate({
             rules:{
                 'tipo_premio[nombre]': {required:true}

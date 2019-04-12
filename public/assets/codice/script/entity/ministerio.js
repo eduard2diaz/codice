@@ -20,7 +20,6 @@ var ministerio = function () {
         $('select#ministerio_pais').select2({
             dropdownParent: $("#basicmodal"),
         });
-        Ladda.bind( '.mt-ladda-btn' );
         $("div#basicmodal form").validate({
             rules:{
                 'ministerio[nombre]': {required:true}

@@ -9,7 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/institucion")
@@ -38,8 +37,11 @@ class InstitucionController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $institucion = new Institucion();
-        $form = $this->createForm(InstitucionType::class, $institucion, array('action' => $this->generateUrl('institucion_new')));
+        $form = $this->createForm(InstitucionType::class, $institucion, ['action' => $this->generateUrl('institucion_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -47,17 +49,17 @@ class InstitucionController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($institucion);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'La institución fue registrada satisfactoriamente',
+                return $this->json(['mensaje' => 'La institución fue registrada satisfactoriamente',
                     'nombre' => $institucion->getNombre(),
                     'pais' => $institucion->getPais()->getNombre(),
                     'ministerio' => $institucion->getMinisterio()->getNombre(),
                     'id' => $institucion->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('institucion/_form.html.twig', array(
+                $page = $this->renderView('institucion/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('institucion/_new.html.twig', [
@@ -71,7 +73,10 @@ class InstitucionController extends AbstractController
      */
     public function edit(Request $request, Institucion $institucion): Response
     {
-        $form = $this->createForm(InstitucionType::class, $institucion, array('action' => $this->generateUrl('institucion_edit',array('id' => $institucion->getId()))));
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        $form = $this->createForm(InstitucionType::class, $institucion, ['action' => $this->generateUrl('institucion_edit',['id' => $institucion->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -79,18 +84,18 @@ class InstitucionController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($institucion);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'La institución fue actualizada satisfactoriamente',
+                return $this->json(['mensaje' => 'La institución fue actualizada satisfactoriamente',
                     'nombre' => $institucion->getNombre(),
                     'pais' => $institucion->getPais()->getNombre(),
                     'ministerio' => $institucion->getMinisterio()->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('institucion/_form.html.twig', array(
+                $page = $this->renderView('institucion/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'institucion_edit',
                     'action' => 'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('institucion/_new.html.twig', [
@@ -113,13 +118,13 @@ class InstitucionController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($institucion);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'La institución fue eliminada satisfactoriamente'));
+        return $this->json(['mensaje' => 'La institución fue eliminada satisfactoriamente']);
     }
 
     //Funcionalidades ajax
     /**
      * @Route("/{id}/findbyministerio", name="institucion_findbyministerio",options={"expose"=true})
-     * Funcioanalidad que retorna el listado de instituciones que pertenecen a un determinado ministerio(
+     * Funcionalidad que retorna el listado de instituciones que pertenecen a un determinado ministerio(
      * SE UTILIZA EN EL GESTIONAR Autor)
      */
     public function findbyministerio(Request $request, Ministerio $ministerio): Response
@@ -134,6 +139,6 @@ class InstitucionController extends AbstractController
         foreach ($instituciones as $institucion)
             $instituciones_array[]=['id'=>$institucion->getId(),'nombre'=>$institucion->getNombre()];
 
-        return new JsonResponse($instituciones_array);
+        return $this->json($instituciones_array);
     }
 }

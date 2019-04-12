@@ -50,6 +50,9 @@ class AreaController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $area = new Area();
         if($this->isGranted('ROLE_ADMIN')){
             $area->setInstitucion($this->getUser()->getInstitucion());
@@ -57,7 +60,7 @@ class AreaController extends AbstractController
             $area->setPais($this->getUser()->getPais());
         }
 
-        $form = $this->createForm(AreaType::class, $area, array('action' => $this->generateUrl('area_new')));
+        $form = $this->createForm(AreaType::class, $area, ['action' => $this->generateUrl('area_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -65,16 +68,16 @@ class AreaController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($area);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El área fue registrada satisfactoriamente',
+                return $this->json(['mensaje' => 'El área fue registrada satisfactoriamente',
                     'nombre' => $area->getNombre(),
                     'institucion' => $area->getInstitucion()->getNombre(),
                     'id' => $area->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('area/_form.html.twig', array(
+                $page = $this->renderView('area/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('area/_new.html.twig', [
@@ -88,7 +91,11 @@ class AreaController extends AbstractController
      */
     public function edit(Request $request, Area $area): Response
     {
-        $form = $this->createForm(AreaType::class, $area, array('action' => $this->generateUrl('area_edit',array('id' => $area->getId()))));
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        $this->denyAccessUnlessGranted('EDIT',$area);
+        $form = $this->createForm(AreaType::class, $area, ['action' => $this->generateUrl('area_edit',['id' => $area->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -96,17 +103,17 @@ class AreaController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($area);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El área fue actualizada satisfactoriamente',
+                return $this->json(['mensaje' => 'El área fue actualizada satisfactoriamente',
                     'nombre' => $area->getNombre(),
                     'institucion' => $area->getInstitucion()->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('area/_form.html.twig', array(
+                $page = $this->renderView('area/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'area_edit',
                     'action' => 'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('area/_new.html.twig', [
@@ -126,6 +133,7 @@ class AreaController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $this->denyAccessUnlessGranted('VIEW',$area);
         return $this->render('area/_show.html.twig', [
             'area' => $area,
         ]);
@@ -139,17 +147,18 @@ class AreaController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $this->denyAccessUnlessGranted('DELETE',$area);
         $em = $this->getDoctrine()->getManager();
         $em->remove($area);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'El área fue eliminada satisfactoriamente'));
+        return $this->json(['mensaje' => 'El área fue eliminada satisfactoriamente']);
     }
 
     //Funcionalidades ajax
 
     /**
      * @Route("/{id}/findByAutor", name="area_findbyautor", methods="GET",options={"expose"=true})
-     * Se utiliza en el gestionar de autor
+     * Se utiliza en el gestionar de autor por parte de los usuarios con roles : ROLE_ADMIN o ROLE_SUPERADMIN
      */
     public function findByAutor(Request $request,AreaService $areaService, Autor $autor): Response
     {
@@ -158,6 +167,7 @@ class AreaController extends AbstractController
 
         $area=$autor->getArea();
         $areas=$areaService->areasHijas($area);
+        $areas[]=$area;
 
         $cadena="";
         foreach ($areas as $area)
@@ -183,6 +193,6 @@ class AreaController extends AbstractController
         foreach ($areas as $area)
             $areas_array[]=['id'=>$area->getId(),'nombre'=>$area->getNombre()];
 
-        return new JsonResponse($areas_array);
+        return $this->json($areas_array);
     }
 }

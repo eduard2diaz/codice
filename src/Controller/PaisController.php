@@ -36,6 +36,9 @@ class PaisController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $pais = new Pais();
         $form = $this->createForm(PaisType::class, $pais, ['action' => $this->generateUrl('pais_new')]);
         $form->handleRequest($request);
@@ -69,6 +72,9 @@ class PaisController extends AbstractController
      */
     public function edit(Request $request, Pais $pais): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $form = $this->createForm(PaisType::class, $pais, ['action' => $this->generateUrl('pais_edit',['id' => $pais->getId()])]);
         $form->handleRequest($request);
 

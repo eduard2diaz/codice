@@ -25,7 +25,6 @@ var revista = function () {
         $('select#revista_nivel').select2({
             dropdownParent: $("#basicmodal"),
         });
-        Ladda.bind( '.mt-ladda-btn' );
         $("div#basicmodal form").validate({
             rules:{
                 'revista[nombre]': {required:true},

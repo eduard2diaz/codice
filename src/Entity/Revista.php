@@ -35,11 +35,13 @@ class Revista
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\GreaterThanOrEqual(value=1)
      */
     private $impacto;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min=1, max=4)
      */
     private $nivel;
 

@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use App\Validator\UniqueMultipleEntity as UniqueMultipleEntityConstraint;
+use App\Validator\Autor as AutorConstraint;
 /**
  * Autor
  *
@@ -17,6 +18,7 @@ use App\Validator\UniqueMultipleEntity as UniqueMultipleEntityConstraint;
  * @ORM\Entity(repositoryClass="App\Repository\AutorRepository")
  * @UniqueMultipleEntityConstraint(field="usuario",entities={"Autor","Usuario"})
  * @UniqueMultipleEntityConstraint(field="email",entities={"Autor","Usuario"})
+ * @AutorConstraint(idrol="idrol")
  */
 class Autor implements UserInterface
 {
@@ -652,7 +654,7 @@ class Autor implements UserInterface
         if (null == $this->getPais()) {
             $context->setNode($context, 'pais', null, 'data.pais');
             $context->addViolation('Seleccione un país');
-        } elseif (null == $this->getPais()) {
+        } elseif (null == $this->getMinisterio()) {
             $context->setNode($context, 'ministerio', null, 'data.ministerio');
             $context->addViolation('Seleccione un ministerio');
         } elseif (null == $this->getInstitucion()) {

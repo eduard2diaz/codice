@@ -4,9 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Usuario;
 use App\Form\UsuarioType;
-use App\Repository\UsuarioRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -49,7 +47,7 @@ class UsuarioController extends AbstractController
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($usuario);
                 $entityManager->flush();
-                return new JsonResponse([
+                return $this->json([
                     'mensaje' => 'El administrador fue registrado satisfactoriamente',
                     'nombre' => $usuario->getNombre(),
                     'correo' => $usuario->getEmail(),
@@ -57,11 +55,11 @@ class UsuarioController extends AbstractController
                     'id' => $usuario->getId()
                 ]);
             } else {
-                $page = $this->renderView('usuario/_form.html.twig', array(
+                $page = $this->renderView('usuario/_form.html.twig', [
                     'form' => $form->createView(),
                     'usuario' => $usuario,
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('usuario/_new.html.twig', [
@@ -123,7 +121,7 @@ class UsuarioController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($usuario);
                 $em->flush();
-                return new JsonResponse(['mensaje' => 'El administrador fue actualizado satisfactoriamente',
+                return $this->json(['mensaje' => 'El administrador fue actualizado satisfactoriamente',
                     'nombre' => $usuario->getNombre(), 'correo' => $usuario->getEmail(), 'activo' => $usuario->getActivo()
                 ]);
 
@@ -137,15 +135,15 @@ class UsuarioController extends AbstractController
                     $this->container->get('security.token_storage')->setToken(new UsernamePasswordToken($usuario, $usuario->getPassword(), 'chain_provider', ['ROLE_SUPERADMIN']));
                 }
 
-                $page = $this->renderView('usuario/_form.html.twig', array(
+                $page = $this->renderView('usuario/_form.html.twig', [
                     'form' => $form->createView(),
                     'usuario' => $usuario,
                     'form_id' => 'usuario_edit',
                     'button_action' => 'Actualizar',
                     'title' => 'Editar usuario'
-                ));
+                ]);
 
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('usuario/_new.html.twig', [
@@ -169,6 +167,6 @@ class UsuarioController extends AbstractController
         $entityManager->remove($usuario);
         $entityManager->flush();
 
-        return new JsonResponse(['mensaje' => 'El administrador fue eliminado satisfactoriamente']);
+        return $this->json(['mensaje' => 'El administrador fue eliminado satisfactoriamente']);
     }
 }

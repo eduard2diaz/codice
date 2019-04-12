@@ -36,6 +36,9 @@ class TipoArticuloController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $tipo_articulo = new TipoArticulo();
         $form = $this->createForm(TipoArticuloType::class, $tipo_articulo, ['action' => $this->generateUrl('tipo_articulo_new')]);
         $form->handleRequest($request);
@@ -68,6 +71,9 @@ class TipoArticuloController extends AbstractController
      */
     public function edit(Request $request, TipoArticulo $tipo_articulo): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $form = $this->createForm(TipoArticuloType::class, $tipo_articulo, ['action' => $this->generateUrl('tipo_articulo_edit',['id' => $tipo_articulo->getId()])]);
         $form->handleRequest($request);
 

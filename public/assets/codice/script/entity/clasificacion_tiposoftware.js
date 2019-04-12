@@ -16,7 +16,6 @@ var clasificacion_tiposoftware = function () {
     }
 
     var configurarFormulario = function () {
-        Ladda.bind( '.mt-ladda-btn' );
         $("div#basicmodal form").validate({
             rules:{
                 'clasificacion_tiposoftware[nombre]': {required:true}

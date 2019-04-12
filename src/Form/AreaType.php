@@ -45,10 +45,7 @@ class AreaType extends AbstractType
             ->add('nombre', TextType::class, array('attr' => array('autocomplete' => 'off', 'class' => 'form-control input-xlarge')));
 
         if ($this->authorizationChecker->isGranted('ROLE_SUPERADMIN')) {
-            $builder->add('pais', null, ['label' => 'País'])
-                ->add('ministerio')
-                ->add('institucion', null, ['label' => 'Institución']);
-
+            $builder->add('pais', null, ['label' => 'País']);
             $factory = $builder->getFormFactory();
             $builder->addEventSubscriber(new AddInstitucionMinisterioFieldSubscriber($factory));
             $builder->addEventSubscriber(new AddAreaInstitucionFieldSubscriber($factory));

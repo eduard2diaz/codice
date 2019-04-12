@@ -50,7 +50,7 @@ class AddAreaAreaPadreFieldSubscriber  implements EventSubscriberInterface{
         $this->addElements($event->getForm(), $institucion);
     }
 
-    protected function addElements($form, $institucion,$areasHijas=null) {
+    protected function addElements($form, $institucion,$areasNoHijas=null) {
         $form->add($this->factory->createNamed('padre',EntityType::class,null,array(
             'auto_initialize'=>false,
             'required'=>false,
@@ -59,7 +59,7 @@ class AddAreaAreaPadreFieldSubscriber  implements EventSubscriberInterface{
             'choice_label' => function ($elemento) {
                 return $elemento->getNombre();
             },
-            'query_builder'=>function(EntityRepository $repository)use($institucion,$areasHijas){
+            'query_builder'=>function(EntityRepository $repository)use($institucion,$areasNoHijas){
                 $qb=$repository->createQueryBuilder('padre')
                     ->innerJoin('padre.institucion','p');
                 if($institucion instanceof Institucion){
@@ -72,8 +72,8 @@ class AddAreaAreaPadreFieldSubscriber  implements EventSubscriberInterface{
                     $qb->where('p.id = :id')
                         ->setParameter('id',null);
                 }
-                if(null!=$areasHijas && count($areasHijas)>0)
-                    $qb->andWhere('padre.id IN (:hijas)')->setParameter('hijas',$areasHijas);
+                if(null!=$areasNoHijas && count($areasNoHijas)>0)
+                    $qb->andWhere('padre.id IN (:hijas)')->setParameter('hijas',$areasNoHijas);
                 return $qb;
             }
         )));
@@ -87,8 +87,8 @@ class AddAreaAreaPadreFieldSubscriber  implements EventSubscriberInterface{
         }else
        {
            $institucion= is_array($data) ? $data['institucion'] : $data->getInstitucion();
-           $areasHijas=$this->areaService->areasNoHijas($data);
-           $this->addElements($event->getForm(), $institucion,$areasHijas);
+           $areasNoHijas=$this->areaService->areasNoHijas($data);
+           $this->addElements($event->getForm(), $institucion,$areasNoHijas);
        }
 
     }

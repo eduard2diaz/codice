@@ -34,23 +34,20 @@ class AreaService
     }
 
     /*
-     * FUNCION QUE LLAMA A UNA FUNCION RECURSIVA PARA OBTENER LAS AREAS HIJAS DE UNA DETERMINADA AREA
+     * Funcionalidad que llama a la funcion recursiva areasHijasAux para obtener el listado de areas hijas de una
+     * determinada area
     */
     public function areasHijas(Area $area)
     {
-        //if (!$esAdmin) {
-            $array = [$area];
-            return $this->areasHijasAux($area, $array);
-       // } else
-         //   return $this->getEm()->getRepository('App:Area')->findAll();
+        $array = [];
+        return $this->areasHijasAux($area, $array);
     }
 
     /*
-     * FUNCION RECURSIVA QUE DEVUELVE LAS AREAS HIJAS DE UNA AREA
+     * Funcion recursiva que devuelve las areas hijas de una determinada area
      */
     private function areasHijasAux(Area $area, &$areas)
     {
-
         $em = $this->getEm();
         $hijos = $em->createQuery('SELECT a FROM App:Area a JOIN a.padre p WHERE p.id=:id')->setParameter('id', $area->getId())->getResult();
         foreach ($hijos as $hijo) {
@@ -61,39 +58,39 @@ class AreaService
     }
 
     /*
-     * FUNCION QUE A PARTIR DE LOS DATOS OBTENIDOS DE LA FUNCION ANTERIOR, DEVUELVE LAS AREAS NO HIJAS DE
-     * UNA DETERMINADA AREA
+     * Funcion que devuelve las areas no hojas de una determinada area
      */
     public function areasNoHijas(Area $area)
     {
         $hijas = $this->areasHijas($area);
+        $hijas[]=$area;
         $em = $this->getEm();
-        if (empty($hijas)) {
+/*        if (empty($hijas)) {
             $consulta = $em->createQuery('SELECT a FROM App:Area a JOIN a.institucion i WHERE a.id!= :id AND i.id= :institucion');
             $consulta->setParameters(['id' => $area->getId(), 'institucion' => $area->getInstitucion()->getId()]);
-        } else {
+        } else {*/
             $consulta = $em->createQuery('SELECT a FROM App:Area a JOIN a.institucion i WHERE a.id!= :id AND i.id= :institucion AND NOT a  IN (:hijas)');
             $consulta->setParameters(array('hijas' => $hijas, 'institucion' => $area->getInstitucion()->getId(), 'id' => $area->getId()));
-        }
+        //}
         return $consulta->getResult();
     }
 
     /*
-     * FUNCION QUE LLAMA A LA FUNCION RECURSIVA PARA OBTENER LOS SUBORDINADOS
+     * Funcion que llama a la funcion recursiva subordinadosAux para obtener los subordinados de un determinado autor
      */
-    public function subordinados(Autor $usuario)
+    public function subordinados(Autor $autor)
     {
         $array = array();
-        return $this->subordinadosAux($usuario, $array);
+        return $this->subordinadosAux($autor, $array);
     }
 
     /*
-     * FUNCION RECURSIVA QUE OBTIENE LOS SUPORDINADOS DE UNA DETERMINADA PERSONA
+     * Funcion recursiva que devuelve los subordinados de un determinado autor
      */
-    private function subordinadosAux(Autor $usuario, &$subordinados)
+    private function subordinadosAux(Autor $autor, &$subordinados)
     {
         $em = $this->getEm();
-        $hijos = $em->getRepository('App:Autor')->findByJefe($usuario);
+        $hijos = $em->getRepository('App:Autor')->findByJefe($autor);
         foreach ($hijos as $hijo) {
             $subordinados[] = $hijo;
             $this->subordinadosAux($hijo, $subordinados);
@@ -102,7 +99,8 @@ class AreaService
     }
 
     /*
-     * OBTIENE EL LISTADO DE DIRECTIVOS DE LA INSTITUCION
+     * Funcion recursiva que devuelve los directivos de una determinada institucion, se puede utilizar la variable
+     * ignoreIds para indicar el arreglo de ids del autor que se debe ignorar.
      */
     public function obtenerDirectivos($institucion, $ignoreIds = null)
     {
@@ -114,28 +112,28 @@ class AreaService
     }
 
     /*
-     * OBTIENE EL LISTADO DE DIRECTIVOS DE LA INSTITUCION que se subordinan a un determinado usuario
+     * Funcion de devuelve los directivos subordinados de un determinado autor
      */
     public function obtenerDirectivosSubordinados(Autor $autor)
     {
-        $directivos = $this->obtenerDirectivos($autor->getInstitucion()->getId(),[$autor->getId()]);
-        $result=[];
+        $directivos = $this->obtenerDirectivos($autor->getInstitucion()->getId(), [$autor->getId()]);
+        $result = [];
         foreach ($directivos as $value) {
-            if($value->esSubordinado($autor)) {
-                $result[]=$value;
+            if ($value->esSubordinado($autor)) {
+                $result[] = $value;
             }
         }
         return $result;
     }
 
     /*
-     * OBTIENE EL LISTADO DE DIRECTIVOS DE LA INSTITUCION que no se subordinan a un determinado usuario
+     * Funcion que devuelve los directivos no subordinados de un determinado usuario
      */
     public function obtenerDirectivosNoSubordinados(Autor $autor)
     {
         $directivos = $this->obtenerDirectivosSubordinados($autor);
-        $directivos[]=$autor;
-        return $this->obtenerDirectivos($autor->getInstitucion()->getId(),$directivos);
+        $directivos[] = $autor;
+        return $this->obtenerDirectivos($autor->getInstitucion()->getId(), $directivos);
     }
 
 

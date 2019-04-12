@@ -36,6 +36,9 @@ class GradoCientificoController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $grado_cientifico = new GradoCientifico();
         $form = $this->createForm(GradoCientificoType::class, $grado_cientifico, ['action' => $this->generateUrl('grado_cientifico_new')]);
         $form->handleRequest($request);
@@ -67,6 +70,9 @@ class GradoCientificoController extends AbstractController
      */
     public function edit(Request $request, GradoCientifico $grado_cientifico): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $form = $this->createForm(GradoCientificoType::class, $grado_cientifico, ['action' => $this->generateUrl('grado_cientifico_edit',['id' => $grado_cientifico->getId()])]);
         $form->handleRequest($request);
 

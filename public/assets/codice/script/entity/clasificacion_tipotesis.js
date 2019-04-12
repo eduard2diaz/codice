@@ -16,7 +16,6 @@ var clasificacion_tipotesis = function () {
     }
 
     var configurarFormulario = function () {
-        Ladda.bind( '.mt-ladda-btn' );
         $("div#basicmodal form").validate({
             rules:{
                 'clasificacion_tipotesis[nombre]': {required:true}

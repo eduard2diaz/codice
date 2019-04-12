@@ -155,7 +155,7 @@ var editorial = function () {
                             "pais": data['pais'],
                             "acciones": "<ul class='m-nav m-nav--inline m--pull-right'>" +
                                 "<li class='m-nav__item'>" +
-                                "<a class='btn btn-sm btn-info editorial_show' data-href=" + Routing.generate('editorial_show',{id:data['id']}) + "><i class='flaticon-eye'></i>Visualizar</a></li>" +
+                                "<a class='btn btn-sm btn-secondary editorial_show' data-href=" + Routing.generate('editorial_show',{id:data['id']}) + "><i class='flaticon-eye'></i>Visualizar</a></li>" +
                                 "<li class='m-nav__item'>" +
                                 "<a class='btn btn-sm btn-info edicion' data-href=" + Routing.generate('editorial_edit',{id:data['id']}) + "><i class='flaticon-edit-1'></i>Editar</a></li>" +
                                 "</ul>",

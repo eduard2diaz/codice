@@ -133,7 +133,7 @@ var autor = function () {
         $('select#autor_gradoCientifico').select2();
         $('select#autor_idrol').select2();
         $('select#autor_jefe').select2();
-        $("div#basicmodal form").validate({
+        $("div.tab-content form").validate({
             rules: {
                 'autor[nombre]': {required: true},
                 'autor[apellidos]': {required: true},
@@ -144,8 +144,6 @@ var autor = function () {
                 'autor[gradoCientifico]': {required: true},
                 'autor[usuario]': {required: true},
                 'autor[email]': {required: true},
-                'autor[password][first]': {required: true},
-                'autor[password][second]': {required: true},
             }
         })
     }

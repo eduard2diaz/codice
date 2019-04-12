@@ -9,7 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/editorial")
@@ -38,8 +37,11 @@ class EditorialController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $editorial = new Editorial();
-        $form = $this->createForm(EditorialType::class, $editorial, array('action' => $this->generateUrl('editorial_new')));
+        $form = $this->createForm(EditorialType::class, $editorial, ['action' => $this->generateUrl('editorial_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -47,16 +49,17 @@ class EditorialController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($editorial);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'La editorial fue registrada satisfactoriamente',
+                return $this->json(['mensaje' => 'La editorial fue registrada satisfactoriamente',
                     'nombre' => $editorial->getNombre(),
                     'pais' => $editorial->getPais()->getNombre(),
                     'id' => $editorial->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('editorial/_form.html.twig', array(
+                $page = $this->renderView('editorial/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                    'editorial' => $editorial,
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('editorial/_new.html.twig', [
@@ -83,7 +86,10 @@ class EditorialController extends AbstractController
      */
     public function edit(Request $request, Editorial $editorial): Response
     {
-        $form = $this->createForm(EditorialType::class, $editorial, array('action' => $this->generateUrl('editorial_edit',array('id' => $editorial->getId()))));
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        $form = $this->createForm(EditorialType::class, $editorial, ['action' => $this->generateUrl('editorial_edit',['id' => $editorial->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -91,18 +97,19 @@ class EditorialController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($editorial);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'La editorial fue actualizada satisfactoriamente',
+                return $this->json(['mensaje' => 'La editorial fue actualizada satisfactoriamente',
                     'nombre' => $editorial->getNombre(),
                     'pais' => $editorial->getPais()->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('editorial/_form.html.twig', array(
+                $page = $this->renderView('editorial/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'editorial_edit',
                     'action' => 'Actualizar',
+                    'editorial' => $editorial,
                     'eliminable'=>$this->esEliminable($editorial)
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('editorial/_new.html.twig', [
@@ -126,9 +133,12 @@ class EditorialController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($editorial);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'La editorial fue eliminada satisfactoriamente'));
+        return $this->json(['mensaje' => 'La editorial fue eliminada satisfactoriamente']);
     }
 
+    /*
+     * Funcion privada que devuelve si una editorial es eliminable
+     */
     private function esEliminable(Editorial $editorial){
         return $this->getDoctrine()->getManager()
                 ->getRepository(Libro::class)

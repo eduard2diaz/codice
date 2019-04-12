@@ -37,6 +37,9 @@ class ClasificacionTipoTesisController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $clasificacion_tipotesis = new ClasificacionTipoTesis();
         $form = $this->createForm(ClasificacionTipoTesisType::class, $clasificacion_tipotesis, ['action' => $this->generateUrl('clasificacion_tipotesis_new')]);
         $form->handleRequest($request);
@@ -68,6 +71,9 @@ class ClasificacionTipoTesisController extends AbstractController
      */
     public function edit(Request $request, ClasificacionTipoTesis $clasificacion_tipotesis): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $form = $this->createForm(ClasificacionTipoTesisType::class, $clasificacion_tipotesis, ['action' => $this->generateUrl('clasificacion_tipotesis_edit',['id' => $clasificacion_tipotesis->getId()])]);
         $form->handleRequest($request);
 

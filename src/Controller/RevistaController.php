@@ -38,8 +38,11 @@ class RevistaController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+        
         $revista = new Revista();
-        $form = $this->createForm(RevistaType::class, $revista, array('action' => $this->generateUrl('revista_new')));
+        $form = $this->createForm(RevistaType::class, $revista, ['action' => $this->generateUrl('revista_new')]);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -47,18 +50,19 @@ class RevistaController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($revista);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'La revista fue registrada satisfactoriamente',
+                return $this->json(['mensaje' => 'La revista fue registrada satisfactoriamente',
                     'nombre' => $revista->getNombre(),
                     'nivel' => $revista->getNivel(),
                     'impacto' => $revista->getImpacto(),
                     'pais' => $revista->getPais()->getNombre(),
                     'id' => $revista->getId(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('revista/_form.html.twig', array(
+                $page = $this->renderView('revista/_form.html.twig', [
                     'form' => $form->createView(),
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                    'revista' => $revista,
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('revista/_new.html.twig', [
@@ -72,7 +76,10 @@ class RevistaController extends AbstractController
      */
     public function edit(Request $request, Revista $revista): Response
     {
-        $form = $this->createForm(RevistaType::class, $revista, array('action' => $this->generateUrl('revista_edit',array('id' => $revista->getId()))));
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+        
+        $form = $this->createForm(RevistaType::class, $revista, ['action' => $this->generateUrl('revista_edit',['id' => $revista->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
@@ -80,20 +87,21 @@ class RevistaController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($revista);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'La revista fue actualizada satisfactoriamente',
+                return $this->json(['mensaje' => 'La revista fue actualizada satisfactoriamente',
                     'nombre' => $revista->getNombre(),
                     'nivel' => $revista->getNivel(),
                     'impacto' => $revista->getImpacto(),
                     'pais' => $revista->getPais()->getNombre(),
-                ));
+                ]);
             } else {
-                $page = $this->renderView('revista/_form.html.twig', array(
+                $page = $this->renderView('revista/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'revista_edit',
                     'action' => 'Actualizar',
+                    'revista' => $revista,
                     'eliminable'=>$this->esEliminable($revista)
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true));
+                ]);
+                return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('revista/_new.html.twig', [
@@ -117,9 +125,12 @@ class RevistaController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($revista);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'La revista fue eliminada satisfactoriamente'));
+        return $this->json(['mensaje' => 'La revista fue eliminada satisfactoriamente']);
     }
 
+    /*
+     *Funcion que devuelve un booleano indicando si una revista es o no eliminable
+     */
     private function esEliminable(Revista $revista){
         return $this->getDoctrine()->getManager()
                 ->getRepository(Articulo::class)

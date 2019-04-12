@@ -10,7 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -50,7 +49,6 @@ class AutorController extends AbstractController
 
         return $this->render('autor/index.html.twig', [
             'autors' => $autors,
-
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -88,13 +86,13 @@ class AutorController extends AbstractController
                     $route = $this->generateUrl('autor_indexall');
                 else
                     $route = $this->generateUrl('autor_index', ['id' => $this->getUser()->getId()]);
-                return new JsonResponse(['ruta' => $route]);
+                return $this->json(['ruta' => $route]);
             } else {
-                $page = $this->renderView('autor/_form.html.twig', array(
+                $page = $this->renderView('autor/_form.html.twig', [
                     'form' => $form->createView(),
                     'autor' => $autor,
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('autor/new.html.twig', [
@@ -134,7 +132,7 @@ class AutorController extends AbstractController
          * ocurria un error de validacion con las mismas, el autor quedaba deslogueado, pues Sf no podia refrecar
          * el token de autenticacion, por eso guardo un clon del usuario actual
          */
-        if ($this->getUser()->getId() == $autor->getId())
+        if (!$this->isGranted('ROLE_SUPERADMIN') && $this->getUser()->getId() == $autor->getId())
             $clon = clone $autor;
 
         $form = $this->createForm(AutorType::class, $autor, ['action' => $this->generateUrl('autor_edit', ['id' => $autor->getId()])]);
@@ -162,24 +160,24 @@ class AutorController extends AbstractController
 
                 $this->getDoctrine()->getManager()->flush();
                 $this->addFlash('success', 'El usuario fue actualizado satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('autor_show', ['id' => $autor->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('autor_show', ['id' => $autor->getId()])]);
             } else {
 
                 /*
                  * Y si ocurre un error simplemente refresco el token de autenticacion usando las credenciales antiguas
                  */
-                if ($this->getUser()->getId() == $autor->getId()) {
+                if (!$this->isGranted('ROLE_SUPERADMIN') && $this->getUser()->getId() == $autor->getId()) {
                     $autor = $clon;
                     $this->container->get('security.token_storage')->setToken(new UsernamePasswordToken($autor, $autor->getPassword(), 'chain_provider', $autor->getRoles()));
                 }
 
-                $page = $this->renderView('autor/_form.html.twig', array(
+                $page = $this->renderView('autor/_form.html.twig', [
                     'form' => $form->createView(),
                     'autor' => $autor,
                     'form_title'=>'Actualizar perfil',
                     'button_action'=>'Actualizar',
-                ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                ]);
+                return $this->json(['form' => $page, 'error' => true,]);
             }
 
         return $this->render('autor/edit.html.twig', [
@@ -206,10 +204,10 @@ class AutorController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($autor);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'El usuario fue eliminado satisfactoriamente'));
+        return $this->json(['mensaje' => 'El usuario fue eliminado satisfactoriamente']);
     }
 
-    //ajax
+    //Funcionalidades ajax
 
     /**
      * @Route("/ajax", name="autor_ajax", options={"expose"=true})
@@ -255,7 +253,7 @@ class AutorController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->persist($autor);
         $em->flush();
-        return new JsonResponse($parameters);
+        return $this->json($parameters);
     }
 
     /**
@@ -267,7 +265,6 @@ class AutorController extends AbstractController
         $seguidores = $autor->getSeguidores()->toArray();
         return $this->render('autor/seguidores.html.twig', [
             'autors' => $seguidores,
-
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -284,7 +281,6 @@ class AutorController extends AbstractController
         $seguidos = $autor->getSeguidor()->toArray();
         return $this->render('autor/seguidos.html.twig', [
             'autors' => $seguidos,
-
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -312,7 +308,7 @@ class AutorController extends AbstractController
 
         $cantidad = count($datos);
         $grupos = $cantidad >= 4 ? 4 : $cantidad;
-        $aux = array();
+        $aux = [];
         if ($grupos > 1) {
             $keys = array_rand($datos, $grupos);
             foreach ($keys as $value) {
@@ -340,6 +336,6 @@ class AutorController extends AbstractController
         foreach ($directivos as $obj)
             $directivos_array[] = ['id' => $obj->getId(), 'nombre' => $obj->getNombre()];
 
-        return new JsonResponse($directivos_array);
+        return $this->json($directivos_array);
     }
 }

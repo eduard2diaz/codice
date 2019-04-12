@@ -18,7 +18,6 @@ var pais = function () {
     }
 
     var configurarFormulario = function () {
-        Ladda.bind( '.mt-ladda-btn' );
         $("div#basicmodal form").validate({
             rules:{
                 'pais[nombre]': {required:true},

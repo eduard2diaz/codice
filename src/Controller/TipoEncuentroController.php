@@ -36,6 +36,9 @@ class TipoEncuentroController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $tipo_encuentro = new TipoEncuentro();
         $form = $this->createForm(TipoEncuentroType::class, $tipo_encuentro, ['action' => $this->generateUrl('tipo_encuentro_new')]);
         $form->handleRequest($request);
@@ -67,6 +70,9 @@ class TipoEncuentroController extends AbstractController
      */
     public function edit(Request $request, TipoEncuentro $tipo_encuentro): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $form = $this->createForm(TipoEncuentroType::class, $tipo_encuentro, ['action' => $this->generateUrl('tipo_encuentro_edit',['id' => $tipo_encuentro->getId()])]);
         $form->handleRequest($request);
 

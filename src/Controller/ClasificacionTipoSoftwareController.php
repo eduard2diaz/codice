@@ -36,6 +36,9 @@ class ClasificacionTipoSoftwareController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $clasificacion_tiposoftware = new ClasificacionTipoSoftware();
         $form = $this->createForm(ClasificacionTipoSoftwareType::class, $clasificacion_tiposoftware, ['action' => $this->generateUrl('clasificacion_tiposoftware_new')]);
         $form->handleRequest($request);
@@ -67,6 +70,9 @@ class ClasificacionTipoSoftwareController extends AbstractController
      */
     public function edit(Request $request, ClasificacionTipoSoftware $clasificacion_tiposoftware): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $form = $this->createForm(ClasificacionTipoSoftwareType::class, $clasificacion_tiposoftware, ['action' => $this->generateUrl('clasificacion_tiposoftware_edit',['id' => $clasificacion_tiposoftware->getId()])]);
         $form->handleRequest($request);
 

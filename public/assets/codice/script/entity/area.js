@@ -32,7 +32,10 @@ var area = function () {
         });
         $("div#basicmodal form").validate({
             rules: {
-                'area[nombre]': {required: true}
+                'area[nombre]': {required: true},
+                'area[pais]': {required: true},
+                'area[ministerio]': {required: true},
+                'area[institucion]': {required: true},
             }
         })
     }

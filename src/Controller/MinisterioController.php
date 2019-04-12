@@ -37,6 +37,9 @@ class MinisterioController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $ministerio = new Ministerio();
         $form = $this->createForm(MinisterioType::class, $ministerio, ['action' => $this->generateUrl('ministerio_new')]);
         $form->handleRequest($request);
@@ -69,6 +72,9 @@ class MinisterioController extends AbstractController
      */
     public function edit(Request $request, Ministerio $ministerio): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $form = $this->createForm(MinisterioType::class, $ministerio, ['action' => $this->generateUrl('ministerio_edit',['id' => $ministerio->getId()])]);
         $form->handleRequest($request);
 

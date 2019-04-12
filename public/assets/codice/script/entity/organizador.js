@@ -16,7 +16,6 @@ var organizador = function () {
     }
 
     var configurarFormulario = function () {
-        Ladda.bind( '.mt-ladda-btn' );
         $("div#basicmodal form").validate({
             rules:{
                 'organizador[nombre]': {required:true}

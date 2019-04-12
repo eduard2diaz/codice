@@ -17,7 +17,6 @@ var tipo_software = function () {
     }
 
     var configurarFormulario = function () {
-        Ladda.bind( '.mt-ladda-btn' );
         $('select#tipo_software_clasificacion').select2({
             dropdownParent: $("#basicmodal"),
         });

@@ -16,7 +16,6 @@ var tipo_encuentro = function () {
     }
 
     var configurarFormulario = function () {
-        Ladda.bind( '.mt-ladda-btn' );
         $("div#basicmodal form").validate({
             rules:{
                 'tipo_encuentro[nombre]': {required:true}

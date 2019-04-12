@@ -39,16 +39,12 @@ security:
 
     access_control:
         - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #permisos del superadmin
         - { path: ^/pais, roles: ROLE_SUPERADMIN }
         - { path: ^/gradocientifico, roles: ROLE_SUPERADMIN }
-        - { path: ^/ministerio/\d+/findbypais, roles: [ROLE_SUPERADMIN] }
         - { path: ^/ministerio, roles: ROLE_SUPERADMIN }
-        - { path: ^/institucion/\d+/findbyministerio, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }
-        #permisos del superadmin
         - { path: ^/usuario, roles: ROLE_SUPERADMIN }
         - { path: ^/institucion, roles: ROLE_SUPERADMIN }
-        - { path: ^/area/\d+/findbyautor, roles: [ROLE_SUPERADMIN, ROLE_ADMIN, ROLE_DIRECTIVO] }
-        - { path: ^/area, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }
         - { path: ^/grupocientifico, roles: ROLE_SUPERADMIN }
         - { path: ^/clasificaciontipotesis, roles: ROLE_SUPERADMIN }
         - { path: ^/tipotesis, roles: ROLE_SUPERADMIN }
@@ -61,6 +57,7 @@ security:
         - { path: ^/tipoencuentro, roles: ROLE_SUPERADMIN }
         - { path: ^/autor/indexall, roles: ROLE_SUPERADMIN }
         #permisos del administrador institucional
+        - { path: ^/area, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }
         - { path: ^/organizador, roles: ROLE_ADMIN }
         - { path: ^/editorial, roles: ROLE_ADMIN }
         - { path: ^/revista, roles: ROLE_ADMIN }

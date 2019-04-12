@@ -16,7 +16,6 @@ var grado_cientifico = function () {
     }
 
     var configurarFormulario = function () {
-        Ladda.bind( '.mt-ladda-btn' );
         $("div#basicmodal form").validate({
             rules:{
                 'grado_cientifico[nombre]': {required:true}

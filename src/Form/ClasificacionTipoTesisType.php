@@ -13,7 +13,7 @@ class ClasificacionTipoTesisType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre', TextType::class,array('attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
+            ->add('nombre', TextType::class,['attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')])
         ;
     }
 
