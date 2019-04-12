@@ -35,7 +35,6 @@ var authenticated = function () {
             }
             //allowClear: true
         });
-        Ladda.bind('.mt-ladda-btn');
         $("div#basicmodal form#message_new").validate({
             rules:{
                 'mensaje[iddestinatario][]': {required:true},

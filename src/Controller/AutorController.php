@@ -222,7 +222,7 @@ class AutorController extends AbstractController
         if ($request->get('q') != null) {
             $em = $this->getDoctrine()->getManager();
             $parameter = $request->get('q');
-            $query = $em->createQuery('SELECT u.id, u.nombre as text FROM App:Autor u WHERE u.nombre LIKE :nombre ORDER BY u.nombre ASC')
+            $query = $em->createQuery('SELECT u.id, u.nombre as text, u.rutaFoto as foto FROM App:Autor u WHERE u.nombre LIKE :nombre ORDER BY u.nombre ASC')
                 ->setParameter('nombre', '%' . $parameter . '%');
             $result = $query->getResult();
             return new Response(json_encode($result));
@@ -295,31 +295,18 @@ class AutorController extends AbstractController
     public function sugerirAutores()
     {
         $em = $this->getDoctrine()->getManager();
-        $seguidos = $this->getUser()->getSeguidor()->toArray();
-        if (count($seguidos) > 0) {
-            $consulta = $em->createQuery('SELECT a.id, a.nombre, a.rutaFoto,i.nombre as institucion FROM App:Autor a join a.institucion i WHERE a.id != :id AND a.id NOT IN (:seguidos) AND a.activo=true');
-            $consulta->setParameters(['id' => $this->getUser()->getId(), 'seguidos' => $seguidos]);
-        } else {
-            $consulta = $em->createQuery('SELECT a.id, a.nombre, a.rutaFoto,i.nombre as institucion FROM App:Autor a join a.institucion i WHERE a.id != :id AND a.activo=true');
-            $consulta->setParameters(['id' => $this->getUser()->getId()]);
+
+        $id=$this->getUser()->getId();
+        $seguidos="$id";
+        foreach ($this->getUser()->getSeguidor()->toArray() as $value){
+            $seguidos+=",$value->getId()";
         }
-        $consulta->setMaxResults(4);
-        $datos = $consulta->getResult();
 
-        $cantidad = count($datos);
-        $grupos = $cantidad >= 4 ? 4 : $cantidad;
-        $aux = [];
-        if ($grupos > 1) {
-            $keys = array_rand($datos, $grupos);
-            foreach ($keys as $value) {
-                $aux[] = $datos[$value];
-            }
-        } else
-            if ($grupos == 1) {
-                $aux = $datos;
-            }
-
-        return $this->render('autor/sugerencia.html.twig', ['datos' => $aux]);
+        $conn=$this->getDoctrine()->getConnection();
+        $sql="SELECT a.id, a.nombre, a.ruta_foto as rutafoto, i.nombre as institucion FROM autor as a JOIN institucion i ON a.institucion = i.id WHERE a.id  NOT IN (:lista) ORDER BY random() LIMIT 4";
+        $statement=$conn->prepare($sql);
+        $statement->execute(['lista'=>$seguidos]);
+        return $this->render('autor/sugerencia.html.twig', ['datos' => $statement->fetchAll()]);
     }
 
     /**

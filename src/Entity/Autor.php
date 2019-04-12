@@ -611,7 +611,6 @@ class Autor implements UserInterface
      */
     public function eraseCredentials()
     {
-        dump('aaaaa');
     }
 
     public function __toString()

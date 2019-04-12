@@ -1,7 +1,7 @@
 <div class="m-widget4">
     {% for autor in datos %}
-        {% if autor['rutaFoto']!=null %}
-            {% set rutaFoto=  asset('archivos/'~autor['rutaFoto']) %}
+        {% if autor['rutafoto']!=null %}
+            {% set rutaFoto=  asset('archivos/'~autor['rutafoto']) %}
         {% else %}
             {% set rutaFoto= asset('app/media/img/users/user4.jpg','template') %}
         {% endif %}
