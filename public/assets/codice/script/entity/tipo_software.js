@@ -73,7 +73,7 @@ var tipo_software = function () {
                         {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#tipo_software_tabletable').html(data);
+                    $('table#tipo_software_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

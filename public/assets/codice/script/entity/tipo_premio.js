@@ -69,7 +69,7 @@ var tipo_premio = function () {
                         {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#tipo_premio_tabletable').html(data);
+                    $('table#tipo_premio_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

@@ -107,8 +107,8 @@ class Rol extends Role
             case 'ROLE_USER':
                 return 'Trabajador';
                 break;
-            case 'ROLE_VISOR':
-                return 'Visor Estadístico';
+            case 'ROLE_GESTORBALANCE':
+                return 'Gestor de Balances';
                 break;
         }
         return $this->getNombre();

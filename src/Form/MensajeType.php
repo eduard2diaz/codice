@@ -29,7 +29,6 @@ class MensajeType extends AbstractType
     {
         $builder
         ->add('asunto', TextType::class, array('attr' => array('autocomplete' => 'off', 'class' => 'form-control',)))
-        ->add('iddestinatario',null,array('choices'=>array(),'required'=>true,'label'=>'Destinatario(s)','attr'=>array('placeholder'=>'Escriba el/ los destinatarios',)))
         ->add('descripcion',TextareaType::class,array('required'=>true,'label'=>'Contenido','attr'=>array('rows'=>5,'autocomplete'=>'off','placeholder'=>'Escriba el contenido del mensaje','class'=>'form-control input-xxlarge')))
         ;
         $factory=$builder->getFormFactory();

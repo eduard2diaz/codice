@@ -226,3 +226,12 @@ header span.m-dropdown__arrow {
     left: 2%;
     top: 76%;
 }
+
+.m-dropdown .m-dropdown__wrapper .m-dropdown__header .m-dropdown__header-subtitle{
+    text-shadow: 2px 2px 2px black;
+    font-weight: bold;
+}
+
+h4, h4.m-form__section{
+    font-size: 1.2rem;
+}

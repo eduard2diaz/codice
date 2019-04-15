@@ -21,6 +21,9 @@ class TipoEncuentroController extends AbstractController
     {
         $tipo_encuentros = $this->getDoctrine()->getRepository(TipoEncuentro::class)->findAll();
 
+        /*
+         * Si solicitan este metodo por ajax se refresca solamente el listado de tipos de encuentros
+         */
         if ($request->isXmlHttpRequest())
             return $this->render('tipo_encuentro/_table.html.twig', [
                 'tipo_encuentros' => $tipo_encuentros,
@@ -55,6 +58,7 @@ class TipoEncuentroController extends AbstractController
             } else {
                 $page = $this->renderView('tipo_encuentro/_form.html.twig', [
                     'form' => $form->createView(),
+                    'tipo_encuentro' => $tipo_encuentro,
                 ]);
                 return $this->json(['form' => $page, 'error' => true,]);
             }
@@ -89,6 +93,7 @@ class TipoEncuentroController extends AbstractController
                     'form' => $form->createView(),
                     'form_id' => 'tipo_encuentro_edit',
                     'action' => 'Actualizar',
+                    'tipo_encuentro' => $tipo_encuentro,
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
             }

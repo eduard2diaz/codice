@@ -22,23 +22,22 @@ var authenticated = function () {
         $('select#mensaje_iddestinatario').select2({
             dropdownParent: $("#basicmodal"),
             ajax: {
-                url: Routing.generate('autor_ajax'),
+                url: Routing.generate('autor_searchfilter'),
                 dataType: 'json',
                 delay: 250,
                 processResults: function (data) {
                     return {
-                        //results: [{'id': 00, 'text' : 'tag-name' }]
                         results: data
                     };
                 },
                 cache: true
             }
-            //allowClear: true
         });
         $("div#basicmodal form#message_new").validate({
             rules:{
                 'mensaje[iddestinatario][]': {required:true},
                 'mensaje[descripcion]': {required:true},
+                'mensaje[asunto]': {required:true},
             }
         });
     }
@@ -49,7 +48,6 @@ var authenticated = function () {
             type: 'get', //Se uso get pues segun los desarrolladores de yahoo es una mejoria en el rendimineto de las peticiones ajax
             url: link,
             beforeSend: function (data) {
-                // base.blockUI({message: 'Cargando'});
             },
             success: function (data) {
                 if(data['contador']>0)
@@ -60,7 +58,6 @@ var authenticated = function () {
                 base.Error();
             },
             complete: function () {
-                //  base.unblockUI();
             }
         });
     }
@@ -120,13 +117,6 @@ var authenticated = function () {
                     } else {
                         if (data['mensaje'])
                             toastr.success(data['mensaje']);
-                        /* if ($('table#table_usuario')) {
-                             var pagina = table.page();
-                             obj.parents('tr').children('td:nth-child(2)').html(data['nombre']);
-                             obj.parents('tr').children('td:nth-child(3)').html(data['apellido']);
-                             obj.parents('tr').children('td:nth-child(4)').html(data['usuario']);
-                             obj.parents('tr').children('td:nth-child(5)').html("<span class='badge badge-"+data['badge_color']+"'>"+data['badge_texto']+"</span>");
-                         }*/
                         $('div#basicmodal').modal('hide');
                     }
                 },

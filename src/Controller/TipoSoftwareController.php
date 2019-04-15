@@ -36,6 +36,9 @@ class TipoSoftwareController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $tipo_software = new TipoSoftware();
         $form = $this->createForm(TipoSoftwareType::class, $tipo_software, ['action' => $this->generateUrl('tipo_software_new')]);
         $form->handleRequest($request);
@@ -68,6 +71,9 @@ class TipoSoftwareController extends AbstractController
      */
     public function edit(Request $request, TipoSoftware $tipo_software): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $form = $this->createForm(TipoSoftwareType::class, $tipo_software, ['action' => $this->generateUrl('tipo_software_edit',['id' => $tipo_software->getId()])]);
         $form->handleRequest($request);
 

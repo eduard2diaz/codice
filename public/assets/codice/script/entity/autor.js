@@ -32,7 +32,7 @@ var autor = function () {
                         {overlayColor: "#000000", type: "loader", state: "success", message: "Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#autor_tabletable').html(data);
+                    $('table#autor_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },
@@ -59,10 +59,10 @@ var autor = function () {
                         {overlayColor: "#000000", type: "loader", state: "success", message: "Cargando..."});
                 },
                 success: function (data) {
-                    if(data['mensaje'])
+                    if (data['mensaje'])
                         toastr.success(data['mensaje']);
                     enlace.children('i').removeClass();
-                    enlace.children('i').addClass('m-nav__link-icon '+data['class']);
+                    enlace.children('i').addClass('m-nav__link-icon ' + data['class']);
                     enlace.children('span').html(data['label']);
                 },
                 error: function () {
@@ -218,37 +218,10 @@ var autor = function () {
 
     var institucionListener = function () {
         $('body').on('change', 'select#autor_institucion', function (evento) {
-            institucionId=$(this).val();
-            if (institucionId > 0){
+            institucionId = $(this).val();
+            if (institucionId > 0) {
+                areaListener(institucionId);
                 $.ajax({
-                    type: 'get', //Se uso get pues segun los desarrolladores de yahoo es una mejoria en el rendimineto de las peticiones ajax
-                    dataType: 'html',
-                    url: Routing.generate('area_findbyinstitucion', {'id': institucionId}),
-                    beforeSend: function (data) {
-                        mApp.block("body",
-                            {
-                                overlayColor: "#000000",
-                                type: "loader",
-                                state: "success",
-                                message: "Cargando áreas..."
-                            });
-                    },
-                    success: function (data) {
-                        var cadena = "";
-                        var array = JSON.parse(data);
-                        for (var i = 0; i < array.length; i++)
-                            cadena += "<option value=" + array[i]['id'] + ">" + array[i]['nombre'] + "</option>";
-                        $('select#autor_area').html(cadena);
-                        $('select#autor_area').change();
-                    },
-                    error: function () {
-                        base.Error();
-                    },
-                    complete: function () {
-                        mApp.unblock("body")
-                    }
-                });
-            $.ajax({
                     type: 'get', //Se uso get pues segun los desarrolladores de yahoo es una mejoria en el rendimineto de las peticiones ajax
                     dataType: 'html',
                     url: Routing.generate('autor_finddirectivosbyinstitucion', {'id': institucionId}),
@@ -275,7 +248,39 @@ var autor = function () {
                     complete: function () {
                         mApp.unblock("body")
                     }
-                });}
+                });
+            }
+        });
+    }
+
+    function areaListener(institucionId) {
+        $.ajax({
+            type: 'get', //Se uso get pues segun los desarrolladores de yahoo es una mejoria en el rendimineto de las peticiones ajax
+            dataType: 'html',
+            url: Routing.generate('area_findbyinstitucion', {'id': institucionId}),
+            beforeSend: function (data) {
+                mApp.block("body",
+                    {
+                        overlayColor: "#000000",
+                        type: "loader",
+                        state: "success",
+                        message: "Cargando áreas..."
+                    });
+            },
+            success: function (data) {
+                var cadena = "";
+                var array = JSON.parse(data);
+                for (var i = 0; i < array.length; i++)
+                    cadena += "<option value=" + array[i]['id'] + ">" + array[i]['nombre'] + "</option>";
+                $('select#autor_area').html(cadena);
+                $('select#autor_area').change();
+            },
+            error: function () {
+                base.Error();
+            },
+            complete: function () {
+                mApp.unblock("body")
+            }
         });
     }
 
@@ -288,12 +293,12 @@ var autor = function () {
                     url: Routing.generate('area_findbyautor', {'id': $(this).val()}),
                     beforeSend: function (data) {
                         mApp.block("body",
-                            {overlayColor:"#000000",type:"loader",state:"success",message:"Cargando area..."});
+                            {overlayColor: "#000000", type: "loader", state: "success", message: "Cargando area..."});
                     },
                     success: function (data) {
                         $('select#autor_area').html(data);
                         //LANZANDO YO MIMSO EL EVENTO
-                        $('select#autor_area').change();
+                        //  $('select#autor_area').change();
                     },
                     error: function () {
                         base.Error();
@@ -302,6 +307,14 @@ var autor = function () {
                         mApp.unblock("body");
                     }
                 });
+            else {
+                if ($('select#autor_institucion').length > 0)
+                    var institucionId = $('select#autor_institucion').val();
+                else
+                    var institucionId = currentInstitucion;
+                if (institucionId > 0)
+                    areaListener(institucionId);
+            }
         });
     }
 
@@ -334,10 +347,10 @@ var autor = function () {
         }
     }
 
-    function createDateRangeForm(title,form_id, action){
+    function createDateRangeForm(title, form_id, action) {
         var dialog = bootbox.dialog({
                 title: title,
-                message: '<form id="'+form_id+'" class="daterange" action="'+action+'">' +
+                message: '<form id="' + form_id + '" class="daterange" action="' + action + '">' +
                     '<div class="row">' +
                     '<div class="col-md-6"><label for="finicio">Fecha de inicio</label>' +
                     '<input type="text" class="form-control input-medium" id="finicio" name="finicio"/></div>' +
@@ -353,7 +366,7 @@ var autor = function () {
                     noclose: {
                         label: "Enviar",
                         className: 'btn btn-primary btn-sm',
-                        callback: function(){
+                        callback: function () {
                             if ($('div.bootbox form.daterange').valid()) {
                                 $('div.bootbox form.daterange').submit();
                             } else {
@@ -368,45 +381,44 @@ var autor = function () {
         $('input#finicio').datepicker();
         $('input#ffin').datepicker();
         jQuery.validator.addMethod("greaterThan",
-            function(value, element, params) {
-                return moment(value)> moment($(params).val());
-            },'Tiene que ser superior a la fecha de salida');
+            function (value, element, params) {
+                return moment(value) > moment($(params).val());
+            }, 'Tiene que ser superior a la fecha de salida');
 
 
         $("div.bootbox form.daterange").validate({
-            rules:{
-                'finicio': {required:true},
-                'ffin': {required:true, greaterThan: "#finicio" },
+            rules: {
+                'finicio': {required: true},
+                'ffin': {required: true, greaterThan: "#finicio"},
             }
         });
     }
 
-    var resumenPeriodoLink=function() {
+    var resumenPeriodoLink = function () {
         $('body').on('click', 'a#resumenperiodo_link', function (evento) {
             evento.preventDefault();
             var link = $(this).attr('data-href');
             var form_id = 'resumenperiodo';
             var title = 'Resumen de publicaciones en el período';
-            createDateRangeForm(title,form_id,link);
+            createDateRangeForm(title, form_id, link);
         });
     }
 
     var autorResumenPeriodoAction = function () {
-        $('body').on('submit', 'form#resumenperiodo', function (evento)
-        {
+        $('body').on('submit', 'form#resumenperiodo', function (evento) {
             evento.preventDefault();
             $('div.bootbox').modal('hide');
-            var action=$(this).attr("action");
-            var data= $(this).serialize();
+            var action = $(this).attr("action");
+            var data = $(this).serialize();
 
-            setTimeout(function(){
+            setTimeout(function () {
                 $.ajax({
                     url: action,
                     type: "POST",
                     data: data, //para enviar el formulario hay que serializarlo
                     beforeSend: function () {
                         mApp.block("body",
-                            {overlayColor:"#000000",type:"loader",state:"success",message:"Cargando..."});
+                            {overlayColor: "#000000", type: "loader", state: "success", message: "Cargando..."});
                     },
                     complete: function () {
                         mApp.unblock("body");
@@ -420,7 +432,7 @@ var autor = function () {
                             // Create chart instance
                             var chart = am4core.create("resumen_grafico", am4charts.PieChart);
                             // Add data
-                            chart.data=JSON.parse(data.data);
+                            chart.data = JSON.parse(data.data);
                             // Add and configure Series
                             var pieSeries = chart.series.push(new am4charts.PieSeries());
                             pieSeries.dataFields.value = "total";
@@ -434,12 +446,11 @@ var autor = function () {
                             pieSeries.hiddenState.properties.startAngle = -90;
                         }
                     },
-                    error: function ()
-                    {
+                    error: function () {
                         base.Error();
                     }
                 });
-            },500)
+            }, 500)
 
         });
     }
@@ -488,15 +499,15 @@ var autor = function () {
         },
         show: function () {
             $().ready(function () {
-                subscribir();
-                resumenPeriodoLink();
-                autorResumenPeriodoAction();
+                    subscribir();
+                    resumenPeriodoLink();
+                    autorResumenPeriodoAction();
                 }
             );
         },
         seguidores: function () {
             $().ready(function () {
-                configurarDataTable();
+                    configurarDataTable();
                 }
             );
         },
@@ -510,7 +521,15 @@ var autor = function () {
                     newAction();
 
                     $('#foto_perfil').click(function () {
+                        mApp.block("body",
+                            {
+                                overlayColor: "#000000",
+                                type: "loader",
+                                state: "success",
+                                message: "Explorando archivos ..."
+                            });
                         $('#autor_file').click();
+                        mApp.unblock("body")
                     });
                     document.getElementById('autor_file').addEventListener('change', previewfile, false);
                     reiniciarFoto();

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Notificacion
@@ -32,7 +34,7 @@ class Mensaje
     /**
      * @var string|null
      *
-     * @ORM\Column(name="asunto", type="string", nullable=true)
+     * @ORM\Column(name="asunto", type="string", nullable=false)
      */
     private $asunto;
 
@@ -48,7 +50,7 @@ class Mensaje
      *
      * @ORM\ManyToOne(targetEntity="Autor")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="remitente", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="remitente", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $remitente;
@@ -58,7 +60,7 @@ class Mensaje
      *
      * @ORM\ManyToOne(targetEntity="Autor")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="propietario", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="propietario", referencedColumnName="id",onDelete="Cascade")
      * })
      */
     private $propietario;
@@ -264,5 +266,19 @@ class Mensaje
     public function setBandeja(int $bandeja): void
     {
         $this->bandeja = $bandeja;
+    }
+
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context, $payload)
+    {
+
+        if($this->getRemitente()==null)
+            $context->buildViolation('Seleccione un remitente')->atPath('remitente')->addViolation();
+        if($this->getPropietario()==null)
+            $context->buildViolation('Seleccione un propietario')->atPath('propietario')->addViolation();
+        if($this->getIddestinatario()->isEmpty())
+            $context->buildViolation('Seleccione el/los destinatario(s)')->atPath('iddestinatario')->addViolation();
     }
 }

@@ -16,7 +16,8 @@
         <label>
             {{ form_label(form.capital) }}
         </label>
-        <div>
+        <div class="m-input-icon m-input-icon--left">
+            <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-globe"></i></span></span>
             {{ form_widget(form.capital) }}
             {{ form_errors(form.capital) }}
         </div>
@@ -25,12 +26,12 @@
         <label>
             {{ form_label(form.codigo) }}
         </label>
-        <div>
+        <div class="m-input-icon m-input-icon--left">
+            <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-phone"></i></span></span>
             {{ form_widget(form.codigo) }}
             {{ form_errors(form.codigo) }}
         </div>
     </div>
-
 </div>
 <div class="modal-footer">
     <a class="btn btn-sm btn-metal" data-dismiss="modal"><i class="flaticon-cancel"></i> Cancelar</a>

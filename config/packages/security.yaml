@@ -4,7 +4,7 @@ security:
         App\Entity\Usuario: { algorithm: bcrypt , cost: 13 }
 
     role_hierarchy:
-        ROLE_ADMIN:  ROLE_USER
+        ROLE_ADMIN:  [ROLE_DIRECTIVO, ROLE_GESTORBALANCE]
         ROLE_DIRECTIVO:  ROLE_USER
 
     providers:
@@ -62,16 +62,16 @@ security:
         - { path: ^/editorial, roles: ROLE_ADMIN }
         - { path: ^/revista, roles: ROLE_ADMIN }
         #permisos de directivos
-        - { path: ^/autor/\d+/index, roles: [ROLE_DIRECTIVO, ROLE_ADMIN] }
+        - { path: ^/autor/\d+/index, roles: ROLE_DIRECTIVO }
         - { path: ^/autor/\d+/finddirectivosbyinstitucion, roles: [ROLE_SUPERADMIN] }
-        - { path: ^/autor/new, roles: [ROLE_SUPERADMIN, ROLE_DIRECTIVO, ROLE_ADMIN] }
-        - { path: ^/autor/\d+/delete, roles: [ROLE_SUPERADMIN, ROLE_DIRECTIVO, ROLE_ADMIN] }
+        - { path: ^/autor/new, roles: [ROLE_SUPERADMIN, ROLE_DIRECTIVO] }
+        - { path: ^/autor/\d+/delete, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }
         - { path: ^/autor, roles: IS_AUTHENTICATED_FULLY }
         #permisos de usuarios y directivos
-        - { path: ^/balanceanual, roles: ROLE_VISOR }
+        - { path: ^/balanceanual, roles: ROLE_GESTORBALANCE }
         #permisos de usuarios y directivos
-        - { path: ^/notificacion, roles: [ROLE_DIRECTIVO, ROLE_ADMIN, ROLE_VISOR, ROLE_USER] }
-        - { path: ^/mensaje, roles: [ROLE_DIRECTIVO, ROLE_ADMIN, ROLE_VISOR, ROLE_USER] }
+        - { path: ^/notificacion, roles: [ROLE_DIRECTIVO, ROLE_ADMIN, ROLE_GESTORBALANCE, ROLE_USER] }
+        - { path: ^/mensaje, roles: [ROLE_DIRECTIVO, ROLE_ADMIN, ROLE_GESTORBALANCE, ROLE_USER] }
         - { path: ^/premio, roles: ROLE_USER }
         - { path: ^/encuentro, roles: ROLE_USER }
         - { path: ^/tesis, roles: ROLE_USER }

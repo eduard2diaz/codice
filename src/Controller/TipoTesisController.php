@@ -37,6 +37,9 @@ class TipoTesisController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $tipo_tesis = new TipoTesis();
         $form = $this->createForm(TipoTesisType::class, $tipo_tesis, ['action' => $this->generateUrl('tipo_tesis_new')]);
         $form->handleRequest($request);
@@ -54,6 +57,7 @@ class TipoTesisController extends AbstractController
             } else {
                 $page = $this->renderView('tipo_tesis/_form.html.twig', [
                     'form' => $form->createView(),
+                    'tipo_tesis' => $tipo_tesis,
                 ]);
                 return $this->json(['form' => $page, 'error' => true,]);
             }
@@ -69,6 +73,9 @@ class TipoTesisController extends AbstractController
      */
     public function edit(Request $request, TipoTesis $tipo_tesis): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $form = $this->createForm(TipoTesisType::class, $tipo_tesis, ['action' => $this->generateUrl('tipo_tesis_edit',['id' => $tipo_tesis->getId()])]);
         $form->handleRequest($request);
 
@@ -86,6 +93,7 @@ class TipoTesisController extends AbstractController
                     'form' => $form->createView(),
                     'form_id' => 'tipo_tesis_edit',
                     'action' => 'Actualizar',
+                    'tipo_tesis' => $tipo_tesis,
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
             }

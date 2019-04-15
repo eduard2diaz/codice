@@ -31,12 +31,12 @@ class AutorVoter extends Voter
 
         switch ($attribute) {
             case 'VIEWSTATICS':
-                return $user instanceof Autor && ($subject->getId()==$token->getUser()->getId() || $this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esSubordinado($token->getUser()));
+                return $user instanceof Autor && ($subject->getId()==$token->getUser()->getId() || ($user->getInstitucion()->getId()==$subject->getInstitucion()->getId() && ($this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esSubordinado($token->getUser()))));
             case 'EDIT':
-                return $user instanceof Usuario || $subject->getId()==$token->getUser()->getId() || $this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esSubordinado($token->getUser());
+                return $user instanceof Usuario || $subject->getId()==$token->getUser()->getId() || ($user->getInstitucion()->getId()==$subject->getInstitucion()->getId() && ($this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esSubordinado($token->getUser())));
             break;
             case 'DELETE':
-                return $user instanceof Usuario || $subject->getId()!=$token->getUser()->getId() && ($this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esSubordinado($token->getUser()));
+                return $user instanceof Usuario || ($this->decisionManager->decide($token, array('ROLE_ADMIN')) && $user->getInstitucion()->getId()==$subject->getInstitucion()->getId() && $subject->getId()!=$token->getUser()->getId());
             break;
             case 'SEGUIR':
                 return $user instanceof Autor && $subject->getId()!=$token->getUser()->getId();

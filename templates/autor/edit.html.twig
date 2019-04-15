@@ -5,7 +5,7 @@
             <div class="m-portlet__head-caption">
                 <div class="m-portlet__head-title">
                     <h3 class="m-portlet__head-text">
-                        Actualice su perfil
+                        Editar perfil
                     </h3>
                 </div>
             </div>
@@ -22,6 +22,7 @@
     {{parent()}}
     <script src="{{ asset('script/entity/autor.js','codice') }}"></script>
     <script>
+        var currentInstitucion='{{ autor.institucion.id }}';
         autor.nuevo();
     </script>
 {% endblock %}

@@ -79,7 +79,7 @@ var institucion = function () {
                         {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#institucion_tabletable').html(data);
+                    $('table#institucion_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

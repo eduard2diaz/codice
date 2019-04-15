@@ -85,7 +85,7 @@ class Autor implements UserInterface
     /**
      * @var string|null
      *
-     * @ORM\Column(name="phone", type="string", nullable=true)
+     * @ORM\Column(name="phone", type="integer", nullable=true)
      */
     private $phone;
 
@@ -292,12 +292,12 @@ class Autor implements UserInterface
         return $this;
     }
 
-    public function getPhone(): ?string
+    public function getPhone(): ?int
     {
         return $this->phone;
     }
 
-    public function setPhone(?string $phone): self
+    public function setPhone(?int $phone): self
     {
         $this->phone = $phone;
 
@@ -678,9 +678,14 @@ class Autor implements UserInterface
             $context->buildViolation('Seleccione un rol')->atPath('idrol')->addViolation();
         elseif (in_array('ROLE_ADMIN', $roles)) {
             if ($this->getJefe() != null)
-                $context->buildViolation('Un administrador no puede tener jefe')
+                $context->buildViolation('Un "Administrador Institucional" no puede tener jefe')
                     ->atPath('idrol')
                     ->addViolation();
+            elseif(count($roles)>1)
+                $context->buildViolation('Un "Administrador Institucional" no requiere más permisos')
+                    ->atPath('idrol')
+                    ->addViolation();
+
         } elseif (in_array('ROLE_USER', $roles)) {
             if (in_array('ROLE_DIRECTIVO', $roles))
                 $context->buildViolation('Un usuario "Trabajador" no puede ser también "Directivo"')

@@ -31,7 +31,7 @@ var monografia = function () {
                         {overlayColor: "#000000", type: "loader", state: "success", message: "Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#monografia_tabletable').html(data);
+                    $('table#monografia_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

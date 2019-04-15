@@ -31,7 +31,7 @@ var libro = function () {
                         {overlayColor: "#000000", type: "loader", state: "success", message: "Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#libro_tabletable').html(data);
+                    $('table#libro_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

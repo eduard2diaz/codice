@@ -111,7 +111,7 @@ var area = function () {
                         {overlayColor: "#000000", type: "loader", state: "success", message: "Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#area_tabletable').html(data);
+                    $('table#area_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

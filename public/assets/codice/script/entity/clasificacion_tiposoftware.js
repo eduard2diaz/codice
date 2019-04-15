@@ -69,7 +69,7 @@ var clasificacion_tiposoftware = function () {
                         {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#clasificacion_tiposoftware_tabletable').html(data);
+                    $('table#clasificacion_tiposoftware_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

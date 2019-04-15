@@ -36,6 +36,9 @@ class TipoPremioController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $tipo_premio = new TipoPremio();
         $form = $this->createForm(TipoPremioType::class, $tipo_premio, ['action' => $this->generateUrl('tipo_premio_new')]);
         $form->handleRequest($request);
@@ -67,6 +70,9 @@ class TipoPremioController extends AbstractController
      */
     public function edit(Request $request, TipoPremio $tipo_premio): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $form = $this->createForm(TipoPremioType::class, $tipo_premio, ['action' => $this->generateUrl('tipo_premio_edit',['id' => $tipo_premio->getId()])]);
         $form->handleRequest($request);
 

@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Pais
@@ -31,14 +32,16 @@ class Pais
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nombre", type="string", nullable=true)
+     * @ORM\Column(name="nombre", type="string", nullable=false)
+     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$/")
      */
     private $nombre;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="capital", type="string", nullable=true)
+     * @ORM\Column(name="capital", type="string", nullable=false)
+     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$/")
      */
     private $capital;
 

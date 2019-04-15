@@ -55,6 +55,7 @@ class AreaType extends AbstractType
                 $institucion=$this->token->getToken()->getUser()->getInstitucion()->getId();
                 $builder->add('padre', EntityType::class, array('label' => 'Área padre',
                     'class' => 'App:Area',
+                    'required'=>false,
                     'query_builder' => function (EntityRepository $repository) use ($institucion) {
                         $qb = $repository->createQueryBuilder('padre')
                             ->innerJoin('padre.institucion', 'p');

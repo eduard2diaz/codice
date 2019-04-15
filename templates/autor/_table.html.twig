@@ -35,7 +35,7 @@
                         <a class="btn btn-info btn-sm" href="{{ path('autor_edit', { 'id': autor.id }) }}">
                             <i class="flaticon-edit-1"></i> Editar</a>
                     </li>
-                    {% if (app.user.id!=autor.id and is_granted('ROLE_ADMIN')) or is_granted('ROLE_SUPERADMIN')%}
+                    {% if is_granted('ROLE_SUPERADMIN') or (is_granted('ROLE_ADMIN') and app.user.id!=autor.id and app.user.institucion.id==autor.institucion.id) %}
                     <li class="m-nav__item">
                         <a class="btn btn-danger btn-sm  eliminar_autor" data-href="{{ path('autor_delete', { 'id': autor.id }) }}">
                             <i class="flaticon-delete-1"></i> Eliminar</a>

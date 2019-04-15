@@ -92,10 +92,25 @@ class AddAutorAreaFieldSubscriber  implements EventSubscriberInterface{
                 $form->add('area',null,array('label'=>'Área','choices'=>array()));
            elseif($this->authorizationChecker->isGranted('ROLE_ADMIN'))
                $this->addElements($form,$this->token->getToken()->getUser()->getInstitucion()->getId());
+           elseif($this->authorizationChecker->isGranted('ROLE_DIRECTIVO')){
+               $area=$this->token->getToken()->getUser()->getArea();
+               $areas=$this->areaService->areasHijas($area);
+               $areas[]=$area;
+               $form->add('area',null,array('required'=>true,'label'=>'Área','choices'=>$areas));
+           }
         }else
        {
+           if($data->getJefe()==null){
            $institucion= is_array($data) ? $data['institucion'] : $data->getInstitucion();
            $this->addElements($event->getForm(), $institucion);
+           }else{
+               $area=$data->getJefe()->getArea();
+               $areas=$this->areaService->areasHijas($area);
+               $areas[]=$area;
+               $form->add('area',null,array('required'=>true,'label'=>'Área','choices'=>$areas));
+           }
+
+
        }
 
     }

@@ -1,5 +1,5 @@
 {{ form_start(form,{'attr':{
-    'class':'m-form m-form--fit m-form--label-align-right'
+    'class':'m-form m-form--state'
 }}) }}
 <div class="m-portlet__body">
     <div class="row">
@@ -49,7 +49,7 @@
 
             <div class="form-group m-form__group row">
                 <div class="col-10 ml-auto">
-                    <h4 class="m-form__section">1. Información personal</h4>
+                    <h4 class="m-form__section">I. Información personal</h4>
                 </div>
             </div>
             <div class="form-group m-form__group row">
@@ -70,11 +70,14 @@
                     </div>
                 </div>
             {% endif %}
+
             <div class="form-group m-form__group row">
-                <label for="example-text-input"
-                       class="col-2 col-form-label">{{ form_label(form.phone) }}</label>
-                <div class="col-7">
-                    {{ form_widget(form.phone) }}
+                <label class="col-form-label col-lg-2 col-sm-12">{{ form_label(form.phone) }}</label>
+                <div class="col-lg-7 col-md-9 col-sm-12">
+                    <div class="m-input-icon m-input-icon--left">
+                        {{ form_widget(form.phone) }}
+                        <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-phone"></i></span></span>
+                    </div>
                     {{ form_errors(form.phone) }}
                 </div>
             </div>
@@ -82,7 +85,7 @@
             <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
             <div class="form-group m-form__group row">
                 <div class="col-10 ml-auto">
-                    <h4 class="m-form__section">2. Información profesional</h4>
+                    <h4 class="m-form__section">II. Información profesional</h4>
                 </div>
             </div>
             {% if form.ministerio is defined %}
@@ -136,7 +139,7 @@
             <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
             <div class="form-group m-form__group row">
                 <div class="col-10 ml-auto">
-                    <h4 class="m-form__section">3. Credenciales de acceso</h4>
+                    <h4 class="m-form__section">III. Credenciales de acceso</h4>
                 </div>
             </div>
             <div class="form-group m-form__group row">
@@ -148,10 +151,12 @@
                 </div>
             </div>
             <div class="form-group m-form__group row">
-                <label for="example-text-input"
-                       class="col-2 col-form-label">{{ form_label(form.email) }}</label>
-                <div class="col-7">
-                    {{ form_widget(form.email) }}
+                <label class="col-form-label col-lg-2 col-sm-12">{{ form_label(form.email) }}</label>
+                <div class="col-lg-7 col-md-9 col-sm-12">
+                    <div class="m-input-icon m-input-icon--left">
+                        {{ form_widget(form.email) }}
+                        <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-envelope"></i></span></span>
+                    </div>
                     {{ form_errors(form.email) }}
                 </div>
             </div>
@@ -196,10 +201,16 @@
             <div class="col-7">
                 <button type="submit"
                         class="btn btn-primary btn-sm m-btn m-btn--air m-btn--custom"><i
-                            class="flaticon-edit"></i> {{ button_action|default('Guardar') }}</button>&nbsp;&nbsp;
-                <button type="reset" class="btn btn-metal btn-sm m-btn m-btn--air m-btn--custom"><i
-                            class="flaticon-cancel"></i> Cancelar
-                </button>
+                            class="flaticon-edit"></i> {{ button_action|default('Guardar') }}</button>
+                {% if autor.id==null %}
+                    <button type="reset" class="btn btn-metal btn-sm m-btn m-btn--air m-btn--custom"><i
+                                class="flaticon-cancel"></i> Cancelar
+                    </button>
+                {% else %}
+                    <a href="{{ path('autor_show',{'id':autor.id}) }}" class="btn btn-metal btn-sm m-btn m-btn--air m-btn--custom"><i
+                                class="flaticon-cancel"></i> Cancelar
+                    </a>
+                {% endif %}
             </div>
         </div>
     </div>

@@ -21,6 +21,11 @@
 {% block javascripts %}
     {{parent()}}
     <script src="{{ asset('script/entity/autor.js','codice') }}"></script>
+    {% if is_granted('ROLE_ADMIN') %}
+    <script>
+        var currentInstitucion='{{ app.user.institucion.id }}';
+    </script>
+    {% endif %}
     <script>
             autor.nuevo();
     </script>

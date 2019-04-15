@@ -7,6 +7,7 @@ use App\Form\Subscriber\AddAutorAreaFieldSubscriber;
 use App\Form\Subscriber\AddAutorJefeFieldSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -47,7 +48,7 @@ class AutorType extends AbstractType
             ->add('nombre', TextType::class, ['attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
             ->add('usuario', TextType::class, ['label' => 'Nombre de usuario', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
             ->add('email', EmailType::class, ['label' => 'Correo electrónico', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
-            ->add('phone', TextType::class, ['label' => 'Teléfono', 'required' => false, 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
+            ->add('phone', IntegerType::class, ['label' => 'Teléfono', 'required' => false, 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
             ->add('gradoCientifico', null, ['label' => 'Grado científico', 'required' => true, 'attr' => ['class' => 'form-control m-input']])
             ->add('file', FileType::class, array('required' => false,
                 'attr' => array('style' => 'display:none',
@@ -80,7 +81,7 @@ class AutorType extends AbstractType
         $factory = $builder->getFormFactory();
         if(($esSuperAdmin || $esAdmin) && $this->token->getToken()->getUser()!=$options['data']){
             $builder->add('idrol', null, array('disabled' => false,
-                'label' => 'Rol', 'required' => true, 'attr' => array('class' => 'form-control input-medium')));
+                'label' => 'Permisos', 'required' => true, 'attr' => array('class' => 'form-control input-medium')));
 
             if($esSuperAdmin) {
                 $builder->add('pais', null, ['label' => 'País de residencia', 'disabled' => false,]);

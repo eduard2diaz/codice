@@ -73,7 +73,7 @@ var ministerio = function () {
                         {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#ministerio_tabletable').html(data);
+                    $('table#ministerio_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

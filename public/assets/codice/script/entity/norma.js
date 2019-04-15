@@ -31,7 +31,7 @@ var norma = function () {
                         {overlayColor: "#000000", type: "loader", state: "success", message: "Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#norma_tabletable').html(data);
+                    $('table#norma_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

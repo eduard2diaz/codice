@@ -29,7 +29,8 @@ class TipoTesis
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nombre", type="string", nullable=true)
+     * @ORM\Column(name="nombre", type="string", nullable=false)
+     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$/")
      */
     private $nombre;
 

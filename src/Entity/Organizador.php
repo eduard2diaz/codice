@@ -27,7 +27,7 @@ class Organizador
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nombre", type="string", nullable=true)
+     * @ORM\Column(name="nombre", type="string", nullable=false)
      */
     private $nombre;
 

@@ -69,7 +69,7 @@ var tipo_encuentro = function () {
                         {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#tipo_encuentro_tabletable').html(data);
+                    $('table#tipo_encuentro_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

@@ -23,6 +23,7 @@ class UsuarioController extends AbstractController
     public function index(Request $request): Response
     {
         $usuarios = $this->getDoctrine()->getManager()->getRepository(Usuario::class)->findAll();
+
         if ($request->isXmlHttpRequest())
             return $this->render('usuario/_table.html.twig', ['usuarios' => $usuarios,]);
 

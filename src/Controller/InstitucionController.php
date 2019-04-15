@@ -122,6 +122,7 @@ class InstitucionController extends AbstractController
     }
 
     //Funcionalidades ajax
+
     /**
      * @Route("/{id}/findbyministerio", name="institucion_findbyministerio",options={"expose"=true})
      * Funcionalidad que retorna el listado de instituciones que pertenecen a un determinado ministerio(

@@ -105,9 +105,9 @@ class AreaService
     public function obtenerDirectivos($institucion, $ignoreIds = null)
     {
         if (!$ignoreIds)
-            $consulta = $this->getEm()->createQuery("SELECT u FROM App:Autor u join u.institucion i join u.idrol r WHERE i.id= :institucion AND r.nombre= :nombre")->setParameters(array('nombre' => 'ROLE_DIRECTIVO', 'institucion' => $institucion));
+            $consulta = $this->getEm()->createQuery("SELECT u FROM App:Autor u join u.institucion i join u.idrol r WHERE i.id= :institucion AND r.nombre IN (:nombre)")->setParameters(array('nombre' => ['ROLE_DIRECTIVO', 'ROLE_ADMIN'], 'institucion' => $institucion));
         else
-            $consulta = $this->getEm()->createQuery("SELECT u FROM App:Autor u join u.institucion i join u.idrol r WHERE u.id NOT IN (:id) AND i.id= :institucion AND r.nombre= :nombre")->setParameters(array('id' => $ignoreIds, 'institucion' => $institucion, 'nombre' => 'ROLE_DIRECTIVO'));
+            $consulta = $this->getEm()->createQuery("SELECT u FROM App:Autor u join u.institucion i join u.idrol r WHERE u.id NOT IN (:id) AND i.id= :institucion AND r.nombre IN (:nombre)")->setParameters(array('id' => $ignoreIds, 'institucion' => $institucion, 'nombre' => ['ROLE_DIRECTIVO', 'ROLE_ADMIN']));
         return $consulta->getResult();
     }
 

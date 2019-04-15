@@ -69,7 +69,7 @@ var grado_cientifico = function () {
                         {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#grado_cientifico_tabletable').html(data);
+                    $('table#grado_cientifico_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

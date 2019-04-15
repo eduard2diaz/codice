@@ -69,7 +69,7 @@ var facultad = function () {
                         {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#facultad_tabletable').html(data);
+                    $('table#facultad_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

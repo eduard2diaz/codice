@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * GrupoArticulo
@@ -27,7 +28,8 @@ class GrupoArticulo
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nombre", type="string", nullable=true)
+     * @ORM\Column(name="nombre", type="string", nullable=false)
+     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$/")
      */
     private $nombre;
 

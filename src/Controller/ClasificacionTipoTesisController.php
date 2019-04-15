@@ -22,6 +22,9 @@ class ClasificacionTipoTesisController extends AbstractController
     {
         $clasificacion_tipotesis = $this->getDoctrine()->getRepository(ClasificacionTipoTesis::class)->findAll();
 
+        /*
+         * Si solicitan este metodo por ajax se refresca solamente el listado de clasificaciones
+         */
         if ($request->isXmlHttpRequest())
             return $this->render('clasificacion_tipotesis/_table.html.twig', [
                 'clasificacion_tipotesiss' => $clasificacion_tipotesis,

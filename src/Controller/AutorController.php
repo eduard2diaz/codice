@@ -21,6 +21,7 @@ class AutorController extends AbstractController
 {
     /**
      * @Route("/indexall", name="autor_indexall", methods={"GET"})
+     * Listado de todos los autores de la aplicacion, es usado exclusivamente por el ROLE_SUPERADMIN
      */
     public function indexAll(Request $request): Response
     {
@@ -109,9 +110,7 @@ class AutorController extends AbstractController
     {
         return $this->render('autor/show.html.twig', [
             'autor' => $autor,
-            'allow_edit' => $this->isGranted('ROLE_SUPERADMIN') || $this->isGranted('ROLE_ADMIN') || $autor->getId() == $this->getUser()->getId() ||
-                $autor->esSubordinado($this->getUser())
-            ,
+            'allow_edit' => $this->isGranted('ROLE_SUPERADMIN') || $autor->getId() == $this->getUser()->getId() || (($this->getUser()->getInstitucion()->getId()==$autor->getInstitucion()->getId()) && ($this->isGranted('ROLE_ADMIN') || $autor->esSubordinado($this->getUser()))),
             'follow_button' => $autor->getSeguidores()->contains($this->getUser()) == false,
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
@@ -199,8 +198,7 @@ class AutorController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
-        if (!$this->isGranted('ROLE_SUPERADMIN'))
-            $this->denyAccessUnlessGranted('DELETE', $autor);
+        $this->denyAccessUnlessGranted('DELETE', $autor);
         $em = $this->getDoctrine()->getManager();
         $em->remove($autor);
         $em->flush();
@@ -208,12 +206,11 @@ class AutorController extends AbstractController
     }
 
     //Funcionalidades ajax
-
     /**
-     * @Route("/ajax", name="autor_ajax", options={"expose"=true})
+     * @Route("/searchfilter", name="autor_searchfilter", options={"expose"=true})
      * Esta funcionalidad se utiliza para enviar un mensaje pues es la que permite filtrar los usuarios
      */
-    public function ajax(Request $request): Response
+    public function searchFilter(Request $request): Response
     {
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
@@ -290,12 +287,10 @@ class AutorController extends AbstractController
 
     /**
      * @Route("/sugerir", name="autor_sugerir", options={"expose"=true})
-     * Retorna el listado de sugerencias de autores
+     * Retorna el listado de sugerencias de autores(SE UTILIZA EN LAS BUSQUEDAS)
      */
     public function sugerirAutores()
     {
-        $em = $this->getDoctrine()->getManager();
-
         $id=$this->getUser()->getId();
         $seguidos="$id";
         foreach ($this->getUser()->getSeguidor()->toArray() as $value){
@@ -306,7 +301,7 @@ class AutorController extends AbstractController
         $sql="SELECT a.id, a.nombre, a.ruta_foto as rutafoto, i.nombre as institucion FROM autor as a JOIN institucion i ON a.institucion = i.id WHERE a.id  NOT IN (:lista) ORDER BY random() LIMIT 4";
         $statement=$conn->prepare($sql);
         $statement->execute(['lista'=>$seguidos]);
-        return $this->render('autor/sugerencia.html.twig', ['datos' => $statement->fetchAll()]);
+        return $this->render('autor/_sugerencia.html.twig', ['datos' => $statement->fetchAll()]);
     }
 
     /**

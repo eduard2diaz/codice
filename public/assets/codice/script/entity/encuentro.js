@@ -31,7 +31,7 @@ var encuentro = function () {
                         {overlayColor: "#000000", type: "loader", state: "success", message: "Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#encuentro_tabletable').html(data);
+                    $('table#encuentro_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

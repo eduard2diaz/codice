@@ -31,7 +31,7 @@ var software = function () {
                         {overlayColor: "#000000", type: "loader", state: "success", message: "Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#software_tabletable').html(data);
+                    $('table#software_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

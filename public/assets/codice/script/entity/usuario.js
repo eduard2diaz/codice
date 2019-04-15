@@ -32,7 +32,7 @@ var usuario = function () {
                         {overlayColor: "#000000", type: "loader", state: "success", message: "Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#usuario_tabletable').html(data);
+                    $('table#usuario_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },
@@ -186,7 +186,10 @@ var usuario = function () {
 
     var gestionarFoto = function () {
         $('div#basicmodal').on('click', "img#foto_perfil", function (evento) {
+            mApp.block("div#basicmodal",
+                {overlayColor: "#000000", type: "loader", state: "success", message: "Explorando archivos ..."});
             $('input#usuario_file').click();
+            mApp.unblock("div#basicmodal")
             document.getElementById('usuario_file').addEventListener('change', previewfile, false);
         });
     }

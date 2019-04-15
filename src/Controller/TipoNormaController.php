@@ -36,6 +36,9 @@ class TipoNormaController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
         $tipo_norma = new TipoNorma();
         $form = $this->createForm(TipoNormaType::class, $tipo_norma, ['action' => $this->generateUrl('tipo_norma_new')]);
         $form->handleRequest($request);

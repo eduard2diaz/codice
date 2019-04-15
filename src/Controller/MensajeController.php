@@ -109,13 +109,13 @@ class MensajeController extends AbstractController
 
         $em = $this->getDoctrine()->getManager();
         $mensaje = new Mensaje();
+        $mensaje->setRemitente($this->getUser());
+        $mensaje->setPropietario($this->getUser());
+
         $form = $this->createForm(MensajeType::class, $mensaje, array('action' => $this->generateUrl('mensaje_new')));
         $form->handleRequest($request);
         if ($form->isSubmitted())
             if ($form->isValid()) {
-                $mensaje->setRemitente($this->getUser());
-                $mensaje->setPropietario($this->getUser());
-
                 $em->persist($mensaje);
                 foreach ($mensaje->getIddestinatario() as $value) {
                     $clone = clone $mensaje;

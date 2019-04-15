@@ -69,7 +69,7 @@ var organizador = function () {
                         {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#organizador_tabletable').html(data);
+                    $('table#organizador_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },

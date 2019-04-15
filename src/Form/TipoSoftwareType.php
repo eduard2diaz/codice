@@ -14,7 +14,7 @@ class TipoSoftwareType extends AbstractType
     {
         $builder
             ->add('nombre', TextType::class,array('attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
-            ->add('clasificacion', null,array('label'=>'Clasificación','attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
+            ->add('clasificacion', null,array('required'=>true,'label'=>'Clasificación','attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
         ;
     }
 

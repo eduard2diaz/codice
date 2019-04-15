@@ -73,7 +73,7 @@ var pais = function () {
                         {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#pais_tabletable').html(data);
+                    $('table#pais_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },
@@ -191,8 +191,8 @@ var pais = function () {
             var link = $(this).attr('data-href');
             var token = $(this).attr('data-csrf');
             bootbox.confirm({
-                title: 'Eliminar pais',
-                message: '¿Está seguro que desea eliminar este pais?',
+                title: 'Eliminar país',
+                message: '¿Está seguro que desea eliminar este país?',
                 buttons: {
                     confirm: {
                         label: 'Si, estoy seguro',

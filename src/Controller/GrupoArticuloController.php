@@ -21,6 +21,9 @@ class GrupoArticuloController extends AbstractController
     {
         $grupo_articulos = $this->getDoctrine()->getRepository(GrupoArticulo::class)->findAll();
 
+        /*
+         * Si solicitan este metodo por ajax se refresca solamente el listado de grupos de articulos
+         */
         if ($request->isXmlHttpRequest())
             return $this->render('grupo_articulo/_table.html.twig', [
                 'grupo_articulos' => $grupo_articulos,
@@ -54,6 +57,7 @@ class GrupoArticuloController extends AbstractController
                 ]);
             } else {
                 $page = $this->renderView('grupo_articulo/_form.html.twig', [
+                    'grupo_articulo' => $grupo_articulo,
                     'form' => $form->createView(),
                 ]);
                 return $this->json(['form' => $page, 'error' => true,]);
@@ -87,6 +91,7 @@ class GrupoArticuloController extends AbstractController
             } else {
                 $page = $this->renderView('grupo_articulo/_form.html.twig', [
                     'form' => $form->createView(),
+                    'grupo_articulo' => $grupo_articulo,
                     'form_id' => 'grupo_articulo_edit',
                     'action' => 'Actualizar',
                 ]);
