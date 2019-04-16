@@ -75,12 +75,12 @@ class PublicacionController extends AbstractController
             $content = '';
             $consulta = $em->createQuery('SELECT u.id, u.nombre,u.rutaFoto FROM App:Autor u WHERE u.nombre like :parametro');
             $consulta->setParameter('parametro', '%' . $query . '%');
-            $consulta->setMaxResults(5);
+            $consulta->setMaxResults(2);
             //Obtengo el listado de usuarios
             $usuarios = $consulta->getResult();
             $consulta = $em->createQuery('SELECT p.id, p.titulo FROM App:Publicacion p WHERE p.titulo like :parametro');
             $consulta->setParameter('parametro', '%' . $query . '%');
-            $consulta->setMaxResults(5);
+            $consulta->setMaxResults(3);
             //Obtengo el listado de publicaciones
             $publicaciones = $consulta->getResult();
             $content = $this->renderView('publicacion/search_quickresult.html.twig', ['query'=>$query,'usuarios' => $usuarios, 'publicaciones' => $publicaciones]);

@@ -16,6 +16,8 @@ class DefaultController extends AbstractController
      */
     public function index(Request $request, AuthenticationUtils $authenticationUtils)
     {
+
+
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY'))
             if($this->isGranted('ROLE_SUPERADMIN'))
                 return $this->redirectToRoute('usuario_index');

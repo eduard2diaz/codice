@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use App\Validator\UniqueMultipleEntity as UniqueMultipleEntityConstraint;
 use App\Validator\Autor as AutorConstraint;
+
 /**
  * Autor
  *
@@ -35,14 +36,16 @@ class Autor implements UserInterface
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nombre", type="string", nullable=true)
+     * @ORM\Column(name="nombre", type="string", nullable=false)
+     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$/")
      */
     private $nombre;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="usuario", type="string", nullable=true)
+     * @ORM\Column(name="usuario", type="string", nullable=false)
+     * @Assert\Regex("/^([a-zA-Z]((\.|_|-)?[a-zA-Z0-9]+){3})*$/")
      */
     private $usuario;
 
@@ -78,7 +81,11 @@ class Autor implements UserInterface
     /**
      * @var string|null
      *
-     * @ORM\Column(name="email", type="string", nullable=true)
+     * @ORM\Column(name="email", type="string", nullable=false)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     strict = true
+     * )
      */
     private $email;
 

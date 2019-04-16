@@ -26,11 +26,13 @@ class Usuario implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$/")
      */
     private $nombre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex("/^([a-zA-Z]((\.|_|-)?[a-zA-Z0-9]+){3})*$/")
      */
     private $usuario;
 
@@ -41,6 +43,10 @@ class Usuario implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     strict = true
+     * )
      */
     private $email;
 
