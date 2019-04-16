@@ -252,6 +252,16 @@ var balanceanual = function () {
         });
     }
 
+    var personalizarUploadFile=function(){
+        $('div#basicmodal').on('click','button#balance_file',function(){
+            $('input#balance_anual_file').click();
+        });
+
+        $('div#basicmodal').on('change','input#balance_anual_file',function(){
+            var fileName = document.getElementById("balance_anual_file").files[0].name;
+            $('span.custom-file-control').addClass("selected").html(fileName);
+        })
+    }
 
     return {
         init: function () {
@@ -263,6 +273,7 @@ var balanceanual = function () {
                     edicion();
                     edicionAction();
                     eliminar();
+                    personalizarUploadFile();
                 }
             );
         }

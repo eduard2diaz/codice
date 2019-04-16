@@ -153,7 +153,6 @@ class BalanceAnual
         if (null === $this->file) {
             return;
         }
-        dump('aaa');
         $fs = new Filesystem();
         $camino = $fs->makePathRelative($ruta, __DIR__);
         $directorioDestino = __DIR__ . DIRECTORY_SEPARATOR . $camino;

@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Autor;
 use App\Entity\Libro;
-use App\Entity\Publicacion;
 use App\Form\LibroType;
 use App\Services\NotificacionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -69,6 +68,7 @@ class LibroController extends AbstractController
             } else {
                 $page = $this->renderView('libro/_form.html.twig', array(
                     'form' => $form->createView(),
+                    'libro' => $libro,
                 ));
                 return new JsonResponse(array('form' => $page, 'error' => true,));
             }
@@ -76,7 +76,6 @@ class LibroController extends AbstractController
         return $this->render('libro/_new.html.twig', [
             'libro' => $libro,
             'form' => $form->createView(),
-
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -91,7 +90,6 @@ class LibroController extends AbstractController
     {
         return $this->render('libro/show.html.twig', [
             'libro' => $libro,
-
             'user_id' => $libro->getId()->getAutor()->getId(),
             'user_foto' => null != $libro->getId()->getAutor()->getRutaFoto() ? $libro->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $libro->getId()->getAutor()->__toString(),
@@ -124,6 +122,7 @@ class LibroController extends AbstractController
                 $page = $this->renderView('libro/_form.html.twig', array(
                     'form' => $form->createView(),
                     'button_action' => 'Actualizar',
+                    'libro' => $libro,
                 ));
                 return new JsonResponse(array('form' => $page, 'error' => true,));
             }
@@ -133,7 +132,6 @@ class LibroController extends AbstractController
             'form' => $form->createView(),
             'button_action' => 'Actualizar',
             'form_title' => 'Editar libro',
-
             'user_id' => $libro->getId()->getAutor()->getId(),
             'user_foto' => null != $libro->getId()->getAutor()->getRutaFoto() ? $libro->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $libro->getId()->getAutor()->__toString(),
@@ -144,12 +142,12 @@ class LibroController extends AbstractController
     /**
      * @Route("/{id}/delete", name="libro_delete")
      */
-    public function delete(Request $request, Libro $libro, NotificacionService $notificacionService): Response
+    public function delete(Request $request, Libro $libro): Response
     {
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
-        $this->denyAccessUnlessGranted('NEW',$libro->getId());
+        $this->denyAccessUnlessGranted('DELETE',$libro->getId());
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($libro->getId());
         $entityManager->flush();

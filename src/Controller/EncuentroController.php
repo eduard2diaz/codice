@@ -4,14 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Autor;
 use App\Entity\Encuentro;
-use App\Entity\Publicacion;
 use App\Form\EncuentroType;
 use App\Services\NotificacionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/encuentro")
@@ -65,18 +63,17 @@ class EncuentroController extends AbstractController
                 $entityManager->persist($encuentro);
                 $entityManager->flush();
                 $this->addFlash('success', 'El encuentro fue registrado satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('encuentro_index', ['id' => $autor->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('encuentro_index', ['id' => $autor->getId()])]);
             } else {
                 $page = $this->renderView('encuentro/_form.html.twig', array(
                     'form' => $form->createView(),
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('encuentro/_new.html.twig', [
             'encuentro' => $encuentro,
             'form' => $form->createView(),
-
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -91,7 +88,6 @@ class EncuentroController extends AbstractController
     {
         return $this->render('encuentro/show.html.twig', [
             'encuentro' => $encuentro,
-
             'user_id' => $encuentro->getId()->getAutor()->getId(),
             'user_foto' => null != $encuentro->getId()->getAutor()->getRutaFoto() ? $encuentro->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $encuentro->getId()->getAutor()->__toString(),
@@ -119,13 +115,14 @@ class EncuentroController extends AbstractController
                     $notificacionService->nuevaNotificacion($encuentro->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $encuentro->getId()->getEstadoString() . '" tu encuentro ' . $encuentro->getId()->getTitulo());
 
                 $this->addFlash('success', 'El encuentro fue actualizado satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('encuentro_index', ['id' => $encuentro->getId()->getAutor()->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('encuentro_index', ['id' => $encuentro->getId()->getAutor()->getId()])]);
             } else {
                 $page = $this->renderView('encuentro/_form.html.twig', array(
                     'form' => $form->createView(),
                     'button_action' => 'Actualizar',
+                    'encuentro' => $encuentro,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('encuentro/_new.html.twig', [
@@ -133,7 +130,6 @@ class EncuentroController extends AbstractController
             'form' => $form->createView(),
             'button_action' => 'Actualizar',
             'form_title' => 'Editar encuentro',
-
             'user_id' => $encuentro->getId()->getAutor()->getId(),
             'user_foto' => null != $encuentro->getId()->getAutor()->getRutaFoto() ? $encuentro->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $encuentro->getId()->getAutor()->__toString(),
@@ -144,7 +140,7 @@ class EncuentroController extends AbstractController
     /**
      * @Route("/{id}/delete", name="encuentro_delete")
      */
-    public function delete(Request $request, Encuentro $encuentro, NotificacionService $notificacionService): Response
+    public function delete(Request $request, Encuentro $encuentro): Response
     {
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
@@ -154,6 +150,6 @@ class EncuentroController extends AbstractController
         $entityManager->remove($encuentro->getId());
         $entityManager->flush();
 
-        return new JsonResponse(array('mensaje' => 'El encuentro fue eliminado satisfactoriamente'));
+        return $this->json(array('mensaje' => 'El encuentro fue eliminado satisfactoriamente'));
     }
 }

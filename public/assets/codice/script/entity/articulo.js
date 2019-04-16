@@ -109,9 +109,8 @@ var articulo = function () {
                 'articulo[id][file]': {required: true},
                 'articulo[id][resumen]': {required: true},
                 'articulo[id][estado]': {required: true},
-
                 'articulo[volumen]': {required: true},
-                'articulo[paginas]': {required: true},
+                'articulo[paginas]': {required: true, min: 1},
                 'articulo[numero]': {required: true},
                 'articulo[doi]': {required: true},
                 'articulo[issn]': {required: true},
@@ -155,7 +154,18 @@ var articulo = function () {
             });
         });
     }
+    
+    var personalizarUploadFile=function(){
+        $('body').on('click','button#articulo_file',function(){
+            $('input#articulo_id_file').click();
+        });
 
+        $('body').on('change','input#articulo_id_file',function(){
+            var fileName = document.getElementById("articulo_id_file").files[0].name;
+            $('span.custom-file-control').addClass("selected").html(fileName);
+        })
+    }
+    
     return {
         init: function () {
             $().ready(function () {
@@ -169,6 +179,7 @@ var articulo = function () {
             $().ready(function () {
                     configurarFormulario();
                     newAction();
+                    personalizarUploadFile();
                 }
             );
         },

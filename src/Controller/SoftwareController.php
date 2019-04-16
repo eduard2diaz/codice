@@ -65,18 +65,18 @@ class SoftwareController extends AbstractController
                 $entityManager->persist($software);
                 $entityManager->flush();
                 $this->addFlash('success', 'El software fue registrado satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('software_index', ['id' => $autor->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('software_index', ['id' => $autor->getId()])]);
             } else {
                 $page = $this->renderView('software/_form.html.twig', array(
                     'form' => $form->createView(),
+                    'software' => $software,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('software/_new.html.twig', [
             'software' => $software,
             'form' => $form->createView(),
-
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -91,7 +91,6 @@ class SoftwareController extends AbstractController
     {
         return $this->render('software/show.html.twig', [
             'software' => $software,
-
             'user_id' => $software->getId()->getAutor()->getId(),
             'user_foto' => null != $software->getId()->getAutor()->getRutaFoto() ? $software->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $software->getId()->getAutor()->__toString(),
@@ -119,13 +118,14 @@ class SoftwareController extends AbstractController
                     $notificacionService->nuevaNotificacion($software->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $software->getId()->getEstadoString() . '" tu software ' . $software->getId()->getTitulo());
 
                 $this->addFlash('success', 'El software fue actualizado satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('software_index', ['id' => $software->getId()->getAutor()->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('software_index', ['id' => $software->getId()->getAutor()->getId()])]);
             } else {
                 $page = $this->renderView('software/_form.html.twig', array(
                     'form' => $form->createView(),
                     'button_action' => 'Actualizar',
+                    'software' => $software,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('software/_new.html.twig', [
@@ -133,7 +133,6 @@ class SoftwareController extends AbstractController
             'form' => $form->createView(),
             'button_action' => 'Actualizar',
             'form_title' => 'Editar software',
-
             'user_id' => $software->getId()->getAutor()->getId(),
             'user_foto' => null != $software->getId()->getAutor()->getRutaFoto() ? $software->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $software->getId()->getAutor()->__toString(),
@@ -144,7 +143,7 @@ class SoftwareController extends AbstractController
     /**
      * @Route("/{id}/delete", name="software_delete")
      */
-    public function delete(Request $request, Software $software, NotificacionService $notificacionService): Response
+    public function delete(Request $request, Software $software): Response
     {
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
@@ -154,6 +153,6 @@ class SoftwareController extends AbstractController
         $entityManager->remove($software->getId());
         $entityManager->flush();
 
-        return new JsonResponse(array('mensaje' => 'El software fue eliminado satisfactoriamente'));
+        return $this->json(array('mensaje' => 'El software fue eliminado satisfactoriamente'));
     }
 }

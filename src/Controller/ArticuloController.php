@@ -4,14 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Autor;
 use App\Entity\Articulo;
-use App\Entity\Publicacion;
 use App\Form\ArticuloType;
 use App\Services\NotificacionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/articulo")
@@ -64,18 +62,18 @@ class ArticuloController extends AbstractController
                 $entityManager->persist($articulo);
                 $entityManager->flush();
                 $this->addFlash('success', 'El artículo fue registrado satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('articulo_index', ['id' => $autor->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('articulo_index', ['id' => $autor->getId()])]);
             } else {
                 $page = $this->renderView('articulo/_form.html.twig', array(
                     'form' => $form->createView(),
+                    'articulo' => $articulo,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('articulo/_new.html.twig', [
             'articulo' => $articulo,
             'form' => $form->createView(),
-
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -90,7 +88,6 @@ class ArticuloController extends AbstractController
     {
         return $this->render('articulo/show.html.twig', [
             'articulo' => $articulo,
-
             'user_id' => $articulo->getId()->getAutor()->getId(),
             'user_foto' => null != $articulo->getId()->getAutor()->getRutaFoto() ? $articulo->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $articulo->getId()->getAutor()->__toString(),
@@ -118,13 +115,14 @@ class ArticuloController extends AbstractController
                     $notificacionService->nuevaNotificacion($articulo->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $articulo->getId()->getEstadoString() . '" tu articulo ' . $articulo->getId()->getTitulo());
 
                 $this->addFlash('success', 'El artículo fue actualizado satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('articulo_index', ['id' => $articulo->getId()->getAutor()->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('articulo_index', ['id' => $articulo->getId()->getAutor()->getId()])]);
             } else {
                 $page = $this->renderView('articulo/_form.html.twig', array(
                     'form' => $form->createView(),
                     'button_action' => 'Actualizar',
+                    'articulo' => $articulo,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('articulo/_new.html.twig', [
@@ -132,7 +130,6 @@ class ArticuloController extends AbstractController
             'form' => $form->createView(),
             'button_action' => 'Actualizar',
             'form_title' => 'Editar artículo',
-
             'user_id' => $articulo->getId()->getAutor()->getId(),
             'user_foto' => null != $articulo->getId()->getAutor()->getRutaFoto() ? $articulo->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $articulo->getId()->getAutor()->__toString(),
@@ -143,7 +140,7 @@ class ArticuloController extends AbstractController
     /**
      * @Route("/{id}/delete", name="articulo_delete")
      */
-    public function delete(Request $request, Articulo $articulo, NotificacionService $notificacionService): Response
+    public function delete(Request $request, Articulo $articulo): Response
     {
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
@@ -153,6 +150,6 @@ class ArticuloController extends AbstractController
         $entityManager->remove($articulo->getId());
         $entityManager->flush();
 
-        return new JsonResponse(array('mensaje' => 'El artículo fue eliminado satisfactoriamente'));
+        return $this->json(array('mensaje' => 'El artículo fue eliminado satisfactoriamente'));
     }
 }

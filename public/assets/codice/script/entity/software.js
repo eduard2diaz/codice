@@ -153,6 +153,17 @@ var software = function () {
         });
     }
 
+    var personalizarUploadFile=function(){
+        $('body').on('click','button#software_file',function(){
+            $('input#software_id_file').click();
+        });
+
+        $('body').on('change','input#software_id_file',function(){
+            var fileName = document.getElementById("software_id_file").files[0].name;
+            $('span.custom-file-control').addClass("selected").html(fileName);
+        })
+    }
+
     return {
         init: function () {
             $().ready(function () {
@@ -166,6 +177,7 @@ var software = function () {
             $().ready(function () {
                     configurarFormulario();
                     newAction();
+                    personalizarUploadFile();
                 }
             );
         },

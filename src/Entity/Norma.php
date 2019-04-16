@@ -5,26 +5,31 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Norma
  *
  * @ORM\Table(name="norma", indexes={@ORM\Index(name="IDX_3EF6217E384ABBB6", columns={"tipo_norma"})})
  * @ORM\Entity
+ * @UniqueEntity("noRegistro")
  */
 class Norma
 {
     /**
      * @var string|null
      *
-     * @ORM\Column(name="no_registro", type="string", nullable=true)
+     * @ORM\Column(name="no_registro", type="string", nullable=false)
      */
     private $noRegistro;
 
     /**
      * @var int|null
      *
-     * @ORM\Column(name="paginas", type="integer", nullable=true)
+     * @ORM\Column(name="paginas", type="integer", nullable=false)
+     * @Assert\Range(
+     *      min = 1,
+     * )
      */
     private $paginas;
 

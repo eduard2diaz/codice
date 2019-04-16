@@ -1,17 +1,29 @@
 {{ form_start(form,{'attr':{
-    'class':'m-form m-form--fit m-form--label-align-right'
+    'class':'m-form m-form--state m-form--fit m-form--label-align-right'
 }}) }}
 <div class="m-portlet__body">
 
     <div class="row">
         <div class="col-md-4">
             <div class="form-group m-form__group">
-                {{ form_row(form.id.titulo) }}
+                <label>
+                    {{ form_label(form.id.titulo) }}
+                </label>
+                <div>
+                    {{ form_widget(form.id.titulo) }}
+                    {{ form_errors(form.id.titulo) }}
+                </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group m-form__group">
-                {{ form_row(form.id.fechaCaptacion) }}
+                <label>
+                    {{ form_label(form.id.fechaCaptacion) }}
+                </label>
+                <div>
+                    {{ form_widget(form.id.fechaCaptacion) }}
+                    {{ form_errors(form.id.fechaCaptacion) }}
+                </div>
             </div>
         </div>
     </div>
@@ -19,47 +31,91 @@
     <div class="row m--margin-top-40">
         <div class="col-md-4">
             <div class="form-group m-form__group">
-                {{ form_row(form.isbn) }}
+                <label>
+                    {{ form_label(form.isbn) }}
+                </label>
+                <div>
+                    {{ form_widget(form.isbn) }}
+                    {{ form_errors(form.isbn) }}
+                </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group m-form__group">
-                {{ form_row(form.paginas) }}
+                <label>
+                    {{ form_label(form.paginas) }}
+                </label>
+                <div>
+                    {{ form_widget(form.paginas) }}
+                    {{ form_errors(form.paginas) }}
+                </div>
             </div>
         </div>
     </div>
     <div class="row m--margin-top-40">
         <div class="col-md-4">
             <div class="form-group m-form__group">
-                {{ form_row(form.cenda) }}
+                <label>
+                    {{ form_label(form.cenda) }}
+                </label>
+                <div>
+                    {{ form_widget(form.cenda) }}
+                    {{ form_errors(form.cenda) }}
+                </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group m-form__group">
-                {{ form_row(form.number) }}
+                <label>
+                    {{ form_label(form.number) }}
+                </label>
+                <div>
+                    {{ form_widget(form.number) }}
+                    {{ form_errors(form.number) }}
+                </div>
             </div>
         </div>
     </div>
     <div class="row m--margin-top-40">
         <div class="col-md-4">
             <div class="form-group m-form__group">
-                {{ form_row(form.id.keywords) }}
+                <label>
+                    {{ form_label(form.id.keywords) }}
+                </label>
+                <div>
+                    {{ form_widget(form.id.keywords) }}
+                    {{ form_errors(form.id.keywords) }}
+                </div>
             </div>
         </div>
         {% if form.id.estado is defined %}
             <div class="col-md-4">
                 <div class="form-group m-form__group">
-                    {{ form_row(form.id.estado) }}
+                    <label>
+                        {{ form_label(form.id.estado) }}
+                    </label>
+                    <div>
+                        {{ form_widget(form.id.estado) }}
+                        {{ form_errors(form.id.estado) }}
+                    </div>
                 </div>
             </div>
         {% endif %}
 
         {% if form.id.file is defined %}
             <div class="col-md-4">
-
                 <div class="form-group m-form__group">
-                    {{ form_widget(form.id.file) }}
-                    {{ form_errors(form.id.file) }}
+                    <label>
+                        {{ form_label(form.id.file) }}
+                    </label>
+                    <div>
+                        {{ form_widget(form.id.file) }}
+                        {{ form_errors(form.id.file) }}
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm" id="monografia_file">
+                        <i class="la la-cloud-upload"></i> Cargar archivo
+                    </button>
+                    <span class="custom-file-control"></span>
                 </div>
             </div>
         {% endif %}
@@ -69,7 +125,13 @@
     <div class="row m--margin-top-40">
         <div class="col-md-12">
             <div class="form-group m-form__group">
-                {{ form_row(form.id.resumen) }}
+                <label>
+                    {{ form_label(form.id.resumen) }}
+                </label>
+                <div>
+                    {{ form_widget(form.id.resumen) }}
+                    {{ form_errors(form.id.resumen) }}
+                </div>
             </div>
         </div>
     </div>

@@ -4,13 +4,10 @@ namespace App\Controller;
 
 use App\Form\NotificacionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Notificacion;
-use App\Entity\Autor;
 
 /**
  * @Route("/notificacion")
@@ -35,7 +32,7 @@ class NotificacionController extends AbstractController
                     $notificacions = $consulta->getResult();
                 }
 
-                return new JsonResponse([
+                return $this->json([
                     'contador' => count($notificacions),
                     'html' => $this->renderView('notificacion/ajax/_json.html.twig', ['notificaciones' => $notificacions])
                 ]);
@@ -85,7 +82,7 @@ class NotificacionController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($notificacion);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'La notificación fue eliminada satisfactoriamente'));
+        return $this->json(array('mensaje' => 'La notificación fue eliminada satisfactoriamente'));
 
 
     }

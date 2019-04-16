@@ -17,14 +17,14 @@ class Patente
     /**
      * @var string|null
      *
-     * @ORM\Column(name="number", type="string", nullable=true)
+     * @ORM\Column(name="number", type="string", nullable=false)
      */
     private $number;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="idioma", type="string", nullable=true)
+     * @ORM\Column(name="idioma", type="string", nullable=false)
      */
     private $idioma;
 

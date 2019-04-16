@@ -154,6 +154,17 @@ var encuentro = function () {
         });
     }
 
+    var personalizarUploadFile=function(){
+        $('body').on('click','button#encuentro_file',function(){
+            $('input#encuentro_id_file').click();
+        });
+
+        $('body').on('change','input#encuentro_id_file',function(){
+            var fileName = document.getElementById("encuentro_id_file").files[0].name;
+            $('span.custom-file-control').addClass("selected").html(fileName);
+        })
+    }
+
     return {
         init: function () {
             $().ready(function () {
@@ -167,6 +178,7 @@ var encuentro = function () {
             $().ready(function () {
                     configurarFormulario();
                     newAction();
+                    personalizarUploadFile();
                 }
             );
         },

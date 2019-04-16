@@ -65,18 +65,18 @@ class PatenteController extends AbstractController
                 $entityManager->persist($patente);
                 $entityManager->flush();
                 $this->addFlash('success', 'La patente fue registrada satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('patente_index', ['id' => $autor->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('patente_index', ['id' => $autor->getId()])]);
             } else {
                 $page = $this->renderView('patente/_form.html.twig', array(
                     'form' => $form->createView(),
+                    'patente' => $patente,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('patente/_new.html.twig', [
             'patente' => $patente,
             'form' => $form->createView(),
-
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -119,13 +119,14 @@ class PatenteController extends AbstractController
                     $notificacionService->nuevaNotificacion($patente->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $patente->getId()->getEstadoString() . '" tu patente ' . $patente->getId()->getTitulo());
 
                 $this->addFlash('success', 'La patente fue actualizada satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('patente_index', ['id' => $patente->getId()->getAutor()->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('patente_index', ['id' => $patente->getId()->getAutor()->getId()])]);
             } else {
                 $page = $this->renderView('patente/_form.html.twig', array(
                     'form' => $form->createView(),
                     'button_action' => 'Actualizar',
+                    'patente' => $patente,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('patente/_new.html.twig', [
@@ -133,7 +134,6 @@ class PatenteController extends AbstractController
             'form' => $form->createView(),
             'button_action' => 'Actualizar',
             'form_title' => 'Editar patente',
-
             'user_id' => $patente->getId()->getAutor()->getId(),
             'user_foto' => null != $patente->getId()->getAutor()->getRutaFoto() ? $patente->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $patente->getId()->getAutor()->__toString(),
@@ -154,6 +154,6 @@ class PatenteController extends AbstractController
         $entityManager->remove($patente->getId());
         $entityManager->flush();
 
-        return new JsonResponse(array('mensaje' => 'La patente fue eliminada satisfactoriamente'));
+        return $this->json(array('mensaje' => 'La patente fue eliminada satisfactoriamente'));
     }
 }

@@ -17,14 +17,14 @@ class Software
     /**
      * @var string|null
      *
-     * @ORM\Column(name="numero", type="string", nullable=true)
+     * @ORM\Column(name="numero", type="string", nullable=false)
      */
     private $numero;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="idioma", type="string", nullable=true)
+     * @ORM\Column(name="idioma", type="string", nullable=false)
      */
     private $idioma;
 
@@ -111,7 +111,7 @@ class Software
     public function validate(ExecutionContextInterface $context)
     {
         if (null == $this->getTipoSoftware()) {
-            $context->setNode($context, 'area', null, 'data.tipoSoftware');
+            $context->setNode($context, 'tipoSoftware', null, 'data.tipoSoftware');
             $context->addViolation('Seleccione el tipo de software');
         }
     }

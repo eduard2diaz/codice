@@ -5,12 +5,15 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Encuentro
  *
  * @ORM\Table(name="encuentro", indexes={@ORM\Index(name="IDX_CDFA77FA2F94C8B4", columns={"tipo_encuentro"}), @ORM\Index(name="IDX_CDFA77FAA96ECF59", columns={"organizador"})})
  * @ORM\Entity
+ * @UniqueEntity("isbn")
+ * @UniqueEntity("issn")
  */
 class Encuentro
 {
@@ -30,21 +33,23 @@ class Encuentro
     /**
      * @var string|null
      *
-     * @ORM\Column(name="isbn", type="string", nullable=true)
+     * @ORM\Column(name="isbn", type="string", nullable=false)
+     * @Assert\Isbn()
      */
     private $isbn;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="ciudad", type="string", nullable=true)
+     * @ORM\Column(name="ciudad", type="string", nullable=false)
      */
     private $ciudad;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="issn", type="string", nullable=true)
+     * @ORM\Column(name="issn", type="string", nullable=false)
+     * @Assert\Issn
      */
     private $issn;
 

@@ -109,7 +109,6 @@ var premio = function () {
                 'premio[id][file]': {required: true},
                 'premio[id][resumen]': {required: true},
                 'premio[id][estado]': {required: true},
-
                 'premio[tipoPremio]': {required: true},
                 'premio[institucionConcede]': {required: true},
             }
@@ -151,6 +150,17 @@ var premio = function () {
         });
     }
 
+    var personalizarUploadFile=function(){
+        $('body').on('click','button#premio_file',function(){
+            $('input#premio_id_file').click();
+        });
+
+        $('body').on('change','input#premio_id_file',function(){
+            var fileName = document.getElementById("premio_id_file").files[0].name;
+            $('span.custom-file-control').addClass("selected").html(fileName);
+        })
+    }
+
     return {
         init: function () {
             $().ready(function () {
@@ -164,6 +174,7 @@ var premio = function () {
             $().ready(function () {
                 configurarFormulario();
                 newAction();
+                personalizarUploadFile();
                 }
             );
         },

@@ -7,12 +7,9 @@ use App\Entity\Mensaje;
 use App\Form\MensajeType;
 use App\Services\EmailService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\ParameterBag;
 
 /**
  * @Route("/mensaje")
@@ -30,7 +27,7 @@ class MensajeController extends AbstractController
             ->findBy(array('bandeja' => 0, 'propietario' => $this->getUser()), array('fecha' => 'DESC'));
 
         if ($request->isXmlHttpRequest())
-            return new JsonResponse(array(
+            return $this->json(array(
                 'messages' => $this->renderView('mensaje/_table.html.twig', [
                     'mensajes' => $mensajes
                 ]),
@@ -62,7 +59,7 @@ class MensajeController extends AbstractController
             ->getRepository(Mensaje::class)
             ->findBy(array('bandeja' => 1, 'remitente' => $this->getUser()), array('fecha' => 'DESC'));
 
-        return new JsonResponse(array(
+        return $this->json(array(
             'messages' => $this->renderView('mensaje/_table.html.twig', [
                 'mensajes' => $mensajes
             ]),
@@ -90,7 +87,7 @@ class MensajeController extends AbstractController
         if ($count > 50)
             $count = '+50';
 
-        return new JsonResponse(array(
+        return $this->json(array(
             'html' => $this->renderView('mensaje/_notify.html.twig', [
                 'mensajes' => $mensajes
             ]),
@@ -125,7 +122,7 @@ class MensajeController extends AbstractController
                     $email->sendEmail($this->getUser()->getEmail(), $value->getEmail(), $clone->getAsunto(), $clone->getDescripcion());
                 }
                 $em->flush();
-                return new JsonResponse(['mensaje' => 'El mensaje fue registrado satisfactoriamente',
+                return $this->json(['mensaje' => 'El mensaje fue registrado satisfactoriamente',
                     'descripcion' => $mensaje->getDescripcion(),
                     'fecha' => $mensaje->getFecha()->format('d-m-Y H:i'),
                     'id' => $mensaje->getId()
@@ -134,7 +131,7 @@ class MensajeController extends AbstractController
                 $page = $this->renderView('mensaje/_form.html.twig', array(
                     'form' => $form->createView(),
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('mensaje/_new.html.twig', [
@@ -168,6 +165,6 @@ class MensajeController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($mensaje);
         $em->flush();
-        return new JsonResponse(array('mensaje' => 'El mensaje fue elminado satisfactoriamente'));
+        return $this->json(array('mensaje' => 'El mensaje fue elminado satisfactoriamente'));
     }
 }

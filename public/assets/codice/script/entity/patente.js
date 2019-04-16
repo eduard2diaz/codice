@@ -150,6 +150,17 @@ var patente = function () {
         });
     }
 
+    var personalizarUploadFile=function(){
+        $('body').on('click','button#patente_file',function(){
+            $('input#patente_id_file').click();
+        });
+
+        $('body').on('change','input#patente_id_file',function(){
+            var fileName = document.getElementById("patente_id_file").files[0].name;
+            $('span.custom-file-control').addClass("selected").html(fileName);
+        })
+    }
+    
     return {
         init: function () {
             $().ready(function () {
@@ -163,6 +174,7 @@ var patente = function () {
             $().ready(function () {
                     configurarFormulario();
                     newAction();
+                    personalizarUploadFile();
                 }
             );
         },

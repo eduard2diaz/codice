@@ -108,9 +108,8 @@ var norma = function () {
                 'norma[id][file]': {required: true},
                 'norma[id][resumen]': {required: true},
                 'norma[id][estado]': {required: true},
-
                 'norma[noRegistro]': {required: true},
-                'norma[paginas]': {required: true},
+                'norma[paginas]': {required: true, min: 1},
                 'norma[tipoNorma]': {required: true},
             }
         });
@@ -151,6 +150,17 @@ var norma = function () {
         });
     }
 
+    var personalizarUploadFile=function(){
+        $('body').on('click','button#norma_file',function(){
+            $('input#norma_id_file').click();
+        });
+
+        $('body').on('change','input#norma_id_file',function(){
+            var fileName = document.getElementById("norma_id_file").files[0].name;
+            $('span.custom-file-control').addClass("selected").html(fileName);
+        })
+    }
+
     return {
         init: function () {
             $().ready(function () {
@@ -164,6 +174,7 @@ var norma = function () {
             $().ready(function () {
                     configurarFormulario();
                     newAction();
+                    personalizarUploadFile();
                 }
             );
         },

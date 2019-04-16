@@ -267,7 +267,7 @@ class Publicacion
     /**
      * @Assert\Callback
      */
-    public function comprobarCargo(ExecutionContextInterface $context)
+    public function validar(ExecutionContextInterface $context)
     {
         if (null==$this->getAutor()) {
             $context->setNode($context, 'autor', null, 'data.autor');

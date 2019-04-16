@@ -24,7 +24,7 @@ class LibroType extends AbstractType
     {
         $builder
             ->add('volumen',TextType::class,['required'=>true,'attr'=>['class'=>'form-control']])
-            ->add('numero',IntegerType::class,['label'=>'Número','required'=>true,'attr'=>['class'=>'form-control']])
+            ->add('numero',TextType::class,['label'=>'Número','required'=>true,'attr'=>['class'=>'form-control']])
             ->add('serie',TextType::class,['required'=>true,'attr'=>['class'=>'form-control']])
             ->add('paginas',IntegerType::class,['label'=>'Páginas','required'=>true,'attr'=>['class'=>'form-control']])
             ->add('isbn',TextType::class,['label'=>'ISBN','required'=>true,'attr'=>['class'=>'form-control']])

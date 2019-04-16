@@ -150,6 +150,17 @@ var tesis = function () {
         });
     }
 
+    var personalizarUploadFile=function(){
+        $('body').on('click','button#tesis_file',function(){
+            $('input#tesis_id_file').click();
+        });
+
+        $('body').on('change','input#tesis_id_file',function(){
+            var fileName = document.getElementById("tesis_id_file").files[0].name;
+            $('span.custom-file-control').addClass("selected").html(fileName);
+        })
+    }
+
     return {
         init: function () {
             $().ready(function () {
@@ -163,6 +174,7 @@ var tesis = function () {
             $().ready(function () {
                     configurarFormulario();
                     newAction();
+                    personalizarUploadFile();
                 }
             );
         },

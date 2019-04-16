@@ -108,12 +108,11 @@ var libro = function () {
                 'libro[id][file]': {required: true},
                 'libro[id][resumen]': {required: true},
                 'libro[id][estado]': {required: true},
-
                 'libro[editorial]': {required: true},
                 'libro[volumen]': {required: true},
                 'libro[numero]': {required: true},
                 'libro[serie]': {required: true},
-                'libro[paginas]': {required: true},
+                'libro[paginas]': {required: true, min: 1},
                 'libro[isbn]': {required: true},
             }
         });
@@ -154,6 +153,17 @@ var libro = function () {
         });
     }
 
+    var personalizarUploadFile=function(){
+        $('body').on('click','button#libro_file',function(){
+            $('input#libro_id_file').click();
+        });
+
+        $('body').on('change','input#libro_id_file',function(){
+            var fileName = document.getElementById("libro_id_file").files[0].name;
+            $('span.custom-file-control').addClass("selected").html(fileName);
+        })
+    }
+
     return {
         init: function () {
             $().ready(function () {
@@ -167,6 +177,7 @@ var libro = function () {
             $().ready(function () {
                     configurarFormulario();
                     newAction();
+                    personalizarUploadFile();
                 }
             );
         },

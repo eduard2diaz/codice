@@ -4,14 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Autor;
 use App\Entity\Premio;
-use App\Entity\Publicacion;
 use App\Form\PremioType;
 use App\Services\NotificacionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/premio")
@@ -64,19 +62,19 @@ class PremioController extends AbstractController
                 $entityManager->persist($premio);
                 $entityManager->flush();
                 $this->addFlash('success', 'El premio fue registrado satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('premio_index', ['id' => $autor->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('premio_index', ['id' => $autor->getId()])]);
             } else {
                 $page = $this->renderView('premio/_form.html.twig', array(
                     'form' => $form->createView(),
+                    'premio' => $premio,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
 
         return $this->render('premio/_new.html.twig', [
             'premio' => $premio,
             'form' => $form->createView(),
-
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -91,7 +89,6 @@ class PremioController extends AbstractController
     {
         return $this->render('premio/show.html.twig', [
             'premio' => $premio,
-
             'user_id' => $premio->getId()->getAutor()->getId(),
             'user_foto' => null != $premio->getId()->getAutor()->getRutaFoto() ? $premio->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $premio->getId()->getAutor()->__toString(),
@@ -119,13 +116,14 @@ class PremioController extends AbstractController
                     $notificacionService->nuevaNotificacion($premio->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $premio->getId()->getEstadoString() . '" tu premio ' . $premio->getId()->getTitulo());
 
                 $this->addFlash('success', 'El premio fue actualizado satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('premio_index', ['id' => $premio->getId()->getAutor()->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('premio_index', ['id' => $premio->getId()->getAutor()->getId()])]);
             } else {
                 $page = $this->renderView('premio/_form.html.twig', array(
                     'form' => $form->createView(),
                     'button_action' => 'Actualizar',
+                    'premio' => $premio,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('premio/_new.html.twig', [
@@ -133,7 +131,6 @@ class PremioController extends AbstractController
             'form' => $form->createView(),
             'button_action' => 'Actualizar',
             'form_title' => 'Editar premio',
-
             'user_id' => $premio->getId()->getAutor()->getId(),
             'user_foto' => null != $premio->getId()->getAutor()->getRutaFoto() ? $premio->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $premio->getId()->getAutor()->__toString(),
@@ -144,7 +141,7 @@ class PremioController extends AbstractController
     /**
      * @Route("/{id}/delete", name="premio_delete")
      */
-    public function delete(Request $request, Premio $premio, NotificacionService $notificacionService): Response
+    public function delete(Request $request, Premio $premio): Response
     {
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
@@ -154,6 +151,6 @@ class PremioController extends AbstractController
         $entityManager->remove($premio->getId());
         $entityManager->flush();
 
-        return new JsonResponse(array('mensaje' => 'El premio fue eliminado satisfactoriamente'));
+        return $this->json(array('mensaje' => 'El premio fue eliminado satisfactoriamente'));
     }
 }

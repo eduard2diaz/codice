@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use App\Entity\Autor;
+use App\Entity\Notificacion;
 use App\Entity\Publicacion;
 use App\Entity\Articulo;
 use App\Entity\Encuentro;
@@ -37,48 +38,83 @@ class PublicacionSubscriber implements EventSubscriber
 
     public function prePersist(LifecycleEventArgs $args)
     {
-
         $entity = $args->getEntity();
-        $em = $args->getEntityManager();
         if ($entity instanceof Publicacion) {
             $entity->Upload($this->getServiceContainer()->getParameter('storage_directory'));
-            $notificacionService = $this->getServiceContainer()->get('app.notificacion_service');
 
             if ($entity->getAutor()->getJefe() == null)
                 $entity->setEstado(1);
+        }
+    }
 
-            if ($entity->getEstado() == 1) {
-                foreach ($entity->getAutor()->getSeguidores() as $seguidor) {
-                    $notificacionService->nuevaNotificacion($seguidor->getId(), $entity->getAutor()->getNombre() . ' ha publicado "' . $entity->getTitulo() . '"');
+    public function postPersist(LifecycleEventArgs $args)
+    {
+        $entity = $args->getEntity();
+        $em = $args->getEntityManager();
+        if ($entity instanceof Publicacion) {
+            $notificacionService = $this->getServiceContainer()->get('app.notificacion_service');
+            $seguidores=$this->obtenerSeguidores($entity->getAutor()->getId());
+
+            if ($entity->getEstado() == 1 && count($seguidores)>0) {
+                $descripcion=$entity->getAutor()->getNombre() . ' ha publicado "' . $entity->getTitulo() . '"';
+                $fecha=new \DateTime();
+                foreach ($seguidores as $seguidor) {
+                    if($entity->getAutor()->getJefe() != null && $seguidor['id']==$entity->getAutor()->getJefe()->getId())
+                        continue;
+
+                    $seguidorObj=$em->getRepository(Autor::class)->find($seguidor['id']);
+                    if(!$seguidorObj)
+                        continue;
+
+                    $notificacion=new Notificacion();
+                    $notificacion->setDestinatario($seguidorObj);
+                    $notificacion->setDescripcion($descripcion);
+                    $notificacion->setFecha($fecha);
+                    $em->persist($notificacion);
                 }
+                $em->flush();
             }
 
             $currentUser = $this->getServiceContainer()->get('security.token_storage')->getToken()->getUser();
             if ($currentUser->getId() == $entity->getAutor()->getId()) {
                 if ($entity->getAutor()->getJefe() != null)
-                    $notificacionService->nuevaNotificacion($entity->getAutor()->getJefe()->getId(), "El usuario " . $currentUser->__toString() . " publicó su encuentro " . $entity->getTitulo());
+                    $notificacionService->nuevaNotificacion($entity->getAutor()->getJefe()->getId(), "El usuario " . $currentUser->__toString() . " publicó " . $entity->getTitulo());
             } else
-                $notificacionService->nuevaNotificacion($entity->getAutor()->getId(), "El usuario " . $currentUser->__toString() . " ha publicado tu encuentro " . $entity->getTitulo());
-
+                $notificacionService->nuevaNotificacion($entity->getAutor()->getId(), "El usuario " . $currentUser->__toString() . " ha registrado tu publicación " . $entity->getTitulo());
         }
-
     }
 
     public function preUpdate(LifecycleEventArgs $args)
     {
+        $entity = $args->getEntity();
+        if ($entity instanceof Publicacion && $entity->getAutor()->getJefe() == null)
+                $entity->setEstado(1);
+    }
 
+    public function postUpdate(LifecycleEventArgs $args)
+    {
         $entity = $args->getEntity();
         $em = $args->getEntityManager();
         if ($entity instanceof Publicacion) {
-            $notificacionService = $this->getServiceContainer()->get('app.notificacion_service');
+                $seguidores=$this->obtenerSeguidores($entity->getAutor()->getId());
 
-            if ($entity->getAutor()->getJefe() == null)
-                $entity->setEstado(1);
+            if ($entity->getEstado() == 1 && count($seguidores)>0) {
+                $descripcion=$entity->getAutor()->getNombre() . ' ha actualizado la publicación "' . $entity->getTitulo() . '"';
+                $fecha=new \DateTime();
+                foreach ($seguidores as $seguidor) {
+                    if($entity->getAutor()->getJefe() != null && $seguidor['id']==$entity->getAutor()->getJefe()->getId())
+                        continue;
 
-            if ($entity->getEstado() == 1) {
-                foreach ($entity->getAutor()->getSeguidores() as $seguidor) {
-                    $notificacionService->nuevaNotificacion($seguidor->getId(), $entity->getAutor()->getNombre() . ' ha actualizado su publicación "' . $entity->getTitulo() . '"');
+                    $seguidorObj=$em->getRepository(Autor::class)->find($seguidor['id']);
+                    if(!$seguidorObj)
+                        continue;
+                    $notificacion=new Notificacion();
+                    $notificacion->setDestinatario($seguidorObj);
+                    $notificacion->setDescripcion($descripcion);
+                    $notificacion->setFecha($fecha);
+                    $em->persist($notificacion);
                 }
+                $em->flush();
             }
         }
     }
@@ -97,19 +133,28 @@ class PublicacionSubscriber implements EventSubscriber
 
             if ($currentUser->getId() == $entity->getAutor()->getId()) {
                 if ($entity->getAutor()->getJefe() != null)
-                    $notificacionService->nuevaNotificacion($entity->getAutor()->getJefe()->getId(), "La usuario " . $currentUser->__toString() . " eliminó su articulo " . $entity->getTitulo());
+                    $notificacionService->nuevaNotificacion($entity->getAutor()->getJefe()->getId(), "El usuario " . $currentUser->__toString() . " eliminó su publicación " . $entity->getTitulo());
             } else
-                $notificacionService->nuevaNotificacion($entity->getAutor()->getId(), "El usuario " . $currentUser->__toString() . " ha eliminado tu articulo " . $entity->getTitulo());
+                $notificacionService->nuevaNotificacion($entity->getAutor()->getId(), "El usuario " . $currentUser->__toString() . " ha eliminado tu publicación " . $entity->getTitulo());
 
 
         }
+    }
+
+    private function obtenerSeguidores($id){
+        $em=$this->getServiceContainer()->get('doctrine')->getManager();
+        $consulta=$em->createQuery('SELECT s.id FROM App:Autor a JOIN a.seguidores s WHERE a.id= :id');
+        $consulta->setParameter('id',$id);
+        return $consulta->getResult();
     }
 
     public function getSubscribedEvents()
     {
         return [
             'prePersist',
+            'postPersist',
             'preUpdate',
+            'postUpdate',
             'preRemove',
         ];
     }

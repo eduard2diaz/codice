@@ -95,12 +95,12 @@ class Tesis
     public function validate(ExecutionContextInterface $context)
     {
         if (null == $this->getInstitucion()) {
-            $context->setNode($context, 'area', null, 'data.institucion');
+            $context->setNode($context, 'institucion', null, 'data.institucion');
             $context->addViolation('Seleccione la institución');
         }
 
         if (null == $this->getTipoTesis()) {
-            $context->setNode($context, 'area', null, 'data.tipoTesis');
+            $context->setNode($context, 'tipoTesis', null, 'data.tipoTesis');
             $context->addViolation('Seleccione el tipo de tesis');
         }
     }

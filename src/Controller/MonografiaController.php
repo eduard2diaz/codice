@@ -65,18 +65,18 @@ class MonografiaController extends AbstractController
                 $entityManager->persist($monografia);
                 $entityManager->flush();
                 $this->addFlash('success', 'La monografía fue registrada satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('monografia_index', ['id' => $autor->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('monografia_index', ['id' => $autor->getId()])]);
             } else {
                 $page = $this->renderView('monografia/_form.html.twig', array(
                     'form' => $form->createView(),
+                    'monografia' => $monografia,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('monografia/_new.html.twig', [
             'monografia' => $monografia,
             'form' => $form->createView(),
-
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -91,7 +91,6 @@ class MonografiaController extends AbstractController
     {
         return $this->render('monografia/show.html.twig', [
             'monografia' => $monografia,
-
             'user_id' => $monografia->getId()->getAutor()->getId(),
             'user_foto' => null != $monografia->getId()->getAutor()->getRutaFoto() ? $monografia->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $monografia->getId()->getAutor()->__toString(),
@@ -119,13 +118,14 @@ class MonografiaController extends AbstractController
                     $notificacionService->nuevaNotificacion($monografia->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $monografia->getId()->getEstadoString() . '" tu monografia ' . $monografia->getId()->getTitulo());
 
                 $this->addFlash('success', 'La monografía fue actualizada satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('monografia_index', ['id' => $monografia->getId()->getAutor()->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('monografia_index', ['id' => $monografia->getId()->getAutor()->getId()])]);
             } else {
                 $page = $this->renderView('monografia/_form.html.twig', array(
                     'form' => $form->createView(),
                     'button_action' => 'Actualizar',
+                    'monografia' => $monografia,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('monografia/_new.html.twig', [
@@ -133,7 +133,6 @@ class MonografiaController extends AbstractController
             'form' => $form->createView(),
             'button_action' => 'Actualizar',
             'form_title' => 'Editar monografia',
-
             'user_id' => $monografia->getId()->getAutor()->getId(),
             'user_foto' => null != $monografia->getId()->getAutor()->getRutaFoto() ? $monografia->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $monografia->getId()->getAutor()->__toString(),
@@ -144,7 +143,7 @@ class MonografiaController extends AbstractController
     /**
      * @Route("/{id}/delete", name="monografia_delete")
      */
-    public function delete(Request $request, Monografia $monografia, NotificacionService $notificacionService): Response
+    public function delete(Request $request, Monografia $monografia): Response
     {
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
@@ -154,6 +153,6 @@ class MonografiaController extends AbstractController
         $entityManager->remove($monografia->getId());
         $entityManager->flush();
 
-        return new JsonResponse(array('mensaje' => 'La monografia fue eliminada satisfactoriamente'));
+        return $this->json(array('mensaje' => 'La monografia fue eliminada satisfactoriamente'));
     }
 }

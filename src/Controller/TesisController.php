@@ -65,18 +65,18 @@ class TesisController extends AbstractController
                 $entityManager->persist($tesis);
                 $entityManager->flush();
                 $this->addFlash('success', 'La tesis fue registrada satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('tesis_index', ['id' => $autor->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('tesis_index', ['id' => $autor->getId()])]);
             } else {
                 $page = $this->renderView('tesis/_form.html.twig', array(
                     'form' => $form->createView(),
+                    'tesis' => $tesis,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('tesis/_new.html.twig', [
             'tesis' => $tesis,
             'form' => $form->createView(),
-
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -91,7 +91,6 @@ class TesisController extends AbstractController
     {
         return $this->render('tesis/show.html.twig', [
             'tesis' => $tesis,
-
             'user_id' => $tesis->getId()->getAutor()->getId(),
             'user_foto' => null != $tesis->getId()->getAutor()->getRutaFoto() ? $tesis->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $tesis->getId()->getAutor()->__toString(),
@@ -119,13 +118,14 @@ class TesisController extends AbstractController
                     $notificacionService->nuevaNotificacion($tesis->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $tesis->getId()->getEstadoString() . '" tu tesis ' . $tesis->getId()->getTitulo());
 
                 $this->addFlash('success', 'La tesis fue actualizado satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('tesis_index', ['id' => $tesis->getId()->getAutor()->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('tesis_index', ['id' => $tesis->getId()->getAutor()->getId()])]);
             } else {
                 $page = $this->renderView('tesis/_form.html.twig', array(
                     'form' => $form->createView(),
                     'button_action' => 'Actualizar',
+                    'tesis' => $tesis,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('tesis/_new.html.twig', [
@@ -154,6 +154,6 @@ class TesisController extends AbstractController
         $entityManager->remove($tesis->getId());
         $entityManager->flush();
 
-        return new JsonResponse(array('mensaje' => 'La tesis fue eliminada satisfactoriamente'));
+        return $this->json(array('mensaje' => 'La tesis fue eliminada satisfactoriamente'));
     }
 }

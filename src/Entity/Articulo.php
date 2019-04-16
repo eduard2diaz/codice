@@ -5,47 +5,54 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Articulo
  *
  * @ORM\Table(name="articulo", indexes={@ORM\Index(name="IDX_69E94E91A94F1646", columns={"revista"}), @ORM\Index(name="IDX_69E94E91BF2C1458", columns={"tipo_articulo"})})
  * @ORM\Entity
+ * @UniqueEntity("doi")
+ * @UniqueEntity("issn")
  */
 class Articulo
 {
     /**
      * @var string|null
      *
-     * @ORM\Column(name="volumen", type="string", nullable=true)
+     * @ORM\Column(name="volumen", type="string", nullable=false)
      */
     private $volumen;
 
     /**
      * @var int|null
      *
-     * @ORM\Column(name="paginas", type="integer", nullable=true)
+     * @ORM\Column(name="paginas", type="integer", nullable=false)
+     * @Assert\Range(
+     *      min = 1,
+     * )
      */
     private $paginas;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="numero", type="string", nullable=true)
+     * @ORM\Column(name="numero", type="string", nullable=false)
      */
     private $numero;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="doi", type="string", nullable=true)
+     * @ORM\Column(name="doi", type="string", nullable=false)
      */
     private $doi;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="issn", type="string", nullable=true)
+     * @ORM\Column(name="issn", type="string", nullable=false)
+     * @Assert\Issn
      */
     private $issn;
 
@@ -192,12 +199,12 @@ class Articulo
     public function validate(ExecutionContextInterface $context)
     {
         if (null == $this->getRevista()) {
-            $context->setNode($context, 'area', null, 'data.revista');
+            $context->setNode($context, 'revista', null, 'data.revista');
             $context->addViolation('Seleccione la revista');
         }
 
         if (null == $this->getTipoArticulo()) {
-            $context->setNode($context, 'area', null, 'data.tipoArticulo');
+            $context->setNode($context, 'tipoArticulo', null, 'data.tipoArticulo');
             $context->addViolation('Seleccione el tipo de artículo');
         }
     }

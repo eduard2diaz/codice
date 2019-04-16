@@ -65,18 +65,18 @@ class NormaController extends AbstractController
                 $entityManager->persist($norma);
                 $entityManager->flush();
                 $this->addFlash('success', 'La norma fue registrada satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('norma_index', ['id' => $autor->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('norma_index', ['id' => $autor->getId()])]);
             } else {
                 $page = $this->renderView('norma/_form.html.twig', array(
                     'form' => $form->createView(),
+                    'norma' => $norma,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('norma/_new.html.twig', [
             'norma' => $norma,
             'form' => $form->createView(),
-
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -91,7 +91,6 @@ class NormaController extends AbstractController
     {
         return $this->render('norma/show.html.twig', [
             'norma' => $norma,
-
             'user_id' => $norma->getId()->getAutor()->getId(),
             'user_foto' => null != $norma->getId()->getAutor()->getRutaFoto() ? $norma->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $norma->getId()->getAutor()->__toString(),
@@ -119,13 +118,14 @@ class NormaController extends AbstractController
                     $notificacionService->nuevaNotificacion($norma->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $norma->getId()->getEstadoString() . '" tu norma ' . $norma->getId()->getTitulo());
 
                 $this->addFlash('success', 'La norma fue actualizada satisfactoriamente');
-                return new JsonResponse(['ruta' => $this->generateUrl('norma_index', ['id' => $norma->getId()->getAutor()->getId()])]);
+                return $this->json(['ruta' => $this->generateUrl('norma_index', ['id' => $norma->getId()->getAutor()->getId()])]);
             } else {
                 $page = $this->renderView('norma/_form.html.twig', array(
                     'form' => $form->createView(),
                     'button_action' => 'Actualizar',
+                    'norma' => $norma,
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('norma/_new.html.twig', [
@@ -133,7 +133,6 @@ class NormaController extends AbstractController
             'form' => $form->createView(),
             'button_action' => 'Actualizar',
             'form_title' => 'Editar norma',
-
             'user_id' => $norma->getId()->getAutor()->getId(),
             'user_foto' => null != $norma->getId()->getAutor()->getRutaFoto() ? $norma->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $norma->getId()->getAutor()->__toString(),
@@ -154,6 +153,6 @@ class NormaController extends AbstractController
         $entityManager->remove($norma->getId());
         $entityManager->flush();
 
-        return new JsonResponse(array('mensaje' => 'La norma fue eliminada satisfactoriamente'));
+        return $this->json(array('mensaje' => 'La norma fue eliminada satisfactoriamente'));
     }
 }

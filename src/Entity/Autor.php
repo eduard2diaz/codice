@@ -500,7 +500,7 @@ class Autor implements UserInterface
     {
         if (!$this->seguidor->contains($seguidor)) {
             $this->seguidor[] = $seguidor;
-            $seguidor->addSeguidore($this);
+            $seguidor->addSeguidores($this);
         }
 
         return $this;

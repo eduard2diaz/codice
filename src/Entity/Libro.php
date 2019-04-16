@@ -5,12 +5,14 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Libro
  *
  * @ORM\Table(name="libro", indexes={@ORM\Index(name="IDX_5799AD2BCCF1F1BA", columns={"editorial"})})
  * @ORM\Entity
+ * @UniqueEntity("isbn")
  */
 class Libro
 {
@@ -39,6 +41,9 @@ class Libro
      * @var int|null
      *
      * @ORM\Column(name="paginas", type="integer", nullable=false)
+     * @Assert\Range(
+     *      min = 1,
+     * )
      */
     private $paginas;
 
@@ -46,6 +51,7 @@ class Libro
      * @var string|null
      *
      * @ORM\Column(name="isbn", type="string", nullable=false)
+     * @Assert\Isbn()
      */
     private $isbn;
 

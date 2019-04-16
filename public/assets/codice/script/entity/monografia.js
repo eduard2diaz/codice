@@ -108,9 +108,8 @@ var monografia = function () {
                 'monografia[id][file]': {required: true},
                 'monografia[id][resumen]': {required: true},
                 'monografia[id][estado]': {required: true},
-
                 'monografia[isbn]': {required: true},
-                'monografia[paginas]': {required: true},
+                'monografia[paginas]': {required: true, min:1},
                 'monografia[cenda]': {required: true},
                 'monografia[number]': {required: true},
             }
@@ -150,6 +149,17 @@ var monografia = function () {
         });
     }
 
+    var personalizarUploadFile=function(){
+        $('body').on('click','button#monografia_file',function(){
+            $('input#monografia_id_file').click();
+        });
+
+        $('body').on('change','input#monografia_id_file',function(){
+            var fileName = document.getElementById("monografia_id_file").files[0].name;
+            $('span.custom-file-control').addClass("selected").html(fileName);
+        })
+    }
+    
     return {
         init: function () {
             $().ready(function () {
@@ -163,6 +173,7 @@ var monografia = function () {
             $().ready(function () {
                     configurarFormulario();
                     newAction();
+                    personalizarUploadFile();
                 }
             );
         },

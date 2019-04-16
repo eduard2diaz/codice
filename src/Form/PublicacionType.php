@@ -24,7 +24,7 @@ class PublicacionType extends AbstractType
                 'autocomplete' => 'off',
                 'class' => 'form-control input-small'
             )))
-            ->add('file', FileType::class, array('required' => true))
+            ->add('file', FileType::class, array('label'=>' ','required' => true,'attr'=>['style' => 'display:none',]))
         ;
         $builder->get('fechaCaptacion')
             ->addModelTransformer(new DatetoStringTransformer());

@@ -31,7 +31,7 @@ class BalanceAnualType extends AbstractType
             $form = $obj->getForm();
             $data = $obj->getData();
             if (null == $data->getId())
-                $form->add('file', FileType::class, array('label'=>'Archivo','required' => true));
+                $form->add('file', FileType::class, array('label'=>' ','required' => true,'attr'=>['style' => 'display:none',]));
         });
 
         $builder->get('fecha')

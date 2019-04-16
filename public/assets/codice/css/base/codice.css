@@ -235,3 +235,17 @@ header span.m-dropdown__arrow {
 h4, h4.m-form__section{
     font-size: 1.2rem;
 }
+
+/*Inicio de la personalizacion de los botones de tipo file para los balances y las publicaciones*/
+span.custom-file-control:lang(en)::before {
+    content: "Seleccione un archivo...";
+}
+
+span.custom-file-control.selected:lang(en)::before {
+    content: "" !important;
+}
+
+span.custom-file-control {
+    white-space: nowrap;
+}
+/*Fin de la personalizacion de los botones de tipo file para los balances y las publicaciones*/

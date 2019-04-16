@@ -4,41 +4,46 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Monografia
  *
  * @ORM\Table(name="monografia")
  * @ORM\Entity
+ * @UniqueEntity("isbn")
  */
 class Monografia
 {
     /**
      * @var string|null
      *
-     * @ORM\Column(name="isbn", type="string", nullable=true)
+     * @ORM\Column(name="isbn", type="string", nullable=false)
+     * @Assert\Isbn()
      */
     private $isbn;
 
     /**
      * @var int|null
      *
-     * @ORM\Column(name="paginas", type="integer", nullable=true)
+     * @ORM\Column(name="paginas", type="integer", nullable=false)
+     * @Assert\Range(
+     *      min = 1,
+     * )
      */
     private $paginas;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="cenda", type="string", nullable=true)
+     * @ORM\Column(name="cenda", type="string", nullable=false)
      */
     private $cenda;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="number", type="string", nullable=true)
+     * @ORM\Column(name="number", type="string", nullable=false)
      */
     private $number;
 

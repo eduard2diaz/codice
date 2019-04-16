@@ -4,13 +4,10 @@ namespace App\Controller;
 
 use App\Entity\BalanceAnual;
 use App\Form\BalanceAnualType;
-use App\Repository\BalanceAnualRepository;
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/balanceanual")
@@ -54,7 +51,7 @@ class BalanceAnualController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($balance);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El balance fue registrado satisfactoriamente',
+                return $this->json(array('mensaje' => 'El balance fue registrado satisfactoriamente',
                     'nombre' => $balance->getNombre(),
                     'institucion' => $balance->getInstitucion()->getNombre(),
                     'usuario' => $this->getUser()->getNombre(),
@@ -64,7 +61,7 @@ class BalanceAnualController extends AbstractController
                 $page = $this->renderView('balance_anual/_form.html.twig', array(
                     'form' => $form->createView(),
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('balance_anual/_new.html.twig', [
@@ -87,8 +84,6 @@ class BalanceAnualController extends AbstractController
         ]);
     }
 
-
-
     /**
      * @Route("/{id}/edit", name="balance_anual_edit", methods={"GET","POST"},options={"expose"=true})
      */
@@ -106,7 +101,7 @@ class BalanceAnualController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($balance);
                 $em->flush();
-                return new JsonResponse(array('mensaje' => 'El balance fue actualizado satisfactoriamente',
+                return $this->json(array('mensaje' => 'El balance fue actualizado satisfactoriamente',
                     'nombre' => $balance->getNombre(),
                     'institucion' => $balance->getInstitucion()->getNombre(),
                     'usuario' => $this->getUser()->getNombre(),
@@ -118,7 +113,7 @@ class BalanceAnualController extends AbstractController
                 $page = $this->renderView('balance_anual/_form.html.twig', array(
                     'form' => $form->createView(),
                 ));
-                return new JsonResponse(array('form' => $page, 'error' => true,));
+                return $this->json(array('form' => $page, 'error' => true,));
             }
 
         return $this->render('balance_anual/_new.html.twig', [
@@ -143,7 +138,7 @@ class BalanceAnualController extends AbstractController
         $entityManager->remove($balanceAnual);
         $entityManager->flush();
 
-        return new JsonResponse(array('mensaje' => 'El balance fue eliminado satisfactoriamente'));
+        return $this->json(array('mensaje' => 'El balance fue eliminado satisfactoriamente'));
     }
 
     /**
