@@ -5,13 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0af83a06-3947-4dda-85cb-b63f11529650" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/codice/img/cards-certifications.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/codice/img/cards-educators.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/codice/img/cards-support.jpg" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/public/assets/codice/css/page/index.css" afterPath="$PROJECT_DIR$/public/assets/codice/css/page/index.css" />
-      <change beforePath="$PROJECT_DIR$/public/assets/codice/script/base/base.js" afterPath="$PROJECT_DIR$/public/assets/codice/script/base/base.js" />
-      <change beforePath="$PROJECT_DIR$/templates/default/index.html.twig" afterPath="$PROJECT_DIR$/templates/default/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5ca6c69860ffe-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5ca6c7bbca8d2-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac43373572-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac49805db1-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac4caa8acb-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac4ec70e57-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac516627d0-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac540035e6-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac5632851e-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac5a494f2a-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac5cb02100-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cad4bde86bbc-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cad6b15b8383-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cad6b2deaae8-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cad6b3dbd40b-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cad6b4e29674-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cb00b431fb97-44927130_736148070051574_4607257675216977920_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cb010c0919f9-37571928_418754225295208_8738905506891956224_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cb3f67ba5ee6-37578093_418754555295175_3270708812419432448_n.jpg" afterPath="" />
     </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,32 +83,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="authenticated.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/codice/script/base/authenticated.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1437">
-              <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
-              <folding>
-                <element signature="e#812#1547#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/assets/codice/script/base/base.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
-              <folding>
-                <marker date="1555402634480" expanded="true" signature="2221:2237" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -366,6 +354,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -438,8 +428,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -548,12 +536,13 @@
       <workItem from="1555366833834" duration="13902000" />
       <workItem from="1555388775318" duration="2395000" />
       <workItem from="1555391656506" duration="5023000" />
-      <workItem from="1555397283637" duration="6090000" />
+      <workItem from="1555397283637" duration="6268000" />
+      <workItem from="1555426269113" duration="58000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="560125000" />
+    <option name="totallyTimeSpent" value="560361000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -566,9 +555,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22995462" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23373677" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3256579" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4276316" sideWeight="0.5030257" order="12" side_tool="true" content_ui="tabs" />
@@ -887,9 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#34#99#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -897,7 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
           <caret line="75" column="24" lean-forward="false" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -908,21 +892,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/codice/img/illu_-_librarye.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/codice/img/illu_-_networke.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/codice/img/group_13e.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/codice/img/illu_-_librarye.png" />
+    <entry file="file://$PROJECT_DIR$/public/assets/codice/img/illu_-_networke.png" />
+    <entry file="file://$PROJECT_DIR$/public/assets/codice/img/group_13e.png" />
     <entry file="file://$PROJECT_DIR$/public/assets/codice/img/x-office-document.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -967,10 +939,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="194" column="43" lean-forward="false" selection-start-line="194" selection-start-column="43" selection-end-line="194" selection-end-column="43" />
-          <folding>
-            <element signature="e#12#36#0#Twig" expanded="false" />
-            <element signature="e#658#663#0#Twig" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -978,7 +946,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="515">
           <caret line="71" column="19" lean-forward="false" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -986,7 +953,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="93" column="40" lean-forward="false" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -994,17 +960,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
           <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/codice/script/base/authenticated.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1437">
-          <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
-          <folding>
-            <element signature="e#812#1547#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1012,9 +967,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
-          <folding>
-            <marker date="1555402634480" expanded="true" signature="2221:2237" ph="..." />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/codice/script/base/authenticated.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1423">
+          <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
         </state>
       </provider>
     </entry>
