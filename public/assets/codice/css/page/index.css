@@ -52,3 +52,22 @@ h1{
     margin: 0 15px 0 0;
     color: #3f4047;
 }
+
+div.background-doc{
+    background-image: url('../../img/cards-certifications.jpg');
+    background-repeat: no-repeat;
+    background-size: 140%;
+}
+div.background-community{
+    background-image: url('../../img/cards-educators.jpg');
+    background-repeat: no-repeat;
+    background-size: 140%;
+}
+div.background-storage{
+    background-image: url('../../img/cards-support.jpg');
+    background-repeat: no-repeat;
+    background-size: 140%;
+}
+p.goal{
+    font-size: 120%;
+}

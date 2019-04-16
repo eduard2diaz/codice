@@ -46,7 +46,7 @@ var base = function () {
     return {
         init:function(){
             internacionalizar();
-           // personalizarToastr();
+            personalizarToastr();
         },
 
         Error: function () {
