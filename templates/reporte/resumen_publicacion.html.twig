@@ -63,7 +63,7 @@
                                             {% if esDirectivo==true %}
                                                 <td>{{ obj['propio'] }}</td>
                                             {% endif %}
-                                            <td>{{ obj['total']==0 ? 0 : obj['total']/total*100 }}</td>
+                                            <td>{{ obj['total']==0 ? 0 : obj['propio']/total*100 }}%</td>
                                         </tr>
                                     {% else %}
                                         <tr>

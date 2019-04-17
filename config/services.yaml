@@ -6,8 +6,6 @@
 parameters:
     locale: 'es'
     storage_directory: '%env(STORAGE_DIRECTORY)%'
-    fos_elastica.host: localhost
-    fos_elastica.port: 9200
 
 services:
     # default configuration for services in *this* file

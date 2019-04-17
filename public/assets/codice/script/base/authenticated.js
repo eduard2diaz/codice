@@ -12,7 +12,7 @@ var authenticated = function () {
                 $('div#notificacion_content').html(data['html']);
             },
             error: function () {
-                base.Error();
+         //       base.Error();
             }
         });
     }
@@ -55,7 +55,7 @@ var authenticated = function () {
                 $('div#mensaje_content').html(data['html']);
             },
             error: function () {
-                base.Error();
+             //   base.Error();
             },
             complete: function () {
             }

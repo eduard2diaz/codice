@@ -78,7 +78,7 @@ class PublicacionController extends AbstractController
             $consulta->setMaxResults(2);
             //Obtengo el listado de usuarios
             $usuarios = $consulta->getResult();
-            $consulta = $em->createQuery('SELECT p.id, p.titulo FROM App:Publicacion p WHERE p.titulo like :parametro');
+            $consulta = $em->createQuery('SELECT p.id, p.titulo FROM App:Publicacion p WHERE p.estado=1 AND p.titulo like :parametro');
             $consulta->setParameter('parametro', '%' . $query . '%');
             $consulta->setMaxResults(3);
             //Obtengo el listado de publicaciones
@@ -91,7 +91,7 @@ class PublicacionController extends AbstractController
         $consulta->setParameter('parametro', '%' . $query . '%');
         $usuarios = $consulta->getResult();
 
-        $consulta = $em->createQuery('SELECT p.id, p.titulo, a.nombre as autor, 0 as esAutor FROM App:Publicacion p JOIN p.autor a WHERE p.titulo like :parametro');
+        $consulta = $em->createQuery('SELECT p.id, p.titulo, a.nombre as autor, 0 as esAutor FROM App:Publicacion p JOIN p.autor a WHERE p.estado=1 AND p.titulo like :parametro');
         $consulta->setParameter('parametro', '%' . $query . '%');
         $publicaciones = $consulta->getResult();
 

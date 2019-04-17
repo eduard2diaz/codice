@@ -34,11 +34,11 @@ class ReporteController extends AbstractController
         if ($esDirectivo==true) {
             $subordinados = $areaService->subordinados($autor);
             if(count($subordinados)==0)
-                $publicaciones = $em->createQuery('SELECT p FROM App:Publicacion p JOIN p.autor a WHERE a.id=:id AND p.fechaCaptacion>= :finicio AND p.fechaCaptacion<= :ffin')
+                $publicaciones = $em->createQuery('SELECT p FROM App:Publicacion p JOIN p.autor a WHERE a.id=:id AND p.estado=1 AND p.fechaCaptacion>= :finicio AND p.fechaCaptacion<= :ffin')
                     ->setParameters(['id' => $autor->getId(), 'finicio' => $finicio, 'ffin' => $ffin])
                     ->getResult();
             else
-                $publicaciones = $em->createQuery('SELECT p FROM App:Publicacion p JOIN p.autor a WHERE (a.id=:id OR a.id IN (:subordinados) ) AND p.fechaCaptacion>= :finicio AND p.fechaCaptacion<= :ffin')
+                $publicaciones = $em->createQuery('SELECT p FROM App:Publicacion p JOIN p.autor a WHERE (a.id=:id OR a.id IN (:subordinados) ) AND p.fechaCaptacion>= :finicio AND p.estado=1 AND p.fechaCaptacion<= :ffin')
                     ->setParameters(['id' => $autor->getId(), 'finicio' => $finicio, 'ffin' => $ffin,'subordinados'=>$subordinados])
                     ->getResult();
 
