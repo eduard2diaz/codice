@@ -99,7 +99,7 @@ class PublicacionController extends AbstractController
             //$consulta,
             array_merge($usuarios,$publicaciones), /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            1 /*limit per page*/
+            10 /*limit per page*/
         );
         return $this->render('publicacion/search_result.html.twig', array('pagination' => $pagination));
 

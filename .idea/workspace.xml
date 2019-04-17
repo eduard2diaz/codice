@@ -6,25 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0af83a06-3947-4dda-85cb-b63f11529650" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5ca6c69860ffe-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5ca6c7bbca8d2-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac43373572-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac49805db1-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac4caa8acb-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac4ec70e57-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac516627d0-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac540035e6-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac5632851e-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac5a494f2a-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5caac5cb02100-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cad4bde86bbc-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cad6b15b8383-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cad6b2deaae8-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cad6b3dbd40b-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cad6b4e29674-17799117_154376035087754_1670734684582411706_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cb00b431fb97-44927130_736148070051574_4607257675216977920_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cb010c0919f9-37571928_418754225295208_8738905506891956224_n.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/archivos/codice-5cb3f67ba5ee6-37578093_418754555295175_3270708812419432448_n.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AutorController.php" afterPath="$PROJECT_DIR$/src/Controller/AutorController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PublicacionController.php" afterPath="$PROJECT_DIR$/src/Controller/PublicacionController.php" />
+      <change beforePath="$PROJECT_DIR$/templates/autor/_sugerencia.html.twig" afterPath="$PROJECT_DIR$/templates/autor/_sugerencia.html.twig" />
     </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,12 +67,31 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="_sugerencia.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/autor/_sugerencia.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AutorController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/AutorController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="116">
+              <caret line="299" column="0" lean-forward="true" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>VIS</find>
-      <find>VISOR</find>
       <find>autor_area</find>
       <find>allow_edit</find>
       <find>autor</find>
@@ -117,6 +120,8 @@
       <find>articulo</find>
       <find>new JsonResponse</find>
       <find>Tota</find>
+      <find>suger</find>
+      <find>id</find>
     </findStrings>
     <replaceStrings>
       <replace>resumen_tabla</replace>
@@ -157,9 +162,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/assets/codice/script/entity/encuentro.js" />
-        <option value="$PROJECT_DIR$/src/Entity/Encuentro.php" />
-        <option value="$PROJECT_DIR$/templates/layout/userprofile.html.twig" />
         <option value="$PROJECT_DIR$/templates/articulo/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/articulo/_form.html.twig" />
         <option value="$PROJECT_DIR$/public/assets/codice/script/entity/articulo.js" />
@@ -198,7 +200,6 @@
         <option value="$PROJECT_DIR$/src/Document/Autor.php" />
         <option value="$PROJECT_DIR$/config/packages/ongr_elasticsearch.yaml" />
         <option value="$PROJECT_DIR$/src/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/PublicacionController.php" />
         <option value="$PROJECT_DIR$/src/Entity/Autor.php" />
         <option value="$PROJECT_DIR$/src/Entity/Usuario.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -208,6 +209,10 @@
         <option value="$PROJECT_DIR$/public/assets/codice/script/entity/area.js" />
         <option value="$PROJECT_DIR$/templates/layout/base.html.twig" />
         <option value="$PROJECT_DIR$/public/assets/codice/script/base/authenticated.js" />
+        <option value="$PROJECT_DIR$/src/Controller/PublicacionController.php" />
+        <option value="$PROJECT_DIR$/templates/autor/_sugerencia.html.twig" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/21a5ae0d-11f3-4170-93e5-e9688da9f413/console.sql" />
+        <option value="$PROJECT_DIR$/src/Controller/AutorController.php" />
       </list>
     </option>
   </component>
@@ -354,87 +359,48 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="archivos" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="codice" type="b2602c69:ProjectViewProjectNode" />
               <item name="codice" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="codice" type="b2602c69:ProjectViewProjectNode" />
               <item name="codice" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="script" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="codice" type="b2602c69:ProjectViewProjectNode" />
               <item name="codice" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="script" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="base" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="codice" type="b2602c69:ProjectViewProjectNode" />
               <item name="codice" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="script" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="entity" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="pedro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pedro" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="codice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="codice" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="layout" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="autor" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -537,12 +503,13 @@
       <workItem from="1555388775318" duration="2395000" />
       <workItem from="1555391656506" duration="5023000" />
       <workItem from="1555397283637" duration="6268000" />
-      <workItem from="1555426269113" duration="58000" />
+      <workItem from="1555426269113" duration="179000" />
+      <workItem from="1555522903847" duration="1413000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="560361000" />
+    <option name="totallyTimeSpent" value="561895000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -555,8 +522,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23373677" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32730263" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2375189" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3256579" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4276316" sideWeight="0.5030257" order="12" side_tool="true" content_ui="tabs" />
@@ -572,7 +541,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730263" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32427844" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -678,27 +646,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Controller/NormaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="614">
-          <caret line="125" column="38" lean-forward="false" selection-start-line="125" selection-start-column="38" selection-end-line="125" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/codice/script/entity/norma.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="176" column="20" lean-forward="false" selection-start-line="176" selection-start-column="20" selection-end-line="176" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Articulo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Norma.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -864,13 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PublicacionController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="77" column="38" lean-forward="false" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -974,6 +914,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1423">
           <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PublicacionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1198">
+          <caret line="101" column="14" lean-forward="false" selection-start-line="101" selection-start-column="14" selection-end-line="101" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/autor/_sugerencia.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/21a5ae0d-11f3-4170-93e5-e9688da9f413/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="183" lean-forward="false" selection-start-line="0" selection-start-column="183" selection-end-line="0" selection-end-column="183" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/AutorController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="299" column="0" lean-forward="true" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

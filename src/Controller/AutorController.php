@@ -294,11 +294,12 @@ class AutorController extends AbstractController
         $id=$this->getUser()->getId();
         $seguidos="$id";
         foreach ($this->getUser()->getSeguidor()->toArray() as $value){
-            $seguidos+=",$value->getId()";
+            $aux=$value->getId();
+            $seguidos.=",$aux";
         }
 
         $conn=$this->getDoctrine()->getConnection();
-        $sql="SELECT a.id, a.nombre, a.ruta_foto as rutafoto, i.nombre as institucion FROM autor as a JOIN institucion i ON a.institucion = i.id WHERE a.id  NOT IN (:lista) ORDER BY random() LIMIT 4";
+        $sql="SELECT a.id, a.nombre, a.ruta_foto as rutafoto, i.nombre as institucion FROM autor as a JOIN institucion i ON a.institucion = i.id WHERE a.id::text  NOT IN (:lista) ORDER BY random() LIMIT 4";
         $statement=$conn->prepare($sql);
         $statement->execute(['lista'=>$seguidos]);
         return $this->render('autor/_sugerencia.html.twig', ['datos' => $statement->fetchAll()]);
