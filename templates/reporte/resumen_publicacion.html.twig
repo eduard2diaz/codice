@@ -19,14 +19,17 @@
                             </div>
                         </div>
                         <div class="m-portlet__head-tools">
-                            <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                            <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm"
+                                role="tablist">
                                 <li class="nav-item m-tabs__item">
-                                    <a class="nav-link m-tabs__link active show" data-toggle="tab" href="#resumen_tabla" role="tab" aria-selected="true">
+                                    <a class="nav-link m-tabs__link active show" data-toggle="tab" href="#resumen_tabla"
+                                       role="tab" aria-selected="true">
                                         <i class="flaticon-grid-menu"></i> Tabla
                                     </a>
                                 </li>
                                 <li class="nav-item m-tabs__item">
-                                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#resumen_grafico" role="tab" aria-selected="false">
+                                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#resumen_grafico"
+                                       role="tab" aria-selected="false">
                                         <i class="flaticon-pie-chart"></i> Gráfico
                                     </a>
                                 </li>
@@ -36,68 +39,109 @@
                     <div class="m-portlet__body">
                         <div class="tab-content">
                             <div class="tab-pane active show" id="resumen_tabla">
-                                <table class="table m-table m-table m-table--head-separator-primary">
-                                    <thead>
-                                    <tr>
-                                        <th>
-                                            Tipo de publicación
-                                        </th>
-                                        <th>
-                                            Total
-                                        </th>
-                                        {% if esDirectivo==true %}
-                                        <th>
-                                            Propio
-                                        </th>
-                                        {% endif %}
-                                        <th>
-                                            Porciento
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for obj in resumen %}
+                                {% if esDirectivo==true %}
+                                    <table class="table m-table m-table m-table--head-separator-primary">
+                                        <thead>
                                         <tr>
-                                            <td>{{ obj['entidad'] }}</td>
-                                            <td>{{ obj['total'] }}</td>
-                                            {% if esDirectivo==true %}
-                                                <td>{{ obj['propio'] }}</td>
-                                            {% endif %}
-                                            <td>{{ obj['total']==0 ? 0 : obj['propio']/total*100 }}%</td>
-                                        </tr>
-                                    {% else %}
-                                        <tr>
-                                            <td colspan="4">No existen publicaciones en el período</td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>
-                                            Tipo de publicación
-                                        </th>
-                                        <th>
-                                            Total
-                                        </th>
-                                        {% if esDirectivo==true %}
+                                            <th>
+                                                Tipo de publicación
+                                            </th>
+                                            <th>
+                                                Total
+                                            </th>
+
                                             <th>
                                                 Propio
                                             </th>
-                                        {% endif %}
-                                        <th>
-                                            Porciento
-                                        </th>
-                                    </tr>
-                                    </tfoot>
-                                </table>
+
+                                            <th>
+                                                Porciento
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for obj in resumen %}
+                                            <tr>
+                                                <td>{{ obj['entidad'] }}</td>
+                                                <td>{{ obj['total'] }}</td>
+                                                <td>{{ obj['propio'] }}</td>
+                                                <td>{{ obj['total']==0 ? 0 : obj['propio']/total*100 }}%</td>
+                                            </tr>
+                                        {% else %}
+                                            <tr>
+                                                <td colspan="4">No existen publicaciones en el período</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th>
+                                                Tipo de publicación
+                                            </th>
+                                            <th>
+                                                Total
+                                            </th>
+                                            <th>
+                                                Propio
+                                            </th>
+                                            <th>
+                                                Porciento
+                                            </th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                {% else %}
+                                    <table class="table m-table m-table m-table--head-separator-primary">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                Tipo de publicación
+                                            </th>
+                                            <th>
+                                                Total
+                                            </th>
+                                            <th>
+                                                Porciento
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for obj in resumen %}
+                                            <tr>
+                                                <td>{{ obj['entidad'] }}</td>
+                                                <td>{{ obj['total'] }}</td>
+                                                <td>{{ obj['total']==0 ? 0 : obj['total']/total*100 }}%</td>
+                                            </tr>
+                                        {% else %}
+                                            <tr>
+                                                <td colspan="4">No existen publicaciones en el período</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th>
+                                                Tipo de publicación
+                                            </th>
+                                            <th>
+                                                Total
+                                            </th>
+                                            <th>
+                                                Porciento
+                                            </th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                {% endif %}
                             </div>
-                            <div class="tab-pane" id="resumen_grafico" class="resumen_grafico" >
+                            <div class="tab-pane" id="resumen_grafico" class="resumen_grafico">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
+                <a class="btn btn-sm btn-success exportar_reporte" data-dismiss="modal"><i class="flaticon-file"></i> Exportar</a>
                 <a class="btn btn-sm btn-metal" data-dismiss="modal"><i class="flaticon-cancel"></i> Cancelar</a>
             </div>
         </div>

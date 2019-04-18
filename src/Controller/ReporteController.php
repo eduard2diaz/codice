@@ -3,11 +3,14 @@
 namespace App\Controller;
 
 use App\Services\AreaService;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
+use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Autor;
+
 
 /**
  * @Route("/reporte")
@@ -30,7 +33,7 @@ class ReporteController extends AbstractController
 
         $resumen = [];
         $total = 0;
-        $esDirectivo=in_array('ROLE_DIRECTIVO', $autor->getRoles());
+        $esDirectivo=in_array('ROLE_DIRECTIVO', $autor->getRoles()) || in_array('ROLE_ADMIN', $autor->getRoles());
         if ($esDirectivo==true) {
             $subordinados = $areaService->subordinados($autor);
             if(count($subordinados)==0)
@@ -71,7 +74,17 @@ class ReporteController extends AbstractController
             }
         }
 
+
+
         return new JsonResponse([
+            'pdf'=>$this->renderView('reporte/resumen_publicacionpdf.html.twig',[
+                'finicio'=>$finicio,
+                'ffin'=>$ffin,
+                'resumen' => $resumen,
+                'total' => $total,
+                'esDirectivo'=>$esDirectivo,
+                'autor'=>$autor->getNombre()
+            ]),
             'html' => $this->renderView('reporte/resumen_publicacion.html.twig', [
                 'resumen' => $resumen,
                 'total' => $total,
@@ -91,5 +104,18 @@ class ReporteController extends AbstractController
             $i++;
         }
         return -1;
+    }
+
+    /**
+     * @Route("/exportar", name="reporte_exportar", options={"expose"=true})
+     */
+    public function exportar(Request $request, Pdf $pdf)
+    {
+        $html=$request->request->get('form');
+
+        return new PdfResponse(
+            $pdf->getOutputFromHtml($html),
+            'Resumen.pdf'
+        );
     }
 }

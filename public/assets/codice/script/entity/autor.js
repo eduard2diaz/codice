@@ -444,6 +444,8 @@ var autor = function () {
                             pieSeries.hiddenState.properties.opacity = 1;
                             pieSeries.hiddenState.properties.endAngle = -90;
                             pieSeries.hiddenState.properties.startAngle = -90;
+                            //Guardo el ultimo reporte realizado
+                            ultimoreporte=data.pdf;
                         }
                     },
                     error: function () {
@@ -488,6 +490,20 @@ var autor = function () {
         });
     }
 
+    var exportarAction = function () {
+        $('div#basicmodal').on('click', 'a.exportar_reporte', function (evento)
+        {
+            evento.preventDefault();
+
+            $.fileDownload(Routing.generate('reporte_exportar'), {
+                data:{
+                    form: ultimoreporte
+                }
+            });
+
+        });
+    }
+
     return {
         init: function () {
             $().ready(function () {
@@ -499,9 +515,11 @@ var autor = function () {
         },
         show: function () {
             $().ready(function () {
+                    var ultimoreporte = null;
                     subscribir();
                     resumenPeriodoLink();
                     autorResumenPeriodoAction();
+                    exportarAction();
                 }
             );
         },
