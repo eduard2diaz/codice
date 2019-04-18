@@ -494,12 +494,14 @@ var autor = function () {
         $('div#basicmodal').on('click', 'a.exportar_reporte', function (evento)
         {
             evento.preventDefault();
-
+            mApp.block("body",
+                {overlayColor: "#000000", type: "loader", state: "success", message: "Descargando..."});
             $.fileDownload(Routing.generate('reporte_exportar'), {
                 data:{
                     form: ultimoreporte
                 }
             });
+            mApp.unblock("body");
 
         });
     }
