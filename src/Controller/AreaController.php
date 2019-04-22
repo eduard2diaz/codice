@@ -71,6 +71,7 @@ class AreaController extends AbstractController
                 return $this->json(['mensaje' => 'El área fue registrada satisfactoriamente',
                     'nombre' => $area->getNombre(),
                     'institucion' => $area->getInstitucion()->getNombre(),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$area->getId())->getValue(),
                     'id' => $area->getId(),
                 ]);
             } else {
@@ -144,7 +145,7 @@ class AreaController extends AbstractController
      */
     public function delete(Request $request, Area $area): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest()  || !$this->isCsrfTokenValid('delete'.$area->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE',$area);

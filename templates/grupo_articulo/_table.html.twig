@@ -24,7 +24,7 @@
                             <i class="flaticon-edit-1"></i> Editar</a>
                     </li>
                     <li class="m-nav__item">
-                        <a class="btn btn-danger btn-sm  eliminar_grupo_articulo" data-href="{{ path('grupo_articulo_delete', { 'id': grupo_articulo.id }) }}">
+                        <a class="btn btn-danger btn-sm  eliminar_grupo_articulo" data-href="{{ path('grupo_articulo_delete', { 'id': grupo_articulo.id }) }}" data-csrf="{{ csrf_token('delete' ~ grupo_articulo.id) }}">
                             <i class="flaticon-delete-1"></i> Eliminar</a>
                     </li>
                 </ul>

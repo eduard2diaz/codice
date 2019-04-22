@@ -143,7 +143,7 @@ class PremioController extends AbstractController
      */
     public function delete(Request $request, Premio $premio): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$premio->getId()->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE', $premio->getId());

@@ -5,7 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
-use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity
@@ -52,7 +52,13 @@ class BalanceAnual
     private $fecha;
 
     /**
-     * @Assert\File()
+     * @Assert\File(
+     * maxSize="20mi",
+     * notReadableMessage = "No se puede leer el archivo",
+     * maxSizeMessage = "El archivo es demasiado grande. El tamaño máximo permitido es 20Mb",
+     * uploadIniSizeErrorMessage = "El archivo es demasiado grande. El tamaño máximo permitido es 20Mb",
+     * uploadFormSizeErrorMessage = "El archivo es demasiado grande. El tamaño máximo permitido es 20Mb",
+     * uploadErrorMessage = "No se puede subir el archivo")
      */
     private $file;
 
@@ -144,29 +150,9 @@ class BalanceAnual
     /**
      * @param mixed $file
      */
-    public function setFile($file): void
+    public function setFile(UploadedFile $file): void
     {
         $this->file = $file;
-    }
-
-    public function Upload($ruta) {
-        if (null === $this->file) {
-            return;
-        }
-        $fs = new Filesystem();
-        $camino = $fs->makePathRelative($ruta, __DIR__);
-        $directorioDestino = __DIR__ . DIRECTORY_SEPARATOR . $camino;
-        $nombreArchivoFoto = uniqid('codice-') . '-' . $this->file->getClientOriginalName();
-        $this->file->move($directorioDestino.DIRECTORY_SEPARATOR, $nombreArchivoFoto);
-        $this->setRutaArchivo($nombreArchivoFoto);
-    }
-
-    public function removeUpload($directorioDestino) {
-        $fs=new Filesystem();
-        $rutaPc = $directorioDestino.DIRECTORY_SEPARATOR.$this->getRutaArchivo();
-        if (null!=$this->getRutaArchivo()  && $fs->exists($rutaPc)) {
-            $fs->remove($rutaPc);
-        }
     }
 
     /**
@@ -174,6 +160,7 @@ class BalanceAnual
      */
     public function validate(ExecutionContextInterface $context)
     {
+        dump($this->getFile());
         if (null==$this->getUsuario())
             $context->addViolation('Seleccione un usuario');
         elseif (null==$this->getInstitucion())

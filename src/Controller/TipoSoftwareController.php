@@ -51,6 +51,7 @@ class TipoSoftwareController extends AbstractController
                 return $this->json(['mensaje' => 'El tipo de software fue registrado satisfactoriamente',
                     'nombre' => $tipo_software->getNombre(),
                     'clasificacion' => $tipo_software->getClasificacion()->getNombre(),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$tipo_software->getId())->getValue(),
                     'id' => $tipo_software->getId(),
                 ]);
             } else {
@@ -109,7 +110,7 @@ class TipoSoftwareController extends AbstractController
      */
     public function delete(Request $request, TipoSoftware $tipo_software): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_software->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();

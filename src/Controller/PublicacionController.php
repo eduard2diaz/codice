@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Publicacion;
+use App\Tools\FileStorageManager;
 use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -48,17 +49,7 @@ class PublicacionController extends AbstractController
     public function descargar(Publicacion $publicacion): Response
     {
         $ruta = $this->getParameter('storage_directory') . DIRECTORY_SEPARATOR . $publicacion->getRutaArchivo();
-
-        if (!file_exists($ruta))
-            throw $this->createNotFoundException();
-
-        $archivo = file_get_contents($ruta);
-        return new Response($archivo, 200, array(
-            'Content-Type' => 'application/force-download',
-            'Content-Transfer-Encoding' => 'binary',
-            'Content-length' => strlen($archivo),
-            'Pragma' => 'no-cache',
-            'Expires' => '0'));
+        return FileStorageManager::Download($ruta);
     }
 
     /**

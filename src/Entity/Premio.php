@@ -95,12 +95,12 @@ class Premio
     public function validate(ExecutionContextInterface $context)
     {
         if (null == $this->getInstitucionConcede()) {
-            $context->setNode($context, 'area', null, 'data.institucionConcede');
+            $context->setNode($context, 'institucionConcede', null, 'data.institucionConcede');
             $context->addViolation('Seleccione la institución que lo concede');
         }
 
         if (null == $this->getTipoPremio()) {
-            $context->setNode($context, 'area', null, 'data.tipoPremio');
+            $context->setNode($context, 'tipoPremio', null, 'data.tipoPremio');
             $context->addViolation('Seleccione el tipo de premio');
         }
     }

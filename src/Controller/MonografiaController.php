@@ -145,7 +145,7 @@ class MonografiaController extends AbstractController
      */
     public function delete(Request $request, Monografia $monografia): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest()|| !$this->isCsrfTokenValid('delete'.$monografia->getId()->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE',$monografia->getId());

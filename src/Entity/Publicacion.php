@@ -8,8 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Filesystem\Filesystem;
 use App\Entity\Autor;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Publicacion
@@ -69,7 +69,13 @@ class Publicacion
     private $autor;
 
     /**
-     * @Assert\File()
+     * @Assert\File(
+     * maxSize="20mi",
+     * notReadableMessage = "No se puede leer el archivo",
+     * maxSizeMessage = "El archivo es demasiado grande. El tamaño máximo permitido es 20Mb",
+     * uploadIniSizeErrorMessage = "El archivo es demasiado grande. El tamaño máximo permitido es 20Mb",
+     * uploadFormSizeErrorMessage = "El archivo es demasiado grande. El tamaño máximo permitido es 20Mb",
+     * uploadErrorMessage = "No se puede subir el archivo")
      */
     private $file;
 
@@ -223,7 +229,7 @@ class Publicacion
      *
      * @param UploadedFile $file
      */
-    public function setFile($file) {
+    public function setFile(UploadedFile $file) {
         $this->file = $file;
     }
 
@@ -234,34 +240,6 @@ class Publicacion
      */
     public function getFile() {
         return $this->file;
-    }
-
-    public function Upload($ruta) {
-        if (null === $this->file) {
-            return;
-        }
-        $fs = new Filesystem();
-        $camino = $fs->makePathRelative($ruta, __DIR__);
-        $directorioDestino = __DIR__ . DIRECTORY_SEPARATOR . $camino;
-        $nombreArchivoFoto = uniqid('codice-') . '-' . $this->file->getClientOriginalName();
-        $this->file->move($directorioDestino.DIRECTORY_SEPARATOR, $nombreArchivoFoto);
-        $this->setRutaArchivo($nombreArchivoFoto);
-    }
-
-    public function actualizarFoto($directorioDestino) {
-
-        if (null !== $this->getFile()) {
-            $this->removeUpload($directorioDestino);
-            $this->Upload($directorioDestino);
-        }
-    }
-
-    public function removeUpload($directorioDestino) {
-        $fs=new Filesystem();
-        $rutaPc = $directorioDestino.DIRECTORY_SEPARATOR.$this->getRutaArchivo();
-        if (null!=$this->getRutaArchivo()  && $fs->exists($rutaPc)) {
-            $fs->remove($rutaPc);
-        }
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Entity\Autor;
 use App\Entity\Institucion;
 use App\Form\AutorType;
 use App\Services\AreaService;
+use App\Tools\FileStorageManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -150,10 +151,11 @@ class AutorController extends AbstractController
                     $autor->setPassword($encoder->encodePassword($autor, $autor->getPassword()));
 
                 if ($autor->getFile() != null) {
-                    if ($autor->getRutaFoto() != null)
-                        $autor->actualizarFoto($ruta);
-                    else
-                        $autor->Upload($ruta);
+                    if ($autor->getRutaFoto() != null){
+                        $rutaArchivo = $ruta . DIRECTORY_SEPARATOR . $autor->getRutaFoto();
+                        FileStorageManager::removeUpload($rutaArchivo);
+                    }
+                        $autor->setRutaFoto(FileStorageManager::Upload($ruta,$autor->getFile()));
                     $autor->setFile(null);
                 }
 
@@ -195,7 +197,7 @@ class AutorController extends AbstractController
      */
     public function delete(Request $request, Autor $autor): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest()  || !$this->isCsrfTokenValid('delete'.$autor->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE', $autor);

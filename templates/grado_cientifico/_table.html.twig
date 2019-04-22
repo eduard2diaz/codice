@@ -24,7 +24,7 @@
                             <i class="flaticon-edit-1"></i> Editar</a>
                     </li>
                     <li class="m-nav__item">
-                        <a class="btn btn-danger btn-sm  eliminar_grado_cientifico" data-href="{{ path('grado_cientifico_delete', { 'id': grado_cientifico.id }) }}">
+                        <a class="btn btn-danger btn-sm  eliminar_grado_cientifico" data-href="{{ path('grado_cientifico_delete', { 'id': grado_cientifico.id }) }}" data-csrf="{{ csrf_token('delete' ~ grado_cientifico.id) }}">
                             <i class="flaticon-delete-1"></i> Eliminar</a>
                     </li>
                 </ul>

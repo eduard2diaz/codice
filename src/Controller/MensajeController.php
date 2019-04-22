@@ -77,9 +77,16 @@ class MensajeController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+		if($this->getUser()->getUltimologout()!=null)
         $mensajes = $this->getDoctrine()->getManager()
             ->createQuery('SELECT m FROM App:Mensaje m JOIN m.propietario p WHERE m.fecha > :fecha AND p.id= :id AND m.bandeja = 0 ORDER By m.fecha DESC')
             ->setParameters(array('id' => $this->getUser()->getId(), 'fecha' => $this->getUser()->getUltimologout()))
+            ->setMaxResults(5)
+            ->getResult();
+            else
+            $mensajes = $this->getDoctrine()->getManager()
+            ->createQuery('SELECT m FROM App:Mensaje m JOIN m.propietario p WHERE p.id= :id AND m.bandeja = 0 ORDER By m.fecha DESC')
+            ->setParameters(array('id' => $this->getUser()->getId()))
             ->setMaxResults(5)
             ->getResult();
 
@@ -158,7 +165,7 @@ class MensajeController extends AbstractController
      */
     public function delete(Request $request, Mensaje $mensaje): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$mensaje->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE',$mensaje);

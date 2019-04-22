@@ -3,7 +3,7 @@ var login = function () {
     var obj = null;
 
     var login=function(){
-        $("div#login-form form").validate({
+        $("div.login-form form").validate({
             rules:{
                 '_username': {required:true},
                 '_password': {required:true},
@@ -17,6 +17,7 @@ var login = function () {
             }
         });
     }
+
     return {
         init: function () {
             $().ready(function () {

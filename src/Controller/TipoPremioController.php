@@ -50,6 +50,7 @@ class TipoPremioController extends AbstractController
                 $em->flush();
                 return $this->json(['mensaje' => 'El tipo de premio fue registrado satisfactoriamente',
                     'nombre' => $tipo_premio->getNombre(),
+                 //   'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$tipo_premio->getId())->getValue(),
                     'id' => $tipo_premio->getId(),
                 ]);
             } else {
@@ -107,7 +108,7 @@ class TipoPremioController extends AbstractController
      */
     public function delete(Request $request, TipoPremio $tipo_premio): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_premio->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();

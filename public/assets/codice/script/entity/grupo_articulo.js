@@ -119,7 +119,7 @@ var grupo_articulo = function () {
                                 "<li class='m-nav__item'>" +
                                 "<a class='btn btn-sm btn-info edicion' data-href=" + Routing.generate('grupo_articulo_edit',{id:data['id']}) + "><i class='flaticon-edit-1'></i>Editar</a></li>" +
                                 "<li class='m-nav__item'>" +
-                                "<a class='btn btn-danger btn-sm  eliminar_grupo_articulo' data-href=" + Routing.generate('grupo_articulo_delete',{id:data['id']}) + ">" +
+                                "<a class='btn btn-danger btn-sm  eliminar_grupo_articulo' data-csrf=" + data['csrf'] +" data-href=" + Routing.generate('grupo_articulo_delete',{id:data['id']}) + ">" +
                                 "<i class='flaticon-delete-1'></i>Eliminar</a></li></ul>",
                         });
                         objeto.draw();
@@ -198,6 +198,9 @@ var grupo_articulo = function () {
                         $.ajax({
                             type: 'get',
                             url: link,
+                            data: {
+                                _token: token
+                            },
                             beforeSend: function () {
                                 mApp.block("body",
                                     {overlayColor:"#000000",type:"loader",state:"success",message:"Eliminando..."});

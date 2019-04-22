@@ -50,6 +50,7 @@ class ClasificacionTipoSoftwareController extends AbstractController
                 $em->flush();
                 return $this->json(['mensaje' => 'La clasificación fue registrada satisfactoriamente',
                     'nombre' => $clasificacion_tiposoftware->getNombre(),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$clasificacion_tiposoftware->getId())->getValue(),
                     'id' => $clasificacion_tiposoftware->getId(),
                 ]);
             } else {
@@ -107,7 +108,7 @@ class ClasificacionTipoSoftwareController extends AbstractController
      */
     public function delete(Request $request, ClasificacionTipoSoftware $clasificacion_tiposoftware): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$clasificacion_tiposoftware->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();

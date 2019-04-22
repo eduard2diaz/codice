@@ -50,6 +50,7 @@ class GradoCientificoController extends AbstractController
                 $em->flush();
                 return $this->json(['mensaje' => 'El grado científico fue registrado satisfactoriamente',
                     'nombre' => $grado_cientifico->getNombre(),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$grado_cientifico->getId())->getValue(),
                     'id' => $grado_cientifico->getId(),
                 ]);
             } else {
@@ -107,7 +108,7 @@ class GradoCientificoController extends AbstractController
      */
     public function delete(Request $request, GradoCientifico $grado_cientifico): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$grado_cientifico->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();

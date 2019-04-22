@@ -4,7 +4,7 @@ namespace App\Form;
 
 use App\Entity\Norma;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,7 +24,7 @@ class NormaType extends AbstractType
     {
         $builder
             ->add('noRegistro',TextType::class,['label'=>'Número de registro','required'=>true,'attr'=>['class'=>'form-control','autocomplete'=>'off']])
-            ->add('paginas',NumberType::class,['label'=>'Páginas','required'=>true,'attr'=>['class'=>'form-control','autocomplete'=>'off']])
+            ->add('paginas',IntegerType::class,['label'=>'Páginas','required'=>true,'attr'=>['class'=>'form-control','autocomplete'=>'off']])
             ->add('id',PublicacionType::class)
             ->add('tipoNorma',null,['label'=>'Tipo de norma','required'=>true,'attr'=>['class'=>'form-control']])
         ;

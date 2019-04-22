@@ -45,14 +45,14 @@ class AutorType extends AbstractType
         $esDirectivo = $this->authorizationChecker->isGranted('ROLE_DIRECTIVO');
         $disabled = false;
         $builder
-            ->add('nombre', TextType::class, ['attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
-            ->add('usuario', TextType::class, ['label' => 'Nombre de usuario', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
+            ->add('nombre', TextType::class, ['attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off','pattern'=>'[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$']])
+            ->add('usuario', TextType::class, ['label' => 'Nombre de usuario', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off','pattern'=>'([a-zA-Z]((\.|_|-)?[a-zA-Z0-9]+){3})*$']])
             ->add('email', EmailType::class, ['label' => 'Correo electrónico', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
             ->add('phone', IntegerType::class, ['label' => 'Teléfono', 'required' => false, 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
             ->add('gradoCientifico', null, ['label' => 'Grado científico', 'required' => true, 'attr' => ['class' => 'form-control m-input']])
             ->add('file', FileType::class, array('required' => false,
                 'attr' => array('style' => 'display:none',
-                    'accept' => 'image/*', 'accept' => '.jpg,.jpeg,.png,.gif,.bmp,.tiff')
+                    'accept' => 'image/*',/* 'accept' => '.jpg,.jpeg,.png,.gif,.bmp,.tiff'*/)
             ));
 
         if($this->token->getToken()->getUser()!=$options['data'])

@@ -5,15 +5,7 @@ namespace App\EventSubscriber;
 use App\Entity\Autor;
 use App\Entity\Notificacion;
 use App\Entity\Publicacion;
-use App\Entity\Articulo;
-use App\Entity\Encuentro;
-use App\Entity\Libro;
-use App\Entity\Monografia;
-use App\Entity\Norma;
-use App\Entity\Patente;
-use App\Entity\Premio;
-use App\Entity\Software;
-use App\Entity\Tesis;
+use App\Tools\FileStorageManager;
 use Doctrine\Common\EventSubscriber;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -40,7 +32,11 @@ class PublicacionSubscriber implements EventSubscriber
     {
         $entity = $args->getEntity();
         if ($entity instanceof Publicacion) {
-            $entity->Upload($this->getServiceContainer()->getParameter('storage_directory'));
+            $ruta=$this->getServiceContainer()->getParameter('storage_directory');
+            $file=$entity->getFile();
+            $nombreArchivoFoto=FileStorageManager::Upload($ruta,$file);
+            if (null!=$nombreArchivoFoto)
+                $entity->setRutaArchivo($nombreArchivoFoto);
 
             if ($entity->getAutor()->getJefe() == null)
                 $entity->setEstado(1);
@@ -124,9 +120,9 @@ class PublicacionSubscriber implements EventSubscriber
         $entity = $args->getEntity();
         $em = $args->getEntityManager();
         if ($entity instanceof Publicacion) {
-            $fs = new Filesystem();
             $directory = $this->getServiceContainer()->getParameter('storage_directory');
-            $fs->remove($directory . DIRECTORY_SEPARATOR . $entity->getRutaArchivo());
+            $ruta=$directory . DIRECTORY_SEPARATOR . $entity->getRutaArchivo();
+            FileStorageManager::removeUpload($ruta);
 
             $currentUser = $this->getServiceContainer()->get('security.token_storage')->getToken()->getUser();
             $notificacionService = $this->getServiceContainer()->get('app.notificacion_service');

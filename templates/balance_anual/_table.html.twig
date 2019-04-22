@@ -35,7 +35,7 @@
                     </li>
                     <li class="m-nav__item">
                         <a class="btn btn-danger btn-sm  eliminar_balance"
-                           data-href="{{ path('balance_anual_delete', { 'id': balance.id }) }}">
+                           data-href="{{ path('balance_anual_delete', { 'id': balance.id }) }}" data-csrf="{{ csrf_token('delete' ~ balance.id) }}">
                             <i class="flaticon-delete-1"></i> Eliminar</a>
                     </li>
                 </ul>

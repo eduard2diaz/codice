@@ -52,6 +52,7 @@ class PaisController extends AbstractController
                     'nombre' => $pais->getNombre(),
                     'capital' => $pais->getCapital(),
                     'codigo' => $pais->getCodigo(),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$pais->getId())->getValue(),
                     'id' => $pais->getId(),
                 ]);
             } else {
@@ -111,7 +112,7 @@ class PaisController extends AbstractController
      */
     public function delete(Request $request, Pais $pais): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$pais->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();

@@ -29,8 +29,8 @@ class UsuarioType extends AbstractType
     {
         $disabled = $this->token->getToken()->getUser()->getId() == $options['data']->getId();
         $builder
-            ->add('nombre', TextType::class, ['attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
-            ->add('usuario', TextType::class, ['label' => 'Nombre de usuario', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
+            ->add('nombre', TextType::class, ['attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off','pattern'=>'[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$']])
+            ->add('usuario', TextType::class, ['label' => 'Nombre de usuario', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off','pattern'=>'([a-zA-Z]((\.|_|-)?[a-zA-Z0-9]+){3})*$']])
             ->add('email', EmailType::class, ['label' => 'Correo electrónico', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
             ->add('file', FileType::class, array('required' => false,
                 'attr' => array('style' => 'display:none',

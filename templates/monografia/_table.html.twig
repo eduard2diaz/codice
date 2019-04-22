@@ -1,13 +1,13 @@
 <table class="table table-hover m-table m-table--head-separator-brand" id="monografia_table">
     <thead>
     <tr>
-        <th>
+        <th style="width: 10%">
             #
         </th>
         <th>
             Título
         </th>
-        <th>
+        <th style="width: 10%">
             Fecha
         </th>
         <th>
@@ -33,7 +33,7 @@
                             <i class="flaticon-edit-1"></i> Editar</a>
                     </li>
                     <li class="m-nav__item">
-                        <a class="btn btn-danger btn-sm  eliminar_monografia" data-href="{{ path('monografia_delete', { 'id': monografia.id.id }) }}">
+                        <a class="btn btn-danger btn-sm  eliminar_monografia" data-href="{{ path('monografia_delete', { 'id': monografia.id.id }) }}" data-csrf="{{ csrf_token('delete' ~ monografia.id.id) }}">
                             <i class="flaticon-delete-1"></i> Eliminar</a>
                     </li>
                     {% endif %}

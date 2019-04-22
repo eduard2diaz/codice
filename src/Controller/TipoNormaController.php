@@ -50,6 +50,7 @@ class TipoNormaController extends AbstractController
                 $em->flush();
                 return $this->json(['mensaje' => 'El tipo de norma fue registrado satisfactoriamente',
                     'nombre' => $tipo_norma->getNombre(),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$tipo_norma->getId())->getValue(),
                     'id' => $tipo_norma->getId(),
                 ]);
             } else {
@@ -104,7 +105,7 @@ class TipoNormaController extends AbstractController
      */
     public function delete(Request $request, TipoNorma $tipo_norma): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_norma->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();

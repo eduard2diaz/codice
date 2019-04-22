@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use App\Entity\BalanceAnual;
+use App\Tools\FileStorageManager;
 use Doctrine\Common\EventSubscriber;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -28,8 +29,12 @@ class BalanceAnualSubscriber implements EventSubscriber
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
-        if ($entity instanceof BalanceAnual){
-            $entity->Upload($this->getServiceContainer()->getParameter('storage_directory'));
+        if ($entity instanceof BalanceAnual) {
+            $ruta = $this->getServiceContainer()->getParameter('storage_directory');
+            $file = $entity->getFile();
+            $nombreArchivoFoto = FileStorageManager::Upload($ruta, $file);
+            if (null != $nombreArchivoFoto)
+                $entity->setRutaArchivo($nombreArchivoFoto);
         }
     }
 
@@ -37,9 +42,9 @@ class BalanceAnualSubscriber implements EventSubscriber
     {
         $entity = $args->getEntity();
         if ($entity instanceof BalanceAnual) {
-            $fs = new Filesystem();
             $directory = $this->getServiceContainer()->getParameter('storage_directory');
-            $fs->remove($directory . DIRECTORY_SEPARATOR . $entity->getRutaArchivo());
+            $ruta=$directory . DIRECTORY_SEPARATOR . $entity->getRutaArchivo();
+            FileStorageManager::removeUpload($ruta);
         }
     }
 

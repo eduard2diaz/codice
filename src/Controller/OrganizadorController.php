@@ -112,7 +112,7 @@ class OrganizadorController extends AbstractController
      */
     public function delete(Request $request, Organizador $organizador): Response
     {
-        if (!$request->isXmlHttpRequest() || false==$this->esEliminable($organizador))
+        if (!$request->isXmlHttpRequest() || false==$this->esEliminable($organizador) || !$this->isCsrfTokenValid('delete'.$organizador->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();

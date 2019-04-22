@@ -119,7 +119,7 @@ var clasificacion_tipotesis = function () {
                                 "<li class='m-nav__item'>" +
                                 "<a class='btn btn-sm btn-info edicion' data-href=" + Routing.generate('clasificacion_tipotesis_edit',{id:data['id']}) + "><i class='flaticon-edit-1'></i>Editar</a></li>" +
                                 "<li class='m-nav__item'>" +
-                                "<a class='btn btn-danger btn-sm  eliminar_clasificacion_tipotesis' data-href=" + Routing.generate('clasificacion_tipotesis_delete',{id:data['id']}) + ">" +
+                                "<a class='btn btn-danger btn-sm  eliminar_clasificacion_tipotesis' data-csrf=" + data['csrf'] +" data-href=" + Routing.generate('clasificacion_tipotesis_delete',{id:data['id']}) + ">" +
                                 "<i class='flaticon-delete-1'></i>Eliminar</a></li></ul>",
                         });
                         objeto.draw();
@@ -198,6 +198,9 @@ var clasificacion_tipotesis = function () {
                         $.ajax({
                             type: 'get',
                             url: link,
+                            data: {
+                                _token: token
+                            },
                             beforeSend: function () {
                                 mApp.block("body",
                                     {overlayColor:"#000000",type:"loader",state:"success",message:"Eliminando..."});

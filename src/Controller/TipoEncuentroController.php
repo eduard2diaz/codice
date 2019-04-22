@@ -53,6 +53,7 @@ class TipoEncuentroController extends AbstractController
                 $em->flush();
                 return $this->json(['mensaje' => 'El tipo de encuentro fue registrado satisfactoriamente',
                     'nombre' => $tipo_encuentro->getNombre(),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$tipo_encuentro->getId())->getValue(),
                     'id' => $tipo_encuentro->getId(),
                 ]);
             } else {
@@ -112,7 +113,7 @@ class TipoEncuentroController extends AbstractController
      */
     public function delete(Request $request, TipoEncuentro $tipo_encuentro): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_encuentro->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();

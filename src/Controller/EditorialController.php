@@ -127,7 +127,7 @@ class EditorialController extends AbstractController
      */
     public function delete(Request $request, Editorial $editorial): Response
     {
-        if (!$request->isXmlHttpRequest() || false==$this->esEliminable($editorial))
+        if (!$request->isXmlHttpRequest() || false==$this->esEliminable($editorial) || !$this->isCsrfTokenValid('delete'.$editorial->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();

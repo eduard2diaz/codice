@@ -80,6 +80,7 @@ var autor = function () {
             evento.preventDefault();
             var obj = $(this);
             var link = $(this).attr('data-href');
+            var token = $(this).attr('data-csrf');
             bootbox.confirm({
                 title: 'Eliminar usuario',
                 message: '¿Está seguro que desea eliminar este usuario?',
@@ -98,6 +99,9 @@ var autor = function () {
                         $.ajax({
                             type: 'get',
                             url: link,
+                            data: {
+                                _token: token
+                            },
                             beforeSend: function () {
                                 mApp.block("body",
                                     {
@@ -144,6 +148,7 @@ var autor = function () {
                 'autor[gradoCientifico]': {required: true},
                 'autor[usuario]': {required: true},
                 'autor[email]': {required: true},
+                'autor[password][second]': {equalTo: "#autor_password_first"},
             }
         })
     }
@@ -293,7 +298,7 @@ var autor = function () {
                     url: Routing.generate('area_findbyautor', {'id': $(this).val()}),
                     beforeSend: function (data) {
                         mApp.block("body",
-                            {overlayColor: "#000000", type: "loader", state: "success", message: "Cargando area..."});
+                            {overlayColor: "#000000", type: "loader", state: "success", message: "Cargando áreas..."});
                     },
                     success: function (data) {
                         $('select#autor_area').html(data);
@@ -506,6 +511,21 @@ var autor = function () {
         });
     }
 
+    var gestionarFoto = function () {
+        $('body').on('click','#foto_perfil',function () {
+            mApp.block("body",
+                {
+                    overlayColor: "#000000",
+                    type: "loader",
+                    state: "success",
+                    message: "Explorando archivos ..."
+                });
+            $('#autor_file').click();
+            mApp.unblock("body");
+            document.getElementById('autor_file').addEventListener('change', previewfile, false);
+        });
+    }
+
     return {
         init: function () {
             $().ready(function () {
@@ -539,19 +559,7 @@ var autor = function () {
                     institucionListener()
                     jefeListener();
                     newAction();
-
-                    $('#foto_perfil').click(function () {
-                        mApp.block("body",
-                            {
-                                overlayColor: "#000000",
-                                type: "loader",
-                                state: "success",
-                                message: "Explorando archivos ..."
-                            });
-                        $('#autor_file').click();
-                        mApp.unblock("body")
-                    });
-                    document.getElementById('autor_file').addEventListener('change', previewfile, false);
+                    gestionarFoto();
                     reiniciarFoto();
                 }
             );

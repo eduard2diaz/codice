@@ -56,7 +56,7 @@
     <a class="btn btn-sm btn-metal" data-dismiss="modal"><i class="flaticon-cancel"></i> Cancelar</a>
     {% if eliminable is defined and eliminable==true %}
         <a class="btn btn-danger btn-sm  eliminar_revista"
-           data-href="{{ path('revista_delete', { 'id': revista.id }) }}">
+           data-href="{{ path('revista_delete', { 'id': revista.id }) }}" data-csrf="{{ csrf_token('delete' ~ revista.id) }}">
             <i class="flaticon-delete-1"></i> Eliminar</a>
     {% endif %}
     <button class="btn btn-sm btn-primary mt-ladda-btn ladda-button" data-style="expand-right" type="submit">

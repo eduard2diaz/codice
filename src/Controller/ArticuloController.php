@@ -142,7 +142,7 @@ class ArticuloController extends AbstractController
      */
     public function delete(Request $request, Articulo $articulo): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest()  || !$this->isCsrfTokenValid('delete'.$articulo->getId()->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE',$articulo->getId());

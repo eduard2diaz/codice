@@ -80,6 +80,7 @@ var usuario = function () {
                 'usuario[nombre]': {required: true},
                 'usuario[usuario]': {required: true},
                 'usuario[email]': {required: true},
+                'usuario[password][second]': {equalTo: "#usuario_password_first"},
             }
         })
     }
@@ -118,6 +119,7 @@ var usuario = function () {
             evento.preventDefault();
             var obj = $(this);
             var link = $(this).attr('data-href');
+            var token = $(this).attr('data-csrf');
             bootbox.confirm({
                 title: 'Eliminar administrador',
                 message: '¿Está seguro que desea eliminar este administrador?',
@@ -136,6 +138,9 @@ var usuario = function () {
                         $.ajax({
                             type: 'get',
                             url: link,
+                            data: {
+                                _token: token
+                            },
                             beforeSend: function () {
                                 mApp.block("body",
                                     {
@@ -245,7 +250,7 @@ var usuario = function () {
                             "<li class='m-nav__item'>" +
                             "<a class='btn btn-sm btn-info edicion' data-href=" + Routing.generate('usuario_edit', {id: data['id']}) + "><i class='flaticon-edit-1'></i>Editar</a></li>" +
                             "<li class='m-nav__item'>" +
-                            "<a class='btn btn-danger btn-sm  eliminar_usuario' data-href=" + Routing.generate('usuario_delete', {id: data['id']}) + ">" +
+                            "<a class='btn btn-danger btn-sm  eliminar_usuario' data-csrf=" + data['csrf'] +" data-href=" + Routing.generate('usuario_delete', {id: data['id']}) + ">" +
                             "<i class='flaticon-delete-1'></i>Eliminar</a></li>" +
                             "</ul>",
                         });

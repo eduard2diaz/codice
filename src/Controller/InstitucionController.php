@@ -53,6 +53,7 @@ class InstitucionController extends AbstractController
                     'nombre' => $institucion->getNombre(),
                     'pais' => $institucion->getPais()->getNombre(),
                     'ministerio' => $institucion->getMinisterio()->getNombre(),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$institucion->getId())->getValue(),
                     'id' => $institucion->getId(),
                 ]);
             } else {
@@ -112,7 +113,7 @@ class InstitucionController extends AbstractController
      */
     public function delete(Request $request, Institucion $institucion): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$institucion->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();

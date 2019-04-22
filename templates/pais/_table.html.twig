@@ -32,7 +32,7 @@
                             <i class="flaticon-edit-1"></i> Editar</a>
                     </li>
                     <li class="m-nav__item">
-                        <a class="btn btn-danger btn-sm  eliminar_pais" data-href="{{ path('pais_delete', { 'id': pais.id }) }}">
+                        <a class="btn btn-danger btn-sm  eliminar_pais" data-href="{{ path('pais_delete', { 'id': pais.id }) }}" data-csrf="{{ csrf_token('delete' ~ pais.id) }}">
                             <i class="flaticon-delete-1"></i> Eliminar</a>
                     </li>
                 </ul>

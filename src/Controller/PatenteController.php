@@ -146,7 +146,7 @@ class PatenteController extends AbstractController
      */
     public function delete(Request $request, Patente $patente, NotificacionService $notificacionService): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$patente->getId()->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE',$patente->getId());

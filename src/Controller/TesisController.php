@@ -146,7 +146,7 @@ class TesisController extends AbstractController
      */
     public function delete(Request $request, Tesis $tesis, NotificacionService $notificacionService): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tesis->getId()->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE',$tesis->getId());

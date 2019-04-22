@@ -57,7 +57,7 @@ var mensaje = function () {
             evento.preventDefault();
             var obj = $(this);
             var link = $(this).attr('data-href');
-
+            var token = $(this).attr('data-csrf');
             bootbox.confirm({
                 title: "Eliminar mensaje",
                 message: "<p>¿Está seguro que desea eliminar este mensaje?</p>",
@@ -77,6 +77,9 @@ var mensaje = function () {
                             type: 'get', //Se uso get pues segun los desarrolladores de yahoo es una mejoria en el rendimineto de las peticiones ajax
                             // dataType: 'html', esta url se comentarea porque lo k estamos mandando es un json y no un html plano
                             url: link,
+                            data: {
+                                _token: token
+                            },
                             beforeSend: function () {
                                 mApp.block("body", {
                                     overlayColor: "#000000",

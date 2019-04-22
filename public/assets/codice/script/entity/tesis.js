@@ -50,6 +50,7 @@ var tesis = function () {
             evento.preventDefault();
             var obj = $(this);
             var link = $(this).attr('data-href');
+            var token = $(this).attr('data-csrf');
             bootbox.confirm({
                 title: 'Eliminar tesis',
                 message: '¿Está seguro que desea eliminar esta tesis?',
@@ -68,6 +69,9 @@ var tesis = function () {
                         $.ajax({
                             type: 'get',
                             url: link,
+                            data: {
+                                _token: token
+                            },
                             beforeSend: function () {
                                 mApp.block("body",
                                     {
@@ -157,7 +161,13 @@ var tesis = function () {
 
         $('body').on('change','input#tesis_id_file',function(){
             var fileName = document.getElementById("tesis_id_file").files[0].name;
-            $('span.custom-file-control').addClass("selected").html(fileName);
+            var fileSize = document.getElementById("tesis_id_file").files[0].size;
+            var maxSize=20971520;
+            if(fileSize>maxSize){
+                toastr.error('El archivo seleccionado excede el tamaño permitido (20MB)');
+                $('input#tesis_id_file').val('');
+            }else
+                $('span.custom-file-control').addClass("selected").html(fileName);
         })
     }
 

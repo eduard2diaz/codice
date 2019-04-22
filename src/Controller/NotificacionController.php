@@ -75,7 +75,7 @@ class NotificacionController extends AbstractController
      */
     public function delete(Request $request, Notificacion $notificacion): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$notificacion->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE',$notificacion);

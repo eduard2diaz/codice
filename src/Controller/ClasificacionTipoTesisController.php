@@ -54,6 +54,7 @@ class ClasificacionTipoTesisController extends AbstractController
                 $em->flush();
                 return $this->json(['mensaje' => 'La clasificación fue registrada satisfactoriamente',
                     'nombre' => $clasificacion_tipotesis->getNombre(),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$clasificacion_tipotesis->getId())->getValue(),
                     'id' => $clasificacion_tipotesis->getId(),
                 ]);
             } else {
@@ -111,7 +112,7 @@ class ClasificacionTipoTesisController extends AbstractController
      */
     public function delete(Request $request, ClasificacionTipoTesis $clasificacion_tipotesis): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest()|| !$this->isCsrfTokenValid('delete'.$clasificacion_tipotesis->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();

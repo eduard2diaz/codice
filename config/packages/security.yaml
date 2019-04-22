@@ -18,6 +18,13 @@ security:
 
 
     firewalls:
+        api_area:
+            pattern:    ^/api/*
+            anonymous: ~
+            provider: autores
+            guard:
+                authenticators:
+                    - App\Security\ApiTokenAuthenticator
         secured_area:
             pattern:    ^/*
             provider: chain_provider
@@ -82,4 +89,6 @@ security:
         - { path: ^/libro, roles: ROLE_USER }
         - { path: ^/articulo, roles: ROLE_USER }
         - { path: ^/reporte, roles: ROLE_USER }
+        #Funcionalidades de la API
+        - { path: ^/api/requesttoken, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/*, roles: IS_AUTHENTICATED_FULLY }

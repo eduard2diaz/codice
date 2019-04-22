@@ -209,37 +209,6 @@ class Usuario implements UserInterface
         return $this->file;
     }
 
-    public function Upload($ruta)
-    {
-        if (null === $this->file) {
-            return;
-        }
-        $fs = new Filesystem();
-        $camino = $fs->makePathRelative($ruta, __DIR__);
-        $directorioDestino = __DIR__ . DIRECTORY_SEPARATOR . $camino;
-        $nombreArchivoFoto = uniqid('codice-') . '-' . $this->file->getClientOriginalName();
-        $this->file->move($directorioDestino . DIRECTORY_SEPARATOR, $nombreArchivoFoto);
-        $this->setRutaFoto($nombreArchivoFoto);
-    }
-
-    public function actualizarFoto($directorioDestino)
-    {
-
-        if (null !== $this->getFile()) {
-            $this->removeUpload($directorioDestino);
-            $this->Upload($directorioDestino);
-        }
-    }
-
-    public function removeUpload($directorioDestino)
-    {
-        $fs = new Filesystem();
-        $rutaPc = $directorioDestino . DIRECTORY_SEPARATOR . $this->getRutaFoto();
-        if (null != $this->getRutaFoto() && $fs->exists($rutaPc)) {
-            $fs->remove($rutaPc);
-        }
-    }
-
     /**
      * Returns the roles granted to the user.
      *

@@ -145,7 +145,7 @@ class NormaController extends AbstractController
      */
     public function delete(Request $request, Norma $norma, NotificacionService $notificacionService): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$norma->getId()->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE',$norma->getId());

@@ -50,9 +50,10 @@ var norma = function () {
             evento.preventDefault();
             var obj = $(this);
             var link = $(this).attr('data-href');
+            var token = $(this).attr('data-csrf');
             bootbox.confirm({
                 title: 'Eliminar norma',
-                message: '¿Está seguro que desea eliminar este norma?',
+                message: '¿Está seguro que desea eliminar esta norma?',
                 buttons: {
                     confirm: {
                         label: 'Si, estoy seguro',
@@ -68,6 +69,9 @@ var norma = function () {
                         $.ajax({
                             type: 'get',
                             url: link,
+                            data: {
+                                _token: token
+                            },
                             beforeSend: function () {
                                 mApp.block("body",
                                     {
@@ -152,12 +156,21 @@ var norma = function () {
 
     var personalizarUploadFile=function(){
         $('body').on('click','button#norma_file',function(){
+            mApp.block("body",
+                {overlayColor: "#000000", type: "loader", state: "success", message: "Cargando archivos..."});
             $('input#norma_id_file').click();
+            mApp.unblock("body");
         });
 
         $('body').on('change','input#norma_id_file',function(){
             var fileName = document.getElementById("norma_id_file").files[0].name;
-            $('span.custom-file-control').addClass("selected").html(fileName);
+            var fileSize = document.getElementById("norma_id_file").files[0].size;
+            var maxSize=20971520;
+            if(fileSize>maxSize){
+                toastr.error('El archivo seleccionado excede el tamaño permitido (20MB)');
+                $('input#norma_id_file').val('');
+            }else
+                $('span.custom-file-control').addClass("selected").html(fileName);
         })
     }
 

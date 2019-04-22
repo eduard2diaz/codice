@@ -53,6 +53,7 @@ class GrupoArticuloController extends AbstractController
                 $em->flush();
                 return $this->json(['mensaje' => 'El grupo del artículo fue registrado satisfactoriamente',
                     'nombre' => $grupo_articulo->getNombre(),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$grupo_articulo->getId())->getValue(),
                     'id' => $grupo_articulo->getId(),
                 ]);
             } else {
@@ -112,7 +113,7 @@ class GrupoArticuloController extends AbstractController
      */
     public function delete(Request $request, GrupoArticulo $grupo_articulo): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest()|| !$this->isCsrfTokenValid('delete'.$grupo_articulo->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();

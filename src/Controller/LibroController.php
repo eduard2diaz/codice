@@ -144,7 +144,7 @@ class LibroController extends AbstractController
      */
     public function delete(Request $request, Libro $libro): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$libro->getId()->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE',$libro->getId());

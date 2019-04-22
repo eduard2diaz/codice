@@ -199,3 +199,10 @@
         </div>
     </div>
 {% endblock %}
+{% block javascripts %}
+{{ parent() }}
+    <script src="{{ asset('script/page/login.js','codice') }}"></script>
+    <script>
+        login.init();
+    </script>
+{% endblock javascripts %}

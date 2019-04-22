@@ -220,6 +220,7 @@ var editorial = function () {
             evento.preventDefault();
             var link = $(this).attr('data-href');
             $('div#basicmodal').modal('hide');
+            var token = $(this).attr('data-csrf');
             bootbox.confirm({
                 title: 'Eliminar editorial',
                 message: '¿Está seguro que desea eliminar esta editorial?',
@@ -236,6 +237,9 @@ var editorial = function () {
                         $.ajax({
                             type: 'get',
                             url: link,
+                            data: {
+                                _token: token
+                            },
                             beforeSend: function () {
                                 mApp.block("body",
                                     {overlayColor:"#000000",type:"loader",state:"success",message:"Eliminando..."});

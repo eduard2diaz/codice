@@ -17,6 +17,36 @@ var authenticated = function () {
         });
     }
 
+    var notificacionShow = function () {
+        $('body').on('click', 'a.notificacion_show', function (evento)
+        {
+            evento.preventDefault();
+            var link = $(this).attr('data-href');
+            obj = $(this);
+            $.ajax({
+                type: 'get',
+                dataType: 'html',
+                url: link,
+                beforeSend: function (data) {
+                    mApp.block("body",
+                        {overlayColor:"#000000",type:"loader",state:"success",message:"Cargando..."});
+                },
+                success: function (data) {
+                    if ($('div#basicmodal').html(data)) {
+                        $('div#basicmodal').modal('show');
+                    }
+                },
+                error: function ()
+                {
+                    base.Error();
+                },
+                complete: function () {
+                    mApp.unblock("body")
+                }
+            });
+        });
+    }
+
     //CONFIGURACION DE LOS CAMPOS DEL FORMULARIO DE MENSAJES
     var configurarFormularioMensaje = function () {
         $('select#mensaje_iddestinatario').select2({
@@ -158,6 +188,7 @@ var authenticated = function () {
     return {
         init: function () {
             $().ready(function(){
+                notificacionShow();
                 notificacionesAction();
                 cargarMensajes();
                 enviarMensaje();

@@ -28,6 +28,12 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
+    #activando las extensiones(truncate,wordwrap,..) twig que instale con composer require twig/extensions
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }
+
     #DEFINIENDO MIS PROPIOS SERVICIOS
     usuario_subscriber:
         class: App\EventSubscriber\UsuarioSubscriber
@@ -99,3 +105,7 @@ services:
         tags:
             - { name: validator.constraint_validator, alias: autor.validator }
         arguments: ['@doctrine']
+
+
+    app.token_authenticator:
+        class: App\Security\ApiTokenAuthenticator

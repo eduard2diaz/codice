@@ -51,6 +51,7 @@ class TipoArticuloController extends AbstractController
                 return $this->json(['mensaje' => 'El tipo de artículo fue registrado satisfactoriamente',
                     'nombre' => $tipo_articulo->getNombre(),
                     'grupo' => $tipo_articulo->getGrupo()->getNombre(),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$tipo_articulo->getId())->getValue(),
                     'id' => $tipo_articulo->getId(),
                 ]);
             } else {
@@ -109,7 +110,7 @@ class TipoArticuloController extends AbstractController
      */
     public function delete(Request $request, TipoArticulo $tipo_articulo): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_articulo->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();

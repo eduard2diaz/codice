@@ -153,7 +153,7 @@ var balanceanual = function () {
                                 +"<li class='m-nav__item'>" +
                                 "<a class='btn btn-sm btn-info edicion' data-href=" + Routing.generate('balance_anual_edit', {id: data['id']}) + "><i class='flaticon-edit-1'></i>Editar</a></li>" +
                                 "<li class='m-nav__item'>" +
-                                "<a class='btn btn-danger btn-sm  eliminar_balance' data-href=" + Routing.generate('balance_anual_delete', {id: data['id']}) + ">" +
+                                "<a class='btn btn-danger btn-sm  eliminar_balance' data-csrf=" + data['csrf'] +" data-href=" + Routing.generate('balance_anual_delete', {id: data['id']}) + ">" +
                                 "<i class='flaticon-delete-1'></i>Eliminar</a></li></ul>",
                         });
                         objeto.draw();
@@ -207,6 +207,7 @@ var balanceanual = function () {
             evento.preventDefault();
             var obj = $(this);
             var link = $(this).attr('data-href');
+            var token = $(this).attr('data-csrf');
             bootbox.confirm({
                 title: 'Eliminar balance',
                 message: '¿Está seguro que desea eliminar este balance?',
@@ -225,6 +226,9 @@ var balanceanual = function () {
                         $.ajax({
                             type: 'get',
                             url: link,
+                            data: {
+                                _token: token
+                            },
                             beforeSend: function () {
                                 mApp.block("body",
                                     {
@@ -254,12 +258,21 @@ var balanceanual = function () {
 
     var personalizarUploadFile=function(){
         $('div#basicmodal').on('click','button#balance_file',function(){
+            mApp.block("div#basicmodal",
+                {overlayColor: "#000000", type: "loader", state: "success", message: "Cargando archivos..."});
             $('input#balance_anual_file').click();
+            mApp.unblock("div#basicmodal");
         });
 
         $('div#basicmodal').on('change','input#balance_anual_file',function(){
             var fileName = document.getElementById("balance_anual_file").files[0].name;
-            $('span.custom-file-control').addClass("selected").html(fileName);
+            var fileSize = document.getElementById("balance_anual_file").files[0].size;
+            var maxSize=20971520;
+            if(fileSize>maxSize){
+                toastr.error('El archivo seleccionado excede el tamaño permitido (20MB)');
+                $('input#balance_anual_file').val('');
+            }else
+                $('span.custom-file-control').addClass("selected").html(fileName);
         })
     }
 

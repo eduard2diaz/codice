@@ -142,7 +142,7 @@ class EncuentroController extends AbstractController
      */
     public function delete(Request $request, Encuentro $encuentro): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$encuentro->getId()->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE',$encuentro->getId());

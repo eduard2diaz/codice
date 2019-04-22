@@ -145,7 +145,7 @@ class SoftwareController extends AbstractController
      */
     public function delete(Request $request, Software $software): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$software->getId()->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE',$software->getId());

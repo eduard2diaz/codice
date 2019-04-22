@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\BalanceAnual;
 use App\Form\BalanceAnualType;
+use App\Tools\FileStorageManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -55,6 +56,7 @@ class BalanceAnualController extends AbstractController
                     'nombre' => $balance->getNombre(),
                     'institucion' => $balance->getInstitucion()->getNombre(),
                     'usuario' => $this->getUser()->getNombre(),
+                   'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$balance->getId())->getValue(),
                     'id' => $balance->getId(),
                 ));
             } else {
@@ -130,7 +132,7 @@ class BalanceAnualController extends AbstractController
      */
     public function delete(Request $request, BalanceAnual $balanceAnual): Response
     {
-        if(!$request->isXmlHttpRequest())
+        if(!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$balanceAnual->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE',$balanceAnual);
@@ -148,16 +150,6 @@ class BalanceAnualController extends AbstractController
     {
         $this->denyAccessUnlessGranted('DOWNLOAD',$balanceAnual);
         $ruta = $this->getParameter('storage_directory') . DIRECTORY_SEPARATOR . $balanceAnual->getRutaArchivo();
-
-        if (!file_exists($ruta))
-            throw $this->createNotFoundException();
-
-        $archivo = file_get_contents($ruta);
-        return new Response($archivo, 200, array(
-            'Content-Type' => 'application/force-download',
-            'Content-Transfer-Encoding' => 'binary',
-            'Content-length' => strlen($archivo),
-            'Pragma' => 'no-cache',
-            'Expires' => '0'));
+        return FileStorageManager::Download($ruta);
     }
 }

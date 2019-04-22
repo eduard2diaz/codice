@@ -178,6 +178,7 @@ var organizador = function () {
         {
             evento.preventDefault();
             var link = $(this).attr('data-href');
+            var token = $(this).attr('data-csrf');
             $('div#basicmodal').modal('hide');
             bootbox.confirm({
                 title: 'Eliminar organizador',
@@ -195,6 +196,9 @@ var organizador = function () {
                         $.ajax({
                             type: 'get',
                             url: link,
+                            data: {
+                                _token: token
+                            },
                             beforeSend: function () {
                                 mApp.block("body",
                                     {overlayColor:"#000000",type:"loader",state:"success",message:"Eliminando..."});

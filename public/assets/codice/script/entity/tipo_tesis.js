@@ -124,7 +124,7 @@ var tipo_tesis = function () {
                                 "<li class='m-nav__item'>" +
                                 "<a class='btn btn-sm btn-info edicion' data-href=" + Routing.generate('tipo_tesis_edit',{id:data['id']}) + "><i class='flaticon-edit-1'></i>Editar</a></li>" +
                                 "<li class='m-nav__item'>" +
-                                "<a class='btn btn-danger btn-sm  eliminar_tipo_tesis' data-href=" + Routing.generate('tipo_tesis_delete',{id:data['id']}) + ">" +
+                                "<a class='btn btn-danger btn-sm  eliminar_tipo_tesis' data-csrf=" + data['csrf'] +" data-href=" + Routing.generate('tipo_tesis_delete',{id:data['id']}) + ">" +
                                 "<i class='flaticon-delete-1'></i>Eliminar</a></li></ul>",
                         });
                         objeto.draw();
@@ -204,6 +204,9 @@ var tipo_tesis = function () {
                         $.ajax({
                             type: 'get',
                             url: link,
+                            data: {
+                                _token: token
+                            },
                             beforeSend: function () {
                                 mApp.block("body",
                                     {overlayColor:"#000000",type:"loader",state:"success",message:"Eliminando..."});

@@ -37,7 +37,7 @@
                     </li>
                     {% if app.user.id!=usuario.id %}
                     <li class="m-nav__item">
-                        <a class="btn btn-danger btn-sm  eliminar_usuario" data-href="{{ path('usuario_delete', { 'id': usuario.id }) }}">
+                        <a class="btn btn-danger btn-sm  eliminar_usuario" data-href="{{ path('usuario_delete', { 'id': usuario.id }) }}" data-csrf="{{ csrf_token('delete' ~ usuario.id) }}">
                             <i class="flaticon-delete-1"></i> Eliminar</a>
                     </li>
                     {% endif %}

@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use App\Tools\FileStorageManager;
 
 /**
  * @Route("/usuario")
@@ -53,6 +54,7 @@ class UsuarioController extends AbstractController
                     'nombre' => $usuario->getNombre(),
                     'correo' => $usuario->getEmail(),
                     'activo' => $usuario->getActivo(),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$usuario->getId())->getValue(),
                     'id' => $usuario->getId()
                 ]);
             } else {
@@ -111,10 +113,11 @@ class UsuarioController extends AbstractController
                     $usuario->setPassword($encoder->encodePassword($usuario, $usuario->getPassword()));
 
                 if ($usuario->getFile() != null) {
-                    if ($usuario->getRutaFoto() != null)
-                        $usuario->actualizarFoto($ruta);
-                    else
-                        $usuario->Upload($ruta);
+                    if ($usuario->getRutaFoto() != null){
+                        $rutaArchivo = $ruta . DIRECTORY_SEPARATOR . $usuario->getRutaFoto();
+                        FileStorageManager::removeUpload($rutaArchivo);
+                    }
+                    $usuario->setRutaFoto(FileStorageManager::Upload($ruta,$usuario->getFile()));
                     $usuario->setFile(null);
                 }
 
@@ -161,7 +164,7 @@ class UsuarioController extends AbstractController
      */
     public function delete(Request $request, Usuario $usuario): Response
     {
-        if (!$request->isXmlHttpRequest() || $usuario->getId() == $this->getUser()->getId())
+        if (!$request->isXmlHttpRequest() || $usuario->getId() == $this->getUser()->getId()  || !$this->isCsrfTokenValid('delete'.$usuario->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $entityManager = $this->getDoctrine()->getManager();

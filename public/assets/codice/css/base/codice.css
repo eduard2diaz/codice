@@ -1,3 +1,6 @@
+body{
+    padding-right: 0px !important;
+}
 a.btn {
     font-weight: bold !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.18) !important;
@@ -73,7 +76,7 @@ header {
 
 
 td:last-child {
-    width: 32% !important;
+        width: 29% !important;
 }
 
 div#m_header_menu {
@@ -249,3 +252,9 @@ span.custom-file-control {
     white-space: nowrap;
 }
 /*Fin de la personalizacion de los botones de tipo file para los balances y las publicaciones*/
+
+.recortar-texto{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

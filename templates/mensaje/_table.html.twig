@@ -2,7 +2,7 @@
     <thead>
     <tr>
         <th></th>
-        <th style="width: 60%">Descripción</th>
+        <th style="width: 55%">Asunto</th>
         <th>Fecha</th>
         <th></th>
     </tr>
@@ -11,18 +11,18 @@
     {% for mensaje in mensajes %}
         <tr>
             <td></td>
-            <td>{{ mensaje.descripcion }}</td>
+            <td>{{ mensaje.asunto |truncate(60) }}</td>
             <td>{{ mensaje.fecha |date('d-m-Y H:i') }}</td>
             <td>
                 <ul class="m-nav m-nav--inline m--pull-right">
                     <li class="m-nav__item">
                         <a class="btn btn-sm btn-default mensaje_show" data-href="{{ path('mensaje_show', { 'id': mensaje.id }) }}">
-                            <i class="flaticon-eye"></i>
+                            <i class="flaticon-eye"></i> Visualizar
                         </a>
                     </li>
                     <li class="m-nav__item">
-                        <a class="btn btn-sm btn-danger eliminar_mensaje" data-href="{{ path('mensaje_delete', { 'id': mensaje.id }) }}">
-                            <i class="flaticon-delete-1"></i>
+                        <a class="btn btn-sm btn-danger eliminar_mensaje" data-href="{{ path('mensaje_delete', { 'id': mensaje.id }) }}" data-csrf="{{ csrf_token('delete' ~ mensaje.id) }}">
+                            <i class="flaticon-delete-1"></i> Eliminar
                         </a>
                     </li>
                 </ul>
@@ -33,7 +33,7 @@
     <tfoot>
     <tr>
         <th></th>
-        <th>Descripción</th>
+        <th>Asunto</th>
         <th>Fecha</th>
         <th></th>
     </tr>

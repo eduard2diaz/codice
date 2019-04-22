@@ -6,6 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Autor;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -93,5 +95,14 @@ class Notificacion
     public function setDescripcion(?string $descripcion): void
     {
         $this->descripcion = $descripcion;
+    }
+    
+     /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context, $payload)
+    {
+        if($this->getDestinatario()==null)
+            $context->buildViolation('Seleccione el destinatario')->atPath('destinatario')->addViolation();
     }
 }

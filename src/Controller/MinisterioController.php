@@ -52,6 +52,7 @@ class MinisterioController extends AbstractController
                 return $this->json(['mensaje' => 'El ministerio fue registrado satisfactoriamente',
                     'nombre' => $ministerio->getNombre(),
                     'pais' => $ministerio->getPais()->getNombre(),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$ministerio->getId())->getValue(),
                     'id' => $ministerio->getId(),
                 ]);
             } else {
@@ -110,7 +111,7 @@ class MinisterioController extends AbstractController
      */
     public function delete(Request $request, Ministerio $ministerio): Response
     {
-        if (!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$ministerio->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();

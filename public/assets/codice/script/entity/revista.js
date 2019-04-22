@@ -29,7 +29,7 @@ var revista = function () {
             rules:{
                 'revista[nombre]': {required:true},
                 'revista[pais]': {required:true},
-                'revista[impacto]': {required:true},
+                'revista[impacto]': {required:true, min: 1},
                 'revista[nivel]': {required:true}
             }
         })
@@ -196,6 +196,7 @@ var revista = function () {
         {
             evento.preventDefault();
             var link = $(this).attr('data-href');
+            var token = $(this).attr('data-csrf');
             $('div#basicmodal').modal('hide');
             bootbox.confirm({
                 title: 'Eliminar revista',
@@ -213,6 +214,9 @@ var revista = function () {
                         $.ajax({
                             type: 'get',
                             url: link,
+                            data: {
+                                _token: token
+                            },
                             beforeSend: function () {
                                 mApp.block("body",
                                     {overlayColor:"#000000",type:"loader",state:"success",message:"Eliminando..."});

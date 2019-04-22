@@ -119,7 +119,7 @@ class RevistaController extends AbstractController
      */
     public function delete(Request $request, Revista $revista): Response
     {
-        if (!$request->isXmlHttpRequest() || false==$this->esEliminable($revista))
+        if (!$request->isXmlHttpRequest() || false==$this->esEliminable($revista) || !$this->isCsrfTokenValid('delete'.$revista->getId(), $request->query->get('_token')))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
