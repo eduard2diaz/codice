@@ -27,8 +27,12 @@ class ApiToken
     private $expiresAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Autor")
-     * @ORM\JoinColumn(nullable=false)
+     * @var \Autor
+     *
+     * @ORM\ManyToOne(targetEntity="Autor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="autor", referencedColumnName="id",onDelete="Cascade")
+     * })
      */
     private $autor;
 

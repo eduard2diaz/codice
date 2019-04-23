@@ -388,7 +388,7 @@ var autor = function () {
         jQuery.validator.addMethod("greaterThan",
             function (value, element, params) {
                 return moment(value) > moment($(params).val());
-            }, 'Tiene que ser superior a la fecha de salida');
+            }, 'Tiene que ser superior a la fecha de inicio');
 
 
         $("div.bootbox form.daterange").validate({
@@ -499,15 +499,22 @@ var autor = function () {
         $('div#basicmodal').on('click', 'a.exportar_reporte', function (evento)
         {
             evento.preventDefault();
-            mApp.block("body",
-                {overlayColor: "#000000", type: "loader", state: "success", message: "Descargando..."});
+            var l = Ladda.create(document.querySelector('div#basicmodal a.ladda-button'));
+            l.start();
             $.fileDownload(Routing.generate('reporte_exportar'), {
                 data:{
                     form: ultimoreporte
-                }
+                },
+                successCallback: function (url) {
+                    l.stop();
+                },
+                prepareCallback: function (url) {
+                    l.stop();
+                },
+                failCallback: function (url) {
+                    base.Error();
+                },
             });
-            mApp.unblock("body");
-
         });
     }
 

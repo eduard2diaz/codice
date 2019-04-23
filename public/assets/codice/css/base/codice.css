@@ -1,6 +1,7 @@
-body{
+body {
     padding-right: 0px !important;
 }
+
 a.btn {
     font-weight: bold !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.18) !important;
@@ -74,9 +75,8 @@ header {
     border-top: 0;
 }
 
-
 td:last-child {
-        width: 29% !important;
+    width: 29% !important;
 }
 
 div#m_header_menu {
@@ -108,18 +108,21 @@ header {
 }
 
 /*Inicio de personalizacion de los iconos del top menus*/
-div#m_header_menu  ul.m-menu__nav > li.m-menu__item > a > span.m-menu__link-text{
+div#m_header_menu ul.m-menu__nav > li.m-menu__item > a > span.m-menu__link-text {
     color: white;
     font-weight: 400;
     font-size: 1.07rem;
     text-transform: initial;
 }
-div#m_header_menu  ul.m-menu__nav > li.m-menu__item > a > i{
+
+div#m_header_menu ul.m-menu__nav > li.m-menu__item > a > i {
     color: white;
 }
-div#m_header_topbar  ul.m-topbar__nav li.m-nav__item a.m-nav__link span.m-nav__link-icon i{
+
+div#m_header_topbar ul.m-topbar__nav li.m-nav__item a.m-nav__link span.m-nav__link-icon i {
     color: white;
 }
+
 /*Fin de personalizacion de los iconos del top menus*/
 
 div.form-control-feedback:not(:empty):before {
@@ -221,7 +224,6 @@ header span.m-dropdown__arrow {
     color: white !important;
 }
 
-
 .alert-notification {
     box-shadow: 1px 2px 8px black;
     position: absolute;
@@ -230,12 +232,12 @@ header span.m-dropdown__arrow {
     top: 76%;
 }
 
-.m-dropdown .m-dropdown__wrapper .m-dropdown__header .m-dropdown__header-subtitle{
+.m-dropdown .m-dropdown__wrapper .m-dropdown__header .m-dropdown__header-subtitle {
     text-shadow: 2px 2px 2px black;
     font-weight: bold;
 }
 
-h4, h4.m-form__section{
+h4, h4.m-form__section {
     font-size: 1.2rem;
 }
 
@@ -251,10 +253,15 @@ span.custom-file-control.selected:lang(en)::before {
 span.custom-file-control {
     white-space: nowrap;
 }
+
 /*Fin de la personalizacion de los botones de tipo file para los balances y las publicaciones*/
 
-.recortar-texto{
+.recortar-texto {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+a[data-href] {
+    cursor: pointer;
 }
