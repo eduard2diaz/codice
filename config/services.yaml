@@ -12,6 +12,17 @@ services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        #esta linea es agregada por mi y surge debido a la necesidad que tenia de enviar una variable y no una clase al
+        #servicio de envio de correo, en este caso la variable $mailerurl que con el mismo nombre que la declare aqui es como
+        #debe aparecer en el constructor, ademas de ella puedo si hubiese querido incluir otras variables, caro siempre declarandolas en bind
+        #y en caso de que sean clases se definen en el arguments y de indica la clase ala que pertenece en el constructor,
+        #ojo: las variables que se declaran en bind se definen en el constructor de la clase con el mimso nombre que en el bind,
+        #pero no se declaran en los argumentos del servicio cuando se declaran en este archivo
+        bind:
+            $mailer_host: '%env(MAILER_HOST)%'
+            $mailer_port: '%env(MAILER_PORT)%'
+            $mailer_username: '%env(MAILER_USERNAME)%'
+            $mailer_password: '%env(MAILER_PASSWORD)%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -75,8 +86,10 @@ services:
 
     app.email_service:
         class: App\Services\EmailService
-        arguments: ['%env(MAILER_URL)%']
         public: true
+        #por defecto cada vez que pasas o solicitas un servicio symfony te da una nueva instancia, pues por defecto
+        #shared es true, si quiero siempre que solicite un servicio obetener la misma instancia pngo shared: false
+        shared: false
 
     app.notificacioncommand:
         class: App\Command\NotificacionCommand
@@ -91,8 +104,6 @@ services:
     uniquemultipleentity.validator:
         class: App\Validator\UniqueMultipleEntityValidator
         public: true
-        autowire: true
-        autoconfigure: true
         tags:
             - { name: validator.constraint_validator, alias: uniquemultipleentity.validator }
         arguments: ['@doctrine']
@@ -100,8 +111,6 @@ services:
     autor.validator:
         class: App\Validator\AutorValidator
         public: true
-        autowire: true
-        autoconfigure: true
         tags:
             - { name: validator.constraint_validator, alias: autor.validator }
         arguments: ['@doctrine']

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Publicacion;
-use App\Tools\FileStorageManager;
+use App\Services\FileStorageManager;
 use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

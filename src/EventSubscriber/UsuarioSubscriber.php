@@ -3,11 +3,10 @@
 namespace App\EventSubscriber;
 
 use App\Entity\Usuario;
-use App\Tools\FileStorageManager;
+use App\Services\FileStorageManager;
 use Doctrine\Common\EventSubscriber;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-
 
 class UsuarioSubscriber implements EventSubscriber
 {
