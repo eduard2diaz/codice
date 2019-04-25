@@ -7,6 +7,7 @@
  */
 
 namespace App\Services;
+
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -31,13 +32,17 @@ class FileStorageManager
         if (!file_exists($ruta))
             throw new NotFoundHttpException();
 
-        $archivo = file_get_contents($ruta);
-        return new Response($archivo, 200, array(
-            'Content-Type' => 'application/force-download',
-            'Content-Transfer-Encoding' => 'binary',
-            'Content-length' => strlen($archivo),
-            'Pragma' => 'no-cache',
-            'Expires' => '0'));
+        // Generate response
+        $response = new Response();
+        // Set headers
+        $response->headers->set('Cache-Control', 'private');
+        $response->headers->set('Content-type', mime_content_type($ruta));
+        $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($ruta) . '";');
+        $response->headers->set('Content-length', filesize($ruta));
+        // Send headers before outputting anything
+        $response->sendHeaders();
+        $response->setContent(file_get_contents($ruta));
+        return $response;
     }
 
     public static function removeUpload($rutaPc)
