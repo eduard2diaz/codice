@@ -61,7 +61,7 @@ security:
         - { path: ^/tipoarticulo, roles: ROLE_SUPERADMIN }
         - { path: ^/tiponorma, roles: ROLE_SUPERADMIN }
         - { path: ^/tipopremio, roles: ROLE_SUPERADMIN }
-        - { path: ^/tipoencuentro, roles: ROLE_SUPERADMIN }
+        - { path: ^/tipoevento, roles: ROLE_SUPERADMIN }
         - { path: ^/autor/indexall, roles: ROLE_SUPERADMIN }
         #permisos del administrador institucional
         - { path: ^/area, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }
@@ -80,7 +80,7 @@ security:
         - { path: ^/notificacion, roles: [ROLE_DIRECTIVO, ROLE_ADMIN, ROLE_GESTORBALANCE, ROLE_USER] }
         - { path: ^/mensaje, roles: [ROLE_DIRECTIVO, ROLE_ADMIN, ROLE_GESTORBALANCE, ROLE_USER] }
         - { path: ^/premio, roles: ROLE_USER }
-        - { path: ^/encuentro, roles: ROLE_USER }
+        - { path: ^/evento, roles: ROLE_USER }
         - { path: ^/tesis, roles: ROLE_USER }
         - { path: ^/software, roles: ROLE_USER }
         - { path: ^/patente, roles: ROLE_USER }

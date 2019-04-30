@@ -451,6 +451,13 @@ var autor = function () {
                             pieSeries.hiddenState.properties.startAngle = -90;
                             //Guardo el ultimo reporte realizado
                             ultimoreporte=data.pdf;
+
+                            $('div#basicmodal table#resumen_por_subordinado').DataTable({
+                                "pagingType": "simple_numbers",
+                                "language": {
+                                    url: datatable_url
+                                },
+                            });
                         }
                     },
                     error: function () {

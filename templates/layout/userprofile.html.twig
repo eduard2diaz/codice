@@ -47,12 +47,6 @@
                     <li class="list-inline-item"><a href="{{ path('autor_seguidos',{'id':user_id}) }}"
                                                     class="nav-link m-link"><i class="flaticon-profile"></i>Seguidos</a>
                     </li>
-                    <li class="list-inline-item"><a href="{{ path('premio_index',{'id':user_id}) }}"
-                                                    class="nav-link m-link"><i class="flaticon-confetti"></i>Premios</a>
-                    </li>
-                    <li class="list-inline-item"><a href="{{ path('encuentro_index',{'id':user_id}) }}"
-                                                    class="nav-link m-link"><i class="flaticon-map-location"></i>Encuentros</a>
-                    </li>
                     <li class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-left m-dropdown--align-push"
                         m-dropdown-toggle="click" aria-expanded="true">
                         <a href="#" class="m-portlet__nav-link m-dropdown__toggle btn m-btn m-btn--link"
@@ -67,6 +61,22 @@
                                     <div class="m-dropdown__content">
 
                                         <ul class="m-nav">
+                                            <li class="m-nav__item">
+                                                <a href="{{ path('encuentro_index',{'id':user_id}) }}" class="m-nav__link">
+                                                    <i class="m-nav__link-icon flaticon-file"></i>
+                                                    <span class="m-nav__link-text">
+																							Eventos
+																						</span>
+                                                </a>
+                                            </li>
+                                            <li class="m-nav__item">
+                                                <a href="{{ path('premio_index',{'id':user_id}) }}" class="m-nav__link">
+                                                    <i class="m-nav__link-icon flaticon-file"></i>
+                                                    <span class="m-nav__link-text">
+																							Premios
+																						</span>
+                                                </a>
+                                            </li>
                                             <li class="m-nav__item">
                                                 <a href="{{ path('tesis_index',{'id':user_id}) }}" class="m-nav__link">
                                                     <i class="m-nav__link-icon flaticon-file"></i>

@@ -22,7 +22,7 @@ class ReporteController extends AbstractController
      */
     public function resumenAutor(Request $request, AreaService $areaService, Autor $autor)
     {
-        if(!$request->isXmlHttpRequest())
+        if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('VIEWSTATICS', $autor);
@@ -33,18 +33,19 @@ class ReporteController extends AbstractController
 
         $resumen = [];
         $total = 0;
-        $esDirectivo=in_array('ROLE_DIRECTIVO', $autor->getRoles()) || in_array('ROLE_ADMIN', $autor->getRoles());
-        if ($esDirectivo==true) {
+        $esDirectivo = in_array('ROLE_DIRECTIVO', $autor->getRoles()) || in_array('ROLE_ADMIN', $autor->getRoles());
+        if ($esDirectivo == true) {
             $subordinados = $areaService->subordinados($autor);
-            if(count($subordinados)==0)
+            if (count($subordinados) == 0)
                 $publicaciones = $em->createQuery('SELECT p FROM App:Publicacion p JOIN p.autor a WHERE a.id=:id AND p.estado=1 AND p.fechaCaptacion>= :finicio AND p.fechaCaptacion<= :ffin')
                     ->setParameters(['id' => $autor->getId(), 'finicio' => $finicio, 'ffin' => $ffin])
                     ->getResult();
             else
                 $publicaciones = $em->createQuery('SELECT p FROM App:Publicacion p JOIN p.autor a WHERE (a.id=:id OR a.id IN (:subordinados) ) AND p.fechaCaptacion>= :finicio AND p.estado=1 AND p.fechaCaptacion<= :ffin')
-                    ->setParameters(['id' => $autor->getId(), 'finicio' => $finicio, 'ffin' => $ffin,'subordinados'=>$subordinados])
+                    ->setParameters(['id' => $autor->getId(), 'finicio' => $finicio, 'ffin' => $ffin, 'subordinados' => $subordinados])
                     ->getResult();
 
+            $autores = [];
             foreach ($publicaciones as $value) {
                 $tipo_hijo = substr($value->getChildType(), 11);
                 $posicion = $this->buscarTipoPublicacion($resumen, $tipo_hijo);
@@ -54,6 +55,15 @@ class ReporteController extends AbstractController
                     $resumen[$posicion]['total']++;
                     $resumen[$posicion]['propio']++;
                 }
+                $posicion=$this->buscarAutor($autores,$value->getAutor()->getNombre());
+                if($posicion!=-1){
+                    $autores[$posicion][$tipo_hijo]++;
+                }
+                    else{
+                            $autores[]=['autor'=>$value->getAutor()->getNombre(),"Encuentro"=>0,"Premio"=>0,"Tesis"=>0,"Software"=>0,"Patente"=>0,"Norma"=>0,"Monografia"=>0,"Libro"=>0,"Articulo"=>0];
+                            $autores[count($autores)-1][$tipo_hijo]=1;
+                    }
+
                 $total++;
             }
         } else {
@@ -74,23 +84,20 @@ class ReporteController extends AbstractController
             }
         }
 
-
+        $parameters=[
+            'finicio' => $finicio,
+            'ffin' => $ffin,
+            'resumen' => $resumen,
+            'total' => $total,
+            'esDirectivo' => $esDirectivo,
+            'autor' => $autor->getNombre()
+        ];
+        if($esDirectivo)
+            $parameters['resumen_subordinados']=$autores;
 
         return new JsonResponse([
-            'pdf'=>$this->renderView('reporte/resumen_publicacionpdf.html.twig',[
-                'finicio'=>$finicio,
-                'ffin'=>$ffin,
-                'resumen' => $resumen,
-                'total' => $total,
-                'esDirectivo'=>$esDirectivo,
-                'autor'=>$autor->getNombre()
-            ]),
-            'html' => $this->renderView('reporte/resumen_publicacion.html.twig', [
-                'resumen' => $resumen,
-                'total' => $total,
-                'esDirectivo'=>$esDirectivo,
-                'autor'=>$autor->getNombre()
-            ]),
+            'pdf' => $this->renderView('reporte/resumen_publicacionpdf.html.twig', $parameters),
+            'html' => $this->renderView('reporte/resumen_publicacion.html.twig', $parameters),
             'data' => json_encode($resumen)
         ]);
     }
@@ -106,12 +113,23 @@ class ReporteController extends AbstractController
         return -1;
     }
 
+    public function buscarAutor($listado, $autor)
+    {
+        $i = 0;
+        foreach ($listado as $banderin) {
+            if ($banderin['autor'] == $autor) ;
+            return $i;
+            $i++;
+        }
+        return -1;
+    }
+
     /**
      * @Route("/exportar", name="reporte_exportar", options={"expose"=true})
      */
     public function exportar(Request $request, Pdf $pdf)
     {
-        $html=$request->request->get('form');
+        $html = $request->request->get('form');
 
         return new PdfResponse(
             $pdf->getOutputFromHtml($html),

@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/tipoencuentro")
+ * @Route("/tipoevento")
  */
 class TipoEncuentroController extends AbstractController
 {
@@ -51,7 +51,7 @@ class TipoEncuentroController extends AbstractController
             if ($form->isValid()) {
                 $em->persist($tipo_encuentro);
                 $em->flush();
-                return $this->json(['mensaje' => 'El tipo de encuentro fue registrado satisfactoriamente',
+                return $this->json(['mensaje' => 'El tipo de evento fue registrado satisfactoriamente',
                     'nombre' => $tipo_encuentro->getNombre(),
                     'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$tipo_encuentro->getId())->getValue(),
                     'id' => $tipo_encuentro->getId(),
@@ -86,7 +86,7 @@ class TipoEncuentroController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($tipo_encuentro);
                 $em->flush();
-                return $this->json(['mensaje' => 'El tipo de encuentro fue actualizado satisfactoriamente',
+                return $this->json(['mensaje' => 'El tipo de evento fue actualizado satisfactoriamente',
                     'nombre' => $tipo_encuentro->getNombre(),
                 ]);
             } else {
@@ -101,7 +101,7 @@ class TipoEncuentroController extends AbstractController
 
         return $this->render('tipo_encuentro/_new.html.twig', [
             'tipo_encuentro' => $tipo_encuentro,
-            'title' => 'Editar tipo de encuentro',
+            'title' => 'Editar tipo de evento',
             'action' => 'Actualizar',
             'form_id' => 'tipo_encuentro_edit',
             'form' => $form->createView(),
@@ -119,6 +119,6 @@ class TipoEncuentroController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($tipo_encuentro);
         $em->flush();
-        return $this->json(['mensaje' => 'El tipo de encuentro fue eliminado satisfactoriamente']);
+        return $this->json(['mensaje' => 'El tipo de evento fue eliminado satisfactoriamente']);
     }
 }

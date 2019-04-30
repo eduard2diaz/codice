@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/encuentro")
+ * @Route("/evento")
  */
 class EncuentroController extends AbstractController
 {
@@ -62,7 +62,7 @@ class EncuentroController extends AbstractController
                 $entityManager->persist($encuentro->getId());
                 $entityManager->persist($encuentro);
                 $entityManager->flush();
-                $this->addFlash('success', 'El encuentro fue registrado satisfactoriamente');
+                $this->addFlash('success', 'El evento fue registrado satisfactoriamente');
                 return $this->json(['ruta' => $this->generateUrl('encuentro_index', ['id' => $autor->getId()])]);
             } else {
                 $page = $this->renderView('encuentro/_form.html.twig', array(
@@ -114,7 +114,7 @@ class EncuentroController extends AbstractController
                 if ($encuentro->getId()->getAutor()->getJefe() != null && $this->getUser()->getId() != $encuentro->getId()->getAutor()->getId() && $estado != $encuentro->getId()->getEstado())
                     $notificacionService->nuevaNotificacion($encuentro->getId()->getAutor()->getId(), 'El usuario ' . $this->getUser()->__toString() . ' modificó a "' . $encuentro->getId()->getEstadoString() . '" tu encuentro ' . $encuentro->getId()->getTitulo());
 
-                $this->addFlash('success', 'El encuentro fue actualizado satisfactoriamente');
+                $this->addFlash('success', 'El evento fue actualizado satisfactoriamente');
                 return $this->json(['ruta' => $this->generateUrl('encuentro_index', ['id' => $encuentro->getId()->getAutor()->getId()])]);
             } else {
                 $page = $this->renderView('encuentro/_form.html.twig', array(
@@ -129,7 +129,7 @@ class EncuentroController extends AbstractController
             'encuentro' => $encuentro,
             'form' => $form->createView(),
             'button_action' => 'Actualizar',
-            'form_title' => 'Editar encuentro',
+            'form_title' => 'Editar evento',
             'user_id' => $encuentro->getId()->getAutor()->getId(),
             'user_foto' => null != $encuentro->getId()->getAutor()->getRutaFoto() ? $encuentro->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $encuentro->getId()->getAutor()->__toString(),
@@ -150,6 +150,6 @@ class EncuentroController extends AbstractController
         $entityManager->remove($encuentro->getId());
         $entityManager->flush();
 
-        return $this->json(array('mensaje' => 'El encuentro fue eliminado satisfactoriamente'));
+        return $this->json(array('mensaje' => 'El evento fue eliminado satisfactoriamente'));
     }
 }

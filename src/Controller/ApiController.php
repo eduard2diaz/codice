@@ -17,13 +17,13 @@ class ApiController extends AbstractController
     /**
      * @Route("/requesttoken", name="api_requesttoken")
      * Este servicio se puede consumir utilizando curl u otro cliente url como Guzzle, por ejemplo
-     * curl -X POST --data "username=untoria&password=untoria" http://localhost/codice/public/index.php/api/requesttoken
+     * curl -X GET --data "username=untoria&password=untoria" http://localhost/codice/public/index.php/api/requesttoken
      */
     public function requestToken(Request $request, UserPasswordEncoderInterface $encoder)
     {
-        if ($request->request->has('username') && $password = $request->request->has('password')) {
-            $username = $request->request->get('username');
-            $password = $request->request->get('password');
+        if ($request->query->has('username') && $password = $request->query->has('password')) {
+            $username = $request->query->get('username');
+            $password = $request->query->get('password');
             echo $username;
             $em = $this->getDoctrine()->getManager();
             $autor = $em->getRepository(Autor::class)->findOneByUsuario($username);
