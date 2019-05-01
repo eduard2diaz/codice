@@ -44,6 +44,20 @@ class Notificacion
      */
     private $descripcion;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $leida;
+
+    /**
+     * Notificacion constructor.
+     */
+    public function __construct()
+    {
+        $this->leida=false;
+    }
+
+
     public function getId()
     {
         return $this->id;
@@ -104,5 +118,17 @@ class Notificacion
     {
         if($this->getDestinatario()==null)
             $context->buildViolation('Seleccione el destinatario')->atPath('destinatario')->addViolation();
+    }
+
+    public function getLeida(): ?bool
+    {
+        return $this->leida;
+    }
+
+    public function setLeida(bool $leida): self
+    {
+        $this->leida = $leida;
+
+        return $this;
     }
 }

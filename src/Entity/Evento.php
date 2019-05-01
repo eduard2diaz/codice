@@ -8,14 +8,14 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * Encuentro
+ * Evento
  *
- * @ORM\Table(name="encuentro", indexes={@ORM\Index(name="IDX_CDFA77FA2F94C8B4", columns={"tipo_encuentro"}), @ORM\Index(name="IDX_CDFA77FAA96ECF59", columns={"organizador"})})
+ * @ORM\Table(name="evento", indexes={@ORM\Index(name="IDX_CDFA77FA2F94C8B4", columns={"tipo_evento"}), @ORM\Index(name="IDX_CDFA77FAA96ECF59", columns={"organizador"})})
  * @ORM\Entity
  * @UniqueEntity("isbn")
  * @UniqueEntity("issn")
  */
-class Encuentro
+class Evento
 {
     /**
      * @var \Publicacion
@@ -54,14 +54,14 @@ class Encuentro
     private $issn;
 
     /**
-     * @var \TipoEncuentro
+     * @var \TipoEvento
      *
-     * @ORM\ManyToOne(targetEntity="TipoEncuentro")
+     * @ORM\ManyToOne(targetEntity="TipoEvento")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipo_encuentro", referencedColumnName="id",onDelete="Cascade")
+     *   @ORM\JoinColumn(name="tipo_evento", referencedColumnName="id",onDelete="Cascade")
      * })
      */
-    private $tipoEncuentro;
+    private $tipoEvento;
 
     /**
      * @var \Organizador
@@ -137,14 +137,14 @@ class Encuentro
         return $this;
     }
 
-    public function getTipoEncuentro(): ?TipoEncuentro
+    public function getTipoEvento(): ?TipoEvento
     {
-        return $this->tipoEncuentro;
+        return $this->tipoEvento;
     }
 
-    public function setTipoEncuentro(?TipoEncuentro $tipoEncuentro): self
+    public function setTipoEvento(?TipoEvento $tipoEvento): self
     {
-        $this->tipoEncuentro = $tipoEncuentro;
+        $this->tipoEvento = $tipoEvento;
 
         return $this;
     }
@@ -184,13 +184,13 @@ class Encuentro
         }
 
         if (null == $this->getOrganizador()) {
-            $context->setNode($context, 'area', null, 'data.organizador');
+            $context->setNode($context, 'organizador', null, 'data.organizador');
             $context->addViolation('Seleccione el organizador');
         }
 
-        if (null == $this->getTipoEncuentro()) {
-            $context->setNode($context, 'area', null, 'data.tipoEncuentro');
-            $context->addViolation('Seleccione el tipo de encuentro');
+        if (null == $this->getTipoEvento()) {
+            $context->setNode($context, 'tipoEvento', null, 'data.tipoEvento');
+            $context->addViolation('Seleccione el tipo de evento');
         }
     }
 }

@@ -7,13 +7,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * TipoEncuentro
+ * TipoEvento
  *
- * @ORM\Table(name="tipo_encuentro")
+ * @ORM\Table(name="tipo_evento")
  * @ORM\Entity
  * @UniqueEntity("nombre")
  */
-class TipoEncuentro
+class TipoEvento
 {
     /**
      * @var int
@@ -21,7 +21,7 @@ class TipoEncuentro
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="tipo_encuentro_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="tipo_evento_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 

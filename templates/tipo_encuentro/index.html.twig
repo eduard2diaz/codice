@@ -36,9 +36,9 @@
 {% endblock %}
 {% block javascripts %}
     {{parent()}}
-    <script src="{{ asset('script/entity/tipo_encuentro.js','codice') }}"></script>
+    <script src="{{ asset('script/entity/tipo_evento.jscodice') }}"></script>
     <script>
         var total ={{tipo_encuentros |length }}
-            tipo_encuentro.init();
+            tipo_evento.init();
     </script>
 {% endblock %}

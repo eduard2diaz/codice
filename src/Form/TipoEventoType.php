@@ -2,13 +2,13 @@
 
 namespace App\Form;
 
-use App\Entity\TipoEncuentro;
+use App\Entity\TipoEvento;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class TipoEncuentroType extends AbstractType
+class TipoEventoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -20,7 +20,7 @@ class TipoEncuentroType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => TipoEncuentro::class,
+            'data_class' => TipoEvento::class,
         ]);
     }
 }

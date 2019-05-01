@@ -24,9 +24,9 @@ class NotificacionController extends AbstractController
             if ($request->query->get('_format') == 'json') {
 
                 if (null == $this->getUser()->getUltimologout()) {
-                    $notificacions = $this->getDoctrine()->getRepository(Notificacion::class)->findBy(['destinatario' => $this->getUser()->getId()], ['fecha' => 'DESC'], 5);
+                    $notificacions = $this->getDoctrine()->getRepository(Notificacion::class)->findBy(['destinatario' => $this->getUser()->getId(),'leida'=>false], ['fecha' => 'DESC'], 5);
                 } else {
-                    $consulta = $this->getDoctrine()->getManager()->createQuery('SELECT n FROM App:Notificacion n JOIN n.destinatario u WHERE u.id= :usuario AND n.fecha>= :fecha');
+                    $consulta = $this->getDoctrine()->getManager()->createQuery('SELECT n FROM App:Notificacion n JOIN n.destinatario u WHERE u.id= :usuario AND n.fecha>= :fecha AND n.leida=FALSE');
                     $consulta->setParameters(['usuario' => $this->getUser()->getId(), 'fecha' => $this->getUser()->getUltimologout()]);
                     $consulta->setMaxResults(5);
                     $notificacions = $consulta->getResult();
@@ -65,6 +65,14 @@ class NotificacionController extends AbstractController
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('DELETE',$notificacion);
+
+        if(!$notificacion->getLeida()){
+            $em=$this->getDoctrine()->getManager();
+            $notificacion->setLeida(true);
+            $em->persist($notificacion);
+            $em->flush();
+        }
+
         return $this->render('notificacion/_show.html.twig', [
             'notificacion' => $notificacion,
         ]);

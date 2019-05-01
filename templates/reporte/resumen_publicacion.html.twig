@@ -36,7 +36,7 @@
                                 <li class="nav-item m-tabs__item">
                                     <a class="nav-link m-tabs__link" data-toggle="tab" href="#resumen_por_subordinado"
                                        role="tab" aria-selected="false">
-                                        <i class="flaticon-list"></i> Resumen de publicaciones
+                                        <i class="flaticon-users"></i> Por trabajador
                                     </a>
                                 </li>
                             </ul>
@@ -148,7 +148,7 @@
                                         <thead>
                                         <tr>
                                             <th>Nombre</th>
-                                            <th>Encuentro</th>
+                                            <th>Evento</th>
                                             <th>Premio</th>
                                             <th>Tesis</th>
                                             <th>Software</th>
@@ -162,7 +162,7 @@
                                     {% for obj in resumen_subordinados %}
                                         <tr>
                                             <td>{{ obj['autor'] }}</td>
-                                            <td>{{ obj['Encuentro'] }}</td>
+                                            <td>{{ obj['Evento'] }}</td>
                                             <td>{{ obj['Premio'] }}</td>
                                             <td>{{ obj['Tesis'] }}</td>
                                             <td>{{ obj['Software'] }}</td>
@@ -176,7 +176,7 @@
                                         <tfoot>
                                         <tr>
                                             <th>Nombre</th>
-                                            <th>Encuentro</th>
+                                            <th>Evento</th>
                                             <th>Premio</th>
                                             <th>Tesis</th>
                                             <th>Software</th>

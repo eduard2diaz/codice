@@ -1,9 +1,9 @@
-var tipo_encuentro = function () {
+var tipo_evento = function () {
     var table = null;
     var obj = null;
 
     var configurarDataTable = function () {
-        table = $('table#tipo_encuentro_table').DataTable({
+        table = $('table#tipo_evento_table').DataTable({
             "pagingType": "simple_numbers",
             "language": {
                 url: datatable_url
@@ -18,7 +18,7 @@ var tipo_encuentro = function () {
     var configurarFormulario = function () {
         $("div#basicmodal form").validate({
             rules:{
-                'tipo_encuentro[nombre]': {required:true}
+                'tipo_evento[nombre]': {required:true}
             }
         })
     }
@@ -55,7 +55,7 @@ var tipo_encuentro = function () {
     }
 
     var refrescar = function () {
-        $('a#tipo_encuentro_tablerefrescar').click(function (evento)
+        $('a#tipo_evento_tablerefrescar').click(function (evento)
         {
             evento.preventDefault();
             var link = $(this).attr('href');
@@ -69,7 +69,7 @@ var tipo_encuentro = function () {
                         {overlayColor:"#000000",type:"loader",state:"success",message:"Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#tipo_encuentro_table').html(data);
+                    $('table#tipo_evento_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },
@@ -84,7 +84,7 @@ var tipo_encuentro = function () {
     }
 
     var newAction = function () {
-        $('div#basicmodal').on('submit', 'form#tipo_encuentro_new', function (evento)
+        $('div#basicmodal').on('submit', 'form#tipo_evento_new', function (evento)
         {
             evento.preventDefault();
             var padre = $(this).parent();
@@ -117,9 +117,9 @@ var tipo_encuentro = function () {
                             "nombre": data['nombre'],
                             "acciones": "<ul class='m-nav m-nav--inline m--pull-right'>" +
                                 "<li class='m-nav__item'>" +
-                                "<a class='btn btn-sm btn-info edicion' data-href=" + Routing.generate('tipo_encuentro_edit',{id:data['id']}) + "><i class='flaticon-edit-1'></i>Editar</a></li>" +
+                                "<a class='btn btn-sm btn-info edicion' data-href=" + Routing.generate('tipo_evento_edit',{id:data['id']}) + "><i class='flaticon-edit-1'></i>Editar</a></li>" +
                                 "<li class='m-nav__item'>" +
-                                "<a class='btn btn-danger btn-sm  eliminar_tipo_encuentro' data-csrf=" + data['csrf'] +" data-href=" + Routing.generate('tipo_encuentro_delete',{id:data['id']}) + ">" +
+                                "<a class='btn btn-danger btn-sm  eliminar_tipo_evento' data-csrf=" + data['csrf'] +" data-href=" + Routing.generate('tipo_evento_delete',{id:data['id']}) + ">" +
                                 "<i class='flaticon-delete-1'></i>Eliminar</a></li></ul>",
                         });
                         objeto.draw();
@@ -137,7 +137,7 @@ var tipo_encuentro = function () {
 
 
     var edicionAction = function () {
-        $('div#basicmodal').on('submit', 'form#tipo_encuentro_edit', function (evento)
+        $('div#basicmodal').on('submit', 'form#tipo_evento_edit', function (evento)
         {
             evento.preventDefault();
             var padre = $(this).parent();
@@ -176,15 +176,15 @@ var tipo_encuentro = function () {
     }
 
     var eliminar = function () {
-        $('table#tipo_encuentro_table').on('click', 'a.eliminar_tipo_encuentro', function (evento)
+        $('table#tipo_evento_table').on('click', 'a.eliminar_tipo_evento', function (evento)
         {
             evento.preventDefault();
             var obj = $(this);
             var link = $(this).attr('data-href');
             var token = $(this).attr('data-csrf');
             bootbox.confirm({
-                title: 'Eliminar tipo de encuentro',
-                message: '¿Está seguro que desea eliminar este tipo de encuentro?',
+                title: 'Eliminar tipo de evento',
+                message: '¿Está seguro que desea eliminar este tipo de evento?',
                 buttons: {
                     confirm: {
                         label: 'Si, estoy seguro',

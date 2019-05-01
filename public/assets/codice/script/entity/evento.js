@@ -1,9 +1,9 @@
-var encuentro = function () {
+var evento = function () {
     var table = null;
     var obj = null;
 
     var configurarDataTable = function () {
-        table = $('table#encuentro_table').DataTable({
+        table = $('table#evento_table').DataTable({
             "pagingType": "simple_numbers",
             "language": {
                 url: datatable_url
@@ -18,7 +18,7 @@ var encuentro = function () {
     }
 
     var refrescar = function () {
-        $('a#encuentro_tablerefrescar').click(function (evento) {
+        $('a#evento_tablerefrescar').click(function (evento) {
             evento.preventDefault();
             var link = $(this).attr('href');
             obj = $(this);
@@ -31,7 +31,7 @@ var encuentro = function () {
                         {overlayColor: "#000000", type: "loader", state: "success", message: "Actualizando..."});
                 },
                 success: function (data) {
-                    $('table#encuentro_table').html(data);
+                    $('table#evento_table').html(data);
                     table.destroy();
                     configurarDataTable();
                 },
@@ -46,14 +46,14 @@ var encuentro = function () {
     }
 
     var eliminar = function () {
-        $('table#encuentro_table').on('click', 'a.eliminar_encuentro', function (evento) {
+        $('table#evento_table').on('click', 'a.eliminar_evento', function (evento) {
             evento.preventDefault();
             var obj = $(this);
             var link = $(this).attr('data-href');
             var token = $(this).attr('data-csrf');
             bootbox.confirm({
-                title: 'Eliminar encuentro',
-                message: '¿Está seguro que desea eliminar este encuentro?',
+                title: 'Eliminar evento',
+                message: '¿Está seguro que desea eliminar este evento?',
                 buttons: {
                     confirm: {
                         label: 'Si, estoy seguro',
@@ -100,33 +100,33 @@ var encuentro = function () {
     }
 
     var configurarFormulario = function () {
-        $('select#encuentro_pais').select2();
-        $('select#encuentro_id_idautor').select2();
-        $('select#encuentro_id_estado').select2();
-        $('select#encuentro_tipoEncuentro').select2();
-        $('select#encuentro_organizador').select2();
-        $('input#encuentro_id_fechaCaptacion').datepicker();
-        $("body form[name='encuentro']").validate({
+        $('select#evento_pais').select2();
+        $('select#evento_id_idautor').select2();
+        $('select#evento_id_estado').select2();
+        $('select#evento_tipoEvento').select2();
+        $('select#evento_organizador').select2();
+        $('input#evento_id_fechaCaptacion').datepicker();
+        $("body form[name='evento']").validate({
             rules: {
-                'encuentro[id][titulo]': {required: true},
-                'encuentro[pais]': {required: true},
-                'encuentro[id][fechaCaptacion]': {required: true},
-                'encuentro[id][keywords]': {required: true},
-                'encuentro[id][file]': {required: true},
-                'encuentro[id][resumen]': {required: true},
-                'encuentro[id][estado]': {required: true},
+                'evento[id][titulo]': {required: true},
+                'evento[pais]': {required: true},
+                'evento[id][fechaCaptacion]': {required: true},
+                'evento[id][keywords]': {required: true},
+                'evento[id][file]': {required: true},
+                'evento[id][resumen]': {required: true},
+                'evento[id][estado]': {required: true},
 
-                'encuentro[isbn]': {required: true},
-                'encuentro[issn]': {required: true},
-                'encuentro[organizador]': {required: true},
-                'encuentro[ciudad]': {required: true},
-                'encuentro[tipoEncuentro]': {required: true},
+                'evento[isbn]': {required: true},
+                'evento[issn]': {required: true},
+                'evento[organizador]': {required: true},
+                'evento[ciudad]': {required: true},
+                'evento[tipoEvento]': {required: true},
             }
         });
     }
 
     var newAction = function () {
-        $('body').on('submit', "form[name='encuentro']", function (evento) {
+        $('body').on('submit', "form[name='evento']", function (evento) {
             evento.preventDefault();
             var padre = $(this).parent();
             $.ajax({
@@ -159,17 +159,17 @@ var encuentro = function () {
     }
 
     var personalizarUploadFile=function(){
-        $('body').on('click','button#encuentro_file',function(){
-            $('input#encuentro_id_file').click();
+        $('body').on('click','button#evento_file',function(){
+            $('input#evento_id_file').click();
         });
 
-        $('body').on('change','input#encuentro_id_file',function(){
-            var fileName = document.getElementById("encuentro_id_file").files[0].name;
-            var fileSize = document.getElementById("encuentro_id_file").files[0].size;
+        $('body').on('change','input#evento_id_file',function(){
+            var fileName = document.getElementById("evento_id_file").files[0].name;
+            var fileSize = document.getElementById("evento_id_file").files[0].size;
             var maxSize=20971520;
             if(fileSize>maxSize){
                 toastr.error('El archivo seleccionado excede el tamaño permitido (20MB)');
-                $('input#encuentro_id_file').val('');
+                $('input#evento_id_file').val('');
             }else
                 $('span.custom-file-control').addClass("selected").html(fileName);
         })

@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Encuentro;
+use App\Entity\Evento;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class EncuentroType extends AbstractType
+class EventoType extends AbstractType
 {
     private $token;
 
@@ -26,7 +26,7 @@ class EncuentroType extends AbstractType
             ->add('ciudad',TextType::class,['required'=>true,'attr'=>['class'=>'form-control','autocomplete'=>'off']])
             ->add('issn',TextType::class,['label'=>'ISSN','required'=>true,'attr'=>['class'=>'form-control','autocomplete'=>'off']])
             ->add('id',PublicacionType::class)
-            ->add('tipoEncuentro',null,['label'=>'Tipo de encuentro','required'=>true])
+            ->add('tipoEvento',null,['label'=>'Tipo de evento','required'=>true])
             ->add('organizador',null,['required'=>true])
             ->add('pais', null, ['label'=>'País','required' => true, 'attr' => ['class' => 'form-control']])// ->add('idautor')
         ;
@@ -45,7 +45,7 @@ class EncuentroType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Encuentro::class,
+            'data_class' => Evento::class,
         ]);
     }
 }

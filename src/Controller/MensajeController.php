@@ -79,13 +79,13 @@ class MensajeController extends AbstractController
 
 		if($this->getUser()->getUltimologout()!=null)
         $mensajes = $this->getDoctrine()->getManager()
-            ->createQuery('SELECT m FROM App:Mensaje m JOIN m.propietario p WHERE m.fecha > :fecha AND p.id= :id AND m.bandeja = 0 ORDER By m.fecha DESC')
+            ->createQuery('SELECT m FROM App:Mensaje m JOIN m.propietario p WHERE m.fecha > :fecha AND p.id= :id AND m.bandeja = 0 AND m.leida= FALSE ORDER By m.fecha DESC')
             ->setParameters(array('id' => $this->getUser()->getId(), 'fecha' => $this->getUser()->getUltimologout()))
             ->setMaxResults(5)
             ->getResult();
             else
             $mensajes = $this->getDoctrine()->getManager()
-            ->createQuery('SELECT m FROM App:Mensaje m JOIN m.propietario p WHERE p.id= :id AND m.bandeja = 0 ORDER By m.fecha DESC')
+            ->createQuery('SELECT m FROM App:Mensaje m JOIN m.propietario p WHERE p.id= :id AND m.bandeja = 0 AND m.leida= FALSE ORDER By m.fecha DESC')
             ->setParameters(array('id' => $this->getUser()->getId()))
             ->setMaxResults(5)
             ->getResult();
@@ -156,6 +156,13 @@ class MensajeController extends AbstractController
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('VIEW',$mensaje);
+        if(!$mensaje->getLeida()){
+            $em=$this->getDoctrine()->getManager();
+            $mensaje->setLeida(true);
+            $em->persist($mensaje);
+            $em->flush();
+        }
+
         return $this->render('mensaje/_show.html.twig', ['mensaje' => $mensaje]);
     }
 

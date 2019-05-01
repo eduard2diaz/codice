@@ -60,7 +60,7 @@ class ReporteController extends AbstractController
                     $autores[$posicion][$tipo_hijo]++;
                 }
                     else{
-                            $autores[]=['autor'=>$value->getAutor()->getNombre(),"Encuentro"=>0,"Premio"=>0,"Tesis"=>0,"Software"=>0,"Patente"=>0,"Norma"=>0,"Monografia"=>0,"Libro"=>0,"Articulo"=>0];
+                            $autores[]=['autor'=>$value->getAutor()->getNombre(),"Evento"=>0,"Premio"=>0,"Tesis"=>0,"Software"=>0,"Patente"=>0,"Norma"=>0,"Monografia"=>0,"Libro"=>0,"Articulo"=>0];
                             $autores[count($autores)-1][$tipo_hijo]=1;
                     }
 

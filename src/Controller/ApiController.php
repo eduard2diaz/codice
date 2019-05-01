@@ -17,13 +17,13 @@ class ApiController extends AbstractController
     /**
      * @Route("/requesttoken", name="api_requesttoken")
      * Este servicio se puede consumir utilizando curl u otro cliente url como Guzzle, por ejemplo
-     * curl -X GET --data "username=untoria&password=untoria" http://localhost/codice/public/index.php/api/requesttoken
+     * curl -X POST --data "username=untoria&password=untoria" http://localhost/codice/public/index.php/api/requesttoken
      */
     public function requestToken(Request $request, UserPasswordEncoderInterface $encoder)
     {
-        if ($request->query->has('username') && $password = $request->query->has('password')) {
-            $username = $request->query->get('username');
-            $password = $request->query->get('password');
+        if ($request->request->has('username') && $password = $request->request->has('password')) {
+            $username = $request->request->get('username');
+            $password = $request->request->get('password');
             echo $username;
             $em = $this->getDoctrine()->getManager();
             $autor = $em->getRepository(Autor::class)->findOneByUsuario($username);
@@ -70,16 +70,16 @@ class ApiController extends AbstractController
     }
 
     /**
-     * @Route("/encuentro/index", name="api_encuentro_index")
+     * @Route("/evento/index", name="api_evento_index")
      */
-    public function encuentroIndex()
+    public function eventoIndex()
     {
         $autor = $this->getUser();
         $em = $this->getDoctrine()->getManager();
-        $consulta = $em->createQuery('SELECT p.id, p.titulo FROM App:Encuentro l JOIN l.id p JOIN p.autor a WHERE a.id= :id');
+        $consulta = $em->createQuery('SELECT p.id, p.titulo FROM App:Evento l JOIN l.id p JOIN p.autor a WHERE a.id= :id');
         $consulta->setParameter('id', $autor->getId());
-        $encuentros = $consulta->getResult();
-        return $this->json(['encuentros' => $encuentros], 200);
+        $eventos = $consulta->getResult();
+        return $this->json(['eventos' => $eventos], 200);
     }
 
     /**

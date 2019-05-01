@@ -13,13 +13,13 @@
             <div class="m-portlet__head-tools">
                 <ul class="m-portlet__nav">
                     <li class="m-portlet__nav-item">
-                        <a data-href="{{ path('encuentro_index',{'id':user_id}) }}" class="btn btn-sm m-btn" id="encuentro_tablerefrescar">
+                        <a data-href="{{ path('evento_index',{'id':user_id}) }}" class="btn btn-sm m-btn" id="evento_tablerefrescar">
                             <span><i class="flaticon-refresh"></i></span> Refrescar
                         </a>
                     </li>
                     {% if esGestor==true %}
                     <li class="m-portlet__nav-item">
-                        <a href="{{ path('encuentro_new',{'id':user_id}) }}" class="btn btn-sm btn-primary m-btn text-uppercase"  data-toggle="m-tooltip" data-placement="top" title="" data-original-title="Registrar un nuevo evento">
+                        <a href="{{ path('evento_new',{'id':user_id}) }}" class="btn btn-sm btn-primary m-btn text-uppercase"  data-toggle="m-tooltip" data-placement="top" title="" data-original-title="Registrar un nuevo evento">
                             <span><i class="flaticon-add"></i></span> Nuevo
                         </a>
                     </li>
@@ -30,7 +30,7 @@
         </div>
         <div class="m-portlet__body">
             <!--begin: Datatable -->
-            {%include 'encuentro/_table.html.twig'%}
+            {%include 'evento/_table.html.twig'%}
             <!--end: Datatable -->
         </div>
     </div>
@@ -38,10 +38,10 @@
 
 {% block javascripts %}
     {{parent()}}
-    <script src="{{ asset('script/entity/encuentro.js','codice') }}"></script>
+    <script src="{{ asset('script/entity/evento.js','codice') }}"></script>
     <script>
-        var total ={{encuentros |length }}
-            encuentro.init();
+        var total ={{eventos |length }}
+            evento.init();
     </script>
 {% endblock %}
 

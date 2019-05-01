@@ -87,12 +87,18 @@ class Mensaje
      */
     private $bandeja;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $leida;
+
     public function __construct()
     {
         $this->fecha = new \DateTime();
         $this->asunto='';
         $this->iddestinatario = new \Doctrine\Common\Collections\ArrayCollection();
         $this->bandeja = 1;
+        $this->leida=false;
     }
 
 
@@ -280,5 +286,17 @@ class Mensaje
             $context->buildViolation('Seleccione un propietario')->atPath('propietario')->addViolation();
         if($this->getIddestinatario()->isEmpty())
             $context->buildViolation('Seleccione el/los destinatario(s)')->atPath('iddestinatario')->addViolation();
+    }
+
+    public function getLeida(): ?bool
+    {
+        return $this->leida;
+    }
+
+    public function setLeida(bool $leida): self
+    {
+        $this->leida = $leida;
+
+        return $this;
     }
 }

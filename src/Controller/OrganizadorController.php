@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Encuentro;
+use App\Entity\Evento;
 use App\Entity\Organizador;
 use App\Form\OrganizadorType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -126,7 +126,7 @@ class OrganizadorController extends AbstractController
      */
     private function esEliminable(Organizador $organizador){
         return $this->getDoctrine()->getManager()
-             ->getRepository(Encuentro::class)
+             ->getRepository(Evento::class)
              ->findOneByOrganizador($organizador)==null;
     }
 }

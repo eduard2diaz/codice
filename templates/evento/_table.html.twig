@@ -1,4 +1,4 @@
-<table class="table table-hover m-table m-table--head-separator-brand" id="encuentro_table">
+<table class="table table-hover m-table m-table--head-separator-brand" id="evento_table">
     <thead>
     <tr>
         <th style="width: 10%">
@@ -16,24 +16,24 @@
     </thead>
     <tbody>
     {%set i=1%}
-    {% for encuentro in encuentros %}
+    {% for evento in eventos %}
         <tr>
             <td>{{ i }}</td>
-            <td>{{ encuentro.id.titulo }}</td>
-            <td>{{ encuentro.id.fechaCaptacion|date('d-m-Y') }}</td>
+            <td>{{ evento.id.titulo }}</td>
+            <td>{{ evento.id.fechaCaptacion|date('d-m-Y') }}</td>
             <td>
                 <ul class="m-nav m-nav--inline m--pull-right">
                     <li class="m-nav__item">
-                        <a class="btn btn-secondary btn-sm" href="{{ path('encuentro_show', { 'id': encuentro.id.id }) }}">
+                        <a class="btn btn-secondary btn-sm" href="{{ path('evento_show', { 'id': evento.id.id }) }}">
                             <i class="flaticon-eye"></i> Ver</a>
                     </li>
                     {% if esGestor==true %}
                     <li class="m-nav__item">
-                        <a class="btn btn-info btn-sm" href="{{ path('encuentro_edit', { 'id': encuentro.id.id }) }}">
+                        <a class="btn btn-info btn-sm" href="{{ path('evento_edit', { 'id': evento.id.id }) }}">
                             <i class="flaticon-edit-1"></i> Editar</a>
                     </li>
                     <li class="m-nav__item">
-                        <a class="btn btn-danger btn-sm  eliminar_encuentro" data-href="{{ path('encuentro_delete', { 'id': encuentro.id.id }) }}"  data-csrf="{{ csrf_token('delete' ~ encuentro.id.id) }}">
+                        <a class="btn btn-danger btn-sm  eliminar_evento" data-href="{{ path('evento_delete', { 'id': evento.id.id }) }}"  data-csrf="{{ csrf_token('delete' ~ evento.id.id) }}">
                             <i class="flaticon-delete-1"></i> Eliminar</a>
                     </li>
                     {% endif %}

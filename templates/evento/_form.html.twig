@@ -89,11 +89,11 @@
         <div class="col-md-4">
             <div class="form-group m-form__group">
                 <label>
-                    {{ form_label(form.tipoEncuentro) }}
+                    {{ form_label(form.tipoEvento) }}
                 </label>
                 <div>
-                    {{ form_widget(form.tipoEncuentro) }}
-                    {{ form_errors(form.tipoEncuentro) }}
+                    {{ form_widget(form.tipoEvento) }}
+                    {{ form_errors(form.tipoEvento) }}
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@
                         {{ form_widget(form.id.file) }}
                         {{ form_errors(form.id.file) }}
                     </div>
-                    <button type="button" class="btn btn-primary btn-sm" id="encuentro_file">
+                    <button type="button" class="btn btn-primary btn-sm" id="evento_file">
                         <i class="la la-cloud-upload"></i> Cargar archivo
                     </button>
                     <span class="custom-file-control"></span>

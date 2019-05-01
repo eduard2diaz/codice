@@ -15,15 +15,15 @@
         </div>
         <div class="tab-content">
             <div class="tab-pane active show" id="m_user_profile_tab_1">
-                {{ include('encuentro/_form.html.twig') }}
+                {{ include('evento/_form.html.twig') }}
             </div>
         </div>
     </div>
 {% endblock %}
 {% block javascripts %}
     {{parent()}}
-    <script src="{{ asset('script/entity/encuentro.js','codice') }}"></script>
+    <script src="{{ asset('script/entity/evento.js','codice') }}"></script>
     <script>
-        encuentro.nuevo();
+        evento.nuevo();
     </script>
 {% endblock %}
