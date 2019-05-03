@@ -1,25 +1,28 @@
 //dentro de este tipo de funciones se pueden definir variables y otras funciones
 var authenticated = function () {
     var obj = null;
+    var cantidadNotificaciones = 0;
+    var cantidadMensajes = 0;
 
     var notificacionesAction = function () {
         $.ajax({
-            url: Routing.generate('notificacion_index',{'_format':'json'}),
+            url: Routing.generate('notificacion_index', {'_format': 'json'}),
             type: "GET",
             success: function (data) {
-                if(data['contador']>0)
-                    $('span#notificacion_contador').append("<span class='m-nav__link-badge m-badge m-badge--danger'>"+data['contador']+"</span>");
+                if (data['contador'] > 0) {
+                    $('span#notificacion_contador').append("<span class='m-nav__link-badge m-badge m-badge--danger'>" + data['contador'] + "</span>");
+                    cantidadNotificaciones = data['contador'];
+                }
                 $('div#notificacion_content').html(data['html']);
             },
             error: function () {
-         //       base.Error();
+                //       base.Error();
             }
         });
     }
 
     var notificacionShow = function () {
-        $('body').on('click', 'a.notificacion_show', function (evento)
-        {
+        $('body').on('click', 'a.notificacion_show', function (evento) {
             evento.preventDefault();
             var link = $(this).attr('data-href');
             obj = $(this);
@@ -29,15 +32,22 @@ var authenticated = function () {
                 url: link,
                 beforeSend: function (data) {
                     mApp.block("body",
-                        {overlayColor:"#000000",type:"loader",state:"success",message:"Cargando..."});
+                        {overlayColor: "#000000", type: "loader", state: "success", message: "Cargando..."});
                 },
                 success: function (data) {
                     if ($('div#basicmodal').html(data)) {
                         $('div#basicmodal').modal('show');
+                        if (cantidadNotificaciones > 0 && !obj.hasClass('notificacion-vista')) {
+                            cantidadNotificaciones--;
+                            if (cantidadNotificaciones == 0) {
+                                $('span#notificacion_contador span.m-nav__link-badge').html('').removeClass('m-nav__link-badge m-badge m-badge--danger');
+                            } else
+                                $('span#notificacion_contador span.m-nav__link-badge').html(cantidadNotificaciones);
+                        }
+                        obj.addClass('notificacion-vista');
                     }
                 },
-                error: function ()
-                {
+                error: function () {
                     base.Error();
                 },
                 complete: function () {
@@ -64,10 +74,10 @@ var authenticated = function () {
             }
         });
         $("div#basicmodal form#message_new").validate({
-            rules:{
-                'mensaje[iddestinatario][]': {required:true},
-                'mensaje[descripcion]': {required:true},
-                'mensaje[asunto]': {required:true},
+            rules: {
+                'mensaje[iddestinatario][]': {required: true},
+                'mensaje[descripcion]': {required: true},
+                'mensaje[asunto]': {required: true},
             }
         });
     }
@@ -80,12 +90,14 @@ var authenticated = function () {
             beforeSend: function (data) {
             },
             success: function (data) {
-                if(data['contador']>0)
-                    $('span#mensaje_contador').append("<span class='m-nav__link-badge m-badge m-badge--danger'>"+data['contador']+"</span>");
+                if (data['contador'] > 0) {
+                    $('span#mensaje_contador').append("<span class='m-nav__link-badge m-badge m-badge--danger'>" + data['contador'] + "</span>");
+                    cantidadMensajes=data['contador'];
+                }
                 $('div#mensaje_content').html(data['html']);
             },
             error: function () {
-             //   base.Error();
+                //   base.Error();
             },
             complete: function () {
             }
@@ -103,7 +115,7 @@ var authenticated = function () {
                 url: link,
                 beforeSend: function (data) {
                     mApp.block("body",
-                        {overlayColor:"#000000",type:"loader",state:"success",message:"Cargando..."});
+                        {overlayColor: "#000000", type: "loader", state: "success", message: "Cargando..."});
                 },
                 success: function (data) {
                     if ($('div#basicmodal').html(data)) {
@@ -126,7 +138,7 @@ var authenticated = function () {
         $('div#basicmodal').on('submit', 'form#message_new', function (evento) {
             evento.preventDefault();
             var padre = $(this).parent();
-            var l = Ladda.create(document.querySelector( '.ladda-button' ) );
+            var l = Ladda.create(document.querySelector('.ladda-button'));
             l.start();
             $.ajax({
                 url: $(this).attr("action"),
@@ -134,7 +146,7 @@ var authenticated = function () {
                 data: $(this).serialize(), //para enviar el formulario hay que serializarlo
                 beforeSend: function () {
                     mApp.block("body",
-                        {overlayColor:"#000000",type:"loader",state:"success",message:"Cargando..."});
+                        {overlayColor: "#000000", type: "loader", state: "success", message: "Cargando..."});
                 },
                 complete: function () {
                     l.stop();
@@ -168,11 +180,21 @@ var authenticated = function () {
                 url: link,
                 beforeSend: function (data) {
                     mApp.block("body",
-                        {overlayColor:"#000000",type:"loader",state:"success",message:"Cargando..."});
+                        {overlayColor: "#000000", type: "loader", state: "success", message: "Cargando..."});
                 },
                 success: function (data) {
                     if ($('div#basicmodal').html(data)) {
                         $('div#basicmodal').modal('show');
+
+
+                        if (cantidadMensajes > 0 && !obj.hasClass('mensaje-visto')) {
+                            cantidadMensajes--;
+                            if (cantidadMensajes == 0) {
+                                $('span#mensaje_contador span.m-nav__link-badge').html('').removeClass('m-nav__link-badge m-badge m-badge--danger');
+                            } else
+                                $('span#mensaje_contador span.m-nav__link-badge').html(cantidadMensajes);
+                        }
+                        obj.addClass('mensaje-visto');
                     }
                 },
                 error: function () {
@@ -187,7 +209,7 @@ var authenticated = function () {
 
     return {
         init: function () {
-            $().ready(function(){
+            $().ready(function () {
                 notificacionShow();
                 notificacionesAction();
                 cargarMensajes();

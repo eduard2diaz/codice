@@ -67,7 +67,7 @@ class ReporteController extends AbstractController
                 $total++;
             }
         } else {
-            $publicaciones = $em->createQuery('SELECT p FROM App:Publicacion p JOIN p.autor a WHERE a.id=:id AND p.fechaCaptacion>= :finicio AND p.fechaCaptacion<= :ffin')
+            $publicaciones = $em->createQuery('SELECT p FROM App:Publicacion p JOIN p.autor a WHERE p.estado=1 AND a.id=:id AND p.fechaCaptacion>= :finicio AND p.fechaCaptacion<= :ffin')
                 ->setParameters(['id' => $autor->getId(), 'finicio' => $finicio, 'ffin' => $ffin])
                 ->getResult();
 
