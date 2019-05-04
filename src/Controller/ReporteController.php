@@ -26,7 +26,6 @@ class ReporteController extends AbstractController
             throw $this->createAccessDeniedException();
 
         $this->denyAccessUnlessGranted('VIEWSTATICS', $autor);
-
         $em = $this->getDoctrine()->getManager();
         $finicio = new \DateTime($request->request->get('finicio'));
         $ffin = new \DateTime($request->request->get('ffin'));
@@ -95,33 +94,138 @@ class ReporteController extends AbstractController
         if($esDirectivo)
             $parameters['resumen_subordinados']=$autores;
 
-        return new JsonResponse([
+        return $this->json([
             'pdf' => $this->renderView('reporte/resumen_publicacionpdf.html.twig', $parameters),
             'html' => $this->renderView('reporte/resumen_publicacion.html.twig', $parameters),
             'data' => json_encode($resumen)
         ]);
     }
 
-    private function buscarTipoPublicacion($arreglo, $tipohijo)
+    /**
+     * @Route("/rankingautor", name="reporte_rankingautor",options={"expose"=true})
+     */
+    public function rankingAutor(Request $request)
     {
-        $i = 0;
-        foreach ($arreglo as $value) {
-            if ($value['entidad'] == $tipohijo)
-                return $i;
-            $i++;
-        }
-        return -1;
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        $em = $this->getDoctrine()->getManager();
+        $finicio = new \DateTime($request->request->get('finicio'));
+        $ffin = new \DateTime($request->request->get('ffin'));
+        $consulta=$em->createQuery('SELECT a.nombre, COUNT(p.id) as cantidad FROM App:Publicacion p JOIN p.autor a JOIN a.area a2 JOIN a2.institucion i WHERE i.id= :institucion  AND p.fechaCaptacion>= :finicio AND p.fechaCaptacion<= :ffin GROUP BY a.nombre ORDER BY count(p.id) DESC');
+        $consulta->setParameters(['institucion'=>$this->getUser()->getInstitucion()->getId(),'finicio' => $finicio, 'ffin' => $ffin]);
+        $consulta->setMaxResults(20);
+        $result=$consulta->getResult();
+        $parameters=['title'=>'Ranking de autores', 'data'=>$result];
+        return $this->json([
+            'pdf' => $this->renderView('reporte/datatableClaveValorpdf.html.twig', $parameters),
+            'html' => $this->renderView('reporte/datatableClaveValor.html.twig', $parameters),
+        ]);
     }
 
-    public function buscarAutor($listado, $autor)
+    /**
+     * @Route("/area", name="reporte_area",options={"expose"=true})
+     */
+    public function reporteArea(Request $request)
     {
-        $i = 0;
-        foreach ($listado as $banderin) {
-            if ($banderin['autor'] == $autor) ;
-            return $i;
-            $i++;
-        }
-        return -1;
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        $em = $this->getDoctrine()->getManager();
+        $finicio = new \DateTime($request->request->get('finicio'));
+        $ffin = new \DateTime($request->request->get('ffin'));
+        $consulta=$em->createQuery('SELECT a2.nombre, COUNT(p.id) as cantidad FROM App:Publicacion p JOIN p.autor a JOIN a.area a2 JOIN a2.institucion i WHERE i.id= :institucion AND p.estado= 1 AND p.fechaCaptacion>= :finicio AND p.fechaCaptacion<= :ffin GROUP BY a2.nombre');
+        $consulta->setParameters(['institucion'=>$this->getUser()->getInstitucion()->getId(),'finicio' => $finicio, 'ffin' => $ffin]);
+        $result=$consulta->getResult();
+        $parameters=['title'=>'Resumen por área', 'data'=>$result];
+        return $this->json([
+            'pdf' => $this->renderView('reporte/datatableClaveValorpdf.html.twig', $parameters),
+            'html' => $this->renderView('reporte/datatableClaveValor.html.twig', $parameters),
+        ]);
+    }
+
+    /**
+     * @Route("/tipotesis", name="reporte_tipotesis",options={"expose"=true})
+     */
+    public function reporteTipoTesis(Request $request)
+    {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        $em = $this->getDoctrine()->getManager();
+        $finicio = new \DateTime($request->request->get('finicio'));
+        $ffin = new \DateTime($request->request->get('ffin'));
+        $consulta=$em->createQuery('SELECT tt.nombre, COUNT(t.id) as cantidad FROM App:Tesis t JOIN t.tipoTesis tt JOIN t.id p  JOIN p.autor a JOIN a.area a2 JOIN a2.institucion i WHERE i.id= :institucion AND p.estado= 1 AND p.fechaCaptacion>= :finicio AND p.fechaCaptacion<= :ffin GROUP BY tt.nombre');
+        $consulta->setParameters(['institucion'=>$this->getUser()->getInstitucion()->getId(),'finicio' => $finicio, 'ffin' => $ffin]);
+        $result=$consulta->getResult();
+        $parameters=['title'=>'Resumen por tipo de tesis', 'data'=>$result];
+        return $this->json([
+            'pdf' => $this->renderView('reporte/datatableClaveValorpdf.html.twig', $parameters),
+            'html' => $this->renderView('reporte/datatableClaveValor.html.twig', $parameters),
+        ]);
+    }
+
+    /**
+     * @Route("/tipopremio", name="reporte_tipopremio",options={"expose"=true})
+     */
+    public function reporteTipoPremio(Request $request)
+    {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        $em = $this->getDoctrine()->getManager();
+        $finicio = new \DateTime($request->request->get('finicio'));
+        $ffin = new \DateTime($request->request->get('ffin'));
+        $consulta=$em->createQuery('SELECT tp.nombre, COUNT(pm.id) as cantidad FROM App:Premio pm JOIN pm.tipoPremio tp JOIN pm.id p  JOIN p.autor a JOIN a.area a2 JOIN a2.institucion i WHERE i.id= :institucion  AND p.estado= 1 AND p.fechaCaptacion>= :finicio AND p.fechaCaptacion<= :ffin GROUP BY tp.nombre');
+        $consulta->setParameters(['institucion'=>$this->getUser()->getInstitucion()->getId(),'finicio' => $finicio, 'ffin' => $ffin]);
+        $result=$consulta->getResult();
+        $parameters=['title'=>'Resumen por tipo de premio', 'data'=>$result];
+        return $this->json([
+            'pdf' => $this->renderView('reporte/datatableClaveValorpdf.html.twig', $parameters),
+            'html' => $this->renderView('reporte/datatableClaveValor.html.twig', $parameters),
+        ]);
+    }
+
+    /**
+     * @Route("/tiposoftware", name="reporte_tiposoftware",options={"expose"=true})
+     */
+    public function reporteTipoSoftware(Request $request)
+    {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        $em = $this->getDoctrine()->getManager();
+        $finicio = new \DateTime($request->request->get('finicio'));
+        $ffin = new \DateTime($request->request->get('ffin'));
+        $consulta=$em->createQuery('SELECT ts.nombre, COUNT(s.id) as cantidad FROM App:Software s JOIN s.tipoSoftware ts JOIN s.id p  JOIN p.autor a JOIN a.area a2 JOIN a2.institucion i WHERE i.id= :institucion  AND p.estado= 1 AND p.fechaCaptacion>= :finicio AND p.fechaCaptacion<= :ffin GROUP BY ts.nombre');
+        $consulta->setParameters(['institucion'=>$this->getUser()->getInstitucion()->getId(),'finicio' => $finicio, 'ffin' => $ffin]);
+        $result=$consulta->getResult();
+        $parameters=['title'=>'Resumen por tipo de software', 'data'=>$result];
+        return $this->json([
+            'pdf' => $this->renderView('reporte/datatableClaveValorpdf.html.twig', $parameters),
+            'html' => $this->renderView('reporte/datatableClaveValor.html.twig', $parameters),
+        ]);
+    }
+
+    /**
+     * @Route("/tipoarticulo", name="reporte_tipoarticulo",options={"expose"=true})
+     */
+    public function reporteTipoArticulo(Request $request)
+    {
+        if (!$request->isXmlHttpRequest())
+            throw $this->createAccessDeniedException();
+
+        $em = $this->getDoctrine()->getManager();
+        $finicio = new \DateTime($request->request->get('finicio'));
+        $ffin = new \DateTime($request->request->get('ffin'));
+        $consulta=$em->createQuery('SELECT ta.nombre, COUNT(ar.id) as cantidad FROM App:Articulo ar JOIN ar.tipoArticulo ta JOIN ar.id p  JOIN p.autor a JOIN a.area a2 JOIN a2.institucion i WHERE i.id= :institucion AND p.estado= 1 AND p.fechaCaptacion>= :finicio AND p.fechaCaptacion<= :ffin GROUP BY ta.nombre');
+        $consulta->setParameters(['institucion'=>$this->getUser()->getInstitucion()->getId(),'finicio' => $finicio, 'ffin' => $ffin]);
+        $result=$consulta->getResult();
+        $parameters=['title'=>'Resumen por tipo de artículo', 'data'=>$result];
+        return $this->json([
+            'pdf' => $this->renderView('reporte/datatableClaveValorpdf.html.twig', $parameters),
+            'html' => $this->renderView('reporte/datatableClaveValor.html.twig', $parameters),
+        ]);
     }
 
     /**
@@ -135,5 +239,27 @@ class ReporteController extends AbstractController
             $pdf->getOutputFromHtml($html),
             'Resumen.pdf'
         );
+    }
+
+    private function buscarTipoPublicacion($arreglo, $tipohijo)
+    {
+        $i = 0;
+        foreach ($arreglo as $value) {
+            if ($value['entidad'] == $tipohijo)
+                return $i;
+            $i++;
+        }
+        return -1;
+    }
+
+    private function buscarAutor($listado, $autor)
+    {
+        $i = 0;
+        foreach ($listado as $banderin) {
+            if ($banderin['autor'] == $autor) ;
+            return $i;
+            $i++;
+        }
+        return -1;
     }
 }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta charset="UTF-8"/>
+    <style>
+        body{
+            padding: 3%;
+        }
+        div.header{
+            text-align: center;
+            color: gray;
+            margin-bottom: 4%;
+        }
+        div.header h3{
+            margin-bottom: 0.4%;
+        }
+        table{
+            width: 100% !important;
+        }
+        table td, th{
+            padding: .75rem;
+            border-top: 1px solid #f4f5f8;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h3>{{ title }}</h3>
+</div>
+
+    <table class="table m-table m-table m-table--head-separator-primary">
+        <thead>
+        <tr>
+            <th>
+               Nombre
+            </th>
+            <th>
+                Cantidad
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for obj in data %}
+            <tr>
+                <td>{{ obj['nombre'] }}</td>
+                <td>{{ obj['cantidad'] }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">No existen publicaciones en el período</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Cantidad
+            </th>
+        </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

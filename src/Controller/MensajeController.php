@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Autor;
 use App\Entity\Grupo;
 use App\Entity\Mensaje;
 use App\Form\MensajeType;
+use App\Form\MensajeUsuarioType;
 use App\Services\EmailService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -142,6 +144,50 @@ class MensajeController extends AbstractController
             }
 
         return $this->render('mensaje/_new.html.twig', [
+            'mensaje' => $mensaje,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/new", name="mensaje_new_autor", methods="GET|POST")
+     */
+    public function newAutor(Request $request,Autor $autor, EmailService $email): Response
+    {
+          if (!$request->isXmlHttpRequest() || $autor->getId()==$this->getUser()->getId())
+            throw $this->createAccessDeniedException();
+
+        $em = $this->getDoctrine()->getManager();
+        $mensaje = new Mensaje();
+        $mensaje->setRemitente($this->getUser());
+        $mensaje->setPropietario($this->getUser());
+        $mensaje->addIddestinatario($autor);
+        $form = $this->createForm(MensajeUsuarioType::class, $mensaje, array('action' => $this->generateUrl('mensaje_new_autor',['id'=>$autor->getId()])));
+        $form->handleRequest($request);
+        if ($form->isSubmitted())
+            if ($form->isValid()) {
+                $em->persist($mensaje);
+                foreach ($mensaje->getIddestinatario() as $value) {
+                    $clone = clone $mensaje;
+                    $clone->setPropietario($value);
+                    $clone->setBandeja(0);
+                    $em->persist($clone);
+                    $email->sendEmail($this->getUser()->getEmail(), $value->getEmail(), $clone->getAsunto(), $clone->getDescripcion());
+                }
+                $em->flush();
+                return $this->json(['mensaje' => 'El mensaje fue registrado satisfactoriamente',
+                    'descripcion' => $mensaje->getDescripcion(),
+                    'fecha' => $mensaje->getFecha()->format('d-m-Y H:i'),
+                    'id' => $mensaje->getId()
+                ]);
+            } else {
+                $page = $this->renderView('mensaje/_formautor.html.twig', array(
+                    'form' => $form->createView(),
+                ));
+                return $this->json(array('form' => $page, 'error' => true,));
+            }
+
+        return $this->render('mensaje/_newautor.html.twig', [
             'mensaje' => $mensaje,
             'form' => $form->createView(),
         ]);

@@ -53,6 +53,12 @@
                                                             <span class="m-nav__link-text">{{ follow_button ? 'Seguir' : 'Dejar de seguir' }}</span>
                                                         </a>
                                                     </li>
+                                                    <li class="m-nav__item">
+                                                        <a data-href="{{ path('mensaje_new_autor',{'id':autor.id}) }}" class="m-nav__link enviarmensaje">
+                                                            <i class="m-nav__link-icon flaticon-email"></i>
+                                                            <span class="m-nav__link-text">Nuevo mensaje</span>
+                                                        </a>
+                                                    </li>
                                                 {% endif %}
                                             </ul>
                                         </div>
@@ -208,7 +214,6 @@
     <script src="{{ asset('plugins/amcharts4/core.js','codice') }}"></script>
     <script src="{{ asset('plugins/amcharts4/charts.js','codice') }}"></script>
     <script src="{{ asset('plugins/amcharts4/themes/animated.js','codice') }}"></script>
-    <script src="{{ asset('plugins/jquery.fileDownload.js','codice') }}"></script>
     <!--FIN DE IMPORTANDO LAS LIBRERIAS DE AMCHART-->
     <script src="{{ asset('script/entity/autor.js','codice') }}"></script>
     <script>

@@ -25,8 +25,11 @@
         {% block top_menu %}
             {% if is_granted('ROLE_SUPERADMIN') %}
                 {{ include('layout/recortes/topmenu/superadmin_topmenu.html.twig') }}
-            {% elseif is_granted('ROLE_ADMIN') %}
-                {{ include('layout/recortes/topmenu/admin_topmenu.html.twig') }}
+            {% else %}
+                {{ include('layout/recortes/topmenu/reporte_topmenu.html.twig') }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ include('layout/recortes/topmenu/admin_topmenu.html.twig') }}
+                {% endif %}
             {% endif %}
             {% if is_granted('ROLE_GESTORBALANCE') %}
                 {{ include('layout/recortes/topmenu/gestorbalance_topmenu.html.twig') }}
@@ -70,11 +73,16 @@
     <script type="text/javascript"
             src="{{ asset('vendors/custom/fullcalendar/fullcalendar.bundle.js','template') }}"></script>
     <script type="text/javascript" src="{{ asset('plugins/bootbox/bootbox.min.js','codice') }}"></script>
-    <script src="{{ asset('script/base/authenticated.js','codice') }}"></script>
+    {% if not is_granted('ROLE_SUPERADMIN') %}
+        <script src="{{ asset('plugins/jquery.fileDownload.js','codice') }}"></script>
+        <script src="{{ asset('script/base/authenticated.js','codice') }}"></script>
+        <script src="{{ asset('script/base/reporte.js','codice') }}"></script>
+        <script>
+            authenticated.init();
+            reporte.init();
+        </script>
+    {% endif %}
     <script>
-        {% if not is_granted('ROLE_SUPERADMIN') %}
-        authenticated.init();
-        {% endif %}
         var datatable_url = '{{ asset('plugins/datatable/es.json','codice') }}';
     </script>
 {% endblock %}
