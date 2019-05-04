@@ -47,7 +47,7 @@
                     <li class="list-inline-item"><a href="{{ path('autor_seguidos',{'id':user_id}) }}"
                                                     class="nav-link m-link"><i class="flaticon-profile"></i>Seguidos</a>
                     </li>
-                    <li class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-left m-dropdown--align-push"
+                    <li class="m-dropdown m-dropdown--huge m-dropdown--inline m-dropdown--arrow m-dropdown--align-left m-dropdown--align-push"
                         m-dropdown-toggle="click" aria-expanded="true">
                         <a href="#" class="m-portlet__nav-link m-dropdown__toggle btn m-btn m-btn--link"
                            style="box-shadow: none !important">
@@ -59,90 +59,97 @@
                             <div class="m-dropdown__inner">
                                 <div class="m-dropdown__body">
                                     <div class="m-dropdown__content">
-
-                                        <ul class="m-nav">
-                                            <li class="m-nav__item">
-                                                <a href="{{ path('evento_index',{'id':user_id}) }}" class="m-nav__link">
-                                                    <i class="m-nav__link-icon flaticon-file"></i>
-                                                    <span class="m-nav__link-text">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <ul class="m-nav">
+                                                    <li class="m-nav__item">
+                                                        <a href="{{ path('evento_index',{'id':user_id}) }}" class="m-nav__link">
+                                                            <i class="m-nav__link-icon flaticon-map-location"></i>
+                                                            <span class="m-nav__link-text">
 																							Eventos
 																						</span>
-                                                </a>
-                                            </li>
-                                            <li class="m-nav__item">
-                                                <a href="{{ path('premio_index',{'id':user_id}) }}" class="m-nav__link">
-                                                    <i class="m-nav__link-icon flaticon-file"></i>
-                                                    <span class="m-nav__link-text">
+                                                        </a>
+                                                    </li>
+                                                    <li class="m-nav__item">
+                                                        <a href="{{ path('premio_index',{'id':user_id}) }}" class="m-nav__link">
+                                                            <i class="m-nav__link-icon flaticon-gift"></i>
+                                                            <span class="m-nav__link-text">
 																							Premios
 																						</span>
-                                                </a>
-                                            </li>
-                                            <li class="m-nav__item">
-                                                <a href="{{ path('tesis_index',{'id':user_id}) }}" class="m-nav__link">
-                                                    <i class="m-nav__link-icon flaticon-file"></i>
-                                                    <span class="m-nav__link-text">
+                                                        </a>
+                                                    </li>
+                                                    <li class="m-nav__item">
+                                                        <a href="{{ path('tesis_index',{'id':user_id}) }}" class="m-nav__link">
+                                                            <i class="m-nav__link-icon flaticon-file-1"></i>
+                                                            <span class="m-nav__link-text">
 																							Tesis
 																						</span>
-                                                </a>
-                                            </li>
-                                            <li class="m-nav__item">
-                                                <a href="{{ path('software_index',{'id':user_id}) }}"
-                                                   class="m-nav__link">
-                                                    <i class="m-nav__link-icon flaticon-file"></i>
-                                                    <span class="m-nav__link-text">
+                                                        </a>
+                                                    </li>
+                                                    <li class="m-nav__item">
+                                                        <a href="{{ path('software_index',{'id':user_id}) }}"
+                                                           class="m-nav__link">
+                                                            <i class="m-nav__link-icon flaticon-analytics"></i>
+                                                            <span class="m-nav__link-text">
 																							Softwares
 																						</span>
-                                                </a>
-                                            </li>
-                                            <li class="m-nav__item">
-                                                <a href="{{ path('patente_index',{'id':user_id}) }}"
-                                                   class="m-nav__link">
-                                                    <i class="m-nav__link-icon flaticon-file"></i>
-                                                    <span class="m-nav__link-text">
+                                                        </a>
+                                                    </li>
+                                                    <li class="m-nav__item">
+                                                        <a href="{{ path('patente_index',{'id':user_id}) }}"
+                                                           class="m-nav__link">
+                                                            <i class="m-nav__link-icon flaticon-file"></i>
+                                                            <span class="m-nav__link-text">
 																							Patentes
 																						</span>
-                                                </a>
-                                            </li>
-                                            <li class="m-nav__item">
-                                                <a href="{{ path('norma_index',{'id':user_id}) }}" class="m-nav__link">
-                                                    <i class="m-nav__link-icon flaticon-file"></i>
-                                                    <span class="m-nav__link-text">
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div><div class="col-md-6">
+                                                <ul class="m-nav">
+                                                    <li class="m-nav__item">
+                                                        <a href="{{ path('norma_index',{'id':user_id}) }}" class="m-nav__link">
+                                                            <i class="m-nav__link-icon flaticon-file"></i>
+                                                            <span class="m-nav__link-text">
 																							Normas
 																						</span>
-                                                </a>
-                                            </li>
-                                            <li class="m-nav__item">
-                                                <a href="{{ path('monografia_index',{'id':user_id}) }}"
-                                                   class="m-nav__link">
-                                                    <i class="m-nav__link-icon flaticon-file"></i>
-                                                    <span class="m-nav__link-text">
+                                                        </a>
+                                                    </li>
+                                                    <li class="m-nav__item">
+                                                        <a href="{{ path('monografia_index',{'id':user_id}) }}"
+                                                           class="m-nav__link">
+                                                            <i class="m-nav__link-icon flaticon-file"></i>
+                                                            <span class="m-nav__link-text">
 																							Monografías
 																						</span>
-                                                </a>
-                                            </li>
-                                            <li class="m-nav__item">
-                                                <a href="{{ path('libro_index',{'id':user_id}) }}" class="m-nav__link">
-                                                    <i class="m-nav__link-icon flaticon-file"></i>
-                                                    <span class="m-nav__link-text">
+                                                        </a>
+                                                    </li>
+                                                    <li class="m-nav__item">
+                                                        <a href="{{ path('libro_index',{'id':user_id}) }}" class="m-nav__link">
+                                                            <i class="m-nav__link-icon flaticon-book"></i>
+                                                            <span class="m-nav__link-text">
 																							Libros
 																						</span>
-                                                </a>
-                                            </li>
-                                            <li class="m-nav__item">
-                                                <a href="{{ path('articulo_index',{'id':user_id}) }}"
-                                                   class="m-nav__link">
-                                                    <i class="m-nav__link-icon flaticon-file"></i>
-                                                    <span class="m-nav__link-text">
+                                                        </a>
+                                                    </li>
+                                                    <li class="m-nav__item">
+                                                        <a href="{{ path('articulo_index',{'id':user_id}) }}"
+                                                           class="m-nav__link">
+                                                            <i class="m-nav__link-icon flaticon-file"></i>
+                                                            <span class="m-nav__link-text">
 																							Artículos
 																						</span>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </li>
+
                 </ul>
             </div>
         </div>
