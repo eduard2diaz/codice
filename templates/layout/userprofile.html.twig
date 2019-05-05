@@ -19,7 +19,9 @@
                                 {% else %}
                                     {% set rutaFoto= asset('app/media/img/users/user4.jpg','template') %}
                                 {% endif %}
-                                <img src="{{ rutaFoto }}" alt="">
+                                <a href="{{ path('autor_show',{'id':user_id}) }}">
+                                    <img src="{{ rutaFoto }}" alt="">
+                                </a>
                             </div>
                         </div>
                         <div class="m-card-profile__details">
@@ -63,7 +65,8 @@
                                             <div class="col-md-6">
                                                 <ul class="m-nav">
                                                     <li class="m-nav__item">
-                                                        <a href="{{ path('evento_index',{'id':user_id}) }}" class="m-nav__link">
+                                                        <a href="{{ path('evento_index',{'id':user_id}) }}"
+                                                           class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-map-location"></i>
                                                             <span class="m-nav__link-text">
 																							Eventos
@@ -71,7 +74,8 @@
                                                         </a>
                                                     </li>
                                                     <li class="m-nav__item">
-                                                        <a href="{{ path('premio_index',{'id':user_id}) }}" class="m-nav__link">
+                                                        <a href="{{ path('premio_index',{'id':user_id}) }}"
+                                                           class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-gift"></i>
                                                             <span class="m-nav__link-text">
 																							Premios
@@ -79,7 +83,8 @@
                                                         </a>
                                                     </li>
                                                     <li class="m-nav__item">
-                                                        <a href="{{ path('tesis_index',{'id':user_id}) }}" class="m-nav__link">
+                                                        <a href="{{ path('tesis_index',{'id':user_id}) }}"
+                                                           class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-file-1"></i>
                                                             <span class="m-nav__link-text">
 																							Tesis
@@ -105,10 +110,12 @@
                                                         </a>
                                                     </li>
                                                 </ul>
-                                            </div><div class="col-md-6">
+                                            </div>
+                                            <div class="col-md-6">
                                                 <ul class="m-nav">
                                                     <li class="m-nav__item">
-                                                        <a href="{{ path('norma_index',{'id':user_id}) }}" class="m-nav__link">
+                                                        <a href="{{ path('norma_index',{'id':user_id}) }}"
+                                                           class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-file"></i>
                                                             <span class="m-nav__link-text">
 																							Normas
@@ -125,7 +132,8 @@
                                                         </a>
                                                     </li>
                                                     <li class="m-nav__item">
-                                                        <a href="{{ path('libro_index',{'id':user_id}) }}" class="m-nav__link">
+                                                        <a href="{{ path('libro_index',{'id':user_id}) }}"
+                                                           class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-book"></i>
                                                             <span class="m-nav__link-text">
 																							Libros
