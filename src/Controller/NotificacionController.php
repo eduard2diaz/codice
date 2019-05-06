@@ -24,7 +24,11 @@ class NotificacionController extends AbstractController
             if ($request->query->get('_format') == 'json') {
 
                 if (null == $this->getUser()->getUltimologout()) {
-                    $notificacions = $this->getDoctrine()->getRepository(Notificacion::class)->findBy(['destinatario' => $this->getUser()->getId(),'leida'=>false], ['fecha' => 'DESC'], 5);
+                    $notificacions = $this->getDoctrine()->getManager()
+                        ->createQuery('SELECT n FROM App:Notificacion n JOIN n.destinatario d WHERE d.id= :id AND n.leida= FALSE ORDER By n.fecha DESC')
+                        ->setParameters(array('id' => $this->getUser()->getId()))
+                        ->setMaxResults(5)
+                        ->getResult();
                 } else {
                     $consulta = $this->getDoctrine()->getManager()->createQuery('SELECT n FROM App:Notificacion n JOIN n.destinatario u WHERE u.id= :usuario AND n.fecha>= :fecha AND n.leida=FALSE');
                     $consulta->setParameters(['usuario' => $this->getUser()->getId(), 'fecha' => $this->getUser()->getUltimologout()]);
