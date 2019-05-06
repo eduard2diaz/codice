@@ -43,7 +43,7 @@ class NotificacionService
         $notificacion->setFecha(new \DateTime());
         $notificacion->setDestinatario($destinatario);
         $notificacion->setDescripcion($descripcion);
-        $this->getEm()->persist($notificacion);
+        $this->getEm()->merge($notificacion);
         $this->getEm()->flush();
     }
 

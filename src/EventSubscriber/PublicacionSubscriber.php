@@ -60,12 +60,7 @@ class PublicacionSubscriber implements EventSubscriber
                     $seguidorObj=$em->getRepository(Autor::class)->find($seguidor['id']);
                     if(!$seguidorObj)
                         continue;
-
-                    $notificacion=new Notificacion();
-                    $notificacion->setDestinatario($seguidorObj);
-                    $notificacion->setDescripcion($descripcion);
-                    $notificacion->setFecha($fecha);
-                    $em->persist($notificacion);
+                    $notificacionService->nuevaNotificacion($seguidorObj->getId(), $descripcion);
                 }
                 $em->flush();
             }
@@ -90,6 +85,7 @@ class PublicacionSubscriber implements EventSubscriber
     {
         $entity = $args->getEntity();
         $em = $args->getEntityManager();
+        $notificacionService = $this->getServiceContainer()->get('app.notificacion_service');
         if ($entity instanceof Publicacion) {
                 $seguidores=$this->obtenerSeguidores($entity->getAutor()->getId());
 
@@ -103,11 +99,7 @@ class PublicacionSubscriber implements EventSubscriber
                     $seguidorObj=$em->getRepository(Autor::class)->find($seguidor['id']);
                     if(!$seguidorObj)
                         continue;
-                    $notificacion=new Notificacion();
-                    $notificacion->setDestinatario($seguidorObj);
-                    $notificacion->setDescripcion($descripcion);
-                    $notificacion->setFecha($fecha);
-                    $em->persist($notificacion);
+                    $notificacionService->nuevaNotificacion($seguidorObj->getId(), $descripcion);
                 }
                 $em->flush();
             }
