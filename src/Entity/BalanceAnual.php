@@ -48,6 +48,7 @@ class BalanceAnual
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotNull(message="Este valor no es válido")
      */
     private $fecha;
 
@@ -132,7 +133,7 @@ class BalanceAnual
         return $this->fecha;
     }
 
-    public function setFecha(\DateTimeInterface $fecha): self
+    public function setFecha(?\DateTimeInterface $fecha): self
     {
         $this->fecha = $fecha;
 

@@ -40,6 +40,7 @@ class NormaController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esDirectivo' => $autor->esDirectivo(),
             'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esSubordinado($this->getUser())
         ]);
     }
@@ -78,6 +79,7 @@ class NormaController extends AbstractController
             'norma' => $norma,
             'form' => $form->createView(),
             'user_id' => $autor->getId(),
+            'esDirectivo' => $autor->esDirectivo(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
@@ -95,6 +97,8 @@ class NormaController extends AbstractController
             'user_foto' => null != $norma->getId()->getAutor()->getRutaFoto() ? $norma->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $norma->getId()->getAutor()->__toString(),
             'user_correo' => $norma->getId()->getAutor()->getEmail(),
+            'esDirectivo' => $norma->getId()->getAutor()->esDirectivo(),
+            'esGestor'=>$this->getUser()->getId()==$norma->getId()->getAutor()->getId() || $norma->getId()->getAutor()->esSubordinado($this->getUser())
         ]);
     }
 
@@ -134,6 +138,7 @@ class NormaController extends AbstractController
             'button_action' => 'Actualizar',
             'form_title' => 'Editar norma',
             'user_id' => $norma->getId()->getAutor()->getId(),
+            'esDirectivo' => $norma->getId()->getAutor()->esDirectivo(),
             'user_foto' => null != $norma->getId()->getAutor()->getRutaFoto() ? $norma->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $norma->getId()->getAutor()->__toString(),
             'user_correo' => $norma->getId()->getAutor()->getEmail(),

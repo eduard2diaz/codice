@@ -40,6 +40,7 @@ class PatenteController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esDirectivo' => $autor->esDirectivo(),
             'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esSubordinado($this->getUser())
         ]);
     }
@@ -78,6 +79,7 @@ class PatenteController extends AbstractController
             'patente' => $patente,
             'form' => $form->createView(),
             'user_id' => $autor->getId(),
+            'esDirectivo' => $autor->esDirectivo(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
@@ -96,6 +98,8 @@ class PatenteController extends AbstractController
             'user_foto' => null != $patente->getId()->getAutor()->getRutaFoto() ? $patente->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $patente->getId()->getAutor()->__toString(),
             'user_correo' => $patente->getId()->getAutor()->getEmail(),
+            'esDirectivo' => $patente->getId()->getAutor()->esDirectivo(),
+            'esGestor'=>$this->getUser()->getId()==$patente->getId()->getAutor()->getId() || $patente->getId()->getAutor()->esSubordinado($this->getUser())
         ]);
     }
 
@@ -135,6 +139,7 @@ class PatenteController extends AbstractController
             'button_action' => 'Actualizar',
             'form_title' => 'Editar patente',
             'user_id' => $patente->getId()->getAutor()->getId(),
+            'esDirectivo' => $patente->getId()->getAutor()->esDirectivo(),
             'user_foto' => null != $patente->getId()->getAutor()->getRutaFoto() ? $patente->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $patente->getId()->getAutor()->__toString(),
             'user_correo' => $patente->getId()->getAutor()->getEmail(),

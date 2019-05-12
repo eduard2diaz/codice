@@ -3,9 +3,8 @@
 namespace App\EventSubscriber;
 
 use App\Entity\Autor;
-use App\Entity\Notificacion;
 use App\Entity\Publicacion;
-use App\Services\FileStorageManager;
+use App\Tool\FileStorageManager;
 use Doctrine\Common\EventSubscriber;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;

@@ -19,7 +19,7 @@ class EditorialType extends AbstractType
             ->add('pais',null,['label'=>'País','required'=>true])
             ->add('direccion', TextareaType::class,array('label'=>'Dirección','attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
             ->add('correo', EmailType::class,array('label'=>'Correo electrónico','required'=>true,'attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
-            ->add('telefono', TextType::class,array('label'=>'Teléfono','required'=>false,'attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
+            ->add('telefono', TextType::class,array('label'=>'Teléfono','required'=>false,'attr'=>array('pattern'=>'((\+|\-)\d+)','autocomplete'=>'off','class'=>'form-control input-xlarge')))
         ;
     }
 

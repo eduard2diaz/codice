@@ -38,6 +38,7 @@ class ArticuloController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esDirectivo' => $autor->esDirectivo(),
             'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esSubordinado($this->getUser())
         ]);
     }
@@ -75,6 +76,7 @@ class ArticuloController extends AbstractController
             'articulo' => $articulo,
             'form' => $form->createView(),
             'user_id' => $autor->getId(),
+            'esDirectivo' => $autor->esDirectivo(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
@@ -88,10 +90,12 @@ class ArticuloController extends AbstractController
     {
         return $this->render('articulo/show.html.twig', [
             'articulo' => $articulo,
+            'esDirectivo' => $articulo->getId()->getAutor()->esDirectivo(),
             'user_id' => $articulo->getId()->getAutor()->getId(),
             'user_foto' => null != $articulo->getId()->getAutor()->getRutaFoto() ? $articulo->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $articulo->getId()->getAutor()->__toString(),
             'user_correo' => $articulo->getId()->getAutor()->getEmail(),
+            'esGestor'=>$this->getUser()->getId()==$articulo->getId()->getAutor()->getId() || $articulo->getId()->getAutor()->esSubordinado($this->getUser())
         ]);
     }
 
@@ -134,6 +138,7 @@ class ArticuloController extends AbstractController
             'user_foto' => null != $articulo->getId()->getAutor()->getRutaFoto() ? $articulo->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $articulo->getId()->getAutor()->__toString(),
             'user_correo' => $articulo->getId()->getAutor()->getEmail(),
+            'esDirectivo' => $articulo->getId()->getAutor()->esDirectivo(),
         ]);
     }
 

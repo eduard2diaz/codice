@@ -85,7 +85,6 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator
 
         // return true to cause authentication success
         return true;
-        dd('checking credentials');
     }
 
     /* Se ejecuta cuando la autenticacion falla, su trabajo es retornar el Response que

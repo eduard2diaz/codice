@@ -38,6 +38,7 @@ class EventoController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esDirectivo' => $autor->esDirectivo(),
             'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esSubordinado($this->getUser())
         ]);
     }
@@ -75,6 +76,7 @@ class EventoController extends AbstractController
             'evento' => $evento,
             'form' => $form->createView(),
             'user_id' => $autor->getId(),
+            'esDirectivo' => $autor->esDirectivo(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
@@ -92,6 +94,8 @@ class EventoController extends AbstractController
             'user_foto' => null != $evento->getId()->getAutor()->getRutaFoto() ? $evento->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $evento->getId()->getAutor()->__toString(),
             'user_correo' => $evento->getId()->getAutor()->getEmail(),
+            'esDirectivo' => $evento->getId()->getAutor()->esDirectivo(),
+            'esGestor'=>$this->getUser()->getId()==$evento->getId()->getAutor()->getId() || $evento->getId()->getAutor()->esSubordinado($this->getUser())
         ]);
     }
 
@@ -130,6 +134,7 @@ class EventoController extends AbstractController
             'form' => $form->createView(),
             'button_action' => 'Actualizar',
             'form_title' => 'Editar evento',
+            'esDirectivo' => $evento->getId()->getAutor()->esDirectivo(),
             'user_id' => $evento->getId()->getAutor()->getId(),
             'user_foto' => null != $evento->getId()->getAutor()->getRutaFoto() ? $evento->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $evento->getId()->getAutor()->__toString(),

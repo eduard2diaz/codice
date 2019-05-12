@@ -6,7 +6,7 @@ use App\Entity\Autor;
 use App\Entity\Institucion;
 use App\Form\AutorType;
 use App\Services\AreaService;
-use App\Services\FileStorageManager;
+use App\Tool\FileStorageManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,7 +40,7 @@ class AutorController extends AbstractController
      */
     public function index(Request $request, Autor $autor, AreaService $areaService): Response
     {
-        if ($this->isGranted('ROLE_ADMIN'))
+        if (in_array('ROLE_ADMIN',$autor->getRoles()))
             $autors = $this->getDoctrine()->getManager()->createQuery('SELECT u FROM App:Autor u JOIN u.institucion i WHERE u.id!=:id AND i.id= :institucion')->setParameters(['id' => $this->getUser()->getId(), 'institucion' => $this->getUser()->getInstitucion()->getId()])->getResult();
         else
             $autors = $areaService->subordinados($autor);
@@ -50,6 +50,7 @@ class AutorController extends AbstractController
 
         return $this->render('autor/index.html.twig', [
             'autors' => $autors,
+            'esDirectivo' => $autor->esDirectivo(),
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -116,6 +117,7 @@ class AutorController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esDirectivo' => $autor->esDirectivo(),
         ]);
     }
 
@@ -183,7 +185,7 @@ class AutorController extends AbstractController
         return $this->render('autor/edit.html.twig', [
             'autor' => $autor,
             'form' => $form->createView(),
-
+            'esDirectivo' => $autor->esDirectivo(),
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -263,6 +265,7 @@ class AutorController extends AbstractController
         $seguidores = $autor->getSeguidores()->toArray();
         return $this->render('autor/seguidores.html.twig', [
             'autors' => $seguidores,
+            'esDirectivo' => $autor->esDirectivo(),
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -279,6 +282,7 @@ class AutorController extends AbstractController
         $seguidos = $autor->getSeguidor()->toArray();
         return $this->render('autor/seguidos.html.twig', [
             'autors' => $seguidos,
+            'esDirectivo' => $autor->esDirectivo(),
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),

@@ -21,6 +21,7 @@ class PublicacionType extends AbstractType
             ->add('resumen', TextareaType::class, ['attr' => ['class' => 'form-control']])
             ->add('keywords', TextType::class, ['label'=>'Palabras claves','attr' => ['class' => 'form-control','autocomplete'=>'off']])
             ->add('fechaCaptacion', TextType::class, array('label'=>'Fecha de publicación','attr' => array(
+                'pattern'=>'\d{4}-\d{2}-\d{2}',
                 'autocomplete' => 'off',
                 'class' => 'form-control input-small'
             )))

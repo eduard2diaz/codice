@@ -38,6 +38,7 @@ class PremioController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esDirectivo' => $autor->esDirectivo(),
             'esGestor' => $this->getUser()->getId() == $autor->getId() || $autor->esSubordinado($this->getUser())
         ]);
     }
@@ -76,6 +77,7 @@ class PremioController extends AbstractController
             'premio' => $premio,
             'form' => $form->createView(),
             'user_id' => $autor->getId(),
+            'esDirectivo' => $autor->esDirectivo(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
@@ -93,6 +95,8 @@ class PremioController extends AbstractController
             'user_foto' => null != $premio->getId()->getAutor()->getRutaFoto() ? $premio->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $premio->getId()->getAutor()->__toString(),
             'user_correo' => $premio->getId()->getAutor()->getEmail(),
+            'esDirectivo' => $premio->getId()->getAutor()->esDirectivo(),
+            'esGestor'=>$this->getUser()->getId()==$premio->getId()->getAutor()->getId() || $premio->getId()->getAutor()->esSubordinado($this->getUser())
         ]);
     }
 

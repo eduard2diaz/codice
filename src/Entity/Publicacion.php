@@ -55,6 +55,7 @@ class Publicacion
      * @var \DateTime|null
      *
      * @ORM\Column(name="fecha_captacion", type="date", nullable=false)
+     * @Assert\NotNull(message="Este valor no es válido")
      */
     private $fechaCaptacion;
 

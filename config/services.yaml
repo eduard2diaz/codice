@@ -115,6 +115,13 @@ services:
             - { name: validator.constraint_validator, alias: autor.validator }
         arguments: ['@doctrine']
 
+    pais.validator:
+        class: App\Validator\PaisValidator
+        public: true
+        tags:
+            - { name: validator.constraint_validator, alias: pais.validator }
+        arguments: ['@doctrine']
+
 
     app.token_authenticator:
         class: App\Security\ApiTokenAuthenticator

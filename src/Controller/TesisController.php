@@ -11,7 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/tesis")
@@ -40,6 +39,7 @@ class TesisController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esDirectivo' => $autor->esDirectivo(),
             'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esSubordinado($this->getUser())
         ]);
     }
@@ -79,6 +79,7 @@ class TesisController extends AbstractController
             'form' => $form->createView(),
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
+            'esDirectivo' => $autor->esDirectivo(),
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
         ]);
@@ -95,6 +96,8 @@ class TesisController extends AbstractController
             'user_foto' => null != $tesis->getId()->getAutor()->getRutaFoto() ? $tesis->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $tesis->getId()->getAutor()->__toString(),
             'user_correo' => $tesis->getId()->getAutor()->getEmail(),
+            'esDirectivo' => $tesis->getId()->getAutor()->esDirectivo(),
+            'esGestor'=>$this->getUser()->getId()==$tesis->getId()->getAutor()->getId() || $tesis->getId()->getAutor()->esSubordinado($this->getUser())
         ]);
     }
 
@@ -133,7 +136,7 @@ class TesisController extends AbstractController
             'form' => $form->createView(),
             'button_action' => 'Actualizar',
             'form_title' => 'Editar tesis',
-
+            'esDirectivo' => $tesis->getId()->getAutor()->esDirectivo(),
             'user_id' => $tesis->getId()->getAutor()->getId(),
             'user_foto' => null != $tesis->getId()->getAutor()->getRutaFoto() ? $tesis->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $tesis->getId()->getAutor()->__toString(),

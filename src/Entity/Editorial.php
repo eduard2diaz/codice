@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use App\Tool\Util;
 
 /**
  * Editor
@@ -57,6 +58,7 @@ class Editorial
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Regex("/^((\+|\-)\d+)$/")
      */
     private $telefono;
 
@@ -139,6 +141,10 @@ class Editorial
             $context->buildViolation('Seleccione un país')
                 ->atPath('pais')
                 ->addViolation();
+        elseif(null!=$this->getTelefono() && !Util::esTelefonoValido($this->getTelefono(),$this->getPais()->getCodigo())) {
+            $context->setNode($context, 'telefono', null, 'data.telefono');
+            $context->addViolation('Este teléfono no pertenece al país indicado');
+        }
     }
 
 

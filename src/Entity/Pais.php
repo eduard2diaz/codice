@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Pais as PaisConstraint;
 
 /**
  * Pais
@@ -15,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @UniqueEntity("nombre")
  * @UniqueEntity("capital")
- * @UniqueEntity("codigo")
+ * @PaisConstraint(codigo="codigo")
  */
 class Pais
 {
@@ -48,7 +49,8 @@ class Pais
     /**
      * @var int|null
      *
-     * @ORM\Column(name="codigo", type="string", nullable=true)
+     * @ORM\Column(name="codigo", type="string", nullable=false)
+     * @Assert\Regex("/^((\+|\-)\d+)(,\s(\+|\-)\d+)*$/")
      */
     private $codigo;
 

@@ -69,7 +69,6 @@ security:
         - { path: ^/editorial, roles: ROLE_ADMIN }
         - { path: ^/revista, roles: ROLE_ADMIN }
         #permisos de directivos
-        - { path: ^/autor/\d+/index, roles: ROLE_DIRECTIVO }
         - { path: ^/autor/\d+/finddirectivosbyinstitucion, roles: [ROLE_SUPERADMIN] }
         - { path: ^/autor/new, roles: [ROLE_SUPERADMIN, ROLE_DIRECTIVO] }
         - { path: ^/autor/\d+/delete, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }

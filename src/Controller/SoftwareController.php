@@ -40,6 +40,7 @@ class SoftwareController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esDirectivo' => $autor->esDirectivo(),
             'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esSubordinado($this->getUser())
         ]);
     }
@@ -78,6 +79,7 @@ class SoftwareController extends AbstractController
             'software' => $software,
             'form' => $form->createView(),
             'user_id' => $autor->getId(),
+            'esDirectivo' => $autor->esDirectivo(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
@@ -95,6 +97,8 @@ class SoftwareController extends AbstractController
             'user_foto' => null != $software->getId()->getAutor()->getRutaFoto() ? $software->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $software->getId()->getAutor()->__toString(),
             'user_correo' => $software->getId()->getAutor()->getEmail(),
+            'esDirectivo' => $software->getId()->getAutor()->esDirectivo(),
+            'esGestor'=>$this->getUser()->getId()==$software->getId()->getAutor()->getId() || $software->getId()->getAutor()->esSubordinado($this->getUser())
         ]);
     }
 
@@ -133,6 +137,7 @@ class SoftwareController extends AbstractController
             'form' => $form->createView(),
             'button_action' => 'Actualizar',
             'form_title' => 'Editar software',
+            'esDirectivo' => $software->getId()->getAutor()->esDirectivo(),
             'user_id' => $software->getId()->getAutor()->getId(),
             'user_foto' => null != $software->getId()->getAutor()->getRutaFoto() ? $software->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $software->getId()->getAutor()->__toString(),

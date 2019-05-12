@@ -40,6 +40,7 @@ class MonografiaController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esDirectivo' => $autor->esDirectivo(),
             'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esSubordinado($this->getUser())
         ]);
     }
@@ -78,6 +79,7 @@ class MonografiaController extends AbstractController
             'monografia' => $monografia,
             'form' => $form->createView(),
             'user_id' => $autor->getId(),
+            'esDirectivo' => $autor->esDirectivo(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
@@ -95,6 +97,8 @@ class MonografiaController extends AbstractController
             'user_foto' => null != $monografia->getId()->getAutor()->getRutaFoto() ? $monografia->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $monografia->getId()->getAutor()->__toString(),
             'user_correo' => $monografia->getId()->getAutor()->getEmail(),
+            'esDirectivo' => $monografia->getId()->getAutor()->esDirectivo(),
+            'esGestor'=>$this->getUser()->getId()==$monografia->getId()->getAutor()->getId() || $monografia->getId()->getAutor()->esSubordinado($this->getUser())
         ]);
     }
 
@@ -134,6 +138,7 @@ class MonografiaController extends AbstractController
             'button_action' => 'Actualizar',
             'form_title' => 'Editar monografia',
             'user_id' => $monografia->getId()->getAutor()->getId(),
+            'esDirectivo' => $monografia->getId()->getAutor()->esDirectivo(),
             'user_foto' => null != $monografia->getId()->getAutor()->getRutaFoto() ? $monografia->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $monografia->getId()->getAutor()->__toString(),
             'user_correo' => $monografia->getId()->getAutor()->getEmail(),

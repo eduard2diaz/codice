@@ -39,6 +39,7 @@ class LibroController extends AbstractController
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
             'user_correo' => $autor->getEmail(),
+            'esDirectivo' => $autor->esDirectivo(),
             'esGestor'=>$this->getUser()->getId()==$autor->getId() || $autor->esSubordinado($this->getUser())
         ]);
     }
@@ -76,6 +77,7 @@ class LibroController extends AbstractController
         return $this->render('libro/_new.html.twig', [
             'libro' => $libro,
             'form' => $form->createView(),
+            'esDirectivo' => $autor->esDirectivo(),
             'user_id' => $autor->getId(),
             'user_foto' => null != $autor->getRutaFoto() ? $autor->getRutaFoto() : null,
             'user_nombre' => $autor->__toString(),
@@ -94,6 +96,8 @@ class LibroController extends AbstractController
             'user_foto' => null != $libro->getId()->getAutor()->getRutaFoto() ? $libro->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $libro->getId()->getAutor()->__toString(),
             'user_correo' => $libro->getId()->getAutor()->getEmail(),
+            'esDirectivo' => $libro->getId()->getAutor()->esDirectivo(),
+            'esGestor'=>$this->getUser()->getId()==$libro->getId()->getAutor()->getId() || $libro->getId()->getAutor()->esSubordinado($this->getUser())
         ]);
     }
 
@@ -135,6 +139,7 @@ class LibroController extends AbstractController
             'user_id' => $libro->getId()->getAutor()->getId(),
             'user_foto' => null != $libro->getId()->getAutor()->getRutaFoto() ? $libro->getId()->getAutor()->getRutaFoto() : null,
             'user_nombre' => $libro->getId()->getAutor()->__toString(),
+            'esDirectivo' => $libro->getId()->getAutor()->esDirectivo(),
             'user_correo' => $libro->getId()->getAutor()->getEmail(),
         ]);
     }

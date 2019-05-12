@@ -48,7 +48,7 @@ class AutorType extends AbstractType
             ->add('nombre', TextType::class, ['attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off','pattern'=>'[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$']])
             ->add('usuario', TextType::class, ['label' => 'Nombre de usuario', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off','pattern'=>'([a-zA-Z]((\.|_|-)?[a-zA-Z0-9]+){3})*$']])
             ->add('email', EmailType::class, ['label' => 'Correo electrónico', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
-            ->add('phone', IntegerType::class, ['label' => 'Teléfono', 'required' => false, 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
+            ->add('phone', TextType::class, ['label' => 'Teléfono', 'required' => false, 'attr' => ['pattern'=>'((\+|\-)\d+)','placeholder'=>'Ej: +5347815142','class' => 'form-control m-input', 'autocomplete' => 'off']])
             ->add('gradoCientifico', null, ['label' => 'Grado científico', 'required' => true, 'attr' => ['class' => 'form-control m-input']])
             ->add('file', FileType::class, array('required' => false,
                 'attr' => array('style' => 'display:none',

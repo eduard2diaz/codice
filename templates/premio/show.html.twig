@@ -29,12 +29,14 @@
                                                 <li class="m-nav__section m-nav__section--first">
                                                     <span class="m-nav__section-text">Acciones rápidas</span>
                                                 </li>
+                                                {% if esGestor==true %}
                                                 <li class="m-nav__item">
                                                     <a href="{{ path('premio_edit',{'id':premio.id.id}) }}" class="m-nav__link">
                                                         <i class="m-nav__link-icon flaticon-edit-1"></i>
                                                         <span class="m-nav__link-text">Editar</span>
                                                     </a>
                                                 </li>
+                                                {% endif %}
                                                 <li class="m-nav__item">
                                                     <a href="{{ path('publicacion_descargar',{'id':premio.id.id}) }}" class="m-nav__link">
                                                         <i class="m-nav__link-icon flaticon-download"></i>

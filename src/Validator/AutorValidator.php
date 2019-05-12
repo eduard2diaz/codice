@@ -45,7 +45,7 @@ class AutorValidator extends ConstraintValidator
             $roles = $pa->getValue($value, $constraint->idrol);
             $esDirectivo = false;
             foreach ($roles->toArray() as $value)
-                if ($value->getNombre() == 'ROLE_DIRECTIVO')
+                if ($value->getNombre() == 'ROLE_DIRECTIVO' || $value->getNombre()=='ROLE_ADMIN')
                     $esDirectivo = true;
             if ($esDirectivo == false) {
                 $cadena = "SELECT COUNT(a) FROM App:Autor a JOIN a.jefe j WHERE j.id= :id";

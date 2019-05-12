@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use App\Validator\UniqueMultipleEntity as UniqueMultipleEntityConstraint;
 use App\Validator\Autor as AutorConstraint;
+use App\Tool\Util;
 
 /**
  * Autor
@@ -92,7 +93,8 @@ class Autor implements UserInterface
     /**
      * @var string|null
      *
-     * @ORM\Column(name="phone", type="integer", nullable=true)
+     * @ORM\Column(name="phone", type="string", nullable=true)
+     * @Assert\Regex("/^((\+|\-)\d+)$/")
      */
     private $phone;
 
@@ -299,12 +301,12 @@ class Autor implements UserInterface
         return $this;
     }
 
-    public function getPhone(): ?int
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
-    public function setPhone(?int $phone): self
+    public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
 
@@ -594,6 +596,15 @@ class Autor implements UserInterface
         return $this->getNombre();
     }
 
+    /*
+     *Funcionalidad que devuelve un booleano insdicando si el usuario es o no directivo, lo cual es utilizado en la
+     * plantilla de perfil de usuario(layout/userprofile.html.twig)
+     */
+    public function esDirectivo(){
+        $roles=$this->getRoles();
+        return in_array('ROLE_DIRECTIVO',$roles) || in_array('ROLE_ADMIN',$roles);
+    }
+
     public function cicloInfinito($current, Autor $usuario)
     {
         if ($usuario->getJefe() != null) {
@@ -629,7 +640,10 @@ class Autor implements UserInterface
         if (null == $this->getPais()) {
             $context->setNode($context, 'pais', null, 'data.pais');
             $context->addViolation('Seleccione un país');
-        } elseif (null == $this->getMinisterio()) {
+        }elseif(null!=$this->getPhone() && !Util::esTelefonoValido($this->getPhone(),$this->getPais()->getCodigo())) {
+            $context->setNode($context, 'phone', null, 'data.phone');
+            $context->addViolation('Este teléfono no pertenece al país indicado');
+        }elseif (null == $this->getMinisterio()) {
             $context->setNode($context, 'ministerio', null, 'data.ministerio');
             $context->addViolation('Seleccione un ministerio');
         } elseif (null == $this->getInstitucion()) {
@@ -639,6 +653,7 @@ class Autor implements UserInterface
             $context->setNode($context, 'area', null, 'data.area');
             $context->addViolation('Seleccione un área');
         }
+
 
         if (null == $this->getGradoCientifico()) {
             $context->setNode($context, 'gradoCientifico', null, 'data.gradoCientifico');
@@ -673,6 +688,5 @@ class Autor implements UserInterface
                     ->addViolation();
         }
     }
-
 
 }

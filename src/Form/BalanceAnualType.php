@@ -22,6 +22,7 @@ class BalanceAnualType extends AbstractType
             ->add('descripcion',TextareaType::class,['required'=>false,'label'=>'Descripción','attr'=>['class'=>'form-control']])
 
             ->add('fecha', TextType::class, array('label'=>'Fecha','attr' => array(
+                'pattern'=>'\d{4}-\d{2}-\d{2}',
                 'autocomplete' => 'off',
                 'class' => 'form-control input-small'
             )))

@@ -177,5 +177,9 @@ class Libro
             $context->setNode($context, 'editorial', null, 'data.editorial');
             $context->addViolation('Seleccione una editorial');
         }
+        if (null == $this->getId()->getFechaCaptacion()) {
+            $context->setNode($context, 'fechaCaptacion', null, 'data.id.fechaCaptacion');
+            $context->addViolation('Seleccione la fecha');
+        }
     }
 }

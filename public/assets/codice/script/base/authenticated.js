@@ -210,6 +210,8 @@ var authenticated = function () {
     return {
         init: function () {
             $().ready(function () {
+                //Personalizo el formato de datepicker para cuando me seleccionan una fecha
+                $.fn.datepicker.defaults.format = 'yyyy-mm-dd';
                 notificacionShow();
                 notificacionesAction();
                 cargarMensajes();

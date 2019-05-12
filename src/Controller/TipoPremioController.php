@@ -50,7 +50,7 @@ class TipoPremioController extends AbstractController
                 $em->flush();
                 return $this->json(['mensaje' => 'El tipo de premio fue registrado satisfactoriamente',
                     'nombre' => $tipo_premio->getNombre(),
-                 //   'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$tipo_premio->getId())->getValue(),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$tipo_premio->getId())->getValue(),
                     'id' => $tipo_premio->getId(),
                 ]);
             } else {

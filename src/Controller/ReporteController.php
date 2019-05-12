@@ -112,7 +112,7 @@ class ReporteController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $finicio = new \DateTime($request->request->get('finicio'));
         $ffin = new \DateTime($request->request->get('ffin'));
-        $consulta=$em->createQuery('SELECT a.nombre, COUNT(p.id) as cantidad FROM App:Publicacion p JOIN p.autor a JOIN a.area a2 JOIN a2.institucion i WHERE i.id= :institucion  AND p.fechaCaptacion>= :finicio AND p.fechaCaptacion<= :ffin GROUP BY a.nombre ORDER BY count(p.id) DESC');
+        $consulta=$em->createQuery('SELECT a.nombre, COUNT(p.id) as cantidad FROM App:Publicacion p JOIN p.autor a JOIN a.area a2 JOIN a2.institucion i WHERE i.id= :institucion  AND p.fechaCaptacion>= :finicio AND p.fechaCaptacion<= :ffin AND p.estado=1 GROUP BY a.nombre ORDER BY count(p.id) DESC');
         $consulta->setParameters(['institucion'=>$this->getUser()->getInstitucion()->getId(),'finicio' => $finicio, 'ffin' => $ffin]);
         $consulta->setMaxResults(20);
         $result=$consulta->getResult();

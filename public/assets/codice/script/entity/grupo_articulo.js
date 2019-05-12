@@ -184,7 +184,7 @@ var grupo_articulo = function () {
             var token = $(this).attr('data-csrf');
             bootbox.confirm({
                 title: 'Eliminar grupo',
-                message: '¿Está seguro que desea eliminar este grupo del artículo?',
+                message: '¿Está seguro que desea eliminar este grupo de artículo?',
                 buttons: {
                     confirm: {
                         label: 'Si, estoy seguro',

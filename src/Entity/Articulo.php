@@ -208,5 +208,4 @@ class Articulo
             $context->addViolation('Seleccione el tipo de artículo');
         }
     }
-
 }

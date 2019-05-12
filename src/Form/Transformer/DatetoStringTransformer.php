@@ -22,7 +22,18 @@ class DatetoStringTransformer implements DataTransformerInterface
             return;
         }
 
-        return new \DateTime($issueNumber);
+        trim($issueNumber);
+        $trozos = explode ("-", $issueNumber);
+        $año=$trozos[0];
+        $mes=$trozos[1];
+        $dia=$trozos[2];
+        if(checkdate ($mes,$dia,$año)){
+            return new \DateTime($issueNumber);
+        }
+
+        return null;
+
+
     }
 
 }
