@@ -31,7 +31,7 @@ class DatetoStringTransformer implements DataTransformerInterface
             return new \DateTime($issueNumber);
         }
 
-        return null;
+        throw new TransformationFailedException(sprintf('La fecha %s no es una fecha válida',$issueNumber));
 
 
     }

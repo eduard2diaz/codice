@@ -47,4 +47,20 @@ class NotificacionService
         $this->getEm()->flush();
     }
 
+    public function nuevaNotificacionPersist($destinatario,$descripcion){
+        if(null==$destinatario || null==$descripcion)
+            throw new \Exception('No fueron enviados suficientes parámetros');
+
+        $destinatario=$this->getEm()->getRepository('App:Autor')->find($destinatario);
+        if(null==$destinatario)
+            throw new \Exception('El destinatario no existe');
+
+        $notificacion=new Notificacion();
+        $notificacion->setFecha(new \DateTime());
+        $notificacion->setDestinatario($destinatario);
+        $notificacion->setDescripcion($descripcion);
+        $this->getEm()->persist($notificacion);
+        $this->getEm()->flush();
+    }
+
 }

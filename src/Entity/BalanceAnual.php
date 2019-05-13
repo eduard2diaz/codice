@@ -48,7 +48,6 @@ class BalanceAnual
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\NotNull(message="Este valor no es válido")
      */
     private $fecha;
 
@@ -161,7 +160,6 @@ class BalanceAnual
      */
     public function validate(ExecutionContextInterface $context)
     {
-        dump($this->getFile());
         if (null==$this->getUsuario())
             $context->addViolation('Seleccione un usuario');
         elseif (null==$this->getInstitucion())

@@ -51,7 +51,6 @@ class PublicacionSubscriber implements EventSubscriber
 
             if ($entity->getEstado() == 1 && count($seguidores)>0) {
                 $descripcion=$entity->getAutor()->getNombre() . ' ha publicado "' . $entity->getTitulo() . '"';
-                $fecha=new \DateTime();
                 foreach ($seguidores as $seguidor) {
                     if($entity->getAutor()->getJefe() != null && $seguidor['id']==$entity->getAutor()->getJefe()->getId())
                         continue;
@@ -67,9 +66,9 @@ class PublicacionSubscriber implements EventSubscriber
             $currentUser = $this->getServiceContainer()->get('security.token_storage')->getToken()->getUser();
             if ($currentUser->getId() == $entity->getAutor()->getId()) {
                 if ($entity->getAutor()->getJefe() != null)
-                    $notificacionService->nuevaNotificacion($entity->getAutor()->getJefe()->getId(), "El usuario " . $currentUser->__toString() . " publicó " . $entity->getTitulo());
+                    $notificacionService->nuevaNotificacionPersist($entity->getAutor()->getJefe()->getId(), "El usuario " . $currentUser->__toString() . " publicó " . $entity->getTitulo());
             } else
-                $notificacionService->nuevaNotificacion($entity->getAutor()->getId(), "El usuario " . $currentUser->__toString() . " ha registrado tu publicación " . $entity->getTitulo());
+                $notificacionService->nuevaNotificacionPersist($entity->getAutor()->getId(), "El usuario " . $currentUser->__toString() . " ha registrado tu publicación " . $entity->getTitulo());
         }
     }
 
@@ -90,7 +89,6 @@ class PublicacionSubscriber implements EventSubscriber
 
             if ($entity->getEstado() == 1 && count($seguidores)>0) {
                 $descripcion=$entity->getAutor()->getNombre() . ' ha actualizado la publicación "' . $entity->getTitulo() . '"';
-                $fecha=new \DateTime();
                 foreach ($seguidores as $seguidor) {
                     if($entity->getAutor()->getJefe() != null && $seguidor['id']==$entity->getAutor()->getJefe()->getId())
                         continue;
@@ -108,7 +106,6 @@ class PublicacionSubscriber implements EventSubscriber
     public function preRemove(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
-        $em = $args->getEntityManager();
         if ($entity instanceof Publicacion) {
             $directory = $this->getServiceContainer()->getParameter('storage_directory');
             $ruta=$directory . DIRECTORY_SEPARATOR . $entity->getRutaArchivo();
@@ -119,9 +116,9 @@ class PublicacionSubscriber implements EventSubscriber
 
             if ($currentUser->getId() == $entity->getAutor()->getId()) {
                 if ($entity->getAutor()->getJefe() != null)
-                    $notificacionService->nuevaNotificacion($entity->getAutor()->getJefe()->getId(), "El usuario " . $currentUser->__toString() . " eliminó su publicación " . $entity->getTitulo());
+                    $notificacionService->nuevaNotificacionPersist($entity->getAutor()->getJefe()->getId(), "El usuario " . $currentUser->__toString() . " eliminó su publicación " . $entity->getTitulo());
             } else
-                $notificacionService->nuevaNotificacion($entity->getAutor()->getId(), "El usuario " . $currentUser->__toString() . " ha eliminado tu publicación " . $entity->getTitulo());
+                $notificacionService->nuevaNotificacionPersist($entity->getAutor()->getId(), "El usuario " . $currentUser->__toString() . " ha eliminado tu publicación " . $entity->getTitulo());
 
 
         }

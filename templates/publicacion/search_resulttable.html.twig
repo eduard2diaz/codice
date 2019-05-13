@@ -16,7 +16,7 @@
                     </div>
                     <div class="m-widget3__info">
 														<span class="m-widget3__username">
-															<a href="{{ path('autor_show',{'id':usuario['id']}) }}">{{ usuario['nombre'] }}</a>
+															<a href="{{ path('autor_show',{'id':usuario['id']}) }}">{{ usuario['nombre'] | capitalize }}</a>
 														</span><br>
                         <span class="m-widget3__time">
 															{{ usuario['institucion']~', '~usuario['pais'] }}
@@ -34,9 +34,9 @@
                         </div>
                         <div class="m-widget3__info">
 														<span class="m-widget3__username">
-															<a href="{{ path('autor_show',{'id':usuario['id']}) }}">{{ usuario['titulo'] }}</a>
+															<a href="{{ path('autor_show',{'id':usuario['id']}) }}">{{ usuario['titulo']|capitalize }} </a>
 														</span><br>
-                            <span class="m-widget3__time">Publicado por: {{  usuario['autor'] }}</span>
+                            <span class="m-widget3__time">Publicado por: {{  usuario['autor'] | capitalize}}</span>
                         </div>
                     </div>
                 </div>

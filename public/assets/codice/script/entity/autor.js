@@ -402,7 +402,7 @@ var autor = function () {
                         pieSeries.hiddenState.properties.endAngle = -90;
                         pieSeries.hiddenState.properties.startAngle = -90;
                         //Guardo el ultimo reporte realizado
-                        ultimoreporte = data.pdf;
+                        reporte.ultimoreporte = data.pdf;
 
                         $('div#basicmodal table#resumen_por_subordinado').DataTable({
                             "pagingType": "simple_numbers",

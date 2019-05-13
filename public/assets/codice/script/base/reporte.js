@@ -107,7 +107,7 @@ var reporte = function () {
             l.start();
             $.fileDownload(Routing.generate('reporte_exportar'), {
                 data:{
-                    form: ultimoreporte
+                    form: reporte.ultimoreporte
                 },
                 successCallback: function (url) {
                     l.stop();

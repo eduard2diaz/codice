@@ -62,14 +62,15 @@ class PublicacionController extends AbstractController
             throw new \LogicException('Falta el parámetro query');
 
         $em = $this->getDoctrine()->getManager();
+        $query=strtoupper($query);
         if ($request->isXmlHttpRequest()) {
             $content = '';
-            $consulta = $em->createQuery('SELECT u.id, u.nombre,u.rutaFoto FROM App:Autor u WHERE u.nombre like :parametro');
+            $consulta = $em->createQuery('SELECT u.id, u.nombre,u.rutaFoto FROM App:Autor u WHERE upper(u.nombre) like :parametro');
             $consulta->setParameter('parametro', '%' . $query . '%');
             $consulta->setMaxResults(2);
             //Obtengo el listado de usuarios
             $usuarios = $consulta->getResult();
-            $consulta = $em->createQuery('SELECT p.id, p.titulo FROM App:Publicacion p WHERE p.estado=1 AND p.titulo like :parametro');
+            $consulta = $em->createQuery('SELECT p.id, p.titulo FROM App:Publicacion p WHERE p.estado=1 AND upper(p.titulo) like :parametro');
             $consulta->setParameter('parametro', '%' . $query . '%');
             $consulta->setMaxResults(3);
             //Obtengo el listado de publicaciones
@@ -78,11 +79,11 @@ class PublicacionController extends AbstractController
             return new Response($content);
         }
 
-        $consulta = $em->createQuery('SELECT u.id, u.nombre,u.rutaFoto,u.ultimoLogin, u.ultimoLogout, i.nombre as institucion,p.nombre as pais, 1 as esAutor FROM App:Autor u JOIN u.institucion i join i.pais p WHERE u.nombre like :parametro');
+        $consulta = $em->createQuery('SELECT u.id, u.nombre,u.rutaFoto,u.ultimoLogin, u.ultimoLogout, i.nombre as institucion,p.nombre as pais, 1 as esAutor FROM App:Autor u JOIN u.institucion i join i.pais p WHERE upper(u.nombre) like :parametro');
         $consulta->setParameter('parametro', '%' . $query . '%');
         $usuarios = $consulta->getResult();
 
-        $consulta = $em->createQuery('SELECT p.id, p.titulo, a.nombre as autor, 0 as esAutor FROM App:Publicacion p JOIN p.autor a WHERE p.estado=1 AND p.titulo like :parametro');
+        $consulta = $em->createQuery('SELECT p.id, p.titulo, a.nombre as autor, 0 as esAutor FROM App:Publicacion p JOIN p.autor a WHERE p.estado=1 AND upper(p.titulo) like :parametro');
         $consulta->setParameter('parametro', '%' . $query . '%');
         $publicaciones = $consulta->getResult();
 

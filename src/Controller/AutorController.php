@@ -28,10 +28,11 @@ class AutorController extends AbstractController
         $autors = $this->getDoctrine()->getManager()->createQuery('SELECT u FROM App:Autor u')->getResult();
 
         if ($request->isXmlHttpRequest())
-            return $this->render('autor/_table.html.twig', ['autors' => $autors]);
+            return $this->render('autor/_table.html.twig', ['autors' => $autors,'esGestor'=>true]);
 
         return $this->render('autor/indexall.html.twig', [
             'autors' => $autors,
+            'esGestor'=>true
         ]);
     }
 
@@ -45,10 +46,16 @@ class AutorController extends AbstractController
         else
             $autors = $areaService->subordinados($autor);
 
+        $esGestor=$this->isGranted('ROLE_SUPERADMIN') ||
+            ($this->isGranted('ROLE_ADMIN') && $this->getUser()->getInstitucion()->getId()==$autor->getInstitucion()->getId())
+            || $this->getUser()->getId()==$autor->getId()
+            || $autor->esSubordinado($this->getUser());
+
         if ($request->isXmlHttpRequest())
-            return $this->render('autor/_table.html.twig', ['autors' => $autors]);
+            return $this->render('autor/_table.html.twig', ['autors' => $autors,'esGestor' => $esGestor]);
 
         return $this->render('autor/index.html.twig', [
+            'esGestor' => $esGestor,
             'autors' => $autors,
             'esDirectivo' => $autor->esDirectivo(),
             'user_id' => $autor->getId(),
@@ -222,8 +229,8 @@ class AutorController extends AbstractController
         if ($request->get('q') != null) {
             $em = $this->getDoctrine()->getManager();
             $parameter = $request->get('q');
-            $query = $em->createQuery('SELECT u.id, u.nombre as text, u.rutaFoto as foto FROM App:Autor u WHERE u.nombre LIKE :nombre ORDER BY u.nombre ASC')
-                ->setParameter('nombre', '%' . $parameter . '%');
+            $query = $em->createQuery('SELECT u.id, u.nombre as text, u.rutaFoto as foto FROM App:Autor u WHERE upper(u.nombre) LIKE :nombre ORDER BY u.nombre ASC')
+                ->setParameter('nombre', '%' . strtoupper($parameter)  . '%');
             $result = $query->getResult();
             return new Response(json_encode($result));
         }

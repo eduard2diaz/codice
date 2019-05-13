@@ -13,7 +13,7 @@
             </div>
             <div class="m-widget4__info">
                 <span class="m-widget4__title"><a
-                            href="{{ path('autor_show',{'id':autor['id']}) }}">{{ autor['nombre'] }}</a></span><br/>
+                            href="{{ path('autor_show',{'id':autor['id']}) }}">{{ autor['nombre'] |capitalize}}</a></span><br/>
                 <span class="m-widget4__sub">
 				    {{ autor['institucion'] }}
 				</span>

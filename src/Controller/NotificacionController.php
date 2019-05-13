@@ -30,7 +30,7 @@ class NotificacionController extends AbstractController
                         ->setMaxResults(5)
                         ->getResult();
                 } else {
-                    $consulta = $this->getDoctrine()->getManager()->createQuery('SELECT n FROM App:Notificacion n JOIN n.destinatario u WHERE u.id= :usuario AND n.fecha>= :fecha AND n.leida=FALSE');
+                    $consulta = $this->getDoctrine()->getManager()->createQuery('SELECT n FROM App:Notificacion n JOIN n.destinatario u WHERE u.id= :usuario AND n.fecha>= :fecha AND n.leida=FALSE  ORDER By n.fecha DESC');
                     $consulta->setParameters(['usuario' => $this->getUser()->getId(), 'fecha' => $this->getUser()->getUltimologout()]);
                     $consulta->setMaxResults(5);
                     $notificacions = $consulta->getResult();

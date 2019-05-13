@@ -8,6 +8,7 @@ use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Autor;
 
@@ -54,9 +55,10 @@ class ReporteController extends AbstractController
                     $resumen[$posicion]['total']++;
                     $resumen[$posicion]['propio']++;
                 }
-                $posicion=$this->buscarAutor($autores,$value->getAutor()->getNombre());
-                if($posicion!=-1){
-                    $autores[$posicion][$tipo_hijo]++;
+
+                $posicionAutor=$this->buscarAutor($autores,$value->getAutor()->getNombre());
+                if($posicionAutor!=-1){
+                    $autores[$posicionAutor][$tipo_hijo]++;
                 }
                     else{
                             $autores[]=['autor'=>$value->getAutor()->getNombre(),"Evento"=>0,"Premio"=>0,"Tesis"=>0,"Software"=>0,"Patente"=>0,"Norma"=>0,"Monografia"=>0,"Libro"=>0,"Articulo"=>0];
@@ -234,7 +236,6 @@ class ReporteController extends AbstractController
     public function exportar(Request $request, Pdf $pdf)
     {
         $html = $request->request->get('form');
-
         return new PdfResponse(
             $pdf->getOutputFromHtml($html),
             'Resumen.pdf'
@@ -256,8 +257,8 @@ class ReporteController extends AbstractController
     {
         $i = 0;
         foreach ($listado as $banderin) {
-            if ($banderin['autor'] == $autor) ;
-            return $i;
+            if ($banderin['autor'] === $autor)
+                return $i;
             $i++;
         }
         return -1;
