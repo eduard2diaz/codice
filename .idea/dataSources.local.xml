@@ -2,13 +2,13 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="codice@localhost" uuid="0c321dd5-5fef-4a61-8220-2b1e2eaf88a0">
-      <database-info product="PostgreSQL" version="9.2.4" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.1" dbms="POSTGRES" exact-version="9.2.4">
+      <database-info product="PostgreSQL" version="9.2.4" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.1">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>postgres</user-name>
-      <introspection-schemas>@:@</introspection-schemas>
+      <introspection-schemas>@:@|codice:</introspection-schemas>
     </data-source>
   </component>
 </project>
