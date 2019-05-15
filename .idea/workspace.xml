@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/Controller/MonografiaController.php" line="150" />
+    <bookmark url="file://$PROJECT_DIR$/src/Controller/MonografiaController.php" line="154" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0af83a06-3947-4dda-85cb-b63f11529650" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/codice/script/base/reporte.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/base/reporte.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/codice/script/entity/autor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/codice/script/entity/autor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AutorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AutorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/NotificacionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/NotificacionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PublicacionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PublicacionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ReporteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReporteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/BalanceAnual.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/BalanceAnual.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Publicacion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Publicacion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventSubscriber/PublicacionSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventSubscriber/PublicacionSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/Transformer/DatetoStringTransformer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Transformer/DatetoStringTransformer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/NotificacionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/NotificacionService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/autor/_sugerencia.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/autor/_sugerencia.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/autor/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/autor/_table.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/autor/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/autor/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publicacion/search_quickresult.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publicacion/search_quickresult.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publicacion/search_resulttable.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publicacion/search_resulttable.html.twig" afterDir="false" />
     </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,7 +64,41 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/AutorController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="44" column="75" selection-start-line="44" selection-start-column="75" selection-end-line="44" selection-end-column="75" />
+              <folding>
+                <element signature="e#34#55#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Autor.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="602" column="20" selection-start-line="602" selection-start-column="20" selection-end-line="602" selection-end-column="20" />
+              <folding>
+                <element signature="e#30#78#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/symfony/framework-bundle/Controller/ControllerTrait.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="299" column="23" selection-start-line="299" selection-start-column="23" selection-end-line="299" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -203,10 +222,10 @@
         <option value="$PROJECT_DIR$/templates/autor/_table.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/PublicacionController.php" />
         <option value="$PROJECT_DIR$/templates/publicacion/search_quickresult.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/AutorController.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0c321dd5-5fef-4a61-8220-2b1e2eaf88a0/console.sql" />
         <option value="$PROJECT_DIR$/templates/autor/_sugerencia.html.twig" />
         <option value="$PROJECT_DIR$/templates/publicacion/search_resulttable.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/AutorController.php" />
       </list>
     </option>
   </component>
@@ -348,13 +367,18 @@
             <path>
               <item name="codice" type="b2602c69:ProjectViewProjectNode" />
               <item name="codice" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="codice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="codice" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="packages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="codice" type="b2602c69:ProjectViewProjectNode" />
               <item name="codice" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="archivos" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="codice" type="b2602c69:ProjectViewProjectNode" />
@@ -382,7 +406,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="database.console.LAST_STATE" value="true" />
+    <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -530,12 +554,13 @@
       <workItem from="1557634311335" duration="3946000" />
       <workItem from="1557657784514" duration="1041000" />
       <workItem from="1557667448118" duration="604000" />
-      <workItem from="1557761580588" duration="11245000" />
+      <workItem from="1557761580588" duration="11342000" />
+      <workItem from="1557882379689" duration="303000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="741956000" />
+    <option name="totallyTimeSpent" value="742356000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -548,8 +573,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="725" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18409091" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18712121" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -559,7 +585,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3256579" />
-      <window_info anchor="bottom" id="Database Console" order="7" visible="true" weight="0.32597622" />
+      <window_info anchor="bottom" id="Database Console" order="7" weight="0.32597622" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49621212" weight="0.3073005" />
@@ -619,7 +645,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Controller/AutorController.php</url>
-          <line>131</line>
+          <line>133</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -681,13 +707,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/EventSubscriber/BalanceAnualSubscriber.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/EventSubscriber/UsuarioSubscriber.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -928,16 +947,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Autor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="621" column="33" selection-start-line="621" selection-start-column="20" selection-end-line="621" selection-end-column="33" />
-          <folding>
-            <element signature="e#30#78#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/UsuarioController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
@@ -976,13 +985,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-892">
-          <caret line="6" column="57" selection-start-line="6" selection-start-column="57" selection-end-line="6" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -1048,20 +1050,44 @@
         <state relative-caret-position="-1572" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/AutorController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="231" column="52" selection-start-line="231" selection-start-column="52" selection-end-line="231" selection-end-column="52" />
-          <folding>
-            <element signature="e#34#55#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/codice/script/base/authenticated.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="6" column="57" selection-start-line="6" selection-start-column="57" selection-end-line="6" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/framework-bundle/Controller/ControllerTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="299" column="23" selection-start-line="299" selection-start-column="23" selection-end-line="299" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Autor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="602" column="20" selection-start-line="602" selection-start-column="20" selection-end-line="602" selection-end-column="20" />
+          <folding>
+            <element signature="e#30#78#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/AutorController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="44" column="75" selection-start-line="44" selection-start-column="75" selection-end-line="44" selection-end-column="75" />
+          <folding>
+            <element signature="e#34#55#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

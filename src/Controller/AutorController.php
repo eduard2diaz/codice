@@ -41,6 +41,9 @@ class AutorController extends AbstractController
      */
     public function index(Request $request, Autor $autor, AreaService $areaService): Response
     {
+        if(!$autor->esDirectivo())
+            throw new \LogicException('El autor indicado no es un directivo');
+
         if (in_array('ROLE_ADMIN',$autor->getRoles()))
             $autors = $this->getDoctrine()->getManager()->createQuery('SELECT u FROM App:Autor u JOIN u.institucion i WHERE u.id!=:id AND i.id= :institucion')->setParameters(['id' => $this->getUser()->getId(), 'institucion' => $this->getUser()->getInstitucion()->getId()])->getResult();
         else
