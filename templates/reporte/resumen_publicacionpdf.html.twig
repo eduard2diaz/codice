@@ -3,35 +3,21 @@
 <head>
     <title>Resumen de publicaciones</title>
     <meta charset="UTF-8"/>
+    <link href="{{ absolute_url(asset('vendors/base/vendors.bundle.css','template'))}}" rel="stylesheet" type="text/css" />
+    <link href="{{ absolute_url(asset('demo/demo9/base/style.bundle.css','template'))}}" rel="stylesheet" type="text/css" />
     <style>
-        body{
-            padding: 3%;
-        }
         div.header{
-            text-align: center;
-            color: gray;
-            margin-bottom: 4%;
-        }
-        div.header h3{
-            margin-bottom: 0.4%;
-        }
-        table{
-            width: 100% !important;
-        }
-        table td, th{
-            padding: .75rem;
-            border-top: 1px solid #f4f5f8;
             text-align: center;
         }
     </style>
 </head>
 <body>
-<div class="header">
+<div class="header m--margin-bottom-30">
     <h3>Publicaciones de {{ autor }}</h3>
     <span>Periodo: {{ finicio | date('d-m-Y') }} - {{ ffin | date('d-m-Y') }}</span>
 </div>
 {% if esDirectivo==true %}
-    <table class="table m-table m-table m-table--head-separator-primary">
+    <table class="table m-table m-table m-table--head-separator-primary m--margin-bottom-3">
         <thead>
         <tr>
             <th>
@@ -125,12 +111,12 @@
     </table>
 {% endif %}
 
-<div class="header">
-    <h3>Resumen por trabajadores</h3>
+<div class="header m--margin-bottom-20">
+    <h4>Resumen por trabajadores</h4>
 </div>
 {% if esDirectivo==true %}
     <div class="tab-pane" id="resumen_por_subordinado" class="resumen_por_subordinado">
-        <table class="table" id="resumen_por_subordinado">
+        <table class="table m-table m-table m-table--head-separator-primary" id="resumen_por_subordinado">
             <thead>
             <tr>
                 <th>Nombre</th>
@@ -157,6 +143,10 @@
                     <td>{{ obj['Monografia'] }}</td>
                     <td>{{ obj['Libro'] }}</td>
                     <td>{{ obj['Articulo'] }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="10">Los subordinados no tienen publicaciones en ese periodo</td>
                 </tr>
             {% endfor %}
             <tfoot>

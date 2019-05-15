@@ -235,7 +235,7 @@ class ReporteController extends AbstractController
      */
     public function exportar(Request $request, Pdf $pdf)
     {
-        $html = $request->request->get('form');
+        $html = $request->request->get('form') ?? 'a';
         return new PdfResponse(
             $pdf->getOutputFromHtml($html),
             'Resumen.pdf'

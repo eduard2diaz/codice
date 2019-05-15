@@ -80,7 +80,7 @@ var reporte = function () {
                     {
                         $('div#basicmodal').html(data.html);
                         $('div#basicmodal').modal('show');
-                        ultimoreporte=data.pdf;
+                        reporte.ultimoreporte=data.pdf;
 
                         $('div#basicmodal table').DataTable({
                             "pagingType": "simple_numbers",
