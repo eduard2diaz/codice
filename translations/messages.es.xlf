@@ -9,6 +9,14 @@
         <source>Bad credentials.</source>
         <target>Usuario o contraseña incorrectos.</target>
       </trans-unit>
+      <trans-unit id="yPHGEV31" resname="Invalid credentials.">
+        <source>Invalid credentials.</source>
+        <target>Usuario o contraseña incorrectos.</target>
+      </trans-unit>
+      <trans-unit id="yPHGEV311" resname="Account has expired.">
+        <source>Account has expired.</source>
+        <target>Su cuenta no está activa</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

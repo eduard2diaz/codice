@@ -32,6 +32,7 @@ class AutorVoter extends Voter
         switch ($attribute) {
             case 'VIEWSTATICS':
                 return $user instanceof Autor && ($subject->getId()==$token->getUser()->getId() || ($user->getInstitucion()->getId()==$subject->getInstitucion()->getId() && ($this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esSubordinado($token->getUser()))));
+            break;
             case 'EDIT':
                 return $user instanceof Usuario || $subject->getId()==$token->getUser()->getId() || ($user->getInstitucion()->getId()==$subject->getInstitucion()->getId() && ($this->decisionManager->decide($token, array('ROLE_ADMIN')) || $subject->esSubordinado($token->getUser())));
             break;

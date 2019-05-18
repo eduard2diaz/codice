@@ -40,8 +40,5 @@ class UsuarioRepository extends EntityRepository implements UserLoaderInterface 
     public function supportsClass($class) {//Dependencia de la funcionalidad anterior
         return $this->getEntityName() === $class || is_subclass_of($class, $this->getEntityName());
     }
-    
-   
-
 }
 ?>

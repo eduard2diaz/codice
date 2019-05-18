@@ -53,6 +53,7 @@
                 <button type="reset" class="btn btn-sm btn-secondary">
                     Cancelar
                 </button>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
             </form>
         </div>
     </div>

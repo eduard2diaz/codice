@@ -25,7 +25,7 @@ class MensajeVoter extends Voter
             case 'VIEW':
             case 'DELETE':
                 return $subject->getPropietario()->getId()==$token->getUser()->getId();
-                break;
+            break;
         }
 
         return false;

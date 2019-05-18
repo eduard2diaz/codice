@@ -5,16 +5,17 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Entity\ClasificacionTipoSoftware;
 
-class ClasificacionTipoTesis extends Fixture implements OrderedFixtureInterface
+class ClasificacionTipoSoftwareFixtures extends Fixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $clasificaciones=['Por su nivel de estudios','Por el tratamiento de su tema',
-                            'Por el método de investigación','Por el manejo de la información',
+        $clasificaciones=['Software de sistema','Software de programación',
+                            'Software de aplicación',
             ];
         foreach ($clasificaciones as $nombre){
-            $clasificacion=new \App\Entity\ClasificacionTipoTesis();
+            $clasificacion=new ClasificacionTipoSoftware();
             $clasificacion->setNombre($nombre);
             $manager->persist($clasificacion);
         }
@@ -25,7 +26,7 @@ class ClasificacionTipoTesis extends Fixture implements OrderedFixtureInterface
 
     public function getOrder()
     {
-        return 2;
+        return 4;
     }
 
 

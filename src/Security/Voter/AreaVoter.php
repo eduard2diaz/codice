@@ -34,7 +34,7 @@ class AreaVoter extends Voter
             case 'EDIT':
             case 'DELETE':
                 return $this->decisionManager->decide($token, array('ROLE_SUPERADMIN')) || ($this->decisionManager->decide($token, array('ROLE_ADMIN')) && $token->getUser()->getInstitucion()->getId()==$subject->getInstitucion()->getId());
-                break;
+            break;
         }
 
         return false;

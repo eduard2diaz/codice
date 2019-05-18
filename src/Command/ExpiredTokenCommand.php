@@ -38,6 +38,6 @@ class ExpiredTokenCommand extends Command
         $query = 'Delete from api_token n where n.expires_at < :fecha';
         $stmt = $db->prepare($query);
         $stmt->execute(['fecha'=>$fecha]);
-        $io->success('Los token caducos fueron eliminados satisfactoriamente.');
+        $io->success('Los tokens caducos fueron eliminados satisfactoriamente.');
     }
 }

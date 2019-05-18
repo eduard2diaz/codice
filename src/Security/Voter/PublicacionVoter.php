@@ -11,7 +11,7 @@ class PublicacionVoter extends Voter
 {
     protected function supports($attribute, $subject)
     {
-        return in_array($attribute, ['NEW','EDIT', 'DELETE'])  && $subject instanceof Publicacion;
+        return in_array($attribute, ['NEW', 'EDIT', 'DELETE']) && $subject instanceof Publicacion;
     }
 
     protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
@@ -27,8 +27,8 @@ class PublicacionVoter extends Voter
             case 'NEW':
             case 'EDIT':
             case 'DELETE':
-                    return $subject->getAutor()->getId()==$token->getUser()->getId() || $subject->getAutor()->esSubordinado($token->getUser())==true;
-                break;
+                return $subject->getAutor()->getId() == $token->getUser()->getId() || $subject->getAutor()->esSubordinado($token->getUser()) == true;
+            break;
         }
 
         return false;

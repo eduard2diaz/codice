@@ -28,7 +28,7 @@ class BalanceAnualVoter extends Voter
             case 'DELETE':
             case 'DOWNLOAD':
                 return $token->getUser()->getInstitucion()->getId()==$subject->getInstitucion()->getId();
-                break;
+            break;
         }
 
         return false;

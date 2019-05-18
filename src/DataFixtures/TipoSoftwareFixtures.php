@@ -6,6 +6,7 @@ use App\Entity\TipoSoftware;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Entity\ClasificacionTipoSoftware;
 
 class TipoSoftwareFixtures extends Fixture implements OrderedFixtureInterface
 {
@@ -27,7 +28,7 @@ class TipoSoftwareFixtures extends Fixture implements OrderedFixtureInterface
             ]],
         ];
         foreach ($clasificaciones as $clasificacion) {
-            $object = $manager->getRepository(\App\Entity\ClasificacionTipoSoftware::class)->findOneByNombre($clasificacion['nombre']);
+            $object = $manager->getRepository(ClasificacionTipoSoftware::class)->findOneByNombre($clasificacion['nombre']);
             if (!$object)
                 continue;
 

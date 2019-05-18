@@ -34,6 +34,9 @@ security:
                 check_path: check
                 default_target_path: index
                 always_use_default_target_path: true
+                failure_handler: app.failure_login
+                #añadiendo token csrf en el formulario de login
+                csrf_token_generator: security.csrf.token_manager
             logout:
                 path:   logout
                 target: index
@@ -45,49 +48,49 @@ security:
                 path: index
 
     access_control:
-        - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         #permisos del superadmin
-        - { path: ^/pais, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/gradocientifico, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/ministerio, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/usuario, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/institucion, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/grupocientifico, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/clasificaciontipotesis, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/tipotesis, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/clasificaciontiposoftware, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/tiposoftware, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/grupoarticulo, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/tipoarticulo, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/tiponorma, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/tipopremio, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/tipoevento, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/autor/indexall, roles: ROLE_SUPERADMIN, requires_channel: https }
+        - { path: ^/pais, roles: ROLE_SUPERADMIN }
+        - { path: ^/gradocientifico, roles: ROLE_SUPERADMIN }
+        - { path: ^/ministerio, roles: ROLE_SUPERADMIN }
+        - { path: ^/usuario, roles: ROLE_SUPERADMIN }
+        - { path: ^/institucion, roles: ROLE_SUPERADMIN }
+        - { path: ^/grupocientifico, roles: ROLE_SUPERADMIN }
+        - { path: ^/clasificaciontipotesis, roles: ROLE_SUPERADMIN }
+        - { path: ^/tipotesis, roles: ROLE_SUPERADMIN }
+        - { path: ^/clasificaciontiposoftware, roles: ROLE_SUPERADMIN }
+        - { path: ^/tiposoftware, roles: ROLE_SUPERADMIN }
+        - { path: ^/grupoarticulo, roles: ROLE_SUPERADMIN }
+        - { path: ^/tipoarticulo, roles: ROLE_SUPERADMIN }
+        - { path: ^/tiponorma, roles: ROLE_SUPERADMIN }
+        - { path: ^/tipopremio, roles: ROLE_SUPERADMIN }
+        - { path: ^/tipoevento, roles: ROLE_SUPERADMIN }
+        - { path: ^/autor/indexall, roles: ROLE_SUPERADMIN }
         #permisos del administrador institucional
-        - { path: ^/area, roles: [ROLE_SUPERADMIN, ROLE_ADMIN], requires_channel: https }
-        - { path: ^/organizador, roles: ROLE_ADMIN, requires_channel: https }
-        - { path: ^/editorial, roles: ROLE_ADMIN, requires_channel: https }
-        - { path: ^/revista, roles: ROLE_ADMIN, requires_channel: https }
+        - { path: ^/area, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }
+        - { path: ^/organizador, roles: ROLE_ADMIN }
+        - { path: ^/editorial, roles: ROLE_ADMIN }
+        - { path: ^/revista, roles: ROLE_ADMIN }
         #permisos de directivos
-        - { path: ^/autor/\d+/finddirectivosbyinstitucion, roles: ROLE_SUPERADMIN, requires_channel: https }
-        - { path: ^/autor/new, roles: [ROLE_SUPERADMIN, ROLE_DIRECTIVO], requires_channel: https }
-        - { path: ^/autor/\d+/delete, roles: [ROLE_SUPERADMIN, ROLE_ADMIN], requires_channel: https }
-        - { path: ^/autor, roles: IS_AUTHENTICATED_FULLY, requires_channel: https }
+        - { path: ^/autor/\d+/finddirectivosbyinstitucion, roles: ROLE_SUPERADMIN }
+        - { path: ^/autor/new, roles: [ROLE_SUPERADMIN, ROLE_DIRECTIVO] }
+        - { path: ^/autor/\d+/delete, roles: [ROLE_SUPERADMIN, ROLE_ADMIN] }
+        - { path: ^/autor, roles: IS_AUTHENTICATED_FULLY }
         #permisos de usuarios y directivos
-        - { path: ^/balanceanual, roles: ROLE_GESTORBALANCE, requires_channel: https }
+        - { path: ^/balanceanual, roles: ROLE_GESTORBALANCE }
         #permisos de usuarios y directivos
-        - { path: ^/notificacion, roles: [ROLE_DIRECTIVO, ROLE_ADMIN, ROLE_GESTORBALANCE, ROLE_USER], requires_channel: https }
-        - { path: ^/mensaje, roles: [ROLE_DIRECTIVO, ROLE_ADMIN, ROLE_GESTORBALANCE, ROLE_USER], requires_channel: https }
-        - { path: ^/premio, roles: ROLE_USER, requires_channel: https }
-        - { path: ^/evento, roles: ROLE_USER, requires_channel: https }
-        - { path: ^/tesis, roles: ROLE_USER, requires_channel: https }
-        - { path: ^/software, roles: ROLE_USER, requires_channel: https }
-        - { path: ^/patente, roles: ROLE_USER, requires_channel: https }
-        - { path: ^/norma, roles: ROLE_USER, requires_channel: https }
-        - { path: ^/monografia, roles: ROLE_USER, requires_channel: https }
-        - { path: ^/libro, roles: ROLE_USER, requires_channel: https }
-        - { path: ^/articulo, roles: ROLE_USER, requires_channel: https }
-        - { path: ^/reporte, roles: ROLE_USER, requires_channel: https }
+        - { path: ^/notificacion, roles: [ROLE_DIRECTIVO, ROLE_ADMIN, ROLE_GESTORBALANCE, ROLE_USER] }
+        - { path: ^/mensaje, roles: [ROLE_DIRECTIVO, ROLE_ADMIN, ROLE_GESTORBALANCE, ROLE_USER] }
+        - { path: ^/premio, roles: ROLE_USER }
+        - { path: ^/evento, roles: ROLE_USER }
+        - { path: ^/tesis, roles: ROLE_USER }
+        - { path: ^/software, roles: ROLE_USER }
+        - { path: ^/patente, roles: ROLE_USER }
+        - { path: ^/norma, roles: ROLE_USER }
+        - { path: ^/monografia, roles: ROLE_USER }
+        - { path: ^/libro, roles: ROLE_USER }
+        - { path: ^/articulo, roles: ROLE_USER }
+        - { path: ^/reporte, roles: ROLE_USER }
         #Funcionalidades de la API
-        - { path: ^/api/requesttoken, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        - { path: ^/*, roles: IS_AUTHENTICATED_FULLY, requires_channel: https }
+        - { path: ^/api/requesttoken, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/*, roles: IS_AUTHENTICATED_FULLY }

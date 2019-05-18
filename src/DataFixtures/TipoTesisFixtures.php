@@ -6,6 +6,7 @@ use App\Entity\TipoTesis;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Entity\ClasificacionTipoTesis;
 
 class TipoTesisFixtures extends Fixture implements OrderedFixtureInterface
 {
@@ -31,7 +32,7 @@ class TipoTesisFixtures extends Fixture implements OrderedFixtureInterface
             ]],
         ];
         foreach ($clasificaciones as $clasificacion) {
-            $object = $manager->getRepository(\App\Entity\ClasificacionTipoTesis::class)->findOneByNombre($clasificacion['nombre']);
+            $object = $manager->getRepository(ClasificacionTipoTesis::class)->findOneByNombre($clasificacion['nombre']);
             if (!$object)
                 continue;
 

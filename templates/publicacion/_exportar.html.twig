@@ -2,9 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
+    <link href="{{ absolute_url(asset('vendors/base/vendors.bundle.css','template'))}}" rel="stylesheet" type="text/css" />
+    <link href="{{ absolute_url(asset('demo/demo9/base/style.bundle.css','template'))}}" rel="stylesheet" type="text/css" />
     <style>
-        div.title {
-            margin: 6% 40%;
+        .center {
             text-align: center;
         }
         th {
@@ -18,14 +19,14 @@
         }
     </style>
 </head>
-<body>
+<body class="m--padding-40">
 
-<div class="title">
-    <h1>{{ entidad.id.titulo }}</h1>
-    <span>por {{ entidad.id.autor }}</span>
+<div class="center m--margin-top-20 m--margin-bottom-30">
+    <h4>{{ entidad.id.titulo }}</h4>
+    <span class="text-muted m--font-bold">por {{ entidad.id.autor }}</span>
 </div>
 
-<table>
+<table class="table m-table m-table m-table--head-separator-primary">
     <tr>
         <th>Fecha de publicación</th>
         <td>{{ entidad.id.fechaCaptacion|date('d-m-Y') }}</td>
@@ -36,8 +37,12 @@
     </tr>
     {% block table_information %}
     {% endblock table_information %}
+    <tr>
+        <th>Resumen</th>
+        <td>
+            <p>{{ entidad.id.resumen }}</p>
+        </td>
+    </tr>
 </table>
-<h3>Resumen</h3>
-<p>{{ entidad.id.resumen }}</p>
 </body>
 </html>

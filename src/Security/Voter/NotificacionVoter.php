@@ -25,7 +25,7 @@ class NotificacionVoter extends Voter
             case 'VIEW':
             case 'DELETE':
                 return $subject->getDestinatario()->getId() == $token->getUser()->getId();
-                break;
+            break;
         }
 
         return false;
