@@ -23,7 +23,7 @@ class TipoTesisFixtures extends Fixture implements OrderedFixtureInterface
                 'Tesis multidisciplinarias',
             ]],
             ['nombre' => 'Por el método de investigación', 'tipotesis' => [
-                'Tesis de investigación documental (Teórica)', 'Tesis de investigación de campo (Práctica)',
+                'Tesis de investigación documental Teórica', 'Tesis de investigación de campo Práctica',
                 'Tesis combinada de investigación documental y de campo'
             ]],
             ['nombre' => 'Por el manejo de la información', 'tipotesis' => [

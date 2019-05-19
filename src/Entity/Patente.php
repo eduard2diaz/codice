@@ -18,13 +18,17 @@ class Patente
      * @var string|null
      *
      * @ORM\Column(name="number", type="string", nullable=false)
+     *
      */
     private $number;
 
     /**
-     * @var string|null
+     * @var \Idioma
      *
-     * @ORM\Column(name="idioma", type="string", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Idioma")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idioma", referencedColumnName="id",onDelete="Cascade")
+     * })
      */
     private $idioma;
 
@@ -59,16 +63,20 @@ class Patente
         return $this;
     }
 
-    public function getIdioma(): ?string
+    /**
+     * @return \Idioma
+     */
+    public function getIdioma(): ?Idioma
     {
         return $this->idioma;
     }
 
-    public function setIdioma(?string $idioma): self
+    /**
+     * @param \Idioma $idioma
+     */
+    public function setIdioma(?Idioma $idioma): void
     {
         $this->idioma = $idioma;
-
-        return $this;
     }
 
     public function getId(): ?Publicacion
@@ -81,5 +89,16 @@ class Patente
         $this->id = $id;
 
         return $this;
+    }
+
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        if (null == $this->getIdioma()) {
+            $context->setNode($context, 'idioma', null, 'data.idioma');
+            $context->addViolation('Seleccione el idioma');
+        }
     }
 }

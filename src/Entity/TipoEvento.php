@@ -28,8 +28,9 @@ class TipoEvento
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nombre", type="string", nullable=false)
-     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$/")
+     * @ORM\Column(name="nombre", type="string",length=80, nullable=false)
+     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{1,})*$/")
+     * @Assert\Length(max=80)
      */
     private $nombre;
 

@@ -33,24 +33,27 @@ class Pais
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nombre", type="string", nullable=false)
-     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$/")
+     * @ORM\Column(name="nombre", type="string", length=200, nullable=false)
+     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{1,})*$/")
+     * @Assert\Length(max=200)
      */
     private $nombre;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="capital", type="string", nullable=false)
-     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$/")
+     * @ORM\Column(name="capital", type="string",length=200, nullable=false)
+     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{1,})*$/")
+     * @Assert\Length(max=200)
      */
     private $capital;
 
     /**
      * @var int|null
      *
-     * @ORM\Column(name="codigo", type="string", nullable=false)
+     * @ORM\Column(name="codigo", type="string",length=200, nullable=false)
      * @Assert\Regex("/^((\+|\-)\d+)(,\s(\+|\-)\d+)*$/")
+     * @Assert\Length(max=200)
      */
     private $codigo;
 

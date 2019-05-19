@@ -32,7 +32,8 @@ class Editorial
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nombre", type="string", nullable=true)
+     * @ORM\Column(name="nombre", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $nombre;
 
@@ -48,16 +49,22 @@ class Editorial
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max=255)
      */
     private $direccion;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     strict = true
+     * )
      */
     private $correo;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=30, nullable=true)
+     * @Assert\Length(max=30)
      * @Assert\Regex("/^((\+|\-)\d+)$/")
      */
     private $telefono;

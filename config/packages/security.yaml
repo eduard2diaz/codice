@@ -51,6 +51,7 @@ security:
         - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         #permisos del superadmin
         - { path: ^/pais, roles: ROLE_SUPERADMIN }
+        - { path: ^/idioma, roles: ROLE_SUPERADMIN }
         - { path: ^/gradocientifico, roles: ROLE_SUPERADMIN }
         - { path: ^/ministerio, roles: ROLE_SUPERADMIN }
         - { path: ^/usuario, roles: ROLE_SUPERADMIN }

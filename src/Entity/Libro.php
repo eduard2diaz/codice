@@ -19,21 +19,24 @@ class Libro
     /**
      * @var string|null
      *
-     * @ORM\Column(name="volumen", type="string", nullable=false)
+     * @ORM\Column(name="volumen", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $volumen;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="numero", type="string", nullable=false)
+     * @ORM\Column(name="numero", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $numero;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="serie", type="string", nullable=false)
+     * @ORM\Column(name="serie", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $serie;
 

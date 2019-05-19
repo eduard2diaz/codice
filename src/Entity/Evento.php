@@ -41,7 +41,8 @@ class Evento
     /**
      * @var string|null
      *
-     * @ORM\Column(name="ciudad", type="string", nullable=false)
+     * @ORM\Column(name="ciudad", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $ciudad;
 

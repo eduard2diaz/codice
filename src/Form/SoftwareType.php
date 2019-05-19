@@ -23,9 +23,7 @@ class SoftwareType extends AbstractType
     {
         $builder
             ->add('numero',TextType::class,['required'=>true,'label'=>'Número','attr'=>['class'=>'form-control']])
-            ->add('idioma',ChoiceType::class,['choices'=>[
-                'Español'=>'Español','Inglés'=>'Inglés','Francés'=>'Francés','Italiano'=>'Italiano','Portugués'=>'Portugués'
-            ]])
+            ->add('idioma',null,['required'=>true])
             ->add('id',PublicacionType::class)
             ->add('tipoSoftware',null,['required'=>true,'label'=>'Tipo de software','attr'=>['class'=>'form-control']])
         ;

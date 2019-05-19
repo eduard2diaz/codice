@@ -21,6 +21,7 @@ class BalanceAnual
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max=255)
      */
     private $nombre;
 
@@ -30,19 +31,28 @@ class BalanceAnual
     private $descripcion;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Autor")
-     * @ORM\JoinColumn(nullable=false)
+     * @var \Autor
+     *
+     * @ORM\ManyToOne(targetEntity="Autor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id",onDelete="Cascade")
+     * })
      */
     private $usuario;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Institucion", inversedBy="balanceAnuals")
-     * @ORM\JoinColumn(nullable=false)
+     * @var \Institucion
+     *
+     * @ORM\ManyToOne(targetEntity="Institucion", inversedBy="balanceAnuals")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="institucion", referencedColumnName="id",onDelete="Cascade")
+     * })
      */
     private $institucion;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max=255)
      */
     private $rutaArchivo;
 

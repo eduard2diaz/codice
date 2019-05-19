@@ -155,7 +155,11 @@
                                     <div class="">
                                         <div class="col">
                                             <h3 class="m-widget1__title">Idioma</h3>
-                                            <span class="m-widget1__desc">{{ software.idioma }}</span>
+                                            <span class="m-widget1__desc">
+                                                {% for idioma in software.idioma %}
+                                                    {{ idioma }}
+                                                {% endfor %}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
@@ -21,12 +23,7 @@ class Software
      */
     private $numero;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="idioma", type="string", nullable=false)
-     */
-    private $idioma;
+
 
     /**
      * @var \Publicacion
@@ -51,10 +48,26 @@ class Software
      */
     private $tipoSoftware;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Idioma", inversedBy="softwares")
+     * @ORM\JoinTable(name="software_idioma",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="softwares", referencedColumnName="id",onDelete="Cascade")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="idioma", referencedColumnName="id",onDelete="Cascade")
+     *   }
+     * )
+     */
+    private $idioma;
+
     public function __construct()
     {
         $this->setId(new Publicacion());
         $this->getId()->setChildType(get_class($this));
+        $this->idioma = new ArrayCollection();
     }
 
     public function getNumero(): ?string
@@ -69,17 +82,7 @@ class Software
         return $this;
     }
 
-    public function getIdioma(): ?string
-    {
-        return $this->idioma;
-    }
 
-    public function setIdioma(?string $idioma): self
-    {
-        $this->idioma = $idioma;
-
-        return $this;
-    }
 
     public function getId(): ?Publicacion
     {
@@ -105,6 +108,32 @@ class Software
         return $this;
     }
 
+    public function addIdioma(Idioma $idioma): self
+    {
+        if (!$this->idioma->contains($idioma)) {
+            $this->idioma[] = $idioma;
+        }
+
+        return $this;
+    }
+
+    public function removeIdioma(Idioma $idioma): self
+    {
+        if ($this->idioma->contains($idioma)) {
+            $this->idioma->removeElement($idioma);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Idioma[]
+     */
+    public function getIdioma(): Collection
+    {
+        return $this->idioma;
+    }
+
     /**
      * @Assert\Callback
      */
@@ -113,6 +142,10 @@ class Software
         if (null == $this->getTipoSoftware()) {
             $context->setNode($context, 'tipoSoftware', null, 'data.tipoSoftware');
             $context->addViolation('Seleccione el tipo de software');
+        }
+        if ($this->getIdioma()->isEmpty()) {
+            $context->setNode($context, 'idioma', null, 'data.idioma');
+            $context->addViolation('Seleccione el/los idioma(s)');
         }
     }
 }

@@ -20,7 +20,8 @@ class Articulo
     /**
      * @var string|null
      *
-     * @ORM\Column(name="volumen", type="string", nullable=false)
+     * @ORM\Column(name="volumen", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $volumen;
 
@@ -37,14 +38,16 @@ class Articulo
     /**
      * @var string|null
      *
-     * @ORM\Column(name="numero", type="string", nullable=false)
+     * @ORM\Column(name="numero", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $numero;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="doi", type="string", nullable=false)
+     * @ORM\Column(name="doi", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $doi;
 

@@ -33,7 +33,8 @@ class Publicacion
     /**
      * @var string|null
      *
-     * @ORM\Column(name="titulo", type="string", nullable=false)
+     * @ORM\Column(name="titulo", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $titulo;
 
@@ -47,7 +48,8 @@ class Publicacion
     /**
      * @var string|null
      *
-     * @ORM\Column(name="keywords", type="string", nullable=false)
+     * @ORM\Column(name="keywords", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $keywords;
 
@@ -80,14 +82,16 @@ class Publicacion
     private $file;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     * @Assert\Length(max=255)
      */
     private $rutaArchivo;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="child_type", type="string", nullable=false)
+     * @ORM\Column(name="child_type", type="string",length=255, nullable=false)
+     * @Assert\Length(max=255)
      */
     private $childType;
 

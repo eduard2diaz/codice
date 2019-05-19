@@ -23,9 +23,7 @@ class PatenteType extends AbstractType
     {
         $builder
             ->add('number', TextType::class,array('label'=>'Número','attr'=>array('autocomplete'=>'off','class'=>'form-control input-xlarge')))
-            ->add('idioma',ChoiceType::class,['choices'=>[
-                'Español'=>'Español','Inglés'=>'Inglés','Francés'=>'Francés','Italiano'=>'Italiano','Portugués'=>'Portugués'
-            ]])
+            ->add('idioma',null,['required'=>true])
             ->add('id',PublicacionType::class);
 
         if($this->token->getToken()->getUser()->getId()!=$options['data']->getId()->getAutor()->getId())

@@ -37,23 +37,26 @@ class Autor implements UserInterface
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nombre", type="string", nullable=false)
-     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$/")
+     * @ORM\Column(name="nombre", type="string",length=255, nullable=false)
+     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{1,})*$/")
+     * @Assert\Length(max=255)
      */
     private $nombre;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="usuario", type="string", nullable=false)
+     * @ORM\Column(name="usuario", type="string",length=20, nullable=false)
      * @Assert\Regex("/^([a-zA-Z]((\.|_|-)?[a-zA-Z0-9]+){3})*$/")
+     * @Assert\Length(max=20)
      */
     private $usuario;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="password", type="string", nullable=true)
+     * @ORM\Column(name="password", type="string",length=255, nullable=true)
+     * @Assert\Length(max=255)
      */
     private $password;
 
@@ -93,8 +96,9 @@ class Autor implements UserInterface
     /**
      * @var string|null
      *
-     * @ORM\Column(name="phone", type="string", nullable=true)
+     * @ORM\Column(name="phone", type="string",length=30, nullable=true)
      * @Assert\Regex("/^((\+|\-)\d+)$/")
+     * @Assert\Length(max=30)
      */
     private $phone;
 
@@ -180,6 +184,7 @@ class Autor implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max=255)
      */
     private $rutaFoto;
 

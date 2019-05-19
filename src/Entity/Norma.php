@@ -19,7 +19,8 @@ class Norma
     /**
      * @var string|null
      *
-     * @ORM\Column(name="no_registro", type="string", nullable=false)
+     * @ORM\Column(name="no_registro", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $noRegistro;
 

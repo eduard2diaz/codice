@@ -27,14 +27,15 @@ class Mensaje
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="datetime", nullable=true)
+     * @ORM\Column(name="fecha", type="datetime", nullable=false)
      */
     private $fecha;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="asunto", type="string", nullable=false)
+     * @ORM\Column(name="asunto", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $asunto;
 

@@ -112,7 +112,6 @@ var patente = function () {
                 'patente[id][file]': {required: true},
                 'patente[id][resumen]': {required: true},
                 'patente[id][estado]': {required: true},
-
                 'patente[idioma]': {required: true},
                 'patente[number]': {required: true},
             }

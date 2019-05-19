@@ -29,7 +29,8 @@ class Area
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nombre", type="string", nullable=false)
+     * @ORM\Column(name="nombre", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $nombre;
 

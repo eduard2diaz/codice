@@ -36,14 +36,16 @@ class Monografia
     /**
      * @var string|null
      *
-     * @ORM\Column(name="cenda", type="string", nullable=false)
+     * @ORM\Column(name="cenda", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $cenda;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="number", type="string", nullable=false)
+     * @ORM\Column(name="number", type="string",length=200, nullable=false)
+     * @Assert\Length(max=200)
      */
     private $number;
 
