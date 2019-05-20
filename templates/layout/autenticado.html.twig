@@ -26,7 +26,6 @@
             {% if is_granted('ROLE_SUPERADMIN') %}
                 {{ include('layout/recortes/topmenu/superadmin_topmenu.html.twig') }}
             {% else %}
-                {{ include('layout/recortes/topmenu/reporte_topmenu.html.twig') }}
                 {% if is_granted('ROLE_ADMIN') %}
                     {{ include('layout/recortes/topmenu/admin_topmenu.html.twig') }}
                 {% endif %}
@@ -34,6 +33,7 @@
             {% if is_granted('ROLE_GESTORBALANCE') %}
                 {{ include('layout/recortes/topmenu/gestorbalance_topmenu.html.twig') }}
             {% endif %}
+            {{ include('layout/recortes/topmenu/reporte_topmenu.html.twig') }}
         {% endblock top_menu %}
         {% block user_shortcut_menu %}
             {% if not is_granted('ROLE_SUPERADMIN') %}

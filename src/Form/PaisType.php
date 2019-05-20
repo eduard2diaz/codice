@@ -15,7 +15,7 @@ class PaisType extends AbstractType
         $builder
             ->add('nombre',TextType::class,['attr'=>['class'=>'form-control','autocomplete'=>'off']])
             ->add('capital',TextType::class,['attr'=>['class'=>'form-control','autocomplete'=>'off']])
-            ->add('codigo',TextType::class,['label'=>'Código','attr'=>['pattern'=>'((\+|\-)\d+)(,\s(\+|\-)\d+)*','class'=>'form-control','autocomplete'=>'off']])
+            ->add('codigo',TextType::class,['label'=>'Código','attr'=>['pattern'=>'((\+|\-)\d+)','class'=>'form-control','placeholder'=>'+53','autocomplete'=>'off']])
         ;
     }
 

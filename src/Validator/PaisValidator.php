@@ -6,6 +6,8 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use App\Validator\Pais as PaisConstrains;
+use App\Entity\Pais;
 
 class PaisValidator extends ConstraintValidator
 {
@@ -22,7 +24,7 @@ class PaisValidator extends ConstraintValidator
         /* @var $constraint App\Validator\Pais */
         $pa = PropertyAccess::createPropertyAccessor();
 
-        if (!$constraint instanceof Pais) {
+        if (!$constraint instanceof PaisConstrains) {
             throw new UnexpectedTypeException($constraint, __NAMESPACE__ . '\Pais');
         }
 
@@ -41,23 +43,16 @@ class PaisValidator extends ConstraintValidator
 
         $id = $pa->getValue($value, 'id');
         $codigo = $pa->getValue($value, $constraint->codigo);
-        $codigos = explode(',', $codigo);
-
-        foreach ($codigos as $cod) {
-            if (null != $id) {
-                $consulta = $em->createQuery('SELECT COUNT(p.id) FROM App:Pais p WHERE p.codigo like :parametro AND p.id!= :id');
-                $consulta->setParameters(['parametro' => '%' . trim($cod) . '%', 'id' => $id]);
-                $result = $consulta->getResult();
-            } else {
-                $consulta = $em->createQuery('SELECT COUNT(p.id) FROM App:Pais p WHERE p.codigo like :parametro AND p.id!= :id');
-                $consulta->setParameters(['parametro' => '%' . trim($cod) . '%', 'id' => $id]);
-                $result = $consulta->getResult();
-            }
-            if ($result[0][1] > 0) {
-                $this->context->buildViolation($constraint->message)->setParameter('%codigo%',$cod)->atPath($constraint->codigo)->addViolation();
+        $paises=$em->getRepository(Pais::class)->findAll();
+        $len=strlen($codigo);
+        foreach ($paises as $pais){
+            $len2=strlen($pais->getCodigo());
+            $len2= $len2< $len ? $len2 : $len;
+            if ($pais->getId() != $id && substr($codigo,0,$len2)==substr($pais->getCodigo(),0,$len2)){
+                $this->context->buildViolation($constraint->message)->setParameter('%codigo%', $codigo)->atPath($constraint->codigo)->addViolation();
                 break;
             }
-
         }
+
     }
 }

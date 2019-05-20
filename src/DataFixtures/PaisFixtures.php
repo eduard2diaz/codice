@@ -92,7 +92,7 @@ class PaisFixtures extends Fixture implements OrderedFixtureInterface
             ['pais'=>'Mali','capital'=>'Bamako','codigo'=>'+223'],
             ['pais'=>'Malta','capital'=>'La Valeta','codigo'=>'+356'],
             ['pais'=>'Mauritania','capital'=>'Nuakchot','codigo'=>'+222'],
-            ['pais'=>'Mexico','capital'=>'México','codigo'=>'+1706, +1905, +52'],
+            ['pais'=>'Mexico','capital'=>'México','codigo'=>'+1706'],
             ['pais'=>'Micronesia','capital'=>'Palikir','codigo'=>'+691'],
             ['pais'=>'Monaco','capital'=>'Mónaco','codigo'=>'+33'],
             ['pais'=>'Mongolia','capital'=>'Ulán Bator','codigo'=>'+976'],

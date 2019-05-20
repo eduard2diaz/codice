@@ -34,7 +34,6 @@ security:
                 check_path: check
                 default_target_path: index
                 always_use_default_target_path: true
-                failure_handler: app.failure_login
                 #añadiendo token csrf en el formulario de login
                 csrf_token_generator: security.csrf.token_manager
             logout:

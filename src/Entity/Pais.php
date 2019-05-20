@@ -51,9 +51,9 @@ class Pais
     /**
      * @var int|null
      *
-     * @ORM\Column(name="codigo", type="string",length=200, nullable=false)
-     * @Assert\Regex("/^((\+|\-)\d+)(,\s(\+|\-)\d+)*$/")
-     * @Assert\Length(max=200)
+     * @ORM\Column(name="codigo", type="string",length=30, nullable=false)
+     * @Assert\Regex("/^((\+|\-)\d+)$/")
+     * @Assert\Length(max=30)
      */
     private $codigo;
 
