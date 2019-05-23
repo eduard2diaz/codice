@@ -153,6 +153,7 @@ class AutorController extends AbstractController
         if ($form->isSubmitted())
             if (!$request->isXmlHttpRequest())
                 throw $this->createAccessDeniedException();
+
             elseif ($form->isValid()) {
                 $ruta = $this->getParameter('storage_directory');
 

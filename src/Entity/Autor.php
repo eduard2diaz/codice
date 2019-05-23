@@ -687,7 +687,11 @@ class Autor implements UserInterface
                 $context->buildViolation('Un usuario "Trabajador" no puede ser también "Directivo"')
                     ->atPath('idrol')
                     ->addViolation();
-            elseif ($this->getJefe() == null)
+            if (in_array('ROLE_GESTORBALANCE', $roles))
+                $context->buildViolation('Un usuario "Trabajador" no puede ser también "Gestor de balance"')
+                    ->atPath('idrol')
+                    ->addViolation();
+            if ($this->getJefe() == null)
                 $context->buildViolation('Seleccione el jefe')
                     ->atPath('idrol')
                     ->addViolation();

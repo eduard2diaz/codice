@@ -30,9 +30,11 @@ class LogoutListener  implements LogoutHandlerInterface
 
     public function logout(Request $Request, Response $Response, TokenInterface $token) {
         $em=$this->getDoctrine()->getManager();
-        $token->getUser()->setUltimologout(new \DateTime());
-        $em->persist($token->getUser());
-        $em->flush();
+        if(count($token->getRoles())>0){
+            $token->getUser()->setUltimologout(new \DateTime());
+            $em->persist($token->getUser());
+            $em->flush();
+        }
     }
 
 }

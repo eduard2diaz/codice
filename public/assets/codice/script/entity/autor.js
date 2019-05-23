@@ -388,6 +388,7 @@ var autor = function () {
                         // Themes end
                         // Create chart instance
                         var chart = am4core.create("resumen_grafico", am4charts.PieChart);
+                        chart.exporting.menu = new am4core.ExportMenu();
                         // Add data
                         chart.data = JSON.parse(data.data);
                         // Add and configure Series

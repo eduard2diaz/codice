@@ -33,7 +33,9 @@
             {% if is_granted('ROLE_GESTORBALANCE') %}
                 {{ include('layout/recortes/topmenu/gestorbalance_topmenu.html.twig') }}
             {% endif %}
-            {{ include('layout/recortes/topmenu/reporte_topmenu.html.twig') }}
+            {% if is_granted('ROLE_USER') %}
+                {{ include('layout/recortes/topmenu/reporte_topmenu.html.twig') }}
+            {% endif %}
         {% endblock top_menu %}
         {% block user_shortcut_menu %}
             {% if not is_granted('ROLE_SUPERADMIN') %}

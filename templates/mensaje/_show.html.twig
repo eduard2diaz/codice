@@ -13,7 +13,12 @@
                         </div>
                         <div class="m-card-profile__pic">
                             <div class="m-card-profile__pic-wrapper">
-                                <img src="{{ asset('app/media/img/users/user4.jpg','template') }}" alt="">
+                                {%if mensaje.remitente.rutaFoto!=null %}
+                                    {% set rutaFoto=  asset('archivos/'~mensaje.remitente.rutaFoto) %}
+                                {% else %}
+                                    {% set rutaFoto= asset('app/media/img/users/user4.jpg','template') %}
+                                {% endif %}
+                                <img src="{{ asserutaFoto }}" alt="">
                             </div>
                         </div>
                         <div class="m-card-profile__details">

@@ -20,6 +20,7 @@ class ReporteController extends AbstractController
 {
     /**
      * @Route("/autor/{id}/resumenperiodo", name="reporte_autorresumenperiodo",options={"expose"=true})
+     * Metodo que devuelve el listado de publicaciones por periodo de un determinado autor
      */
     public function resumenAutor(Request $request, AreaService $areaService, Autor $autor)
     {
@@ -50,10 +51,11 @@ class ReporteController extends AbstractController
                 $tipo_hijo = substr($value->getChildType(), 11);
                 $posicion = $this->buscarTipoPublicacion($resumen, $tipo_hijo);
                 if (-1 == $posicion)
-                    $resumen[] = ['entidad' => $tipo_hijo, 'total' => 1, 'propio' => $value->getAutor()->getId() == $this->getUser()->getId() ? 1 : 0];
+                    $resumen[] = ['entidad' => $tipo_hijo, 'total' => 1, 'propio' => $value->getAutor()->getId() == $autor->getId() ? 1 : 0];
                 else {
                     $resumen[$posicion]['total']++;
-                    $resumen[$posicion]['propio']++;
+                    if($value->getAutor()->getId() == $autor->getId())
+                        $resumen[$posicion]['propio']++;
                 }
 
                 $posicionAutor=$this->buscarAutor($autores,$value->getAutor()->getNombre());

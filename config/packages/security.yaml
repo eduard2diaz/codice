@@ -5,6 +5,7 @@ security:
 
     role_hierarchy:
         ROLE_ADMIN:  [ROLE_DIRECTIVO, ROLE_GESTORBALANCE]
+        ROLE_GESTORBALANCE:  ROLE_USER
         ROLE_DIRECTIVO:  ROLE_USER
 
     providers:
