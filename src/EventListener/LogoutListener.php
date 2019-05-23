@@ -7,6 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Http\Logout\LogoutHandlerInterface;
 
+/*
+ *Listener que se ejecuta cuando un usuario se desautentica en el sistema
+ */
 class LogoutListener  implements LogoutHandlerInterface
 {
     private $doctrine;
@@ -30,6 +33,7 @@ class LogoutListener  implements LogoutHandlerInterface
 
     public function logout(Request $Request, Response $Response, TokenInterface $token) {
         $em=$this->getDoctrine()->getManager();
+        //Si el usuario no es anonimo, actualizo su fecha de ultimo logout
         if(count($token->getRoles())>0){
             $token->getUser()->setUltimologout(new \DateTime());
             $em->persist($token->getUser());

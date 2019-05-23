@@ -61,6 +61,9 @@ class AddAutorJefeFieldSubscriber implements EventSubscriberInterface
         $this->addElements($event->getForm(), $institucion);
     }
 
+    /**
+     *Busca el listado de jefes que pertenecen a la institucion indicada
+     */
     protected function addElements($form, $institucion, $nosubodinados = null)
     {
         $form->add($this->factory->createNamed('jefe', EntityType::class, null, array(

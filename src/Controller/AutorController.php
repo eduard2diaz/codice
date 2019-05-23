@@ -87,8 +87,10 @@ class AutorController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted())
+
             if (!$request->isXmlHttpRequest())
                 throw $this->createAccessDeniedException();
+
             elseif ($form->isValid()) {
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($autor);

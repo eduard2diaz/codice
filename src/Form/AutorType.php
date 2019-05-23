@@ -7,7 +7,6 @@ use App\Form\Subscriber\AddAutorAreaFieldSubscriber;
 use App\Form\Subscriber\AddAutorJefeFieldSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -33,8 +32,11 @@ class AutorType extends AbstractType
 
     public function __construct(TokenStorageInterface $token, AuthorizationCheckerInterface $authorizationChecker, AreaService $areaService)
     {
+        //Obtengo una referencia del actual usuario
         $this->token = $token;
+        //Obtengo un mecanismo de acceso a los reloes de usuairo actual
         $this->authorizationChecker = $authorizationChecker;
+        //LLamo a una instancia del servicio AreaService
         $this->areaService = $areaService;
     }
 
@@ -45,19 +47,23 @@ class AutorType extends AbstractType
         $esDirectivo = $this->authorizationChecker->isGranted('ROLE_DIRECTIVO');
         $disabled = false;
         $builder
-            ->add('nombre', TextType::class, ['attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off','pattern'=>'[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$']])
-            ->add('usuario', TextType::class, ['label' => 'Nombre de usuario', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off','pattern'=>'([a-zA-Z]((\.|_|-)?[a-zA-Z0-9]+){3})*$']])
+            ->add('nombre', TextType::class, ['attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off', 'pattern' => '[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})*$']])
+            ->add('usuario', TextType::class, ['label' => 'Nombre de usuario', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off', 'pattern' => '([a-zA-Z]((\.|_|-)?[a-zA-Z0-9]+){3})*$']])
             ->add('email', EmailType::class, ['label' => 'Correo electrónico', 'attr' => ['class' => 'form-control m-input', 'autocomplete' => 'off']])
-            ->add('phone', TextType::class, ['label' => 'Teléfono', 'required' => false, 'attr' => ['pattern'=>'((\+|\-)\d+)','placeholder'=>'Ej: +5347815142','class' => 'form-control m-input', 'autocomplete' => 'off']])
+            ->add('phone', TextType::class, ['label' => 'Teléfono', 'required' => false, 'attr' => ['pattern' => '((\+|\-)\d+)', 'placeholder' => 'Ej: +5347815142', 'class' => 'form-control m-input', 'autocomplete' => 'off']])
             ->add('gradoCientifico', null, ['label' => 'Grado científico', 'required' => true, 'attr' => ['class' => 'form-control m-input']])
             ->add('file', FileType::class, array('required' => false,
                 'attr' => array('style' => 'display:none',
                     'accept' => 'image/*',/* 'accept' => '.jpg,.jpeg,.png,.gif,.bmp,.tiff'*/)
             ));
 
-        if($this->token->getToken()->getUser()!=$options['data'])
+        if ($this->token->getToken()->getUser() != $options['data'])
             $builder->add('activo', null, array('disabled' => $disabled, 'required' => false, 'attr' => array('data-on-text' => 'Si', 'data-off-text' => 'No')));
 
+        /*
+         *Listener que se ejecuta en el formulario antes de dibujar el mismo,
+         * busca si es un nuevo autor y en ese caso crea una regla de validacion que obliga a que la contraseña sea obligatoria
+         */
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $obj) {
             $form = $obj->getForm();
             $data = $obj->getData();
@@ -79,20 +85,26 @@ class AutorType extends AbstractType
         });
 
         $factory = $builder->getFormFactory();
-        if(($esSuperAdmin || $esAdmin) && $this->token->getToken()->getUser()!=$options['data']){
+
+        /*
+         * Chequeo de los roles del usuario actual y en caso de que sea un superadmin o un administrador institucional
+         * se pueden asignar todos los permisos, en caso contrario solo podran ser asginados los permisos de directivo y trabajador
+         */
+        if (($esSuperAdmin || $esAdmin) && $this->token->getToken()->getUser() != $options['data']) {
             $builder->add('idrol', null, array('disabled' => false,
                 'label' => 'Permisos', 'required' => true, 'attr' => array('class' => 'form-control input-medium')));
 
-            if($esSuperAdmin) {
+            /*
+             * Si el usuario actual es un superadmin, creo los subscribers de las entidades cuyos datos fueron cargados por ajax
+             */
+            if ($esSuperAdmin) {
                 $builder->add('pais', null, ['label' => 'País de residencia', 'disabled' => false,]);
                 $builder->addEventSubscriber(new AddInstitucionMinisterioFieldSubscriber($factory));
                 $builder->addEventSubscriber(new AddAutorInstitucionFieldSubscriber($factory));
             }
 
-            $builder->addEventSubscriber(new AddAutorJefeFieldSubscriber($factory,$this->token,$this->authorizationChecker,$this->areaService));
-        }
-        elseif(($esDirectivo) && $this->token->getToken()->getUser()!=$options['data'])
-            {
+            $builder->addEventSubscriber(new AddAutorJefeFieldSubscriber($factory, $this->token, $this->authorizationChecker, $this->areaService));
+        } elseif (($esDirectivo) && $this->token->getToken()->getUser() != $options['data']) {
             $builder->add('idrol', null, array(
                 'disabled' => false,
                 'class' => Rol::class,
@@ -105,8 +117,8 @@ class AutorType extends AbstractType
             ));
         }
 
-        if(($esSuperAdmin || $esAdmin || $esDirectivo) && $this->token->getToken()->getUser()!=$options['data'])
-            $builder->addEventSubscriber(new AddAutorAreaFieldSubscriber($factory,$this->token,$this->authorizationChecker,$this->areaService));
+        if (($esSuperAdmin || $esAdmin || $esDirectivo) && $this->token->getToken()->getUser() != $options['data'])
+            $builder->addEventSubscriber(new AddAutorAreaFieldSubscriber($factory, $this->token, $this->authorizationChecker, $this->areaService));
     }
 
     public function configureOptions(OptionsResolver $resolver)

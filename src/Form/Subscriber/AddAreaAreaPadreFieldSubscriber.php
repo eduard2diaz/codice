@@ -18,18 +18,20 @@ use Symfony\Component\Form\FormFactoryInterface;
  *
  * @author eduardo
  */
-class AddAreaAreaPadreFieldSubscriber  implements EventSubscriberInterface{
+class AddAreaAreaPadreFieldSubscriber implements EventSubscriberInterface
+{
 
     private $factory;
     private $areaService;
 
-    public function __construct(FormFactoryInterface $factory,AreaService $areaService)
+    public function __construct(FormFactoryInterface $factory, AreaService $areaService)
     {
         $this->factory = $factory;
-        $this->areaService=$areaService;
+        $this->areaService = $areaService;
     }
 
-    public static function getSubscribedEvents() {
+    public static function getSubscribedEvents()
+    {
         return array(
             FormEvents::PRE_SET_DATA => 'preSetData',
             FormEvents::PRE_SUBMIT => 'preSubmit',
@@ -41,60 +43,56 @@ class AddAreaAreaPadreFieldSubscriber  implements EventSubscriberInterface{
      * Cuando el usuario llene los datos del formulario y haga el envío del mismo,
      * este método será ejecutado.
      */
-    public function preSubmit(FormEvent $event) {
+    public function preSubmit(FormEvent $event)
+    {
         $data = $event->getData();
-        if(null===$data){
+        if (null === $data) {
             return;
         }
-        $institucion= is_array($data) ? $data['institucion'] : $data->getInstitucion();
+        $institucion = is_array($data) ? $data['institucion'] : $data->getInstitucion();
         $this->addElements($event->getForm(), $institucion);
     }
 
-    protected function addElements($form, $institucion,$areasNoHijas=null) {
-        $form->add($this->factory->createNamed('padre',EntityType::class,null,array(
-            'auto_initialize'=>false,
-            'required'=>false,
-            'label'=>'Área padre',
-            'class'         =>'App:Area',
+    protected function addElements($form, $institucion, $areasNoHijas = null)
+    {
+        $form->add($this->factory->createNamed('padre', EntityType::class, null, array(
+            'auto_initialize' => false,
+            'required' => false,
+            'label' => 'Área padre',
+            'class' => 'App:Area',
             'choice_label' => function ($elemento) {
                 return $elemento->getNombre();
             },
-            'query_builder'=>function(EntityRepository $repository)use($institucion,$areasNoHijas){
-                $qb=$repository->createQueryBuilder('padre')
-                    ->innerJoin('padre.institucion','p');
-                if($institucion instanceof Institucion){
+            'query_builder' => function (EntityRepository $repository) use ($institucion, $areasNoHijas) {
+                $qb = $repository->createQueryBuilder('padre')
+                    ->innerJoin('padre.institucion', 'p');
+                if ($institucion instanceof Institucion) {
                     $qb->where('p.id = :id')
-                        ->setParameter('id',$institucion);
-                }elseif(is_numeric($institucion)){
+                        ->setParameter('id', $institucion);
+                } elseif (is_numeric($institucion)) {
                     $qb->where('p.id = :id')
-                        ->setParameter('id',$institucion);
-                }else{
+                        ->setParameter('id', $institucion);
+                } else {
                     $qb->where('p.id = :id')
-                        ->setParameter('id',null);
+                        ->setParameter('id', null);
                 }
-                if(null!=$areasNoHijas && count($areasNoHijas)>0)
-                    $qb->andWhere('padre.id IN (:hijas)')->setParameter('hijas',$areasNoHijas);
+                if (null != $areasNoHijas && count($areasNoHijas) > 0)
+                    $qb->andWhere('padre.id IN (:hijas)')->setParameter('hijas', $areasNoHijas);
                 return $qb;
             }
         )));
     }
 
-    public function preSetData(FormEvent $event) {
+    public function preSetData(FormEvent $event)
+    {
         $data = $event->getData();
         $form = $event->getForm();
-        if(null==$data->getId()){
-           $form->add('padre',null,array('label'=>'Área padre','required'=>false,'choices'=>array()));
-        }else
-       {
-           $institucion= is_array($data) ? $data['institucion'] : $data->getInstitucion();
-           $areasNoHijas=$this->areaService->areasNoHijas($data);
-           $this->addElements($event->getForm(), $institucion,$areasNoHijas);
-       }
-
+        if (null == $data->getId()) {
+            $form->add('padre', null, array('label' => 'Área padre', 'required' => false, 'choices' => array()));
+        } else {
+            $institucion = is_array($data) ? $data['institucion'] : $data->getInstitucion();
+            $areasNoHijas = $this->areaService->areasNoHijas($data);
+            $this->addElements($event->getForm(), $institucion, $areasNoHijas);
+        }
     }
-
-
-
-
-
 }

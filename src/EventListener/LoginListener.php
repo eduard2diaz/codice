@@ -4,7 +4,9 @@ namespace App\EventListener;
 
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use App\Entity\LoginAccess;
-
+/*
+ *Listener que se ejecuta cuando un usuario se autentica exitosamente en el sistema
+ */
 class LoginListener
 {
     private $doctrine;

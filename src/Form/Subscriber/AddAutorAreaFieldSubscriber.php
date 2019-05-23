@@ -114,9 +114,4 @@ class AddAutorAreaFieldSubscriber  implements EventSubscriberInterface{
        }
 
     }
-
-
-
-
-
 }

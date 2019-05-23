@@ -25,9 +25,7 @@ class AutorSubscriber implements EventSubscriber
     }
 
     public function prePersist(LifecycleEventArgs $args) {
-
         $entity = $args->getEntity();
-        $manager=$args->getEntityManager();
         if ($entity instanceof Autor){
             $entity->setPassword($this->getServiceContainer()->get('security.password_encoder')->encodePassword($entity,$entity->getPassword()));
             $ruta=$this->getServiceContainer()->getParameter('storage_directory');

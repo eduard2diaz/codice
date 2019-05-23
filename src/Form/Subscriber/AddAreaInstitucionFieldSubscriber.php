@@ -72,6 +72,9 @@ class AddAreaInstitucionFieldSubscriber  implements EventSubscriberInterface{
         )));
     }
 
+    /**
+     *Antes de dibujarlo en la vista
+     */
     public function preSetData(FormEvent $event) {
         $data = $event->getData();
         $form = $event->getForm();

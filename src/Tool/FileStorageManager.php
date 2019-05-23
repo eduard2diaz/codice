@@ -12,6 +12,9 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/*
+ * Clase que se encarga de la manipulacion(upload, download, y remove) de archivos
+ */
 class FileStorageManager
 {
     public static function Upload($ruta, $file)
@@ -34,8 +37,9 @@ class FileStorageManager
 
         // Generate response
         $response = new Response();
-        // Set headers
+        // Cambia las cabeceras headers
         $response->headers->set('Cache-Control', 'private');
+        //define el mimetype
         $response->headers->set('Content-type', mime_content_type($ruta));
         $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($ruta) . '";');
         $response->headers->set('Content-length', filesize($ruta));
