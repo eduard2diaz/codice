@@ -1,7 +1,6 @@
 <table class="table table-hover" id="table_mensaje">
     <thead>
     <tr>
-        <th></th>
         <th style="width: 55%">Asunto</th>
         <th>Fecha</th>
         <th></th>
@@ -10,7 +9,6 @@
     <tbody>
     {% for mensaje in mensajes %}
         <tr>
-            <td></td>
             <td>{{ mensaje.asunto |truncate(60) }}</td>
             <td>{{ mensaje.fecha |date('d-m-Y H:i') }}</td>
             <td>
@@ -32,7 +30,6 @@
     </tbody>
     <tfoot>
     <tr>
-        <th></th>
         <th>Asunto</th>
         <th>Fecha</th>
         <th></th>

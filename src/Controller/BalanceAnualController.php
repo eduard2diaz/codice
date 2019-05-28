@@ -20,8 +20,10 @@ class BalanceAnualController extends AbstractController
      */
     public function index(Request $request): Response
     {
-        $balances = $this->getDoctrine()->getRepository(BalanceAnual::class)
-            ->findByInstitucion($this->getUser()->getInstitucion());
+        if($this->isGranted('ROLE_ADMIN'))
+            $balances = $this->getDoctrine()->getRepository(BalanceAnual::class)->findByInstitucion($this->getUser()->getInstitucion());
+        else
+            $balances = $this->getDoctrine()->getRepository(BalanceAnual::class)->findByArea($this->getUser()->getArea());
 
         if ($request->isXmlHttpRequest())
             return $this->render('balance_anual/_table.html.twig', [
@@ -44,6 +46,12 @@ class BalanceAnualController extends AbstractController
         $balance = new BalanceAnual();
         $balance->setUsuario($this->getUser());
         $balance->setInstitucion($this->getUser()->getInstitucion());
+
+        $area=null;
+        if(!$this->isGranted('ROLE_ADMIN'))
+            $area=$this->getUser()->getArea();
+        $balance->setArea($area);
+
         $form = $this->createForm(BalanceAnualType::class, $balance, array('action' => $this->generateUrl('balance_anual_new')));
         $form->handleRequest($request);
 

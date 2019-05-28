@@ -265,3 +265,7 @@ span.custom-file-control {
 a[data-href] {
     cursor: pointer;
 }
+
+div.m-brand--mobile{
+    background-color: #5867dd;
+}

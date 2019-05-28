@@ -216,10 +216,26 @@ class AutorController extends AbstractController
 
         $this->denyAccessUnlessGranted('DELETE', $autor);
         $em = $this->getDoctrine()->getManager();
+
+        /*
+         * Cuando se elimina un directivo los subordinados directos del mismo se subordinan al jefe del autor eliminado
+         * si es que el mismo tiene jefe
+         */
+        if($autor->esDirectivo()){
+            $subordinados=$em->getRepository(Autor::class)->findByJefe($autor);
+            $jefe=$autor->getJefe()!= null ? $autor->getJefe() : null;
+            foreach ($subordinados as $value){
+                $value->setJefe($jefe);
+                $em->persist($value);
+            }
+        }
+
         $em->remove($autor);
         $em->flush();
         return $this->json(['mensaje' => 'El usuario fue eliminado satisfactoriamente']);
     }
+
+
 
     //Funcionalidades ajax
     /**

@@ -31,9 +31,10 @@ class MensajeController extends AbstractController
         if ($request->isXmlHttpRequest())
             return $this->json(array(
                 'messages' => $this->renderView('mensaje/_table.html.twig', [
-                    'mensajes' => $mensajes
+                    'mensajes' => $mensajes,
                 ]),
-                'message_inbox' => $mensaje_inbox
+                'message_inbox' => $mensaje_inbox,
+                'bandeja'=>0
             ));
 
 
@@ -63,9 +64,10 @@ class MensajeController extends AbstractController
 
         return $this->json(array(
             'messages' => $this->renderView('mensaje/_table.html.twig', [
-                'mensajes' => $mensajes
+                'mensajes' => $mensajes,
             ]),
-            'message_inbox' => $mensaje_inbox
+            'message_inbox' => $mensaje_inbox,
+            'bandeja'=>1
         ));
 
     }
@@ -134,6 +136,7 @@ class MensajeController extends AbstractController
                 return $this->json(['mensaje' => 'El mensaje fue registrado satisfactoriamente',
                     'descripcion' => $mensaje->getDescripcion(),
                     'fecha' => $mensaje->getFecha()->format('d-m-Y H:i'),
+                    'csrf'=>$this->get('security.csrf.token_manager')->getToken('delete'.$mensaje->getId())->getValue(),
                     'id' => $mensaje->getId()
                 ]);
             } else {
@@ -194,7 +197,7 @@ class MensajeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/show", name="mensaje_show", methods="GET")
+     * @Route("/{id}/show", name="mensaje_show",options={"expose"=true}, methods="GET")
      */
     public function show(Request $request, Mensaje $mensaje): Response
     {
@@ -214,7 +217,7 @@ class MensajeController extends AbstractController
 
 
     /**
-     * @Route("/{id}/delete", name="mensaje_delete")
+     * @Route("/{id}/delete", name="mensaje_delete", options={"expose"=true},)
      */
     public function delete(Request $request, Mensaje $mensaje): Response
     {

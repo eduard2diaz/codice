@@ -9,7 +9,11 @@
         <td>{{ entidad.numero }}</td>
     </tr>
     <tr>
-        <th>Idioma</th>
-        <td>{{ entidad.idioma }}</td>
+        <th><i class="la la-language"></i> Idioma</th>
+        <td>
+            {% for idioma in entidad.idioma %}
+                {{ idioma }}
+            {% endfor %}
+        </td>
     </tr>
 {% endblock table_information %}

@@ -1,6 +1,7 @@
 var mensaje = function () {
     var table = null;
-    obj = null;
+    var obj = null;
+    var bandeja=0;
 
     var configurarDataTable = function () {
         table = $('table#table_mensaje').DataTable({
@@ -9,7 +10,6 @@ var mensaje = function () {
                     url: datatable_url
                 },
                 columns: [
-                    {data: 'noleido'},
                     {data: 'descripcion'},
                     {data: 'fecha'},
                     {data: 'acciones'}
@@ -38,6 +38,11 @@ var mensaje = function () {
                 success: function (data) {
                     $('table#table_mensaje').html(data['messages']);
                     $('small#message_inbox').html(data['message_inbox']);
+                    bandeja=data['bandeja'];
+                    if(bandeja==0)
+                        $('table#table_mensaje').removeClass('message-send');
+                    else
+                        $('table#table_mensaje').addClass('message-send');
                     table.destroy();
                     configurarDataTable();
                 },
@@ -114,7 +119,7 @@ var mensaje = function () {
                 eliminar();
                 }
             );
-        }
+        },
     }
 }();
 

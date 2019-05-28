@@ -5,6 +5,7 @@ namespace App\EventSubscriber;
 use App\Entity\Autor;
 use App\Entity\Publicacion;
 use App\Tool\FileStorageManager;
+use App\Tool\Util;
 use Doctrine\Common\EventSubscriber;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -50,7 +51,7 @@ class PublicacionSubscriber implements EventSubscriber
             $seguidores=$this->obtenerSeguidores($entity->getAutor()->getId());
 
             if ($entity->getEstado() == 1 && count($seguidores)>0) {
-                $descripcion=$entity->getAutor()->getNombre() . ' ha publicado "' . $entity->getTitulo() . '"';
+                $descripcion=$entity->getAutor()->getNombre() . ' ha publicado '.strtolower(Util::notificacionPublicacion($entity->getChildType())).' "' . $entity->getTitulo() . '"';
                 foreach ($seguidores as $seguidor) {
                     if($entity->getAutor()->getJefe() != null && $seguidor['id']==$entity->getAutor()->getJefe()->getId())
                         continue;
@@ -66,9 +67,9 @@ class PublicacionSubscriber implements EventSubscriber
             $currentUser = $this->getServiceContainer()->get('security.token_storage')->getToken()->getUser();
             if ($currentUser->getId() == $entity->getAutor()->getId()) {
                 if ($entity->getAutor()->getJefe() != null)
-                    $notificacionService->nuevaNotificacionPersist($entity->getAutor()->getJefe()->getId(), "El usuario " . $currentUser->__toString() . " publicó " . $entity->getTitulo());
+                    $notificacionService->nuevaNotificacionPersist($entity->getAutor()->getJefe()->getId(), "El usuario " . $currentUser->__toString() . " publicó ".strtolower(Util::notificacionPublicacion($entity->getChildType())).' "'. $entity->getTitulo().'"');
             } else
-                $notificacionService->nuevaNotificacionPersist($entity->getAutor()->getId(), "El usuario " . $currentUser->__toString() . " ha registrado tu publicación " . $entity->getTitulo());
+                $notificacionService->nuevaNotificacionPersist($entity->getAutor()->getId(), "El usuario " . $currentUser->__toString() . " ha registrado tu ".strtolower(Util::codificacionEntidad(Util::entidadPublicacion($entity->getChildType()))) .' "'. $entity->getTitulo().'"');
         }
     }
 
@@ -88,7 +89,7 @@ class PublicacionSubscriber implements EventSubscriber
                 $seguidores=$this->obtenerSeguidores($entity->getAutor()->getId());
 
             if ($entity->getEstado() == 1 && count($seguidores)>0) {
-                $descripcion=$entity->getAutor()->getNombre() . ' ha actualizado la publicación "' . $entity->getTitulo() . '"';
+                $descripcion=$entity->getAutor()->getNombre() . ' ha actualizado '.strtolower(Util::notificacionPublicacion($entity->getChildType())).' "' . $entity->getTitulo() . '"';
                 foreach ($seguidores as $seguidor) {
                     if($entity->getAutor()->getJefe() != null && $seguidor['id']==$entity->getAutor()->getJefe()->getId())
                         continue;
@@ -116,9 +117,9 @@ class PublicacionSubscriber implements EventSubscriber
 
             if ($currentUser->getId() == $entity->getAutor()->getId()) {
                 if ($entity->getAutor()->getJefe() != null)
-                    $notificacionService->nuevaNotificacionPersist($entity->getAutor()->getJefe()->getId(), "El usuario " . $currentUser->__toString() . " eliminó su publicación " . $entity->getTitulo());
+                    $notificacionService->nuevaNotificacionPersist($entity->getAutor()->getJefe()->getId(), "El usuario " . $currentUser->__toString() . " eliminó su ".strtolower(Util::codificacionEntidad(Util::entidadPublicacion($entity->getChildType()))) .' "'. $entity->getTitulo().'"');
             } else
-                $notificacionService->nuevaNotificacionPersist($entity->getAutor()->getId(), "El usuario " . $currentUser->__toString() . " ha eliminado tu publicación " . $entity->getTitulo());
+                $notificacionService->nuevaNotificacionPersist($entity->getAutor()->getId(), "El usuario " . $currentUser->__toString() . " ha eliminado tu ".strtolower(Util::codificacionEntidad(Util::entidadPublicacion($entity->getChildType()))).' "'. $entity->getTitulo().'"');
 
 
         }

@@ -160,6 +160,10 @@ var authenticated = function () {
                         if (data['mensaje'])
                             toastr.success(data['mensaje']);
                         $('div#basicmodal').modal('hide');
+
+                        if($('table#table_mensaje') && $('table#table_mensaje').hasClass('message-send')){
+                            $('a.messagebox').click();
+                        }
                     }
                 },
                 error: function () {
@@ -206,6 +210,8 @@ var authenticated = function () {
             });
         });
     }
+
+
 
     return {
         init: function () {

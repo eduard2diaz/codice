@@ -30,6 +30,7 @@ class Area
      * @var string|null
      *
      * @ORM\Column(name="nombre", type="string",length=200, nullable=false)
+     * @Assert\Regex("/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{1,})*$/")
      * @Assert\Length(max=200)
      */
     private $nombre;

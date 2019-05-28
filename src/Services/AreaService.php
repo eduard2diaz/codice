@@ -63,15 +63,11 @@ class AreaService
     public function areasNoHijas(Area $area)
     {
         $hijas = $this->areasHijas($area);
-        $hijas[]=$area;
+        $hijas[] = $area;
         $em = $this->getEm();
-/*        if (empty($hijas)) {
-            $consulta = $em->createQuery('SELECT a FROM App:Area a JOIN a.institucion i WHERE a.id!= :id AND i.id= :institucion');
-            $consulta->setParameters(['id' => $area->getId(), 'institucion' => $area->getInstitucion()->getId()]);
-        } else {*/
-            $consulta = $em->createQuery('SELECT a FROM App:Area a JOIN a.institucion i WHERE a.id!= :id AND i.id= :institucion AND NOT a  IN (:hijas)');
-            $consulta->setParameters(array('hijas' => $hijas, 'institucion' => $area->getInstitucion()->getId(), 'id' => $area->getId()));
-        //}
+
+        $consulta = $em->createQuery('SELECT a FROM App:Area a JOIN a.institucion i WHERE a.id!= :id AND i.id= :institucion AND NOT a  IN (:hijas)');
+        $consulta->setParameters(array('hijas' => $hijas, 'institucion' => $area->getInstitucion()->getId(), 'id' => $area->getId()));
         return $consulta->getResult();
     }
 

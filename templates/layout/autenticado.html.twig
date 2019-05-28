@@ -75,6 +75,7 @@
     <script type="text/javascript"
             src="{{ asset('vendors/custom/fullcalendar/fullcalendar.bundle.js','template') }}"></script>
     <script type="text/javascript" src="{{ asset('plugins/bootbox/bootbox.min.js','codice') }}"></script>
+
     {% if not is_granted('ROLE_SUPERADMIN') %}
         <script src="{{ asset('plugins/jquery.fileDownload.js','codice') }}"></script>
         <script src="{{ asset('script/base/authenticated.js','codice') }}"></script>
@@ -87,4 +88,5 @@
     <script>
         var datatable_url = '{{ asset('plugins/datatable/es.json','codice') }}';
     </script>
+
 {% endblock %}

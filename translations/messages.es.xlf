@@ -9,6 +9,10 @@
         <source>Bad credentials.</source>
         <target>Usuario o contraseña incorrectos.</target>
       </trans-unit>
+      <trans-unit id="yPHGEV31" resname="Invalid CSRF token.">
+        <source>Invalid CSRF token.</source>
+        <target>Token CSRF inválido.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

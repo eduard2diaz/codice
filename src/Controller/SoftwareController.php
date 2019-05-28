@@ -7,6 +7,7 @@ use App\Entity\Software;
 use App\Entity\Publicacion;
 use App\Form\SoftwareType;
 use App\Services\NotificacionService;
+use App\Tool\Util;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -91,6 +92,7 @@ class SoftwareController extends AbstractController
      */
     public function show(Software $software): Response
     {
+        Util::generoPublicacion($software->getId()->getChildType());
         return $this->render('software/show.html.twig', [
             'software' => $software,
             'user_id' => $software->getId()->getAutor()->getId(),

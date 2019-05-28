@@ -42,7 +42,7 @@ class AreaType extends AbstractType
     {
         $area = $options['data'];
         $builder
-            ->add('nombre', TextType::class, array('attr' => array('autocomplete' => 'off', 'class' => 'form-control input-xlarge')));
+            ->add('nombre', TextType::class, array('attr' => array('autocomplete' => 'off', 'class' => 'form-control input-xlarge', 'pattern'=>'[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{1,})*$')));
 
         if ($this->authorizationChecker->isGranted('ROLE_SUPERADMIN')) {
             $builder->add('pais', null, ['label' => 'País']);
