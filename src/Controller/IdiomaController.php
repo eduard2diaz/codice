@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Idioma;
+use App\Entity\Patente;
+use App\Entity\Software;
 use App\Form\IdiomaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -74,6 +76,7 @@ class IdiomaController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $eliminable=$this->esEliminable($idioma);
         $form = $this->createForm(IdiomaType::class, $idioma, ['action' => $this->generateUrl('idioma_edit',['id' => $idioma->getId()])]);
         $form->handleRequest($request);
 
@@ -87,6 +90,8 @@ class IdiomaController extends AbstractController
                 ]);
             } else {
                 $page = $this->renderView('idioma/_form.html.twig', [
+                    'idioma' => $idioma,
+                    'eliminable'=>$eliminable,
                     'form' => $form->createView(),
                     'form_id' => 'idioma_edit',
                     'action' => 'Actualizar',
@@ -96,6 +101,7 @@ class IdiomaController extends AbstractController
 
         return $this->render('idioma/_new.html.twig', [
             'idioma' => $idioma,
+            'eliminable'=>$eliminable,
             'title' => 'Editar idioma',
             'action' => 'Actualizar',
             'form_id' => 'idioma_edit',
@@ -108,7 +114,7 @@ class IdiomaController extends AbstractController
      */
     public function delete(Request $request, Idioma $idioma): Response
     {
-        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$idioma->getId(), $request->query->get('_token')))
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$idioma->getId(), $request->query->get('_token'))  || false==$this->esEliminable($idioma))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
@@ -116,4 +122,21 @@ class IdiomaController extends AbstractController
         $em->flush();
         return $this->json(['mensaje' => 'El idioma fue eliminado satisfactoriamente']);
     }
+
+    private function esEliminable(Idioma $idioma)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $notienePatente=null== $em->getRepository(Patente::class)->findOneByIdioma($idioma);
+        if($notienePatente==false)
+            return false;
+
+        $consulta=$em->createQuery('Select COUNT(s.id) as cantidad from App:Software s JOIN s.idioma i WHERE i.id= :idioma');
+        $consulta->setParameter('idioma',$idioma->getId());
+        $consulta->setMaxResults(1);
+        $result=$consulta->getResult();
+
+        return $result[0]['cantidad']==0;
+    }
+
+
 }

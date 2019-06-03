@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Premio;
 use App\Entity\TipoPremio;
 use App\Form\TipoPremioType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -74,6 +75,7 @@ class TipoPremioController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $eliminable=$this->esEliminable($tipo_premio);
         $form = $this->createForm(TipoPremioType::class, $tipo_premio, ['action' => $this->generateUrl('tipo_premio_edit',['id' => $tipo_premio->getId()])]);
         $form->handleRequest($request);
 
@@ -89,12 +91,15 @@ class TipoPremioController extends AbstractController
                 $page = $this->renderView('tipo_premio/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'tipo_premio_edit',
+                    'eliminable'=>$eliminable,
+                    'tipo_premio' => $tipo_premio,
                     'action' => 'Actualizar',
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('tipo_premio/_new.html.twig', [
+            'eliminable'=>$eliminable,
             'tipo_premio' => $tipo_premio,
             'title' => 'Editar tipo de premio',
             'action' => 'Actualizar',
@@ -108,12 +113,17 @@ class TipoPremioController extends AbstractController
      */
     public function delete(Request $request, TipoPremio $tipo_premio): Response
     {
-        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_premio->getId(), $request->query->get('_token')))
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_premio->getId(), $request->query->get('_token')) || false==$this->esEliminable($tipo_premio))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($tipo_premio);
         $em->flush();
         return $this->json(['mensaje' => 'El tipo de premio fue eliminado satisfactoriamente']);
+    }
+
+    private function esEliminable(TipoPremio $tipoPremio){
+        return null==$this->getDoctrine()->getManager()->getRepository(Premio::class)
+                ->findOneByTipoPremio($tipoPremio);
     }
 }

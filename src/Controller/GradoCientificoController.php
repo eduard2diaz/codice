@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Autor;
 use App\Entity\GradoCientifico;
 use App\Form\GradoCientificoType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -76,7 +77,7 @@ class GradoCientificoController extends AbstractController
 
         $form = $this->createForm(GradoCientificoType::class, $grado_cientifico, ['action' => $this->generateUrl('grado_cientifico_edit',['id' => $grado_cientifico->getId()])]);
         $form->handleRequest($request);
-
+        $eliminable=$this->esEliminable($grado_cientifico);
         if ($form->isSubmitted())
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
@@ -90,12 +91,15 @@ class GradoCientificoController extends AbstractController
                     'form' => $form->createView(),
                     'form_id' => 'grado_cientifico_edit',
                     'action' => 'Actualizar',
+                    'grado_cientifico' => $grado_cientifico,
+                    'eliminable'=>$eliminable,
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('grado_cientifico/_new.html.twig', [
             'grado_cientifico' => $grado_cientifico,
+            'eliminable'=>$eliminable,
             'title' => 'Editar grado científico',
             'action' => 'Actualizar',
             'form_id' => 'grado_cientifico_edit',
@@ -108,12 +112,17 @@ class GradoCientificoController extends AbstractController
      */
     public function delete(Request $request, GradoCientifico $grado_cientifico): Response
     {
-        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$grado_cientifico->getId(), $request->query->get('_token')))
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$grado_cientifico->getId(), $request->query->get('_token')) || false==$this->esEliminable($grado_cientifico))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($grado_cientifico);
         $em->flush();
         return $this->json(['mensaje' => 'El grado científico fue eliminado satisfactoriamente']);
+    }
+
+    private function esEliminable(GradoCientifico $gradoCientifico){
+        return null==$this->getDoctrine()->getManager()->getRepository(Autor::class)
+                ->findOneByGradoCientifico($gradoCientifico);
     }
 }

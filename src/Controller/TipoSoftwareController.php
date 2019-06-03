@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Software;
 use App\Entity\TipoSoftware;
 use App\Form\TipoSoftwareType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -75,6 +76,7 @@ class TipoSoftwareController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $eliminable=$this->esEliminable($tipo_software);
         $form = $this->createForm(TipoSoftwareType::class, $tipo_software, ['action' => $this->generateUrl('tipo_software_edit',['id' => $tipo_software->getId()])]);
         $form->handleRequest($request);
 
@@ -92,12 +94,15 @@ class TipoSoftwareController extends AbstractController
                     'form' => $form->createView(),
                     'form_id' => 'tipo_software_edit',
                     'action' => 'Actualizar',
+                    'tipo_software' => $tipo_software,
+                    'eliminable'=>$eliminable,
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('tipo_software/_new.html.twig', [
             'tipo_software' => $tipo_software,
+            'eliminable'=>$eliminable,
             'title' => 'Editar tipo de software',
             'action' => 'Actualizar',
             'form_id' => 'tipo_software_edit',
@@ -110,12 +115,17 @@ class TipoSoftwareController extends AbstractController
      */
     public function delete(Request $request, TipoSoftware $tipo_software): Response
     {
-        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_software->getId(), $request->query->get('_token')))
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_software->getId(), $request->query->get('_token')) || false==$this->esEliminable($tipo_software))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($tipo_software);
         $em->flush();
         return $this->json(['mensaje' => 'El tipo de software fue eliminado satisfactoriamente']);
+    }
+
+    private function esEliminable(TipoSoftware $TipoSoftware){
+        return null==$this->getDoctrine()->getManager()->getRepository(Software::class)
+                ->findOneByTipoSoftware($TipoSoftware);
     }
 }

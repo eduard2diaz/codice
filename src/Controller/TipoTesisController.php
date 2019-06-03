@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Tesis;
 use App\Entity\TipoTesis;
 use App\Form\TipoTesisType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -79,6 +80,7 @@ class TipoTesisController extends AbstractController
 
         $form = $this->createForm(TipoTesisType::class, $tipo_tesis, ['action' => $this->generateUrl('tipo_tesis_edit',['id' => $tipo_tesis->getId()])]);
         $form->handleRequest($request);
+        $eliminable=$this->esEliminable($tipo_tesis);
 
         if ($form->isSubmitted())
             if ($form->isValid()) {
@@ -95,12 +97,14 @@ class TipoTesisController extends AbstractController
                     'form_id' => 'tipo_tesis_edit',
                     'action' => 'Actualizar',
                     'tipo_tesis' => $tipo_tesis,
+                    'eliminable'=>$eliminable,
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('tipo_tesis/_new.html.twig', [
             'tipo_tesis' => $tipo_tesis,
+            'eliminable'=>$eliminable,
             'title' => 'Editar tipo de tesis',
             'action' => 'Actualizar',
             'form_id' => 'tipo_tesis_edit',
@@ -113,12 +117,17 @@ class TipoTesisController extends AbstractController
      */
     public function delete(Request $request, TipoTesis $tipo_tesis): Response
     {
-        if (!$request->isXmlHttpRequest()  || !$this->isCsrfTokenValid('delete'.$tipo_tesis->getId(), $request->query->get('_token')))
+        if (!$request->isXmlHttpRequest()  || !$this->isCsrfTokenValid('delete'.$tipo_tesis->getId(), $request->query->get('_token')) || false==$this->esEliminable($tipo_tesis))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($tipo_tesis);
         $em->flush();
         return $this->json(['mensaje' => 'El tipo de tesis fue eliminado satisfactoriamente']);
+    }
+
+    private function esEliminable(TipoTesis $tipoTesis){
+        return null==$this->getDoctrine()->getManager()->getRepository(Tesis::class)
+                ->findOneByTipoTesis($tipoTesis);
     }
 }

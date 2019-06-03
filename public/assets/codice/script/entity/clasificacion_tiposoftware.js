@@ -118,9 +118,7 @@ var clasificacion_tiposoftware = function () {
                             "acciones": "<ul class='m-nav m-nav--inline m--pull-right'>" +
                                 "<li class='m-nav__item'>" +
                                 "<a class='btn btn-sm btn-info edicion' data-href=" + Routing.generate('clasificacion_tiposoftware_edit',{id:data['id']}) + "><i class='flaticon-edit-1'></i>Editar</a></li>" +
-                                "<li class='m-nav__item'>" +
-                                "<a class='btn btn-danger btn-sm  eliminar_clasificacion_tiposoftware' data-csrf=" + data['csrf'] +" data-href=" + Routing.generate('clasificacion_tiposoftware_delete',{id:data['id']}) + ">" +
-                                "<i class='flaticon-delete-1'></i>Eliminar</a></li></ul>",
+                                "</ul>",
                         });
                         objeto.draw();
                         table.page(pagina).draw('page');
@@ -176,12 +174,12 @@ var clasificacion_tiposoftware = function () {
     }
 
     var eliminar = function () {
-        $('table#clasificacion_tiposoftware_table').on('click', 'a.eliminar_clasificacion_tiposoftware', function (evento)
+        $('div#basicmodal').on('click', 'a.eliminar_clasificacion_tiposoftware', function (evento)
         {
             evento.preventDefault();
-            var obj = $(this);
             var link = $(this).attr('data-href');
             var token = $(this).attr('data-csrf');
+            $('div#basicmodal').modal('hide');
             bootbox.confirm({
                 title: 'Eliminar clasificación de tipo de software',
                 message: '¿Está seguro que desea eliminar esta clasificación?',

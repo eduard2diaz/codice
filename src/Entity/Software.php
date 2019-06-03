@@ -23,8 +23,6 @@ class Software
      */
     private $numero;
 
-
-
     /**
      * @var \Publicacion
      *

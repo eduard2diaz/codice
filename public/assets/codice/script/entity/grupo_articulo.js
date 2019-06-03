@@ -118,9 +118,7 @@ var grupo_articulo = function () {
                             "acciones": "<ul class='m-nav m-nav--inline m--pull-right'>" +
                                 "<li class='m-nav__item'>" +
                                 "<a class='btn btn-sm btn-info edicion' data-href=" + Routing.generate('grupo_articulo_edit',{id:data['id']}) + "><i class='flaticon-edit-1'></i>Editar</a></li>" +
-                                "<li class='m-nav__item'>" +
-                                "<a class='btn btn-danger btn-sm  eliminar_grupo_articulo' data-csrf=" + data['csrf'] +" data-href=" + Routing.generate('grupo_articulo_delete',{id:data['id']}) + ">" +
-                                "<i class='flaticon-delete-1'></i>Eliminar</a></li></ul>",
+                                "</ul>",
                         });
                         objeto.draw();
                         table.page(pagina).draw('page');
@@ -176,12 +174,12 @@ var grupo_articulo = function () {
     }
 
     var eliminar = function () {
-        $('table#grupo_articulo_table').on('click', 'a.eliminar_grupo_articulo', function (evento)
+        $('div#basicmodal').on('click', 'a.eliminar_grupo_articulo', function (evento)
         {
             evento.preventDefault();
-            var obj = $(this);
             var link = $(this).attr('data-href');
             var token = $(this).attr('data-csrf');
+            $('div#basicmodal').modal('hide');
             bootbox.confirm({
                 title: 'Eliminar grupo',
                 message: '¿Está seguro que desea eliminar este grupo de artículo?',

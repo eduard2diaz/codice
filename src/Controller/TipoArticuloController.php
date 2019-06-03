@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Articulo;
 use App\Entity\TipoArticulo;
 use App\Form\TipoArticuloType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -78,6 +79,7 @@ class TipoArticuloController extends AbstractController
         $form = $this->createForm(TipoArticuloType::class, $tipo_articulo, ['action' => $this->generateUrl('tipo_articulo_edit',['id' => $tipo_articulo->getId()])]);
         $form->handleRequest($request);
 
+        $eliminable=$this->esEliminable($tipo_articulo);
         if ($form->isSubmitted())
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
@@ -92,6 +94,8 @@ class TipoArticuloController extends AbstractController
                     'form' => $form->createView(),
                     'form_id' => 'tipo_articulo_edit',
                     'action' => 'Actualizar',
+                    'eliminable'=>$eliminable,
+                    'tipo_articulo' => $tipo_articulo,
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
             }
@@ -101,6 +105,7 @@ class TipoArticuloController extends AbstractController
             'title' => 'Editar tipo de artículo',
             'action' => 'Actualizar',
             'form_id' => 'tipo_articulo_edit',
+            'eliminable'=>$eliminable,
             'form' => $form->createView(),
         ]);
     }
@@ -110,12 +115,17 @@ class TipoArticuloController extends AbstractController
      */
     public function delete(Request $request, TipoArticulo $tipo_articulo): Response
     {
-        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_articulo->getId(), $request->query->get('_token')))
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_articulo->getId(), $request->query->get('_token')) || false==$this->esEliminable($tipo_articulo))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($tipo_articulo);
         $em->flush();
         return $this->json(['mensaje' => 'El tipo de artículo fue eliminado satisfactoriamente']);
+    }
+
+    private function esEliminable(TipoArticulo $tipoArticulo){
+        return null==$this->getDoctrine()->getManager()->getRepository(Articulo::class)
+                ->findOneByTipoArticulo($tipoArticulo);
     }
 }

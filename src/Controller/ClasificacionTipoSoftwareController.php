@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ClasificacionTipoSoftware;
+use App\Entity\TipoSoftware;
 use App\Form\ClasificacionTipoSoftwareType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -74,6 +75,7 @@ class ClasificacionTipoSoftwareController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $eliminable=$this->esEliminable($clasificacion_tiposoftware);
         $form = $this->createForm(ClasificacionTipoSoftwareType::class, $clasificacion_tiposoftware, ['action' => $this->generateUrl('clasificacion_tiposoftware_edit',['id' => $clasificacion_tiposoftware->getId()])]);
         $form->handleRequest($request);
 
@@ -89,6 +91,8 @@ class ClasificacionTipoSoftwareController extends AbstractController
                 $page = $this->renderView('clasificacion_tiposoftware/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'clasificacion_tiposoftware_edit',
+                    'clasificacion_tiposoftware' => $clasificacion_tiposoftware,
+                    'eliminable'=>$eliminable,
                     'action' => 'Actualizar',
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
@@ -96,6 +100,7 @@ class ClasificacionTipoSoftwareController extends AbstractController
 
         return $this->render('clasificacion_tiposoftware/_new.html.twig', [
             'clasificacion_tiposoftware' => $clasificacion_tiposoftware,
+            'eliminable'=>$eliminable,
             'title' => 'Editar clasificación',
             'action' => 'Actualizar',
             'form_id' => 'clasificacion_tiposoftware_edit',
@@ -108,7 +113,7 @@ class ClasificacionTipoSoftwareController extends AbstractController
      */
     public function delete(Request $request, ClasificacionTipoSoftware $clasificacion_tiposoftware): Response
     {
-        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$clasificacion_tiposoftware->getId(), $request->query->get('_token')))
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$clasificacion_tiposoftware->getId(), $request->query->get('_token')) || false==$this->esEliminable($clasificacion_tiposoftware))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
@@ -116,4 +121,9 @@ class ClasificacionTipoSoftwareController extends AbstractController
         $em->flush();
         return $this->json(['mensaje' => 'La clasificación fue eliminada satisfactoriamente']);
     }
+
+    private function esEliminable(ClasificacionTipoSoftware $clasificacionTipoSoftware){
+    return null==$this->getDoctrine()->getManager()->getRepository(TipoSoftware::class)
+            ->findOneByClasificacion($clasificacionTipoSoftware);
+}
 }

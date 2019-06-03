@@ -19,6 +19,10 @@
 </div>
 <div class="modal-footer">
     <a class="btn btn-sm btn-metal" data-dismiss="modal"><i class="flaticon-cancel"></i> Cancelar</a>
+    {% if eliminable is defined and eliminable==true %}
+    <a class="btn btn-danger btn-sm  eliminar_clasificacion_tipotesis" data-href="{{ path('clasificacion_tipotesis_delete', { 'id': clasificacion_tipotesis.id }) }}" data-csrf="{{ csrf_token('delete' ~ clasificacion_tipotesis.id) }}">
+        <i class="flaticon-delete-1"></i> Eliminar</a>
+    {% endif %}
     <button class="btn btn-sm btn-primary mt-ladda-btn ladda-button" data-style="expand-right" type="submit">
         <i class="flaticon-edit"></i>
         <span class="ladda-label">{{ action |default('Guardar')}}</span>

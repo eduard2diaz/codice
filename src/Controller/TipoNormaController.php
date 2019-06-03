@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Norma;
 use App\Entity\TipoNorma;
 use App\Form\TipoNormaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -74,6 +75,7 @@ class TipoNormaController extends AbstractController
         $form = $this->createForm(TipoNormaType::class, $tipo_norma, ['action' => $this->generateUrl('tipo_norma_edit',['id' => $tipo_norma->getId()])]);
         $form->handleRequest($request);
 
+        $eliminable=$this->esEliminable($tipo_norma);
         if ($form->isSubmitted())
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
@@ -87,6 +89,8 @@ class TipoNormaController extends AbstractController
                     'form' => $form->createView(),
                     'form_id' => 'tipo_norma_edit',
                     'action' => 'Actualizar',
+                    'tipo_norma' => $tipo_norma,
+                    'eliminable'=>$eliminable
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
             }
@@ -96,6 +100,7 @@ class TipoNormaController extends AbstractController
             'title' => 'Editar tipo de norma',
             'action' => 'Actualizar',
             'form_id' => 'tipo_norma_edit',
+            'eliminable'=>$eliminable,
             'form' => $form->createView(),
         ]);
     }
@@ -105,12 +110,17 @@ class TipoNormaController extends AbstractController
      */
     public function delete(Request $request, TipoNorma $tipo_norma): Response
     {
-        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_norma->getId(), $request->query->get('_token')))
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_norma->getId(), $request->query->get('_token')) || false==$this->esEliminable($tipo_norma))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($tipo_norma);
         $em->flush();
         return $this->json(['mensaje' => 'El tipo de norma fue eliminado satisfactoriamente']);
+    }
+
+    private function esEliminable(TipoNorma $tipoNorma){
+        return null==$this->getDoctrine()->getManager()->getRepository(Norma::class)
+                ->findOneByTipoNorma($tipoNorma);
     }
 }

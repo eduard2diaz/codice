@@ -31,10 +31,6 @@
                         <a class="btn btn-info btn-sm edicion" data-href="{{ path('institucion_edit', { 'id': institucion.id }) }}">
                             <i class="flaticon-edit-1"></i> Editar</a>
                     </li>
-                    <li class="m-nav__item">
-                        <a class="btn btn-danger btn-sm  eliminar_institucion" data-href="{{ path('institucion_delete', { 'id': institucion.id }) }}" data-csrf="{{ csrf_token('delete' ~ institucion.id) }}">
-                            <i class="flaticon-delete-1"></i> Eliminar</a>
-                    </li>
                 </ul>
             </td>
         </tr>

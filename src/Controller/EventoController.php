@@ -157,4 +157,5 @@ class EventoController extends AbstractController
 
         return $this->json(array('mensaje' => 'El evento fue eliminado satisfactoriamente'));
     }
+
 }

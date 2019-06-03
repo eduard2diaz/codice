@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ClasificacionTipoTesis;
+use App\Entity\TipoTesis;
 use App\Form\ClasificacionTipoTesisType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -80,7 +81,7 @@ class ClasificacionTipoTesisController extends AbstractController
 
         $form = $this->createForm(ClasificacionTipoTesisType::class, $clasificacion_tipotesis, ['action' => $this->generateUrl('clasificacion_tipotesis_edit',['id' => $clasificacion_tipotesis->getId()])]);
         $form->handleRequest($request);
-
+        $eliminable=$this->esEliminable($clasificacion_tipotesis);
         if ($form->isSubmitted())
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
@@ -93,6 +94,8 @@ class ClasificacionTipoTesisController extends AbstractController
                 $page = $this->renderView('clasificacion_tipotesis/_form.html.twig', [
                     'form' => $form->createView(),
                     'form_id' => 'clasificacion_tipotesis_edit',
+                    'clasificacion_tipotesis' => $clasificacion_tipotesis,
+                    'eliminable'=>$eliminable,
                     'action' => 'Actualizar',
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
@@ -100,6 +103,7 @@ class ClasificacionTipoTesisController extends AbstractController
 
         return $this->render('clasificacion_tipotesis/_new.html.twig', [
             'clasificacion_tipotesis' => $clasificacion_tipotesis,
+            'eliminable'=>$eliminable,
             'title' => 'Editar clasificación',
             'action' => 'Actualizar',
             'form_id' => 'clasificacion_tipotesis_edit',
@@ -112,12 +116,17 @@ class ClasificacionTipoTesisController extends AbstractController
      */
     public function delete(Request $request, ClasificacionTipoTesis $clasificacion_tipotesis): Response
     {
-        if (!$request->isXmlHttpRequest()|| !$this->isCsrfTokenValid('delete'.$clasificacion_tipotesis->getId(), $request->query->get('_token')))
+        if (!$request->isXmlHttpRequest()|| !$this->isCsrfTokenValid('delete'.$clasificacion_tipotesis->getId(), $request->query->get('_token')) || false==$this->esEliminable($clasificacion_tipotesis))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($clasificacion_tipotesis);
         $em->flush();
         return $this->json(['mensaje' => 'La clasificación fue eliminada satisfactoriamente']);
+    }
+
+    private function esEliminable(ClasificacionTipoTesis $clasificacionTipoTesis){
+        return null==$this->getDoctrine()->getManager()->getRepository(TipoTesis::class)
+                ->findOneByClasificacion($clasificacionTipoTesis);
     }
 }

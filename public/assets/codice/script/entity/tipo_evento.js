@@ -118,9 +118,7 @@ var tipo_evento = function () {
                             "acciones": "<ul class='m-nav m-nav--inline m--pull-right'>" +
                                 "<li class='m-nav__item'>" +
                                 "<a class='btn btn-sm btn-info edicion' data-href=" + Routing.generate('tipo_evento_edit',{id:data['id']}) + "><i class='flaticon-edit-1'></i>Editar</a></li>" +
-                                "<li class='m-nav__item'>" +
-                                "<a class='btn btn-danger btn-sm  eliminar_tipo_evento' data-csrf=" + data['csrf'] +" data-href=" + Routing.generate('tipo_evento_delete',{id:data['id']}) + ">" +
-                                "<i class='flaticon-delete-1'></i>Eliminar</a></li></ul>",
+                                "</ul>",
                         });
                         objeto.draw();
                         table.page(pagina).draw('page');
@@ -176,12 +174,12 @@ var tipo_evento = function () {
     }
 
     var eliminar = function () {
-        $('table#tipo_evento_table').on('click', 'a.eliminar_tipo_evento', function (evento)
+        $('div#basicmodal').on('click', 'a.eliminar_tipo_evento', function (evento)
         {
             evento.preventDefault();
-            var obj = $(this);
             var link = $(this).attr('data-href');
             var token = $(this).attr('data-csrf');
+            $('div#basicmodal').modal('hide');
             bootbox.confirm({
                 title: 'Eliminar tipo de evento',
                 message: '¿Está seguro que desea eliminar este tipo de evento?',

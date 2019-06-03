@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\GrupoArticulo;
+use App\Entity\TipoArticulo;
 use App\Form\GrupoArticuloType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -78,6 +79,8 @@ class GrupoArticuloController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+
+        $eliminable=$this->esEliminable($grupo_articulo);
         $form = $this->createForm(GrupoArticuloType::class, $grupo_articulo, ['action' => $this->generateUrl('grupo_articulo_edit',['id' => $grupo_articulo->getId()])]);
         $form->handleRequest($request);
 
@@ -95,6 +98,7 @@ class GrupoArticuloController extends AbstractController
                     'grupo_articulo' => $grupo_articulo,
                     'form_id' => 'grupo_articulo_edit',
                     'action' => 'Actualizar',
+                    'eliminable'=>$eliminable
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
             }
@@ -105,6 +109,7 @@ class GrupoArticuloController extends AbstractController
             'action' => 'Actualizar',
             'form_id' => 'grupo_articulo_edit',
             'form' => $form->createView(),
+            'eliminable'=>$eliminable
         ]);
     }
 
@@ -113,12 +118,17 @@ class GrupoArticuloController extends AbstractController
      */
     public function delete(Request $request, GrupoArticulo $grupo_articulo): Response
     {
-        if (!$request->isXmlHttpRequest()|| !$this->isCsrfTokenValid('delete'.$grupo_articulo->getId(), $request->query->get('_token')))
+        if (!$request->isXmlHttpRequest()|| !$this->isCsrfTokenValid('delete'.$grupo_articulo->getId(), $request->query->get('_token')) || false==$this->esEliminable($grupo_articulo))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($grupo_articulo);
         $em->flush();
         return $this->json(['mensaje' => 'El grupo del artículo fue eliminado satisfactoriamente']);
+    }
+
+    private function esEliminable(GrupoArticulo $grupoArticulo){
+        return null==$this->getDoctrine()->getManager()->getRepository(TipoArticulo::class)
+                ->findOneByGrupo($grupoArticulo);
     }
 }

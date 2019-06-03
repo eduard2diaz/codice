@@ -118,9 +118,7 @@ var idioma = function () {
                             "acciones": "<ul class='m-nav m-nav--inline m--pull-right'>" +
                                 "<li class='m-nav__item'>" +
                                 "<a class='btn btn-sm btn-info edicion' data-href=" + Routing.generate('idioma_edit',{id:data['id']}) + "><i class='flaticon-edit-1'></i>Editar</a></li>" +
-                                "<li class='m-nav__item'>" +
-                                "<a class='btn btn-danger btn-sm  eliminar_idioma' data-csrf=" + data['csrf'] +" data-href=" + Routing.generate('idioma_delete',{id:data['id']}) + ">" +
-                                "<i class='flaticon-delete-1'></i>Eliminar</a></li></ul>",
+                                "</ul>",
                         });
                         objeto.draw();
                         table.page(pagina).draw('page');
@@ -176,12 +174,12 @@ var idioma = function () {
     }
 
     var eliminar = function () {
-        $('table#idioma_table').on('click', 'a.eliminar_idioma', function (evento)
+        $('div#basicmodal').on('click', 'a.eliminar_idioma', function (evento)
         {
             evento.preventDefault();
-            var obj = $(this);
             var link = $(this).attr('data-href');
             var token = $(this).attr('data-csrf');
+            $('div#basicmodal').modal('hide');
             bootbox.confirm({
                 title: 'Eliminar idioma',
                 message: '¿Está seguro que desea eliminar este idioma?',

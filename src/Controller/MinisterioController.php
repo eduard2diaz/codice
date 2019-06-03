@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Institucion;
 use App\Entity\Ministerio;
 use App\Form\MinisterioType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -78,6 +79,7 @@ class MinisterioController extends AbstractController
 
         $form = $this->createForm(MinisterioType::class, $ministerio, ['action' => $this->generateUrl('ministerio_edit',['id' => $ministerio->getId()])]);
         $form->handleRequest($request);
+        $eliminable=$this->esEliminable($ministerio);
 
         if ($form->isSubmitted())
             if ($form->isValid()) {
@@ -93,12 +95,15 @@ class MinisterioController extends AbstractController
                     'form' => $form->createView(),
                     'form_id' => 'ministerio_edit',
                     'action' => 'Actualizar',
+                    'ministerio' => $ministerio,
+                    'eliminable' => $eliminable,
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('ministerio/_new.html.twig', [
             'ministerio' => $ministerio,
+            'eliminable' => $eliminable,
             'title' => 'Editar ministerio',
             'action' => 'Actualizar',
             'form_id' => 'ministerio_edit',
@@ -111,7 +116,7 @@ class MinisterioController extends AbstractController
      */
     public function delete(Request $request, Ministerio $ministerio): Response
     {
-        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$ministerio->getId(), $request->query->get('_token')))
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$ministerio->getId(), $request->query->get('_token')) || false==$this->esEliminable($ministerio))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
@@ -140,5 +145,10 @@ class MinisterioController extends AbstractController
             $ministerios_array[]=['id'=>$ministerio->getId(),'nombre'=>$ministerio->getNombre()];
 
         return $this->json($ministerios_array);
+    }
+
+    private function esEliminable(Ministerio $ministerio){
+        return null==$this->getDoctrine()->getManager()->getRepository(Institucion::class)
+                ->findOneByMinisterio($ministerio);
     }
 }

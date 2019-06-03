@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Area;
+use App\Entity\Autor;
+use App\Entity\BalanceAnual;
 use App\Entity\Institucion;
 use App\Entity\Ministerio;
 use App\Form\InstitucionType;
@@ -77,6 +80,7 @@ class InstitucionController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $eliminable=$this->esEliminable($institucion);
         $form = $this->createForm(InstitucionType::class, $institucion, ['action' => $this->generateUrl('institucion_edit',['id' => $institucion->getId()])]);
         $form->handleRequest($request);
 
@@ -92,6 +96,8 @@ class InstitucionController extends AbstractController
                 ]);
             } else {
                 $page = $this->renderView('institucion/_form.html.twig', [
+                    'institucion' => $institucion,
+                    'eliminable'=>$eliminable,
                     'form' => $form->createView(),
                     'form_id' => 'institucion_edit',
                     'action' => 'Actualizar',
@@ -101,6 +107,7 @@ class InstitucionController extends AbstractController
 
         return $this->render('institucion/_new.html.twig', [
             'institucion' => $institucion,
+            'eliminable'=>$eliminable,
             'title' => 'Editar institución',
             'action' => 'Actualizar',
             'form_id' => 'institucion_edit',
@@ -113,7 +120,7 @@ class InstitucionController extends AbstractController
      */
     public function delete(Request $request, Institucion $institucion): Response
     {
-        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$institucion->getId(), $request->query->get('_token')))
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$institucion->getId(), $request->query->get('_token'))  || false==$this->esEliminable($institucion))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
@@ -143,4 +150,22 @@ class InstitucionController extends AbstractController
 
         return $this->json($instituciones_array);
     }
+
+    private function esEliminable(Institucion $institucion)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entidades = [
+            ['nombre' => Area::class, 'foranea' => 'institucion'],
+            ['nombre' => Autor::class, 'foranea' => 'institucion'],
+            ['nombre' => BalanceAnual::class, 'foranea' => 'institucion'],
+        ];
+
+        foreach ($entidades as $value) {
+            $result = $em->getRepository($value['nombre'])->findOneBy([$value['foranea'] => $institucion]);
+            if(null!=$result)
+                return false;
+        }
+        return true;
+    }
+
 }

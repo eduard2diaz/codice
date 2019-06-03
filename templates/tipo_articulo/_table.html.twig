@@ -27,10 +27,6 @@
                         <a class="btn btn-info btn-sm edicion" data-href="{{ path('tipo_articulo_edit', { 'id': tipoarticulo.id }) }}">
                             <i class="flaticon-edit-1"></i> Editar</a>
                     </li>
-                    <li class="m-nav__item">
-                        <a class="btn btn-danger btn-sm  eliminar_tipo_articulo" data-href="{{ path('tipo_articulo_delete', { 'id': tipoarticulo.id }) }}" data-csrf="{{ csrf_token('delete' ~ tipoarticulo.id) }}">
-                            <i class="flaticon-delete-1"></i> Eliminar</a>
-                    </li>
                 </ul>
             </td>
         </tr>

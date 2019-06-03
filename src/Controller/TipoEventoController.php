@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Evento;
 use App\Entity\TipoEvento;
 use App\Form\TipoEventoType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -78,6 +79,7 @@ class TipoEventoController extends AbstractController
         if (!$request->isXmlHttpRequest())
             throw $this->createAccessDeniedException();
 
+        $eliminable=$this->esEliminable($tipo_evento);
         $form = $this->createForm(TipoEventoType::class, $tipo_evento, ['action' => $this->generateUrl('tipo_evento_edit',['id' => $tipo_evento->getId()])]);
         $form->handleRequest($request);
 
@@ -95,6 +97,7 @@ class TipoEventoController extends AbstractController
                     'form_id' => 'tipo_evento_edit',
                     'action' => 'Actualizar',
                     'tipo_evento' => $tipo_evento,
+                    'eliminable'=>$this->esEliminable($tipo_evento),
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
             }
@@ -104,6 +107,7 @@ class TipoEventoController extends AbstractController
             'title' => 'Editar tipo de evento',
             'action' => 'Actualizar',
             'form_id' => 'tipo_evento_edit',
+            'eliminable'=>$this->esEliminable($tipo_evento),
             'form' => $form->createView(),
         ]);
     }
@@ -113,12 +117,17 @@ class TipoEventoController extends AbstractController
      */
     public function delete(Request $request, TipoEvento $tipo_evento): Response
     {
-        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_evento->getId(), $request->query->get('_token')))
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$tipo_evento->getId(), $request->query->get('_token')) || false==$this->esEliminable($tipo_evento))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($tipo_evento);
         $em->flush();
         return $this->json(['mensaje' => 'El tipo de evento fue eliminado satisfactoriamente']);
+    }
+
+    private function esEliminable(TipoEvento $tipoEvento){
+        return null==$this->getDoctrine()->getManager()->getRepository(Evento::class)
+                ->findOneByTipoEvento($tipoEvento);
     }
 }

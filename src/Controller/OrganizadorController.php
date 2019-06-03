@@ -77,7 +77,7 @@ class OrganizadorController extends AbstractController
 
         $form = $this->createForm(OrganizadorType::class, $organizador, ['action' => $this->generateUrl('organizador_edit',['id' => $organizador->getId()])]);
         $form->handleRequest($request);
-
+        $eliminable=$this->esEliminable($organizador);
         if ($form->isSubmitted())
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
@@ -92,7 +92,7 @@ class OrganizadorController extends AbstractController
                     'organizador' => $organizador,
                     'form_id' => 'organizador_edit',
                     'action' => 'Actualizar',
-                    'eliminable'=>$this->esEliminable($organizador)
+                    'eliminable'=>$eliminable
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
             }
@@ -103,7 +103,7 @@ class OrganizadorController extends AbstractController
             'action' => 'Actualizar',
             'form_id' => 'organizador_edit',
             'form' => $form->createView(),
-            'eliminable'=>$this->esEliminable($organizador)
+            'eliminable'=>$eliminable
         ]);
     }
 

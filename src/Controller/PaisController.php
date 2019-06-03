@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Editorial;
+use App\Entity\Ministerio;
 use App\Entity\Pais;
+use App\Entity\Revista;
 use App\Form\PaisType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -79,6 +82,7 @@ class PaisController extends AbstractController
         $form = $this->createForm(PaisType::class, $pais, ['action' => $this->generateUrl('pais_edit',['id' => $pais->getId()])]);
         $form->handleRequest($request);
 
+        $eliminable=$this->esEliminable($pais);
         if ($form->isSubmitted())
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
@@ -94,12 +98,15 @@ class PaisController extends AbstractController
                     'form' => $form->createView(),
                     'form_id' => 'pais_edit',
                     'action' => 'Actualizar',
+                    'pais' => $pais,
+                    'eliminable' => $eliminable,
                 ]);
                 return $this->json(['form' => $page, 'error' => true]);
             }
 
         return $this->render('pais/_new.html.twig', [
             'pais' => $pais,
+            'eliminable' => $eliminable,
             'title' => 'Editar país',
             'action' => 'Actualizar',
             'form_id' => 'pais_edit',
@@ -112,12 +119,29 @@ class PaisController extends AbstractController
      */
     public function delete(Request $request, Pais $pais): Response
     {
-        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$pais->getId(), $request->query->get('_token')))
+        if (!$request->isXmlHttpRequest() || !$this->isCsrfTokenValid('delete'.$pais->getId(), $request->query->get('_token')) || false==$this->esEliminable($pais))
             throw $this->createAccessDeniedException();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($pais);
         $em->flush();
         return $this->json(['mensaje' => 'El país fue eliminado satisfactoriamente']);
+    }
+
+    private function esEliminable(Pais $pais)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entidades = [
+            ['nombre' => Ministerio::class, 'foranea' => 'pais'],
+            ['nombre' => Editorial::class, 'foranea' => 'pais'],
+            ['nombre' => Revista::class, 'foranea' => 'pais'],
+        ];
+
+        foreach ($entidades as $value) {
+            $result = $em->getRepository($value['nombre'])->findOneBy([$value['foranea'] => $pais]);
+            if(null!=$result)
+                return false;
+        }
+        return true;
     }
 }
